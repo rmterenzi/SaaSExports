@@ -1,19 +1,12 @@
-///$tab Section
-LIB CONNECT TO 'EU Summit Connection';
-LOAD *;
-
-[account_planning__v]:
-SELECT *
-FROM "production_demo_cc2_report_current"."account_planning__v";
 ///$tab Main
 SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
 SET MoneyFormat='$#,##0.00;-$#,##0.00';
-SET TimeFormat='h:mm:ss TT';
-SET DateFormat='M/D/YYYY';
-SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET TimeFormat='hh:mm:ss TT';
+SET DateFormat='YYYY/MM/DD';
+SET TimestampFormat='YYYY/MM/DD hh:mm:ss[.fff] TT';
 SET FirstWeekDay=6;
 SET BrokenWeeks=1;
 SET ReferenceDay=0;
@@ -26,620 +19,131 @@ SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
 SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
 
-qualify *;
-unqualify geoId;
-unqualify VAULT_DOC_ID_VOD__C;
-unqualify VaultCRM_CLMPres_ID;
-unqualify PRESENTATION_ID_VOD__C;
-unqualify KEY_MESSAGE_VOD__C;
-unqualify Prevalence;
-unqualify Incidence;
-unqualify CCGName;
-// unqualify regionName;
-// unqualify subRegionName;
-// unqualify areaTeamName;
-// unqualify County;
-// unqualify City;
-
-
-HealthFacts:
-LOAD 
-    country,
-    regionCode,
-    regionGeographyCode,
-    regionName,
-    subRegionCode,
-    subRegionGeographyCode,
-    subRegionName,
-    areaTeamCode,
-    areaTeamGeographyCode,
-    County,
-    areaTeamName,
-    CCGCode,
-    CCGGeographyCode as geoId,
-    CCGGeographyCode,
-    CITY,
-    CCGName,
-    listSize,
-    baseline,
-    "Year",
-    Prevalence,
-    Incidence
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [Health Economic 2]);
-
-CCGLocations:
-LOAD
-    objectid,
-    ccg17cd as geoId,
-    ccg17cd,
-    ccg17nm,
-    bng_e,
-    bng_n,
-    long,
-    lat,
-    st_areashape,
-    st_lengthshape
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [CCG Location Data]);
-
-
-VaultContentApprovalTimes:
-LOAD
-    Binder,
-    id as VAULT_DOC_ID_VOD__C,
-    name__v,
-    approval_cycle_start_date__c,
-    approved_for_distribution_date__c,
-    approved_for_production_date__c,
-    clm_id__v,
-    crm_media_type__c,
-    crm_media_type__v,
-    territory__v,
-    crosslink__v,
-    duration_of_use_days__c,
-    duration_of_use_days1__c,
-    crm_end_date__v,
-    expiration_date__c,
-    overall_expiration_date__c,
-    expiration_notes__c,
-    key_message__v,
-    key_message__v.external_id__v,
-    external_id__v,
-    lifecycle__v,
-    number_of_approval_cycles__c,
-    number_of_review_cycles__c,
-    number_of_review_cycles1__c,
-    review_cycle_start_date__c,
-    clm_content__v,
-    review_cycle_start_date1__c,
-    source_date__c
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [Vault -  Content Approval Times]);
-
-VaultDocApprovalTimes:
-LOAD
-    Binder,
-    id as VAULT_DOC_ID_VOD__C,
-    name__v,
-    approval_cycle_start_date__c,
-    approved_for_distribution_date__c,
-    approved_for_production_date__c,
-    clm_id__v,
-    crm_media_type__c,
-    crm_media_type__v,
-    territory__v,
-    crosslink__v,
-    duration_of_use_days__c,
-    duration_of_use_days1__c,
-    crm_end_date__v,
-    expiration_date__c,
-    overall_expiration_date__c,
-    expiration_notes__c,
-    key_message__v,
-    key_message__v.external_id__v,
-    external_id__v,
-    lifecycle__v,
-    number_of_approval_cycles__c,
-    number_of_review_cycles__c,
-    number_of_review_cycles1__c,
-    review_cycle_start_date__c,
-    Agency__v,
-    Country__v,
-    clm_content__v,
-    review_cycle_start_date1__c,
-    source_date__c
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [Vault -  Document Approval Time]);
-
-CRM_CLMPresentation:
-LOAD
-    ID as PRESENTATION_ID_VOD__C,
-    NAME,
-    //VAULT_DOC_ID_VOD__C,
-    //PRESENTATION_ID_VOD__C,
-    PRODUCT_VOD__C,
-    GROUP__C,
-    SURVEY_VOD__C,
-    DIRECTORY_VOD__C,
-    STATUS_VOD__C,
-    VEXTERNAL_ID_VOD__C,
-    VAULT_DNS_VOD__C,
-    VAULT_EXTERNAL_ID_VOD__C,
-    VAULT_GUID_VOD__C,
-    VAULT_LAST_MODIFIED_DATE_TIME_VOD__C,
-    VERSION_VOD__C,
-    ENABLE_SURVEY_OVERLAY_VOD__C,
-    DESCRIPTION_VOD__C,
-    KEYWORDS_VOD__C,
-    EVENT_CONTENT_VOD__C,
-    CONTENT_CHANNEL_VOD__C,
-    EXTERNAL_ACCESS_MT__C,
-    RELATED_CONTENT_IDS__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [CRM - CLM Pres]);
-
-CRM_CLMSlides:
-LOAD
-    ID as CLMSlideID,
-    NAME,
-    CLM_PRESENTATION_VOD__C,
-    CLM_PRESENTATION_VOD__C as PRESENTATION_ID_VOD__C,
-    DISPLAY_ORDER_VOD__C,
-    KEY_MESSAGE_VOD__C,
-    SUB_PRESENTATION_VOD__C,
-    ACTIVE__C,
-    DESCRIPTION__C,
-    KEY_MESSAGE_PRODUCT__C,
-    EXTERNAL_ID_VOD__C,
-    VEXTERNAL_ID_VOD__C,
-    GROUP__C,
-    MSL__C,
-    SALES__C,
-    SURVEY_VOD__C,
-    DIRECTORY_VOD__C,
-    END_DATE_VOD__C,
-    START_DATE_VOD__C,
-    STATUS_VOD__C,
-    VEXTERNAL_ID_VOD__C1,
-    VAULT_DNS_VOD__C,
-    VAULT_DOC_ID_VOD__C,
-    VAULT_EXTERNAL_ID_VOD__C,
-    VAULT_GUID_VOD__C,
-    VAULT_LAST_MODIFIED_DATE_TIME_VOD__C,
-    VERSION_VOD__C,
-    ENABLE_SURVEY_OVERLAY_VOD__C,
-    DESCRIPTION_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [CRM - CLM Slides]);
-
-CRM_KeyMessageSlides:
-LOAD
-    ID as KEY_MESSAGE_VOD__C,
-    ISDELETED,
-    NAME,
-    MAYEDIT,
-    ISLOCKED,
-    LASTVIEWEDDATE,
-    LASTREFERENCEDDATE,
-    DESCRIPTION_VOD__C,
-    PRODUCT_VOD__C,
-    PRODUCT_STRATEGY_VOD__C,
-    DISPLAY_ORDER_VOD__C,
-    ACTIVE_VOD__C,
-    CATEGORY_VOD__C,
-    VEHICLE_VOD__C,
-    CLM_ID_VOD__C,
-    CUSTOM_REACTION_VOD__C,
-    SLIDE_VERSION_VOD__C,
-    LANGUAGE_VOD__C,
-    MEDIA_FILE_CRC_VOD__C,
-    MEDIA_FILE_NAME_VOD__C,
-    MEDIA_FILE_SIZE_VOD__C,
-    SEGMENT_VOD__C,
-    DETAIL_GROUP_VOD__C,
-    DISABLE_ACTIONS_VOD__C,
-    SOURCE__C,
-    VEXTERNAL_ID_VOD__C,
-    CDN_PATH_VOD__C,
-    STATUS_VOD__C,
-    VAULT_DNS_VOD__C,
-    //VAULT_DOC_ID_VOD__C,
-    VAULT_EXTERNAL_ID_VOD__C,
-    VAULT_GUID_VOD__C,
-    VAULT_LAST_MODIFIED_DATE_TIME_VOD__C,
-    IS_SHARED_RESOURCE_VOD__C,
-    SHARED_RESOURCE_VOD__C,
-    IOS_VIEWER_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [Key Message (Behind Each Slides]);
-
-CallKeyMessageDurationRea:
-LOAD
-    ID,
-    NAME,
-    "Account Name",
-    ACCOUNT_VOD__C,
-    CALL2_VOD__C,
-    REACTION_VOD__C,
-    PRODUCT_VOD__C,
-    //KEY_MESSAGE_VOD__C,
-    MOBILE_ID_VOD__C,
-    CALL_DATE_VOD__C,
-    CLM_ID_VOD__C,
-    DURATION_VOD__C,
-    PRESENTATION_ID_VOD__C,
-    SLIDE_VERSION_VOD__C,
-    START_TIME_VOD__C,
-    ATTENDEE_TYPE_VOD__C,
-    ENTITY_REFERENCE_ID_VOD__C,
-    SEGMENT_VOD__C,
-    DISPLAY_ORDER_VOD__C,
-    DETAIL_GROUP_VOD__C,
-    COUNT_ONE_CSM__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Vault Content Approval_Use & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [Call Key Message (Duration, Rea]);
-
-CallsMTGEngage:
-LOAD
-    ID,
-    NAME,
-    F3 AS Channel,
-    RECORDTYPEID,
-    ACCOUNT_VOD__C,
-    STATUS_VOD__C,
-    CALL_DATETIME_VOD__C,
-    CALL_TYPE_VOD__C,
-    ADD_DETAIL_VOD__C,
-    ADD_KEY_MESSAGE_VOD__C,
-    ADDRESS_VOD__C,
-    CONTACT_VOD__C,
-    CALL_DATE_VOD__C,
-    DETAILED_PRODUCTS_VOD__C,
-    PARENT_CALL_VOD__C,
-    USER_VOD__C,
-    ATTENDEES_VOD__C,
-    ATTENDEE_TYPE_VOD__C,
-    MEDICAL_EVENT_VOD__C,
-    IS_PARENT_CALL_VOD__C,
-    PRODUCT_PRIORITY_1_VOD__C,
-    ENTITY_DISPLAY_NAME_VOD__C,
-    ADDRESS_LINE_1_VOD__C,
-    ADDRESS_LINE_2_VOD__C,
-    CITY_VOD__C,
-    ZIP_VOD__C,
-    EM_EVENT_VOD__C,
-    MEDICAL_INQUIRY_VOD__C,
-    PARENT_ADDRESS_ID_VOD__C,
-    PRODUCT_PRIORITY_2_VOD__C,
-    COBROWSE_URL_PARTICIPANT_VOD__C,
-    COBROWSE_URL_PRESENTER_VOD__C,
-    REMOTE_MEETING_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Content Usage by Channel - Qlik.xlsx]
-(ooxml, embedded labels, table is [Calls Engage for Meetings]);
-
-CallsEVTS:
-LOAD
-    ID,
-    NAME,
-    F3 AS Channel,
-    CITY_VOD__C,
-    RECORDTYPEID,
-    CREATEDDATE,
-    CREATEDBYID,
-    ACCOUNT_VOD__C,
-    CALL_DATETIME_VOD__C,
-    CALL_TYPE_VOD__C,
-    CALL_DATE_VOD__C,
-    DETAILED_PRODUCTS_VOD__C,
-    PARENT_CALL_VOD__C,
-    USER_VOD__C,
-    ZVOD_ENTITY_VOD__C,
-    ATTENDEES_VOD__C,
-    ATTENDEE_TYPE_VOD__C,
-    MEDICAL_EVENT_VOD__C,
-    ENTITY_DISPLAY_NAME_VOD__C,
-    CLM_VOD__C,
-    EM_EVENT_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Content Usage by Channel - Qlik.xlsx]
-(ooxml, embedded labels, table is [Call Events]);
-
-Unqualify ACCOUNT_VOD__C;
-Unqualify MULTICHANNEL_ACTIVITY_VOD__C;
-unqualify [MCACT.ACCOUNT_VOD__C];
-unqualify [MCACT.MULTICHANNEL_ACTIVITY_VOD__C];
-unqualify [MCACTLI.MULTICHANNEL_ACTIVITY_VOD__C];
-MCACT:
-LOAD
-    ID as MULTICHANNEL_ACTIVITY_VOD__C,
-    Country_vod__c,
-    City_vod__c,
-    NAME,
-    CURRENCYISOCODE,
-    RECORDTYPEID,
-    ACCOUNT_EXTERNAL_ID_MAP_VOD__C,
-    ACCOUNT_VOD__C,
-    ACCOUNT_VOD__C AS MCACT.ACCOUNT_VOD__C,
-    CALL_VOD__C,
-    CITY_VOD__C,
-    CLIENT_NAME_VOD__C,
-    CLIENT_OS_VOD__C,
-    CLIENT_TYPE_VOD__C,
-    COUNTRY_VOD__C,
-    //MULTICHANNEL_ACTIVITY_VOD__C,
-    MULTICHANNEL_ACTIVITY_VOD__C as MCACT.MULTICHANNEL_ACTIVITY_VOD__C,
-    REGION_VOD__C,
-    SENT_EMAIL_VOD__C,
-    SITE_VOD__C,
-    TOTAL_DURATION_VOD__C,
-    VIEWPORT_HEIGHT_VOD__C,
-    VIEWPORT_WIDTH_VOD__C,
-    VEXTERNAL_ID_VOD__C,
-    TERRITORY_VOD__C,
-    REQUESTED_SAMPLE_VOD__C,
-    REQUESTED_VISIT_VOD__C,
-    ORGANIZER_VOD__C,
-    CLM_LOCATION_LATITUDE_VOD__C,
-    CLM_LOCATION_LONGITUDE_VOD__C,
-    CLM_LOCATION_SERVICES_STATUS_VOD__C,
-    MEDIA_PREVIEW_VOD__C,
-    MOBILE_ID_VOD__C,
-    TRAINING_VOD__C,
-    SAVED_FOR_LATER_VOD__C,
-    EVENT_ATTENDEE_VOD__C,
-    MEDICAL_EVENT_VOD__C,
-    PRODUCT_VOD__C,
-    COLOR_VOD__C,
-    ICON_VOD__C,
-    MCD_PRIMARY_KEY_VOD__C,
-    RECORD_TYPE_NAME_VOD__C,
-    DESCRIPTION__C,
-    WEBSITE__C,
-    DETAIL_GROUP_VOD__C,
-    INVOICE_NUMBER__C,
-    INVOICE_AMOUNT__C,
-    INVOICE_STATUS__C,
-    ORDER_NO__C,
-    EM_EVENT_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Content Usage by Channel - Qlik.xlsx]
-(ooxml, embedded labels, table is [MC Activity]);
-
-Unqualify VEXTERNAL_ID_VOD__C;
-MCACTLI:
-LOAD
-   MULTICHANNEL_ACTIVITY_VOD__C,
-   ID,
-    ISDELETED,
-    NAME,
-    CURRENCYISOCODE,
-    RECORDTYPEID,
-    MAYEDIT,
-    ISLOCKED,
-    MULTICHANNEL_ACTIVITY_VOD__C AS MCACTLI.MULTICHANNEL_ACTIVITY_VOD__C,
-    CALL_VOD__C,
-    CUSTOM_VOD__C,
-    DATETIME_VOD__C,
-    DEBUG_VOD__C,
-    DETAIL_GROUP_VEXTERNAL_ID_VOD__C,
-    DETAIL_GROUP_VOD__C,
-    DURATION_VOD__C,
-    EVENT_SUBTYPE_VOD__C,
-    EVENT_TYPE_VOD__C,
-    KEY_MESSAGE_VEXTERNAL_ID_VOD__C,
-    USER_INPUT_VOD__C,
-//     KEY_MESSAGE_VOD__C,
-    MULTICHANNEL_CONTENT_ASSET_ID_VOD__C As VEXTERNAL_ID_VOD__C,
-    MULTICHANNEL_CONTENT_ASSET_VERSION_VOD__C,
-    MULTICHANNEL_CONTENT_ASSET_VOD__C,
-    MULTICHANNEL_CONTENT_VOD__C,
-    PRODUCT_VEXTERNAL_ID_VOD__C,
-    PRODUCT_VOD__C,
-    SENT_EMAIL_VOD__C,
-    VIDEO_LAST_VIEWED_TIME_VOD__C,
-    VIDEO_LENGTH_VOD__C,
-    VIDEO_TOTAL_TIME_SPENT_VOD__C,
-    VIEW_ORDER_VOD__C,
-    VEXTERNAL_ID_VOD__C as MCACTLI.VEXTERNAL_ID_VOD__C,
-    CUSTOMER_FIELD__C,
-    CLM_PRESENTATION_VOD__C,
-    ENTITY_REFERENCE_KM_ID_VOD__C,
-    KEY_MESSAGE_VERSION_VOD__C,
-    MOBILE_ID_VOD__C,
-    REACTION_VOD__C,
-    SEGMENT_VOD__C,
-    CHAT_AUTHOR_VOD__C,
-    MEDICAL_EVENT_VOD__C,
-    PAGE_LIST_VOD__C,
-    TOTAL_DOC_PAGES_VOD__C,
-    TOTAL_PAGES_VIEWED_VOD__C,
-    RECORD_TYPE_NAME_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Content Usage by Channel - Qlik.xlsx]
-(ooxml, embedded labels, table is [MC Activity Line]);
-
-MCACTAS:
-LOAD
-    ID,
-    NAME,
-    RECORDTYPEID,
-    MULTICHANNEL_CONTENT_VOD__C,
-    DESCRIPTION_VOD__C,
-    DISPLAY_ORDER_VOD__C,
-    LANGUAGE_VOD__C,
-    MEDIA_TYPE_VOD__C,
-    PRODUCT_VOD__C,
-    STATUS_VOD__C,
-    VEXTERNAL_ID_VOD__C,
-    VAULT_DNS_VOD__C,
-    VAULT_DOC_ID_VOD__C,
-    VAULT_GUID_VOD__C,
-    VAULT_LAST_MODIFIED_DATE_TIME_VOD__C,
-    VERSION_VOD__C,
-    VAULT_EXTERNAL_ID_VOD__C,
-    MEDIA_FILE_NAME_VOD__C
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Content Usage by Channel - Qlik.xlsx]
-(ooxml, embedded labels, table is [MC Content Assets]);
-
-VaultCDN:
-LOAD
-    Name,
-    "Rendition Type",
-    "Activity Count",
-    "Activity Date",
-    "Activity Type",
-    "Edge Location",
-    "Document Name",
-    Subtype,
-    "Type",
-    "URL-Name",
-    "URL-Document Name",
-    CDN
-FROM [lib://QVDs (win-83qk5fqarrr_qlik_service)/EU Summit 2018\Content Usage by Channel - Qlik.xlsx]
-(ooxml, embedded labels, table is [Vault CDN Usage ]);
-
-
-
-LOAD
-    ID,
-    NAME,
-    VAULT_DOC_ID_VOD__C,
-    PRESENTATION_ID_VOD__C,
-    PRODUCT_VOD__C,
-    GROUP__C,
-    SURVEY_VOD__C,
-    DIRECTORY_VOD__C,
-    STATUS_VOD__C,
-    VEXTERNAL_ID_VOD__C,
-    VAULT_DNS_VOD__C,
-    VAULT_EXTERNAL_ID_VOD__C,
-    VAULT_GUID_VOD__C,
-    VAULT_LAST_MODIFIED_DATE_TIME_VOD__C,
-    VERSION_VOD__C,
-    ENABLE_SURVEY_OVERLAY_VOD__C,
-    DESCRIPTION_VOD__C,
-    KEYWORDS_VOD__C,
-    EVENT_CONTENT_VOD__C,
-    CONTENT_CHANNEL_VOD__C,
-    EXTERNAL_ACCESS_MT__C,
-    "CLM Usage",
-    RELATED_CONTENT_IDS__C
-FROM [lib://AttachedFiles/Vault Content Approval%2FUse & Health Economic Data.xlsx]
-(ooxml, embedded labels, table is [CRM - CLM Pres]);
-
-
 ///$tab Auto-generated section
-// Set dataManagerTables = '','Vault CDN Usage ','Vault CDN Usage -1';
-// //This block renames script tables from non generated section which conflict with the names of managed tables
+Set dataManagerTables = '','capital-project-detail-data-milestones-1';
+//This block renames script tables from non generated section which conflict with the names of managed tables
 
-// For each name in $(dataManagerTables) 
-//     Let index = 0;
-//     Let currentName = name; 
-//     Let tableNumber = TableNumber(name); 
-//     Let matches = 0; 
-//     Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
-//         index = index + 1; 
-//         currentName = name & '-' & index; 
-//         tableNumber = TableNumber(currentName) 
-//         matches = Match('$(currentName)', $(dataManagerTables));
-//     Loop 
-//     If index > 0 then 
-//             Rename Table '$(name)' to '$(currentName)'; 
-//     EndIf; 
-// Next; 
-// Set dataManagerTables = ;
+For each name in $(dataManagerTables) 
+    Let index = 0;
+    Let currentName = name; 
+    Let tableNumber = TableNumber(name); 
+    Let matches = 0; 
+    Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
+        index = index + 1; 
+        currentName = name & '-' & index; 
+        tableNumber = TableNumber(currentName) 
+        matches = Match('$(currentName)', $(dataManagerTables));
+    Loop 
+    If index > 0 then 
+            Rename Table '$(name)' to '$(currentName)'; 
+    EndIf; 
+Next; 
+Set dataManagerTables = ;
 
 
-// Unqualify *;
+Unqualify *;
 
-// __cityAliasesBase:
-// LOAD
-// 	Alias AS [__City],
-// 	geoKey AS [__geoKey],
-// 	CountryCode AS [__CityCountryCode]
-// FROM [lib://AttachedFiles/cityAliases.qvd]
-// (qvd);
+[capital-project-detail-data-milestones-1]:
+LOAD
+	Date(Date#([PUB_DATE], 'YYYYMMDD') ) AS [PUB_DATE],
+	[BORO],
+	[MANAGING_AGCY_CD],
+	[MANAGING_AGCY],
+	[PROJECT_ID],
+	[PROJECT_DESCR],
+	[SEQ_NUMBER],
+	[TASK_DESCRIPTION],
+	Timestamp([ORIG_START_DATE] ) AS [ORIG_START_DATE],
+	Timestamp([ORIG_END_DATE] ) AS [ORIG_END_DATE],
+	Timestamp([TASK_START_DATE] ) AS [TASK_START_DATE],
+	Timestamp([TASK_END_DATE] ) AS [TASK_END_DATE]
+ FROM [lib://AttachedFiles/capital-project-detail-data-milestones-1.csv]
+(txt, codepage is 28591, embedded labels, delimiter is ',', msq);
+///$tab Sample Data
+BarChartURL:
+LOAD * INLINE [
+	BORO		,	CODE	,	MEASURE	,	URL
+	MANHATTAN	,	47B750	,	7500	,	https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_New_York_City.svg/640px-Flag_of_New_York_City.svg.png
+	BROOKLYN	,	3BA9E5	,	2000	,	https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Flag_of_Brooklyn%2C_New_York.svg/2560px-Flag_of_Brooklyn%2C_New_York.svg.png
+	QUEENS		,	CE2960	,	2500	,	https://imgs.6sqft.com/wp-content/uploads/2017/06/14120117/Queens-borough-flag.png
+	BRONX		,	F5F5F5	,	1500	,	https://imgs.6sqft.com/wp-content/uploads/2017/06/14114659/Bronx-borough-flag.png
+	CITYWIDE	,	76767	,	3000	,	https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_New_York_City%2C_New_York_%281915%E2%80%931977%29.png
+	RICHMOND	,	7B7B7B	,	6000	,	https://www.crwflags.com/fotw/images/u/us-ny-si1-l.gif
+];
 
-// __cityGeoBase:
-// LOAD
-// 	geoKey AS [__geoKey],
-// 	geoPoint AS [__GeoPoint]
-// FROM [lib://AttachedFiles/cityGeo.qvd]
-// (qvd);
 
-// __cityName2Key:
-// MAPPING LOAD
-// 	__City,
-// 	__geoKey
-// RESIDENT __cityAliasesBase;
+ExampleShowcase:
+LOAD * INLINE [
+    BORO        ,   PROJECT                 ,   TICKET_STATUS_DIMENSION     ,   PREDICTED_PROJECT_COST  ,   CURRENT_PROJECT_COST    ,   SPI     ,   CPI     ,   PV      ,   EV        ,   DAYS ,   CURRENT_DAYS   ,   EFFECTIVENESS   ,   PM   ,   2022/01/01   ,   2022/01/08   ,   2022/01/15   ,   2022/01/22   ,   2022/01/29   ,   2022/02/05   ,   2022/02/12   ,   2022/02/19   ,   2022/02/25   ,   2022/03/04   ,   2022/03/11   ,   2022/03/18   ,   2022/03/25   ,   2022/04/01   ,   2022/04/08   ,
+    MANHATTAN   ,   NEW YORK LIBRARY        ,   IMPLEMENTING                ,   95500                   ,   60000                   ,   0.75    ,   0.68    ,   45000   ,   40000     ,   14   ,   9              ,   75              ,   SJ   ,   65           ,   75           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    MANHATTAN   ,   FIRE DEPARTMENT         ,   IMPLEMENTING                ,   20000                   ,   5000                    ,   1.05    ,   0.98    ,   65000   ,   71500     ,   14   ,   2              ,   85              ,   PP   ,   85           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    MANHATTAN   ,   POLICE DEPARTMENT       ,   IMPLEMENTING                ,   67500                   ,   35000                   ,   0.56    ,   0.40    ,   54000   ,   75000     ,   14   ,   16             ,   25              ,   PP   ,   65           ,   35           ,   25           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    BROOKLYN    ,   STREET REPAIR           ,   EVALUATING                  ,   43000                   ,   6000                    ,   0.45    ,   0.39    ,   20000   ,   18500     ,   30   ,   3              ,   80              ,   LT   ,   80           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    BROOKLYN    ,   AMBULANCE DEPARTMENT    ,   IMPLEMENTING                ,   73000                   ,   75000                   ,   0.62    ,   0.60    ,   36000   ,   30000     ,   7    ,   5              ,   90              ,   FN   ,   90           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    QUEENS      ,   CHILDERN SERVICES       ,   COMPLETED                   ,   87500                   ,   80500                   ,   0.49    ,   0.50    ,   87000   ,   84500     ,   14   ,   14             ,   80              ,   KZ   ,   90           ,   80           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    QUEENS      ,   PARENTING SERVICES      ,   EVALUATING                  ,   25500                   ,   3000                    ,   0.98    ,   0.99    ,   12500   ,   35000     ,   7    ,   14             ,   5               ,   BG   ,   40           ,   5            ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    BRONX       ,   LAW DEPARTMENT          ,   EVALUATING                  ,   25000                   ,   2000                    ,   0.45    ,   0.42    ,   35500   ,   36500     ,   21   ,   7              ,   25              ,   VL   ,   25           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    BRONX       ,   CITY UNIVERSITY         ,   IMPLEMENTING                ,   10000                   ,   8000                    ,   0.28    ,   0.48    ,   40000   ,   40500     ,   14   ,   13             ,   85              ,   AS   ,   35           ,   85           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    BRONX       ,   CITY ELEMENTARY         ,   COMPLETED                   ,   45000                   ,   50000                   ,   0.77    ,   0.97    ,   49500   ,   39500     ,   21   ,   19             ,   95              ,   MM   ,   75           ,   90           ,   95           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    CITYWIDE    ,   ZOO RENOVATIONS         ,   IMPLEMENTING                ,   90000                   ,   82500                   ,   0.75    ,   0.79    ,   12000   ,   11500     ,   7    ,   5              ,   65              ,   BS   ,   65           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    CITYWIDE    ,   LIBRARY RENOVATIONS     ,   EVALUATING                  ,   100000                  ,   2500                    ,   0.55    ,   0.50    ,   50000   ,   50500     ,   7    ,   1              ,   90              ,   DN   ,   90           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    CITYWIDE    ,   GARBAGE DEPARTMENT      ,   COMPLETED                   ,   30500                   ,   30000                   ,   0.50    ,   0.46    ,   40500   ,   41500     ,   7    ,   8              ,   60              ,   SS   ,   65           ,   60           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    CITYWIDE    ,   TIME SQUARE ELECTRICS   ,   EVALUATING                  ,   43000                   ,   500                     ,   1.02    ,   0.95    ,   14500   ,   15500     ,   14   ,   7              ,   15              ,   SS   ,   15           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
+    RICHMOND    ,   TRANSPORT RENOVATIONS   ,   COMPLETED                   ,   50000                   ,   40000                   ,   1.00    ,   0.90    ,   10000   ,   10000     ,   60   ,   72             ,   45              ,   QV   ,   50           ,   60           ,   65           ,   60           ,   40           ,   35           ,   35           ,   40           ,   45           ,   50           ,   45           ,                ,                ,                ,                ,
+    RICHMOND    ,   ENGINEERING PROJECT     ,   COMPLETED                   ,   60500                   ,   30000                   ,   0.50    ,   0.74    ,   15000   ,   15500     ,   90   ,   105            ,   75              ,   QS   ,   70           ,   45           ,   55           ,   35           ,   50           ,   45           ,   75           ,   80           ,   80           ,   80           ,   65           ,    55          ,   70           ,   75           ,   75           ,
+];
 
-// __cityKey2GeoPoint:
-// MAPPING LOAD
-// 	__geoKey,
-// 	__GeoPoint
-// RESIDENT __cityGeoBase;
 
-// [Vault CDN Usage _2408977a-23af-0d2e-fabc-da68ea68]:
-// LOAD
-// 	[Name],
-// 	[Rendition Type],
-// 	[Activity Count],
-// 	[Activity Date],
-// 	[Activity Type],
-// 	[Edge Location],
-// 	[Document Name],
-// 	[Subtype],
-// 	[Type],
-// 	[URL-Name],
-// 	[URL-Document Name]
-//  FROM [lib://AttachedFiles/Content Usage by Channel - Qlik (1).xlsx]
-// (ooxml, embedded labels, table is [Vault CDN Usage ]);
-
-// [Vault CDN Usage _938a17d9-ff40-b94e-f99e-21e8e35e]:
-// LOAD
-// 	[Name] AS [Vault CDN Usage -1.Name],
-// 	[Rendition Type] AS [Vault CDN Usage -1.Rendition Type],
-// 	[Activity Count] AS [Vault CDN Usage -1.Activity Count],
-// 	Date([Activity Date] ) AS [Vault CDN Usage -1.Activity Date],
-// 	[Activity Type] AS [Vault CDN Usage -1.Activity Type],
-// 	[Edge Location] AS [Vault CDN Usage -1.Edge Location],
-// 	[Document Name] AS [Vault CDN Usage -1.Document Name],
-// 	[Subtype] AS [Vault CDN Usage -1.Subtype],
-// 	[Type] AS [Vault CDN Usage -1.Type],
-// 	[URL-Name] AS [Vault CDN Usage -1.URL-Name],
-// 	[URL-Document Name] AS [Vault CDN Usage -1.URL-Document Name],
-// 	[CDN],
-// 	APPLYMAP( '__cityKey2GeoPoint', APPLYMAP( '__cityName2Key', LOWER([Edge Location])), '-') AS [Vault CDN Usage -1.Vault CDN Usage -1.Edge Location_GeoInfo]
-//  FROM [lib://AttachedFiles/Content Usage by Channel - Qlik (2).xlsx]
-// (ooxml, embedded labels, table is [Vault CDN Usage ]);
-
-// RENAME TABLE [Vault CDN Usage _2408977a-23af-0d2e-fabc-da68ea68] to [Vault CDN Usage ];
-// TAG FIELD [Vault CDN Usage -1.Edge Location] WITH '$geoname', '$relates_Vault CDN Usage -1.Vault CDN Usage -1.Edge Location_GeoInfo' ;
-
-// TAG FIELD [Vault CDN Usage -1.Vault CDN Usage -1.Edge Location_GeoInfo] WITH '$geopoint', '$hidden', '$relates_Vault CDN Usage -1.Edge Location' ;RENAME TABLE [Vault CDN Usage _938a17d9-ff40-b94e-f99e-21e8e35e] to [Vault CDN Usage -1];
-
-// DROP TABLES __cityAliasesBase, __cityGeoBase;
-// [autoCalendar]: 
-//   DECLARE FIELD DEFINITION Tagged ('$date')
-// FIELDS
-//   Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
-//   Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter', '$cyclic'),
-//   Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$yearquarter', '$qualified'),
-//   Dual('Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [_YearQuarter] Tagged ('$yearquarter', '$hidden', '$simplified'),
-//   Month($1) AS [Month] Tagged ('$month', '$cyclic'),
-//   Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth', '$qualified'),
-//   Dual(Month($1), monthstart($1)) AS [_YearMonth] Tagged ('$axis', '$yearmonth', '$simplified', '$hidden'),
-//   Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber', '$cyclic'),
-//   Date(Floor($1)) AS [Date] Tagged ('$axis', '$date', '$qualified'),
-//   Date(Floor($1), 'D') AS [_Date] Tagged ('$axis', '$date', '$hidden', '$simplified'),
-//   If (DayNumberOfYear($1) <= DayNumberOfYear(Today()), 1, 0) AS [InYTD] ,
-//   Year(Today())-Year($1) AS [YearsAgo] ,
-//   If (DayNumberOfQuarter($1) <= DayNumberOfQuarter(Today()),1,0) AS [InQTD] ,
-//   4*Year(Today())+Ceil(Month(Today())/3)-4*Year($1)-Ceil(Month($1)/3) AS [QuartersAgo] ,
-//   Ceil(Month(Today())/3)-Ceil(Month($1)/3) AS [QuarterRelNo] ,
-//   If(Day($1)<=Day(Today()),1,0) AS [InMTD] ,
-//   12*Year(Today())+Month(Today())-12*Year($1)-Month($1) AS [MonthsAgo] ,
-//   Month(Today())-Month($1) AS [MonthRelNo] ,
-//   If(WeekDay($1)<=WeekDay(Today()),1,0) AS [InWTD] ,
-//   (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
-//   Week(Today())-Week($1) AS [WeekRelNo] ;
-
-// DERIVE FIELDS FROM FIELDS [Activity Date], [Vault CDN Usage -1.Activity Date] USING [autoCalendar] ;
+ExampleDate:
+LOAD * INLINE [
+    PROJECT_DATE            ,   DATE_DATE    ,   MEASURE_DATE
+    NEW YORK LIBRARY        ,   2022/01/01   ,   65
+    NEW YORK LIBRARY        ,   2022/01/08   ,   75
+    FIRE DEPARTMENT         ,   2022/01/01   ,   85
+    POLICE DEPARTMENT       ,   2022/01/01   ,   65
+    POLICE DEPARTMENT       ,   2022/01/08   ,   35
+    POLICE DEPARTMENT       ,   2022/01/15   ,   25
+    STREET REPAIR           ,   2022/01/01   ,   80
+    AMBULANCE DEPARTMENT    ,   2022/01/01   ,   90
+    CHILDERN SERVICES       ,   2022/01/01   ,   90
+    CHILDERN SERVICES       ,   2022/01/08   ,   80
+    PARENTING SERVICES      ,   2022/01/01   ,   40
+    PARENTING SERVICES      ,   2022/01/08   ,   5 
+    LAW DEPARTMENT          ,   2022/01/01   ,   25
+    CITY UNIVERSITY         ,   2022/01/01   ,   35
+    CITY UNIVERSITY         ,   2022/01/01   ,   85
+    CITY ELEMENTARY         ,   2022/01/01   ,   75
+    CITY ELEMENTARY         ,   2022/01/08   ,   90
+    CITY ELEMENTARY         ,   2022/01/15   ,   95
+    ZOO RENOVATIONS         ,   2022/01/01   ,   65
+    LIBRARY RENOVATIONS     ,   2022/01/01   ,   90
+    GARBAGE DEPARTMENT      ,   2022/01/01   ,   65
+    GARBAGE DEPARTMENT      ,   2022/01/08   ,   60
+    TIME SQUARE ELECTRICS   ,   2022/01/01   ,   15
+    TRANSPORT RENOVATIONS   ,   2022/01/01   ,   50
+    TRANSPORT RENOVATIONS   ,   2022/01/08   ,   60
+    TRANSPORT RENOVATIONS   ,   2022/01/15   ,   65
+    TRANSPORT RENOVATIONS   ,   2022/01/22   ,   60
+    TRANSPORT RENOVATIONS   ,   2022/01/29   ,   40
+    TRANSPORT RENOVATIONS   ,   2022/02/05   ,   35
+    TRANSPORT RENOVATIONS   ,   2022/02/12   ,   35
+    TRANSPORT RENOVATIONS   ,   2022/02/19   ,   40
+    TRANSPORT RENOVATIONS   ,   2022/02/25   ,   45
+    TRANSPORT RENOVATIONS   ,   2022/03/04   ,   50
+    TRANSPORT RENOVATIONS   ,   2022/03/04   ,   45
+    ENGINEERING PROJECT     ,   2022/01/01   ,   70
+    ENGINEERING PROJECT     ,   2022/01/08   ,   45
+    ENGINEERING PROJECT     ,   2022/01/15   ,   55
+    ENGINEERING PROJECT     ,   2022/01/22   ,   35
+    ENGINEERING PROJECT     ,   2022/01/29   ,   50
+    ENGINEERING PROJECT     ,   2022/02/05   ,   45
+    ENGINEERING PROJECT     ,   2022/02/12   ,   75
+    ENGINEERING PROJECT     ,   2022/02/19   ,   90
+    ENGINEERING PROJECT     ,   2022/02/25   ,   90
+    ENGINEERING PROJECT     ,   2022/03/04   ,   90
+    ENGINEERING PROJECT     ,   2022/03/11   ,   65
+    ENGINEERING PROJECT     ,   2022/03/18   ,   55
+    ENGINEERING PROJECT     ,   2022/03/25   ,   70
+    ENGINEERING PROJECT     ,   2022/04/01   ,   75
+    ENGINEERING PROJECT     ,   2022/04/08   ,   75
+];
