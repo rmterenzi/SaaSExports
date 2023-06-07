@@ -1,330 +1,170 @@
 
 SHEETS
-{"qInfo":{"qId":"jSeTmb","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"jSeTmb","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.385Z","modifiedDate":"2023-06-07T04:42:52.336Z","publishTime":"2023-06-07T04:42:52.336Z","published":true,"privileges":["read","publish","change_owner"],"title":"Vendor Profile","description":"The Vendor Profile sheet provides information about a selected vendor such as their last transaction date, their office addresses, their contracts and their spend development."},"qData":[]}
-{"qInfo":{"qId":"4c9b7c23-815f-4695-b5f3-b19a8d52766a","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"4c9b7c23-815f-4695-b5f3-b19a8d52766a","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.120Z","modifiedDate":"2023-06-07T04:42:50.602Z","publishTime":"2023-06-07T04:42:50.602Z","published":true,"privileges":["read","publish","change_owner"],"title":"Payments","description":"The Payments sheet allows you to see amounts\/payments that have not been paid so that the organization can gauge what is past due and what payments are due in the future.  The Payment sheet also takes a look at due date accuracy and when regions within the organization tend to make their payments with respect to the due date."},"qData":[]}
-{"qInfo":{"qId":"2cb3c229-2427-4b0f-95bf-570ff2686384","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"2cb3c229-2427-4b0f-95bf-570ff2686384","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.405Z","modifiedDate":"2023-06-07T04:42:48.919Z","publishTime":"2023-06-07T04:42:48.919Z","published":true,"privileges":["read","publish","change_owner"],"title":"Contracts","description":"The Contracts sheets provided more details about a contract.  Use this sheet to see how many active contracts there are and which contracts are terminating soon.  This sheet allows the user to filter the contract data based on four contract dates: effective date, evergreen reminder date, termination date and termination\/prolongation date."},"qData":[]}
-{"qInfo":{"qId":"36f2a587-a8f3-460a-bf37-7903359e6a4b","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"36f2a587-a8f3-460a-bf37-7903359e6a4b","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.493Z","modifiedDate":"2023-06-07T04:42:47.236Z","publishTime":"2023-06-07T04:42:47.236Z","published":true,"privileges":["read","publish","change_owner"],"title":"Spending","description":"The Spending sheet can be used to view spending trends over time and spending details down to the transaction level.  Use this sheet to determine which regions spend the most and have the largest number of transactions.  Determine which country does a poor job at making their payments on time."},"qData":[]}
-{"qInfo":{"qId":"f3ad4791-7465-438e-bf71-44a8b4fe22f6","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"f3ad4791-7465-438e-bf71-44a8b4fe22f6","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.353Z","modifiedDate":"2023-06-07T04:42:45.562Z","publishTime":"2023-06-07T04:42:45.562Z","published":true,"privileges":["read","publish","change_owner"],"title":"Dashboard","description":"The Dashboard provides four important KPIs for the organization:\n\n1.\tSpend managed by procurement\n2.\tOn-time payments\n3.\tPO coverage\n4.\tContract coverage\n\nThis sheet can be used to view spending across various dimensions such as country, entity, vendor and category."},"qData":[]}
+{"qInfo":{"qId":"BHRJrx","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"BHRJrx","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.705Z","modifiedDate":"2023-06-07T04:39:57.096Z","publishTime":"2023-06-07T04:39:57.096Z","published":true,"privileges":["read","publish","change_owner"],"title":"Employee Details","description":"Table with Employee details."},"qData":[]}
+{"qInfo":{"qId":"erd","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"erd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.670Z","modifiedDate":"2023-06-07T04:39:55.392Z","publishTime":"2023-06-07T04:39:55.392Z","published":true,"privileges":["read","publish","change_owner"],"title":"Employee Performance","description":"Understand the employees performance"},"qData":[]}
+{"qInfo":{"qId":"JNmE","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"JNmE","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.126Z","modifiedDate":"2023-06-07T04:39:53.623Z","publishTime":"2023-06-07T04:39:53.623Z","published":true,"privileges":["read","publish","change_owner"],"title":"Ethnic Diversity","description":"Actively promoting diversity, this visualizations will help you to understand diversity in the company. For more information about diversity please check the Story called Diversity Analysis within the Data Storytelling library"},"qData":[]}
+{"qInfo":{"qId":"GuZh","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"GuZh","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.214Z","modifiedDate":"2023-06-07T04:39:51.880Z","publishTime":"2023-06-07T04:39:51.880Z","published":true,"privileges":["read","publish","change_owner"],"title":"Gender Salary Comparison","description":""},"qData":[]}
+{"qInfo":{"qId":"LVAZSCF","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"LVAZSCF","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.532Z","modifiedDate":"2023-06-07T04:39:50.196Z","publishTime":"2023-06-07T04:39:50.196Z","published":true,"privileges":["read","publish","change_owner"],"title":"Women in the workforce","description":"This analysis focus on how the women is represented among the company, for more info please check the Story called Diversity Analysis"},"qData":[]}
+{"qInfo":{"qId":"xUJLtF","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"xUJLtF","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.629Z","modifiedDate":"2023-06-07T04:39:48.548Z","publishTime":"2023-06-07T04:39:48.548Z","published":true,"privileges":["read","publish","change_owner"],"title":"Demographics","description":"Explore the characteristics of the population\/workforce, for example, age, gender or ethnic group"},"qData":[]}
+{"qInfo":{"qId":"HuuZW","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"HuuZW","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.545Z","modifiedDate":"2023-06-07T04:39:46.819Z","publishTime":"2023-06-07T04:39:46.819Z","published":true,"privileges":["read","publish","change_owner"],"title":"Employee Development","description":"See how the designed training program has been executed"},"qData":[]}
+{"qInfo":{"qId":"GZGbMWW","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"GZGbMWW","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.845Z","modifiedDate":"2023-06-07T04:39:45.020Z","publishTime":"2023-06-07T04:39:45.020Z","published":true,"privileges":["read","publish","change_owner"],"title":"Dashboard","description":"Headcount information and main KPIs"},"qData":[]}
 
 OBJECTS ON SHEETS
-{"name":"PQnntn","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":12}
-{"name":"XEADJG","type":"text-image","col":3,"row":2,"colspan":6,"rowspan":2}
-{"name":"gebMmN","type":"text-image","col":3,"row":4,"colspan":6,"rowspan":1}
-{"name":"FCXpnYm","type":"text-image","col":3,"row":5,"colspan":6,"rowspan":1}
-{"name":"bJPVUN","type":"table","col":13,"row":8,"colspan":11,"rowspan":4}
-{"name":"EpmFt","type":"text-image","col":3,"row":6,"colspan":6,"rowspan":2}
-{"name":"YsAzpxp","type":"table","col":3,"row":8,"colspan":10,"rowspan":4}
-{"name":"tKGaG","type":"text-image","col":3,"row":0,"colspan":11,"rowspan":1}
-{"name":"rjBREcW","type":"linechart","col":9,"row":2,"colspan":15,"rowspan":6}
-{"name":"pfCRgt","type":"filterpane","col":17,"row":0,"colspan":7,"rowspan":2}
-{"name":"pmcrjB","type":"text-image","col":3,"row":1,"colspan":6,"rowspan":1}
-{"name":"WdQy","type":"kpi","col":0,"row":0,"colspan":4,"rowspan":2}
-{"name":"f9dd7975-ca51-4611-b45a-288e44b55e5d","type":"filterpane","col":17,"row":0,"colspan":7,"rowspan":2}
-{"name":"bmGXNP","type":"kpi","col":4,"row":0,"colspan":4,"rowspan":2}
-{"name":"zTBgYb","type":"kpi","col":8,"row":0,"colspan":4,"rowspan":2}
-{"name":"rhsVn","type":"kpi","col":12,"row":0,"colspan":4,"rowspan":2}
-{"name":"9859cba2-2b2d-4d09-bb55-a8b848d661dd","type":"linechart","col":0,"row":2,"colspan":12,"rowspan":5}
-{"name":"639d202c-c377-4937-80c2-ab328e1f7795","type":"table","col":0,"row":7,"colspan":24,"rowspan":5}
-{"name":"REeJhFn","type":"linechart","col":12,"row":2,"colspan":12,"rowspan":5}
-{"name":"LFuEFN","type":"kpi","col":0,"row":0,"colspan":4,"rowspan":2}
-{"name":"ad3a0b45-770c-401d-a9cb-67785e2a555e","type":"filterpane","col":21,"row":0,"colspan":3,"rowspan":1}
-{"name":"SgJhj","type":"kpi","col":4,"row":0,"colspan":4,"rowspan":2}
-{"name":"PMY","type":"kpi","col":8,"row":0,"colspan":4,"rowspan":2}
-{"name":"BDmkE","type":"kpi","col":12,"row":0,"colspan":4,"rowspan":2}
-{"name":"90ad6ffe-8f54-4ee9-a143-fe33a246e396","type":"barchart","col":0,"row":2,"colspan":11,"rowspan":6}
-{"name":"6d6e4cf8-551c-4835-84ac-286be9982345","type":"table","col":0,"row":8,"colspan":24,"rowspan":4}
-{"name":"qFmkE","type":"scatterplot","col":11,"row":2,"colspan":13,"rowspan":6}
-{"name":"Dpzjpb","type":"filterpane","col":16,"row":0,"colspan":5,"rowspan":2}
-{"name":"c50605c8-4796-42f9-acf5-b9807438c381","type":"kpi","col":0,"row":0,"colspan":4,"rowspan":2}
-{"name":"760a2cc4-1ac2-455e-ab5e-b5689109f6e1","type":"filterpane","col":17,"row":0,"colspan":7,"rowspan":2}
-{"name":"b49bf5f2-9cac-46af-acb1-7fa48843a5fb","type":"kpi","col":4,"row":0,"colspan":4,"rowspan":2}
-{"name":"337180d1-5fd0-471c-9eee-9172d3e6e451","type":"kpi","col":8,"row":0,"colspan":4,"rowspan":2}
-{"name":"ea30fd2d-686c-46d2-9335-3e8c1bb25e06","type":"kpi","col":12,"row":0,"colspan":5,"rowspan":2}
-{"name":"d75c3852-ca0a-41a7-a204-f3b6a2bc9e43","type":"linechart","col":12,"row":2,"colspan":12,"rowspan":5}
-{"name":"a01ae9f7-4435-48af-9a91-e4a2653ab1ae","type":"barchart","col":0,"row":2,"colspan":6,"rowspan":5}
-{"name":"c529118a-d9f6-4fe5-951b-064dc05e6c96","type":"barchart","col":0,"row":7,"colspan":6,"rowspan":5}
-{"name":"632ed689-2ded-4a7d-bdf6-35bb3a6bc63c","type":"barchart","col":6,"row":7,"colspan":6,"rowspan":5}
-{"name":"abf0c609-ac39-45bf-ba62-348320c4c2a5","type":"table","col":12,"row":7,"colspan":12,"rowspan":5}
-{"name":"51d2b190-4b30-4565-bd96-2baa6914c0de","type":"barchart","col":6,"row":2,"colspan":6,"rowspan":5}
-{"name":"51d5d221-f0c4-4b0e-973b-d7d908f594a7","type":"text-image","col":6,"row":0,"colspan":6,"rowspan":2}
-{"name":"a2dcbe04-2718-4526-9f1a-4cd16d6fe2c6","type":"filterpane","col":20,"row":0,"colspan":4,"rowspan":1}
-{"name":"a351b6e4-8fbb-4362-93b5-c8c98afb0bde","type":"text-image","col":2,"row":3,"colspan":4,"rowspan":2}
-{"name":"f07cec4b-23e6-427d-87cf-e66e5a8fb994","type":"text-image","col":8,"row":3,"colspan":4,"rowspan":2}
-{"name":"8d41020b-c439-4fac-87b8-d9e3b894512b","type":"text-image","col":14,"row":3,"colspan":4,"rowspan":2}
-{"name":"c70a6766-e793-4137-8cc7-3ce89cbc0747","type":"text-image","col":20,"row":3,"colspan":4,"rowspan":2}
-{"name":"f9fbdf27-9072-4bab-9036-49ac34d683f5","type":"barchart","col":0,"row":5,"colspan":8,"rowspan":4}
-{"name":"e1ef8d3b-7412-4526-9399-2ac17622c17c","type":"piechart","col":8,"row":5,"colspan":8,"rowspan":7}
-{"name":"9e753e1d-7c32-46eb-adba-bff409731668","type":"barchart","col":16,"row":5,"colspan":8,"rowspan":6}
-{"name":"632eef7e-a86a-440f-b2f8-555a27c340c5","type":"text-image","col":16,"row":11,"colspan":8,"rowspan":1}
-{"name":"40a4611d-eb36-4d23-8888-a405634ceb96","type":"filterpane","col":12,"row":0,"colspan":4,"rowspan":1}
-{"name":"08b369d9-db5c-4f69-8f85-f327e5df0966","type":"filterpane","col":16,"row":0,"colspan":4,"rowspan":1}
-{"name":"ffe99d60-15fe-4a8a-8995-262ad296391e","type":"barchart","col":0,"row":9,"colspan":8,"rowspan":3}
-{"name":"e3955bdd-eae7-4643-9bd8-f86b90ee069a","type":"gauge","col":6,"row":2,"colspan":2,"rowspan":3}
-{"name":"4ed3163e-b8d5-4a4e-b78c-7227930b5204","type":"gauge","col":0,"row":2,"colspan":2,"rowspan":3}
-{"name":"b89743aa-d3f9-4111-aadc-0655e414d149","type":"gauge","col":12,"row":2,"colspan":2,"rowspan":3}
-{"name":"49d66498-5aba-420f-b0d3-56db2a51e5ef","type":"gauge","col":18,"row":2,"colspan":2,"rowspan":3}
-{"name":"90c9f322-3acc-48be-bce1-8a2ef0d568f8","type":"kpi","col":0,"row":0,"colspan":5,"rowspan":2}
+{"name":"pLCfnNW","type":"table","col":1,"row":0,"colspan":22,"rowspan":11}
+{"name":"uREpMb","type":"barchart","col":1,"row":0,"colspan":10,"rowspan":6}
+{"name":"aBfwuQy","type":"barchart","col":13,"row":0,"colspan":10,"rowspan":6}
+{"name":"jpZgn","type":"table","col":1,"row":6,"colspan":22,"rowspan":5}
+{"name":"SYfCey","type":"treemap","col":9,"row":0,"colspan":7,"rowspan":11}
+{"name":"fKwtfhH","type":"barchart","col":16,"row":0,"colspan":7,"rowspan":11}
+{"name":"PEDjaJv","type":"barchart","col":1,"row":4,"colspan":8,"rowspan":4}
+{"name":"hywdHj","type":"treemap","col":1,"row":0,"colspan":8,"rowspan":4}
+{"name":"LjtsQJ","type":"treemap","col":1,"row":8,"colspan":8,"rowspan":3}
+{"name":"acCaRQ","type":"barchart","col":1,"row":4,"colspan":7,"rowspan":8}
+{"name":"ctWWw","type":"barchart","col":10,"row":4,"colspan":13,"rowspan":4}
+{"name":"AufQXZn","type":"barchart","col":10,"row":0,"colspan":13,"rowspan":4}
+{"name":"BRevKy","type":"barchart","col":10,"row":8,"colspan":13,"rowspan":4}
+{"name":"BZyrBh","type":"kpi","col":1,"row":0,"colspan":7,"rowspan":4}
+{"name":"JsGkxK","type":"barchart","col":16,"row":8,"colspan":7,"rowspan":4}
+{"name":"GhkXLa","type":"barchart","col":16,"row":0,"colspan":7,"rowspan":4}
+{"name":"pmmeNJ","type":"treemap","col":1,"row":0,"colspan":7,"rowspan":12}
+{"name":"jBmnb","type":"barchart","col":16,"row":4,"colspan":7,"rowspan":3}
+{"name":"AQeHJHq","type":"barchart","col":9,"row":8,"colspan":6,"rowspan":4}
+{"name":"aYfpJ","type":"barchart","col":9,"row":0,"colspan":6,"rowspan":3}
+{"name":"ENtfwQ","type":"treemap","col":9,"row":4,"colspan":6,"rowspan":3}
+{"name":"dPjKY","type":"barchart","col":1,"row":0,"colspan":5,"rowspan":6}
+{"name":"PsVhWxh","type":"barchart","col":12,"row":6,"colspan":11,"rowspan":5}
+{"name":"HFzCzB","type":"barchart","col":1,"row":6,"colspan":11,"rowspan":5}
+{"name":"jmraV","type":"barchart","col":18,"row":0,"colspan":5,"rowspan":6}
+{"name":"XpbtXZJ","type":"barchart","col":6,"row":0,"colspan":12,"rowspan":6}
+{"name":"rnuzC","type":"barchart","col":1,"row":2,"colspan":9,"rowspan":5}
+{"name":"MGpYNk","type":"barchart","col":11,"row":2,"colspan":12,"rowspan":5}
+{"name":"XpzsPvq","type":"barchart","col":1,"row":7,"colspan":9,"rowspan":4}
+{"name":"yjAVPjR","type":"table","col":11,"row":7,"colspan":12,"rowspan":4}
+{"name":"pKutVgd","type":"text-image","col":0,"row":0,"colspan":8,"rowspan":2}
+{"name":"jftDVLU","type":"text-image","col":8,"row":0,"colspan":8,"rowspan":2}
+{"name":"skYSu","type":"text-image","col":16,"row":0,"colspan":8,"rowspan":2}
+{"name":"UCEE","type":"linechart","col":1,"row":7,"colspan":10,"rowspan":4}
+{"name":"RtrWBU","type":"linechart","col":13,"row":7,"colspan":10,"rowspan":4}
+{"name":"ZxvqL","type":"barchart","col":1,"row":2,"colspan":10,"rowspan":5}
+{"name":"jwBw","type":"map","col":13,"row":2,"colspan":6,"rowspan":5}
+{"name":"pgNPDUd","type":"barchart","col":19,"row":2,"colspan":4,"rowspan":5}
+{"name":"JbeTAc","type":"kpi","col":0,"row":0,"colspan":3,"rowspan":2}
+{"name":"xjjWSm","type":"kpi","col":4,"row":0,"colspan":4,"rowspan":2}
+{"name":"jwfFPyj","type":"kpi","col":8,"row":0,"colspan":4,"rowspan":2}
+{"name":"LcFPwq","type":"kpi","col":12,"row":0,"colspan":4,"rowspan":2}
+{"name":"pTmtcxc","type":"kpi","col":16,"row":0,"colspan":4,"rowspan":2}
+{"name":"YWujXMj","type":"kpi","col":20,"row":0,"colspan":4,"rowspan":2}
 
 DIMENSIONS
-{"qInfo":{"qId":"dae2f832-302e-41cd-8ad9-383cb97de258","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"dae2f832-302e-41cd-8ad9-383cb97de258","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.074Z","modifiedDate":"2023-06-07T04:42:27.074Z","privileges":["read","update","delete","publish","change_owner"],"title":"Entity","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"ddVHx","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"ddVHx","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.081Z","modifiedDate":"2023-06-07T04:42:27.081Z","privileges":["read","update","delete","publish","change_owner"],"title":"Fiscal Year","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"VHcUnS","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"VHcUnS","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.094Z","modifiedDate":"2023-06-07T04:42:27.094Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract ID","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"fef3f0a2-3f53-482b-80a9-beb9ce3ff8a5","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"fef3f0a2-3f53-482b-80a9-beb9ce3ff8a5","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.103Z","modifiedDate":"2023-06-07T04:42:27.103Z","privileges":["read","update","delete","publish","change_owner"],"title":"PO Coverage","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"Fgnrff","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"Fgnrff","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.115Z","modifiedDate":"2023-06-07T04:42:27.115Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Name","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"2b2e445d-6f0f-46ca-be6d-6e9954d6f12d","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"2b2e445d-6f0f-46ca-be6d-6e9954d6f12d","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.131Z","modifiedDate":"2023-06-07T04:42:27.131Z","privileges":["read","update","delete","publish","change_owner"],"title":"Posting Year Month","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"ddf41ecb-b4c4-4601-a5dc-4636efe62f1f","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"ddf41ecb-b4c4-4601-a5dc-4636efe62f1f","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.133Z","modifiedDate":"2023-06-07T04:42:27.133Z","privileges":["read","update","delete","publish","change_owner"],"title":"Category","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"TtnrcDJ","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"TtnrcDJ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.142Z","modifiedDate":"2023-06-07T04:42:27.142Z","privileges":["read","update","delete","publish","change_owner"],"title":"Due MonthYear","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"axEyV","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"axEyV","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.185Z","modifiedDate":"2023-06-07T04:42:27.185Z","privileges":["read","update","delete","publish","change_owner"],"title":"Has PO","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"AuMXymX","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"AuMXymX","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.228Z","modifiedDate":"2023-06-07T04:42:27.228Z","privileges":["read","update","delete","publish","change_owner"],"title":"Country","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"8388d574-3c47-41df-9123-40430d3637e6","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"8388d574-3c47-41df-9123-40430d3637e6","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.228Z","modifiedDate":"2023-06-07T04:42:27.228Z","privileges":["read","update","delete","publish","change_owner"],"title":"Category Levels","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"2ed557ca-136f-49f1-b3c3-5532cc46a5d7","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"2ed557ca-136f-49f1-b3c3-5532cc46a5d7","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.248Z","modifiedDate":"2023-06-07T04:42:27.248Z","privileges":["read","update","delete","publish","change_owner"],"title":"Company Entity-Country-City","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"7435a0c7-5745-406f-b5de-ab8ea626574f","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"7435a0c7-5745-406f-b5de-ab8ea626574f","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.268Z","modifiedDate":"2023-06-07T04:42:27.268Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Effective Date","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"dTjsAv","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"dTjsAv","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.268Z","modifiedDate":"2023-06-07T04:42:27.268Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Value","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"PuqFsH","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"PuqFsH","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.274Z","modifiedDate":"2023-06-07T04:42:27.274Z","privileges":["read","update","delete","publish","change_owner"],"title":"Scope","description":"in scope?","tags":[]},"qData":[]}
-{"qInfo":{"qId":"5911de90-a9c2-4fe7-a044-8eed3c18025f","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"5911de90-a9c2-4fe7-a044-8eed3c18025f","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.300Z","modifiedDate":"2023-06-07T04:42:27.300Z","privileges":["read","update","delete","publish","change_owner"],"title":"Posting Month","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"dd5ebb48-a615-46e5-be40-f1dbc972495a","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"dd5ebb48-a615-46e5-be40-f1dbc972495a","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.321Z","modifiedDate":"2023-06-07T04:42:27.321Z","privileges":["read","update","delete","publish","change_owner"],"title":"Has Contract","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"9595e777-f003-4408-ac20-cf39474de014","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"9595e777-f003-4408-ac20-cf39474de014","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.345Z","modifiedDate":"2023-06-07T04:42:27.345Z","privileges":["read","update","delete","publish","change_owner"],"title":"Arrear","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"GnkTALF","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"GnkTALF","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.350Z","modifiedDate":"2023-06-07T04:42:27.350Z","privileges":["read","update","delete","publish","change_owner"],"title":"Date Paid","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"c598fbeb-d21c-4037-938f-dbc1597a6ffc","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"c598fbeb-d21c-4037-938f-dbc1597a6ffc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.351Z","modifiedDate":"2023-06-07T04:42:27.351Z","privileges":["read","update","delete","publish","change_owner"],"title":"Out of scope","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"37bee528-3d5f-4b69-a304-41318c2dc0b2","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"37bee528-3d5f-4b69-a304-41318c2dc0b2","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.354Z","modifiedDate":"2023-06-07T04:42:27.354Z","privileges":["read","update","delete","publish","change_owner"],"title":"Vendor","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"895ec374-b4dd-4c5b-bdc8-c5caa9afa8a3","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"895ec374-b4dd-4c5b-bdc8-c5caa9afa8a3","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.358Z","modifiedDate":"2023-06-07T04:42:27.358Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Status","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"80667a9f-e0bd-4f58-a50f-c85388263aa2","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"80667a9f-e0bd-4f58-a50f-c85388263aa2","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.369Z","modifiedDate":"2023-06-07T04:42:27.369Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Termination Prolongation Date","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"fjmVsjx","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"fjmVsjx","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.376Z","modifiedDate":"2023-06-07T04:42:27.376Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Type","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"CPPaAev","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"CPPaAev","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.378Z","modifiedDate":"2023-06-07T04:42:27.378Z","privileges":["read","update","delete","publish","change_owner"],"title":"Country-Vendor","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"32ce7725-dad5-492d-80d4-003f6608c2d7","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"32ce7725-dad5-492d-80d4-003f6608c2d7","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.379Z","modifiedDate":"2023-06-07T04:42:27.379Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Terminated Date","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"2d0b4df4-0e96-4e21-8de5-0e5573db67bc","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"2d0b4df4-0e96-4e21-8de5-0e5573db67bc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.389Z","modifiedDate":"2023-06-07T04:42:27.389Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Evergreen Reminder Date","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"192b422e-4e04-46c7-b513-1766509abc26","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"192b422e-4e04-46c7-b513-1766509abc26","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.408Z","modifiedDate":"2023-06-07T04:42:27.408Z","privileges":["read","update","delete","publish","change_owner"],"title":"Vendor Country","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"aLmNc","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"aLmNc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.444Z","modifiedDate":"2023-06-07T04:42:27.444Z","privileges":["read","update","delete","publish","change_owner"],"title":"Posting Year","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"TpJjNr","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"TpJjNr","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.464Z","modifiedDate":"2023-06-07T04:42:27.464Z","privileges":["read","update","delete","publish","change_owner"],"title":"Paid on Time","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"cCtmbjB","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"cCtmbjB","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.471Z","modifiedDate":"2023-06-07T04:42:27.471Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Event","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"Fpy","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"Fpy","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.483Z","modifiedDate":"2023-06-07T04:42:27.483Z","privileges":["read","update","delete","publish","change_owner"],"title":"Suplier Country","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"169cb620-9bc7-4bac-a6b9-6aed3f74edfb","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"169cb620-9bc7-4bac-a6b9-6aed3f74edfb","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.488Z","modifiedDate":"2023-06-07T04:42:27.488Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Operator","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"syenX","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"syenX","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.489Z","modifiedDate":"2023-06-07T04:42:27.489Z","privileges":["read","update","delete","publish","change_owner"],"title":"Due Date","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"QckbWCd","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"QckbWCd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.503Z","modifiedDate":"2023-06-07T04:42:27.503Z","privileges":["read","update","delete","publish","change_owner"],"title":"Company","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"vmbfWtz","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"vmbfWtz","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.383Z","modifiedDate":"2023-06-07T04:38:13.383Z","privileges":["read","update","delete","publish","change_owner"],"title":"Termination Reason","description":"","tags":["Employees","Terminations"]},"qData":[]}
+{"qInfo":{"qId":"QVEtFU","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"QVEtFU","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.428Z","modifiedDate":"2023-06-07T04:38:13.428Z","privileges":["read","update","delete","publish","change_owner"],"title":"Age Group","description":"","tags":["Age"]},"qData":[]}
+{"qInfo":{"qId":"ce22470b-fdb8-47a2-8f35-77613b6603f4","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"ce22470b-fdb8-47a2-8f35-77613b6603f4","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.439Z","modifiedDate":"2023-06-07T04:38:13.439Z","privileges":["read","update","delete","publish","change_owner"],"title":"Management role","description":"","tags":["Job","Management"]},"qData":[]}
+{"qInfo":{"qId":"CUG","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"CUG","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.444Z","modifiedDate":"2023-06-07T04:38:13.444Z","privileges":["read","update","delete","publish","change_owner"],"title":"Employee Name","description":"","tags":["Employee"]},"qData":[]}
+{"qInfo":{"qId":"c545359f-d699-408d-89b0-89ac3195003e","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"c545359f-d699-408d-89b0-89ac3195003e","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.447Z","modifiedDate":"2023-06-07T04:38:13.447Z","privileges":["read","update","delete","publish","change_owner"],"title":"Termination (Y\/N)","description":"","tags":["Employee","Termination"]},"qData":[]}
+{"qInfo":{"qId":"a63f4fa0-0c9e-4122-aaae-be60f3f6cb04","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"a63f4fa0-0c9e-4122-aaae-be60f3f6cb04","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.462Z","modifiedDate":"2023-06-07T04:38:13.462Z","privileges":["read","update","delete","publish","change_owner"],"title":"Country","description":"","tags":["Geo"]},"qData":[]}
+{"qInfo":{"qId":"b81f4141-37a8-44bc-bea4-df7bc7e29000","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"b81f4141-37a8-44bc-bea4-df7bc7e29000","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.482Z","modifiedDate":"2023-06-07T04:38:13.482Z","privileges":["read","update","delete","publish","change_owner"],"title":"Department","description":"Job Family","tags":["Job"]},"qData":[]}
+{"qInfo":{"qId":"c54f66a7-20a2-4c4f-a07e-d6a23b18dd0f","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"c54f66a7-20a2-4c4f-a07e-d6a23b18dd0f","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.524Z","modifiedDate":"2023-06-07T04:38:13.524Z","privileges":["read","update","delete","publish","change_owner"],"title":"Tenure Group","description":"","tags":["Employee"]},"qData":[]}
+{"qInfo":{"qId":"e5976e22-db20-4eaf-92e6-4ce3f60d5b34","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"e5976e22-db20-4eaf-92e6-4ce3f60d5b34","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.628Z","modifiedDate":"2023-06-07T04:38:13.628Z","privileges":["read","update","delete","publish","change_owner"],"title":"Organization Class","description":"","tags":["Job"]},"qData":[]}
+{"qInfo":{"qId":"KAhmGtK","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"KAhmGtK","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.662Z","modifiedDate":"2023-06-07T04:38:13.662Z","privileges":["read","update","delete","publish","change_owner"],"title":"Job Role","description":"","tags":["Position"]},"qData":[]}
+{"qInfo":{"qId":"eqjhfv","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"eqjhfv","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.672Z","modifiedDate":"2023-06-07T04:38:13.672Z","privileges":["read","update","delete","publish","change_owner"],"title":"Office","description":"","tags":["Location"]},"qData":[]}
+{"qInfo":{"qId":"7356624c-5c74-4354-8dab-f90aeca2b6ea","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"7356624c-5c74-4354-8dab-f90aeca2b6ea","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.696Z","modifiedDate":"2023-06-07T04:38:13.696Z","privileges":["read","update","delete","publish","change_owner"],"title":"Course Type","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"c4eac37b-3c3c-47f8-a07d-3cb3b4d4fa46","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"c4eac37b-3c3c-47f8-a07d-3cb3b4d4fa46","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.705Z","modifiedDate":"2023-06-07T04:38:13.705Z","privileges":["read","update","delete","publish","change_owner"],"title":"Gender","description":"","tags":["Diversity"]},"qData":[]}
+{"qInfo":{"qId":"d45efbc0-ba37-42e5-90bb-a1f0a68f8424","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"d45efbc0-ba37-42e5-90bb-a1f0a68f8424","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.706Z","modifiedDate":"2023-06-07T04:38:13.706Z","privileges":["read","update","delete","publish","change_owner"],"title":"Organization","description":"","tags":["Geo","Location","Org"]},"qData":[]}
+{"qInfo":{"qId":"xrpNkQ","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"xrpNkQ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.708Z","modifiedDate":"2023-06-07T04:38:13.708Z","privileges":["read","update","delete","publish","change_owner"],"title":"Dev Prog > Course Type > Course","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"bsXmJy","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"bsXmJy","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.773Z","modifiedDate":"2023-06-07T04:38:13.773Z","privileges":["read","update","delete","publish","change_owner"],"title":"Job Family > Job","description":"Job exploration","tags":["drill","Job"]},"qData":[]}
+{"qInfo":{"qId":"jnJRp","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"jnJRp","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.779Z","modifiedDate":"2023-06-07T04:38:13.779Z","privileges":["read","update","delete","publish","change_owner"],"title":"Employee Rate Categorization","description":"Employees ABCD classification","tags":["Employee","Employees"]},"qData":[]}
+{"qInfo":{"qId":"5a49bb40-ced4-4ba8-8a3c-04c5f0074e3b","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"5a49bb40-ced4-4ba8-8a3c-04c5f0074e3b","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.805Z","modifiedDate":"2023-06-07T04:38:13.805Z","privileges":["read","update","delete","publish","change_owner"],"title":"Developmental Program","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"6dd96e55-fc44-42f1-bf1c-f954c1565a68","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"6dd96e55-fc44-42f1-bf1c-f954c1565a68","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.838Z","modifiedDate":"2023-06-07T04:38:13.838Z","privileges":["read","update","delete","publish","change_owner"],"title":"Recruiting Channel","description":"","tags":["Recruiting"]},"qData":[]}
+{"qInfo":{"qId":"1054e991-a4cb-4709-9ae2-6e3317a12eb9","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"1054e991-a4cb-4709-9ae2-6e3317a12eb9","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.866Z","modifiedDate":"2023-06-07T04:38:13.866Z","privileges":["read","update","delete","publish","change_owner"],"title":"Ethnic Group","description":"","tags":["Diversity"]},"qData":[]}
+{"qInfo":{"qId":"e0873e61-5073-417b-b1df-f6ec1fba1df1","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"e0873e61-5073-417b-b1df-f6ec1fba1df1","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.872Z","modifiedDate":"2023-06-07T04:38:13.872Z","privileges":["read","update","delete","publish","change_owner"],"title":"Employee Type","description":"","tags":["Employee"]},"qData":[]}
+{"qInfo":{"qId":"2bc1a1a6-8d73-4ba2-9456-1205de24b77d","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"2bc1a1a6-8d73-4ba2-9456-1205de24b77d","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.912Z","modifiedDate":"2023-06-07T04:38:13.912Z","privileges":["read","update","delete","publish","change_owner"],"title":"Director","description":"","tags":["Manager"]},"qData":[]}
+{"qInfo":{"qId":"a3786269-40ea-4249-95c7-73fbf396ade6","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"a3786269-40ea-4249-95c7-73fbf396ade6","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.959Z","modifiedDate":"2023-06-07T04:38:13.959Z","privileges":["read","update","delete","publish","change_owner"],"title":"Geography","description":"","tags":["Geo"]},"qData":[]}
+{"qInfo":{"qId":"b59dba68-804a-435c-bee4-997021b8c029","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"b59dba68-804a-435c-bee4-997021b8c029","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.057Z","modifiedDate":"2023-06-07T04:38:14.057Z","privileges":["read","update","delete","publish","change_owner"],"title":"Recruiting Source","description":"","tags":["Hire"]},"qData":[]}
+{"qInfo":{"qId":"679e47ee-c163-4dea-afcc-dbd1ec2d5404","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"679e47ee-c163-4dea-afcc-dbd1ec2d5404","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.079Z","modifiedDate":"2023-06-07T04:38:14.079Z","privileges":["read","update","delete","publish","change_owner"],"title":"Course","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"EnjjPj","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"EnjjPj","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.084Z","modifiedDate":"2023-06-07T04:38:14.084Z","privileges":["read","update","delete","publish","change_owner"],"title":"Reporting Month","description":"","tags":["Date"]},"qData":[]}
+{"qInfo":{"qId":"bVUTD","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"bVUTD","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.201Z","modifiedDate":"2023-06-07T04:38:14.201Z","privileges":["read","update","delete","publish","change_owner"],"title":"Tenure","description":"","tags":["Employee"]},"qData":[]}
+{"qInfo":{"qId":"64b314bd-2c9e-413f-91f6-3d13c0f44129","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"64b314bd-2c9e-413f-91f6-3d13c0f44129","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.201Z","modifiedDate":"2023-06-07T04:38:14.201Z","privileges":["read","update","delete","publish","change_owner"],"title":"Age","description":"","tags":["Age"]},"qData":[]}
+{"qInfo":{"qId":"d6306e32-15bd-4778-87f6-a190327f02e5","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"d6306e32-15bd-4778-87f6-a190327f02e5","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.209Z","modifiedDate":"2023-06-07T04:38:14.209Z","privileges":["read","update","delete","publish","change_owner"],"title":"Town or City","description":"","tags":["Geo"]},"qData":[]}
+{"qInfo":{"qId":"eb465ba1-d4a6-45ba-a5f2-4940c34962cc","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"eb465ba1-d4a6-45ba-a5f2-4940c34962cc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.212Z","modifiedDate":"2023-06-07T04:38:14.212Z","privileges":["read","update","delete","publish","change_owner"],"title":"VP","description":"","tags":["Employee","Manager"]},"qData":[]}
+{"qInfo":{"qId":"596d2678-4a7a-409c-b9e6-069473da38ed","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"596d2678-4a7a-409c-b9e6-069473da38ed","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.234Z","modifiedDate":"2023-06-07T04:38:14.234Z","privileges":["read","update","delete","publish","change_owner"],"title":"Organization Type","description":"","tags":["Job"]},"qData":[]}
 
 MEASURES
-{"qInfo":{"qId":"hHuWT","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"hHuWT","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.069Z","modifiedDate":"2023-06-07T04:42:27.069Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number of Contracts Terminating","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"JVhrsgE","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"JVhrsgE","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.073Z","modifiedDate":"2023-06-07T04:42:27.073Z","privileges":["read","update","delete","publish","change_owner"],"title":"Amount Not Paid","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"ymEdky","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"ymEdky","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.076Z","modifiedDate":"2023-06-07T04:42:27.076Z","privileges":["read","update","delete","publish","change_owner"],"title":"% Spending Overseas\/Unmmapped","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"ecvHTVp","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"ecvHTVp","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.094Z","modifiedDate":"2023-06-07T04:42:27.094Z","privileges":["read","update","delete","publish","change_owner"],"title":"% Spending in Europe","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"rCnFdBB","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"rCnFdBB","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.097Z","modifiedDate":"2023-06-07T04:42:27.097Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number Payments Overdue","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"pLaGDG","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"pLaGDG","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.101Z","modifiedDate":"2023-06-07T04:42:27.101Z","privileges":["read","update","delete","publish","change_owner"],"title":"Transacions with POs","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"pNCjB","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"pNCjB","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.118Z","modifiedDate":"2023-06-07T04:42:27.118Z","privileges":["read","update","delete","publish","change_owner"],"title":"%On-Time Payments","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"CgMTgT","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"CgMTgT","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.131Z","modifiedDate":"2023-06-07T04:42:27.131Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number of Transactions","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"GkJtZxU","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"GkJtZxU","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.136Z","modifiedDate":"2023-06-07T04:42:27.136Z","privileges":["read","update","delete","publish","change_owner"],"title":"%PO Coverage","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"VJfPXHN","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"VJfPXHN","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.142Z","modifiedDate":"2023-06-07T04:42:27.142Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number Vendors Overdue","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"kvbGJ","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"kvbGJ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.157Z","modifiedDate":"2023-06-07T04:42:27.157Z","privileges":["read","update","delete","publish","change_owner"],"title":"Average Arrear","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"XXTFkmR","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"XXTFkmR","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.215Z","modifiedDate":"2023-06-07T04:42:27.215Z","privileges":["read","update","delete","publish","change_owner"],"title":"Total Amount Not Paid","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"mgSdz","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"mgSdz","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.226Z","modifiedDate":"2023-06-07T04:42:27.226Z","privileges":["read","update","delete","publish","change_owner"],"title":"PO Coverage","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"YVnnybm","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"YVnnybm","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.237Z","modifiedDate":"2023-06-07T04:42:27.237Z","privileges":["read","update","delete","publish","change_owner"],"title":"Spend Managed by Procurement","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"dUGMvE","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"dUGMvE","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.274Z","modifiedDate":"2023-06-07T04:42:27.274Z","privileges":["read","update","delete","publish","change_owner"],"title":"%Contract Coverage","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"VSzTaj","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"VSzTaj","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.312Z","modifiedDate":"2023-06-07T04:42:27.312Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Value","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"dtXjTE","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"dtXjTE","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.322Z","modifiedDate":"2023-06-07T04:42:27.322Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number of Vendors","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"TJNNz","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"TJNNz","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.333Z","modifiedDate":"2023-06-07T04:42:27.333Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Vendors List","description":"","tags":["Contract"]},"qData":[]}
-{"qInfo":{"qId":"FwYQ","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"FwYQ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.366Z","modifiedDate":"2023-06-07T04:42:27.366Z","privileges":["read","update","delete","publish","change_owner"],"title":"Contract Coverage","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"qCmn","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"qCmn","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.388Z","modifiedDate":"2023-06-07T04:42:27.388Z","privileges":["read","update","delete","publish","change_owner"],"title":"% Transactions with POs","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"CnxnJJj","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"CnxnJJj","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.389Z","modifiedDate":"2023-06-07T04:42:27.389Z","privileges":["read","update","delete","publish","change_owner"],"title":"On-Time Payments","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"szqCnj","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"szqCnj","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.396Z","modifiedDate":"2023-06-07T04:42:27.396Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number of Contracts","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"kmhgYgQ","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"kmhgYgQ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.401Z","modifiedDate":"2023-06-07T04:42:27.401Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number of Active Contracts","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"DVzeY","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"DVzeY","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.417Z","modifiedDate":"2023-06-07T04:42:27.417Z","privileges":["read","update","delete","publish","change_owner"],"title":"% Spend Managed by Procurement","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"rxCPj","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"rxCPj","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.420Z","modifiedDate":"2023-06-07T04:42:27.420Z","privileges":["read","update","delete","publish","change_owner"],"title":"Number of Contracts Starting","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"ryeGms","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"ryeGms","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.440Z","modifiedDate":"2023-06-07T04:42:27.440Z","privileges":["read","update","delete","publish","change_owner"],"title":"Total Spend","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"gPfeG","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"gPfeG","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:42:27.483Z","modifiedDate":"2023-06-07T04:42:27.483Z","privileges":["read","update","delete","publish","change_owner"],"title":"Vendor Entities","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"wFvggc","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"wFvggc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.428Z","modifiedDate":"2023-06-07T04:38:13.428Z","privileges":["read","update","delete","publish","change_owner"],"title":"Attrition","description":"","tags":["Attrition","Employee"]},"qData":[]}
+{"qInfo":{"qId":"FqEEq","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"FqEEq","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.471Z","modifiedDate":"2023-06-07T04:38:13.471Z","privileges":["read","update","delete","publish","change_owner"],"title":"# of Women","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"CGPkpvE","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"CGPkpvE","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.546Z","modifiedDate":"2023-06-07T04:38:13.546Z","privileges":["read","update","delete","publish","change_owner"],"title":"Score","description":"Score given to each one of the questions in our quarterly employee satisfaction survey","tags":["great place to work","satisfaction","Survey"]},"qData":[]}
+{"qInfo":{"qId":"StTQbT","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"StTQbT","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.571Z","modifiedDate":"2023-06-07T04:38:13.571Z","privileges":["read","update","delete","publish","change_owner"],"title":"Training Hours (Total)","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"kESpX","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"kESpX","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.588Z","modifiedDate":"2023-06-07T04:38:13.588Z","privileges":["read","update","delete","publish","change_owner"],"title":"New Hires","description":"Count of new hires","tags":["Employees","Hires"]},"qData":[]}
+{"qInfo":{"qId":"EMvpN","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"EMvpN","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.652Z","modifiedDate":"2023-06-07T04:38:13.652Z","privileges":["read","update","delete","publish","change_owner"],"title":"Wages Amount","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"jejcDr","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"jejcDr","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.742Z","modifiedDate":"2023-06-07T04:38:13.742Z","privileges":["read","update","delete","publish","change_owner"],"title":"Training Cost (Avg)","description":"","tags":["Cost","Training"]},"qData":[]}
+{"qInfo":{"qId":"GvBtRU","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"GvBtRU","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.778Z","modifiedDate":"2023-06-07T04:38:13.778Z","privileges":["read","update","delete","publish","change_owner"],"title":"Women Employees Ratio","description":"measures the number of females employees vs the total number of employees","tags":["Employees","females","gender"]},"qData":[]}
+{"qInfo":{"qId":"Qeqn","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"Qeqn","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.788Z","modifiedDate":"2023-06-07T04:38:13.788Z","privileges":["read","update","delete","publish","change_owner"],"title":"New Hires ratio","description":"New Hires as a percentage of the total employees","tags":["Employees","Hires"]},"qData":[]}
+{"qInfo":{"qId":"YgqHKPM","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"YgqHKPM","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.805Z","modifiedDate":"2023-06-07T04:38:13.805Z","privileges":["read","update","delete","publish","change_owner"],"title":"Training Completion","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"gApKKqj","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"gApKKqj","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.814Z","modifiedDate":"2023-06-07T04:38:13.814Z","privileges":["read","update","delete","publish","change_owner"],"title":"Training Hours (Avg)","description":"","tags":["Training"]},"qData":[]}
+{"qInfo":{"qId":"QMXY","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"QMXY","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.832Z","modifiedDate":"2023-06-07T04:38:13.832Z","privileges":["read","update","delete","publish","change_owner"],"title":"Training Completion Ratio","description":"Percentage of population that has completed the training program","tags":["completion","employee","training"]},"qData":[]}
+{"qInfo":{"qId":"jcKxqdP","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"jcKxqdP","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.909Z","modifiedDate":"2023-06-07T04:38:13.909Z","privileges":["read","update","delete","publish","change_owner"],"title":"Completed Training ratio","description":"it measures the number of employees that actually completed the training program","tags":["Employees","Training"]},"qData":[]}
+{"qInfo":{"qId":"SadvyW","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"SadvyW","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:13.959Z","modifiedDate":"2023-06-07T04:38:13.959Z","privileges":["read","update","delete","publish","change_owner"],"title":"Training Cost (Total)","description":"","tags":["Cost","Training"]},"qData":[]}
+{"qInfo":{"qId":"yCJVNzE","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"yCJVNzE","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.029Z","modifiedDate":"2023-06-07T04:38:14.029Z","privileges":["read","update","delete","publish","change_owner"],"title":"# of Males","description":"","tags":["Employee","Gender","Male","Men"]},"qData":[]}
+{"qInfo":{"qId":"kgcPFp","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"kgcPFp","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.093Z","modifiedDate":"2023-06-07T04:38:14.093Z","privileges":["read","update","delete","publish","change_owner"],"title":"Terminations Ratio","description":"Terminations vs total employees","tags":["Employees","Terminations"]},"qData":[]}
+{"qInfo":{"qId":"mXUyq","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"mXUyq","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.129Z","modifiedDate":"2023-06-07T04:38:14.129Z","privileges":["read","update","delete","publish","change_owner"],"title":"Avg Compensation","description":"Mean salary","tags":["Salary"]},"qData":[]}
+{"qInfo":{"qId":"ckPJmvF","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"ckPJmvF","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.136Z","modifiedDate":"2023-06-07T04:38:14.136Z","privileges":["read","update","delete","publish","change_owner"],"title":"# of Employees","description":"","tags":["Employees"]},"qData":[]}
+{"qInfo":{"qId":"tRVznA","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"tRVznA","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.200Z","modifiedDate":"2023-06-07T04:38:14.200Z","privileges":["read","update","delete","publish","change_owner"],"title":"Terminations","description":"Count of Terminations","tags":["Employees","Terminations"]},"qData":[]}
+{"qInfo":{"qId":"uwmsJe","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"uwmsJe","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T04:38:14.229Z","modifiedDate":"2023-06-07T04:38:14.229Z","privileges":["read","update","delete","publish","change_owner"],"title":"Employee Satisfaction Ratio","description":"Mean employee satisfaction ratio as the surveys shows","tags":["Employees","satisfaction"]},"qData":[]}
 
 VARIABLES
-{"qName":"vDemoDay","qDefinition":"13\/05\/2013","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"40dc27d2-1e5c-4886-b293-1c9a05b80c38","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":187,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":10,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":10,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":9,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":63,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":49,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":6,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":5,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":5,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":35,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qName":"%CalendarLink","qCardinal":881,"qTags":["$key","$numeric","$integer","$timestamp","$date"],"qSrcTables":["Calendar","Transactions"]}
-{"qName":"PostingDay","qCardinal":31,"qTags":["$ascii","$text"],"qSrcTables":["Calendar"]}
-{"qName":"PostingMonthNum","qCardinal":12,"qTags":["$ascii","$text"],"qSrcTables":["Calendar"]}
-{"qName":"PostingMonth","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Calendar"]}
-{"qName":"PostingYear","qCardinal":3,"qTags":["$numeric","$integer"],"qSrcTables":["Calendar"]}
-{"qName":"PostingWeek","qCardinal":53,"qTags":["$numeric","$integer"],"qSrcTables":["Calendar"]}
-{"qName":"IsCurrentYTD","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Calendar"]}
-{"qName":"PostingYearWeek","qCardinal":128,"qTags":["$ascii","$text"],"qSrcTables":["Calendar"]}
-{"qName":"PostingYearMonth","qCardinal":29,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Calendar"]}
-{"qName":"%SrcCatID","qCardinal":146,"qTags":["$key"],"qSrcTables":["Category","CategoryHierarchy","Transactions"]}
-{"qName":"Spend_SrcCat.Level1Text","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Category"]}
-{"qName":"Spend_SrcCat.Level2Text","qCardinal":32,"qTags":["$ascii","$text"],"qSrcTables":["Category"]}
-{"qName":"Spend_SrcCat.Level3Text","qCardinal":142,"qTags":["$ascii","$text"],"qSrcTables":["Category"]}
-{"qName":"Spend_SrcCat.ServicesGoods","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Category"]}
-{"qName":"Spend_SrcCat.TextPath","qCardinal":143,"qTags":["$ascii","$text"],"qSrcTables":["Category"]}
-{"qName":"Spend_SrcCat.ID_and_Path","qCardinal":143,"qTags":["$ascii","$text"],"qSrcTables":["Category"]}
-{"qName":"SrcCatID_Path","qCardinal":181,"qTags":[],"qSrcTables":["CategoryHierarchy"]}
-{"qName":"SrcCatText_Path","qCardinal":181,"qTags":["$ascii","$text"],"qSrcTables":["CategoryHierarchy"]}
-{"qName":"SrcCatID_Text_Path","qCardinal":181,"qTags":["$ascii","$text"],"qSrcTables":["CategoryHierarchy"]}
-{"qName":"Company.CompanyCode","qCardinal":13,"qTags":["$numeric","$integer"],"qSrcTables":["Company"]}
-{"qName":"Company.FullName","qCardinal":13,"qTags":["$ascii","$text"],"qSrcTables":["Company"]}
-{"qName":"Company.Entity","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Company"]}
-{"qName":"Company.CountryAbbrev","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Company"]}
-{"qName":"Company.Country","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Company"]}
-{"qName":"Company.City","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Company"]}
-{"qName":"%Company","qCardinal":13,"qTags":["$key","$numeric","$integer"],"qSrcTables":["Company","Transactions"]}
-{"qName":"%ContractID","qCardinal":5269,"qTags":["$key","$numeric","$integer"],"qSrcTables":["Contract","ContractDates","ContractParty"]}
-{"qName":"Contracts.AgreedOnDate","qCardinal":589,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.AutomaticAlertDate","qCardinal":685,"qTags":["$numeric"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.ContractName","qCardinal":4858,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.CountryAbbrev","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Country","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.CreationDate","qCardinal":4962,"qTags":["$numeric","$timestamp"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Currency","qCardinal":9,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EffectiveDate","qCardinal":1840,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EffectiveDate_LatestAmendment","qCardinal":28,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EvergreenReminderDate","qCardinal":1839,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.FurtherInfoTermination","qCardinal":147,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.InternalContractor_Name","qCardinal":44,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.IsContract","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Kind","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Language","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.LegalJurisdiction","qCardinal":17,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Link","qCardinal":5008,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Operator","qCardinal":54,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.OtherContractor_Name","qCardinal":1704,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Role_InternalContractor","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Role_OtherContractor","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Scope","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Status","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.Subject","qCardinal":2897,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.SumTotalValues","qCardinal":1422,"qTags":["$numeric"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminatedDate","qCardinal":61,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminationProlongationDate","qCardinal":612,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminationTimespan","qCardinal":24,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminationType","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TermsConditions","qCardinal":59,"qTags":["$text"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TermsOfPayment","qCardinal":326,"qTags":[],"qSrcTables":["Contract"]}
-{"qName":"Contracts.tp_ID","qCardinal":5008,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EffectiveYear","qCardinal":25,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EffectiveMonth","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminatedYear","qCardinal":14,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminatedMonth","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminationProlongationYear","qCardinal":28,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.TerminationProlongationMonth","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EvergreenReminderYear","qCardinal":25,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"Contracts.EvergreenReminderMonth","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Contract"]}
-{"qName":"ContractDates.ContractID","qCardinal":2388,"qTags":["$numeric","$integer"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.Loop","qCardinal":5,"qTags":["$numeric","$integer"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.Date","qCardinal":1038,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.Start","qCardinal":1038,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.End","qCardinal":1038,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.WeekStart","qCardinal":261,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.Year","qCardinal":9,"qTags":["$numeric","$integer"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.Month","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.Event","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["ContractDates"]}
-{"qName":"ContractDates.EventAutoID","qCardinal":5,"qTags":["$numeric","$integer"],"qSrcTables":["ContractDates"]}
-{"qName":"%DomesticMaster","qCardinal":5010,"qTags":["$key","$ascii","$text"],"qSrcTables":["ContractParty","Transactions"]}
-{"qName":"ContractingParty.City","qCardinal":377,"qTags":["$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.ContractID","qCardinal":5008,"qTags":["$numeric","$integer"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.CountryAbbrev","qCardinal":31,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.Country","qCardinal":31,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.DomesticMaster","qCardinal":1472,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.GlobalMaster","qCardinal":1276,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.IsInternalContractor","qCardinal":0,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.IsOtherContractor","qCardinal":1,"qTags":["$numeric","$integer"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.Link","qCardinal":5017,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.Name","qCardinal":1710,"qTags":["$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.Role","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["ContractParty"]}
-{"qName":"ContractingParty.ZIPCode","qCardinal":699,"qTags":[],"qSrcTables":["ContractParty"]}
-{"qName":"%RandomId","qCardinal":309922,"qTags":["$key","$ascii","$text"],"qSrcTables":["OTP","Transactions"]}
-{"qName":"OTP.HasDueDate","qCardinal":1,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.IsPaid","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.HasNetDays","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.BaselineDate","qCardinal":980,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.DueDateOLD","qCardinal":960,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.ClearingDateOLD","qCardinal":684,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["OTP"]}
-{"qName":"OTP.DueDate","qCardinal":959,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"DueDateFlag","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.ClearingDate","qCardinal":683,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["OTP"]}
-{"qName":"OTP.NetDays","qCardinal":51,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.IsRelevant","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.IsPaidOnTime","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.IsPaidOnTime2","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["OTP"]}
-{"qName":"OTP.Arrear","qCardinal":485,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.PaidAfterDays","qCardinal":630,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.LateDays","qCardinal":393,"qTags":["$numeric","$integer"],"qSrcTables":["OTP"]}
-{"qName":"OTP.PaidAfterDays_Class","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["OTP"]}
-{"qName":"%VendorRecID","qCardinal":8916,"qTags":["$key","$ascii","$text"],"qSrcTables":["Transactions","Vendor"]}
-{"qName":"AmountDC","qCardinal":437242,"qTags":["$numeric"],"qSrcTables":["Transactions"]}
-{"qName":"AmountEUR","qCardinal":165029,"qTags":["$numeric"],"qSrcTables":["Transactions"]}
-{"qName":"AmountLC","qCardinal":440190,"qTags":["$numeric"],"qSrcTables":["Transactions"]}
-{"qName":"Company Code","qCardinal":13,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"CostCenter","qCardinal":8537,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"CostCenterText","qCardinal":7730,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"Counter","qCardinal":1,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"CreationDate","qCardinal":736,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Transactions"]}
-{"qName":"DocCurrency","qCardinal":16,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"Document Date","qCardinal":1278,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"Document Number","qCardinal":153170,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"Document Type","qCardinal":38,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"DomesticMaster","qCardinal":4731,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"FiscalYear","qCardinal":3,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"G_PostingKey","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"G_PostingText","qCardinal":267259,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"GLAccountID","qCardinal":1212,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"GLAccountText","qCardinal":1183,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"GlobalMaster","qCardinal":4200,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"HasInternalOrder","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"HasOrderReference","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"HasPO","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"HeaderText","qCardinal":95928,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"InternalOrder","qCardinal":3997,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"IsReversed","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"IsServiceTrans","qCardinal":0,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"LastChangeDate","qCardinal":582,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Transactions"]}
-{"qName":"Line Item","qCardinal":940,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"Local Currency","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"MaterialDescr","qCardinal":3022,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"MaterialID","qCardinal":3403,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"MatGrpDescr","qCardinal":429,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"MatGrpID","qCardinal":443,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"MMID","qCardinal":129539,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"OPEX_CAPEX","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"OutOfScopeReason","qCardinal":27,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"ParkedBy_Name","qCardinal":75,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"ParkedByID","qCardinal":78,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"PO_ItemNo","qCardinal":687,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"PO_ItemText","qCardinal":19137,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"POID","qCardinal":76967,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"POCoverage","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"Posting Date","qCardinal":769,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Transactions"]}
-{"qName":"PostingClass","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"PostingClearing","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"Reference","qCardinal":260104,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"Scope","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"Spend.CategoryLead","qCardinal":46,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"SrcCatID","qCardinal":144,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"Transaction Code","qCardinal":20,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"V_LinkedGLAccountID","qCardinal":50,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"V_LinkedGLAccountName","qCardinal":49,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"V_PostingKey","qCardinal":6,"qTags":["$numeric","$integer"],"qSrcTables":["Transactions"]}
-{"qName":"V_PostingText","qCardinal":197742,"qTags":[],"qSrcTables":["Transactions"]}
-{"qName":"VendorName","qCardinal":7438,"qTags":["$text"],"qSrcTables":["Transactions"]}
-{"qName":"VendorRecID","qCardinal":8916,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"WBS","qCardinal":8167,"qTags":["$ascii","$text"],"qSrcTables":["Transactions"]}
-{"qName":"%SourceID","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.Address","qCardinal":5840,"qTags":[],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.CentralPostingBlock","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.CentralPurchasingBlock","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.City","qCardinal":2007,"qTags":[],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.CountryAbbrev","qCardinal":45,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.Country","qCardinal":45,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.CreationDate","qCardinal":1874,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.DomesticMaster","qCardinal":4731,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.GlobalMaster","qCardinal":4200,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.IsActive","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.IsOneTimeVendor","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.LastChangeDate","qCardinal":6657,"qTags":["$numeric","$timestamp"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.MarkedForDeletion","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.PostingClass","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.VATID","qCardinal":3291,"qTags":[],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.VendorName1","qCardinal":7228,"qTags":["$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.VendorName2","qCardinal":2445,"qTags":["$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.VendorRecID","qCardinal":8916,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.ZIPCode","qCardinal":1668,"qTags":[],"qSrcTables":["Vendor"]}
-{"qName":"Vendors.Zone","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Vendor"]}
+{"qName":"Employee_ID","qCardinal":1307,"qTags":["$key","$numeric","$integer"],"qSrcTables":["Training","Survey$","Hierarchy$","Employees"]}
+{"qName":"Course_ID","qCardinal":22,"qTags":["$key","$numeric","$integer"],"qSrcTables":["Training","countryISO3"]}
+{"qName":"# Enrollment","qCardinal":5,"qTags":["$numeric","$integer"],"qSrcTables":["Training"]}
+{"qName":"Training Hours","qCardinal":100,"qTags":["$numeric","$integer"],"qSrcTables":["Training"]}
+{"qName":"Training Cost","qCardinal":503,"qTags":["$numeric"],"qSrcTables":["Training"]}
+{"qName":"# Program Completion","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Training"]}
+{"qName":"Question Type","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Survey$"]}
+{"qName":"Score","qCardinal":503,"qTags":["$numeric"],"qSrcTables":["Survey$"]}
+{"qName":"Responses","qCardinal":3,"qTags":["$numeric","$integer"],"qSrcTables":["Survey$"]}
+{"qName":"Director","qCardinal":25,"qTags":["$ascii","$text"],"qSrcTables":["Hierarchy$"]}
+{"qName":"VP","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Hierarchy$"]}
+{"qName":"Month","qCardinal":6,"qTags":["$numeric","$integer","$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"EmployeeCount","qCardinal":4246,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Employee Name","qCardinal":694,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Reason","qCardinal":17,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Job Family","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Job","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Position","qCardinal":19,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Geography","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Country","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"CountryCode","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Town or City","qCardinal":33,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Location","qCardinal":34,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Gender","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Band","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Position1","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Employment Status","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Organization Type","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Organization Class","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Organization","qCardinal":22,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Ethnic Group","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Recruiting_Channel","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Recruiting_Source","qCardinal":22,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Salary","qCardinal":791,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Employee Type","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Terminated Employee","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Termination","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"NewHire","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"New Hires","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Tenure","qCardinal":23,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Tenure Group","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"Age","qCardinal":24,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Age Group","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
+{"qName":"CountryCode3-world.Name","qCardinal":246,"qTags":["$geoname","$key","$ascii","$text"],"qSrcTables":["Employees","World.shp\/Features"]}
+{"qName":"Year","qCardinal":1,"qTags":["$numeric","$integer"],"qSrcTables":["Employees"]}
+{"qName":"Course","qCardinal":22,"qTags":["$ascii","$text"],"qSrcTables":["countryISO3"]}
+{"qName":"Course Type","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["countryISO3"]}
+{"qName":"Developmental Program","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["countryISO3"]}
+{"qName":"world.Area","qCardinal":247,"qTags":["$wgs84","$geomultipolygon","$ascii","$text"],"qSrcTables":["World.shp\/Features"]}
