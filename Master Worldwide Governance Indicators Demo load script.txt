@@ -1,82 +1,274 @@
 ///$tab Main
-SET ThousandSep=',';
-SET DecimalSep='.';
-SET MoneyThousandSep=',';
-SET MoneyDecimalSep='.';
-SET MoneyFormat='$#,##0.00;($#,##0.00)';
-SET TimeFormat='h:mm:ss TT';
-SET DateFormat='M/D/YYYY';
-SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
-SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
-SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET ThousandSep='.';
+SET DecimalSep=',';
+SET MoneyThousandSep='.';
+SET MoneyDecimalSep=',';
+SET MoneyFormat='#.##0,00 €;-#.##0,00 €';
+SET TimeFormat='h:mm:ss';
+SET DateFormat='DD/MM/YYYY';
+SET TimestampFormat='DD/MM/YYYY h:mm:ss[.fff]';
+SET MonthNames='ene;feb;mar;abr;may;jun;jul;ago;sep;oct;nov;dic';
+SET DayNames='lun;mar;mié;jue;vie;sáb;dom';
+SET LongMonthNames='enero;febrero;marzo;abril;mayo;junio;julio;agosto;septiembre;octubre;noviembre;diciembre';
+SET LongDayNames='lunes;martes;miércoles;jueves;viernes;sábado;domingo';
+SET FirstWeekDay=0;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
 
-Let vToday = NUM(Makedate(2012,6,24));
 
-///$tab Cases
-[Helpdesk Cases]:
+///$tab Variables
+LET vDemoDay = MakeDate(2013,05,13);
+
+///$tab Transactions
+Transactions:
 LOAD
-    %CaseId,
-    Case_Date_Key,
-    "Case Count",
-    CaseNumber,
-    Status,
-    Priority,
-    "Priority Rank",
-    "Priority Sort",
-    "Case Is Closed",
-    "Case Aging",
-    "Cases Open/Closed",
-    "Case Closed Date",
-    "Case Created Date",
-    "Case Timetable",
-    "Case Timetable Rank",
-    "Case Record Type",
-    "Case Duration Time"
-FROM [lib://Helpdesk Management Data Files (ip-0ab2a663_chuck)/QS Helpdesk Cases.qvd]
+    %CalendarLink,
+    %Company,
+    %DomesticMaster,
+    %RandomId,
+    %SrcCatID,
+    %VendorRecID,
+    AmountDC,
+    AmountEUR,
+    AmountLC,
+    "Company Code",
+    CostCenter,
+    CostCenterText,
+    Counter,
+    CreationDate,
+    DocCurrency,
+    "Document Date",
+    "Document Number",
+    "Document Type",
+    DomesticMaster,
+    FiscalYear,
+    G_PostingKey,
+    G_PostingText,
+    GLAccountID,
+    GLAccountText,
+    GlobalMaster,
+    HasInternalOrder,
+    HasOrderReference,
+    HasPO,
+    HeaderText,
+    InternalOrder,
+    IsReversed,
+    IsServiceTrans,
+    LastChangeDate,
+    "Line Item",
+    "Local Currency",
+    MaterialDescr,
+    MaterialID,
+    MatGrpDescr,
+    MatGrpID,
+    MMID,
+    OPEX_CAPEX,
+    OutOfScopeReason,
+    ParkedBy_Name,
+    ParkedByID,
+    PO_ItemNo,
+    PO_ItemText,
+    POID,
+    POCoverage,
+    "Posting Date",
+    PostingClass,
+    PostingClearing,
+    Reference,
+    Scope,
+    Spend.CategoryLead,
+    SrcCatID,
+    "Transaction Code",
+    V_LinkedGLAccountID,
+    V_LinkedGLAccountName,
+    V_PostingKey,
+    V_PostingText,
+    VendorName,
+    VendorRecID,
+    WBS
+FROM 'lib://Procurement/Transactions.qvd'
 (qvd);
 
 
-Requests:
-LOAD
-    %OwnerId,
-    Case_Date_Key,
-    "Date",
-    Subject,
-    "Case Owner",
-    "Case Owner Group",
-    "Employee Hire Date",
-    "Employee Status"
-FROM [lib://Helpdesk Management Data Files (ip-0ab2a663_chuck)/QS Requests.qvd]
-(qvd);
 
 
+///$tab Calendar
 Calendar:
 LOAD
-    "Open Cases",
-    "Open Change Requests",
-    "Date",
-    YMSort,
-    "Number of New Cases",
-    "Number of Closed Cases"
-FROM [lib://Helpdesk Management Data Files (ip-0ab2a663_chuck)/QS Calendar.qvd]
+    %CalendarLink,
+    PostingDay,
+    PostingMonthNum,
+    PostingMonth,
+    PostingYear,
+    PostingWeek,
+    IsCurrentYTD,
+    PostingYearWeek,
+    PostingYearMonth
+FROM 'lib://Procurement/Calendar.qvd'
 (qvd);
 
 
-[autoCalendar]: 
-  DECLARE FIELD DEFINITION Tagged ('$date')
-FIELDS
-  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
-  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged 
+///$tab Category
+Category:
+LOAD
+    %SrcCatID,
+    Spend_SrcCat.Level1Text,
+    Spend_SrcCat.Level2Text,
+    Spend_SrcCat.Level3Text,
+    Spend_SrcCat.ServicesGoods,
+    Spend_SrcCat.TextPath,
+    Spend_SrcCat.ID_and_Path
+FROM 'lib://Procurement/Category.qvd'
+(qvd);
 
-('$quarter'),
-  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged 
+CategoryHierarchy:
+LOAD
+    %SrcCatID,
+    SrcCatID_Path,
+    SrcCatText_Path,
+    SrcCatID_Text_Path
+FROM 'lib://Procurement/CategoryHierarchy.qvd'
+(qvd);
+///$tab Contracts
+Contract:
+LOAD
+    %ContractID,
+    Contracts.AgreedOnDate,
+    Contracts.AutomaticAlertDate,
+    Contracts.ContractName,
+    Contracts.CountryAbbrev,
+    Contracts.Country,
+    Contracts.CreationDate,
+    Contracts.Currency,
+    Contracts.EffectiveDate,
+    Contracts.EffectiveDate_LatestAmendment,
+    Contracts.EvergreenReminderDate,
+    Contracts.FurtherInfoTermination,
+    Contracts.InternalContractor_Name,
+    Contracts.IsContract,
+    Contracts.Kind,
+    Contracts.Language,
+    Contracts.LegalJurisdiction,
+    Contracts.Link,
+    Contracts.Operator,
+    Contracts.OtherContractor_Name,
+    Contracts.Role_InternalContractor,
+    Contracts.Role_OtherContractor,
+    Contracts.Scope,
+    Contracts.Status,
+    Contracts.Subject,
+    Contracts.SumTotalValues,
+    Contracts.TerminatedDate,
+    Contracts.TerminationProlongationDate,
+    Contracts.TerminationTimespan,
+    Contracts.TerminationType,
+    Contracts.TermsConditions,
+    Contracts.TermsOfPayment,
+    Contracts.tp_ID,
+    Contracts.EffectiveYear,
+    Contracts.EffectiveMonth,
+    Contracts.TerminatedYear,
+    Contracts.TerminatedMonth,
+    Contracts.TerminationProlongationYear,
+    Contracts.TerminationProlongationMonth,
+    Contracts.EvergreenReminderYear,
+    Contracts.EvergreenReminderMonth
+FROM 'lib://Procurement/Contract.qvd'
+(qvd);
 
-('$axis', '$yearquarter'),
-  Month($1) AS [Month] Tagged ('$month'),
-  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth'),
-  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber'),
-  Date(Floor($1)) AS [Date] Tagged ('$date');
+ContractDates:
+LOAD
+    %ContractID,
+    ContractDates.ContractID,
+    ContractDates.Loop,
+    ContractDates.Date,
+    ContractDates.Start,
+    ContractDates.End,
+    ContractDates.WeekStart,
+    ContractDates.Year,
+    ContractDates.Month,
+    ContractDates.Event,
+    ContractDates.EventAutoID
+FROM 'lib://Procurement/ContractDates.qvd'
+(qvd);
 
-DERIVE FIELDS FROM FIELDS "Date" USING [autoCalendar] ;
-
-
+ContractParty:
+LOAD
+    %ContractID,
+    %DomesticMaster,
+    ContractingParty.City,
+    ContractingParty.ContractID,
+    ContractingParty.CountryAbbrev,
+    ContractingParty.Country,
+    ContractingParty.DomesticMaster,
+    ContractingParty.GlobalMaster,
+    ContractingParty.IsInternalContractor,
+    ContractingParty.IsOtherContractor,
+    ContractingParty.Link,
+    ContractingParty.Name,
+    ContractingParty.Role,
+    ContractingParty.ZIPCode
+FROM 'lib://Procurement/ContractParty.qvd'
+(qvd);
+///$tab Vendors
+Vendor:
+LOAD
+    %SourceID,
+    %VendorRecID,
+    Vendors.Address,
+    Vendors.CentralPostingBlock,
+    Vendors.CentralPurchasingBlock,
+    Vendors.City,
+    Vendors.CountryAbbrev,
+    Vendors.Country,
+    Vendors.CreationDate,
+    Vendors.DomesticMaster,
+    Vendors.GlobalMaster,
+    Vendors.IsActive,
+    Vendors.IsOneTimeVendor,
+    Vendors.LastChangeDate,
+    Vendors.MarkedForDeletion,
+    Vendors.PostingClass,
+    Vendors.VATID,
+    Vendors.VendorName1,
+    Vendors.VendorName2,
+    Vendors.VendorRecID,
+    Vendors.ZIPCode,
+    Vendors.Zone
+FROM 'lib://Procurement/Vendor.qvd'
+(qvd);
+///$tab Company
+Company:
+LOAD
+    Company.CompanyCode,
+    Company.FullName,
+    Company.Entity,
+    Company.CountryAbbrev,
+    Company.Country,
+    Company.City,
+    %Company
+FROM 'lib://Procurement/Company.qvd'
+(qvd);
+///$tab OTP
+OTP:
+LOAD
+    %RandomId,
+    OTP.HasDueDate,
+    OTP.IsPaid,
+    OTP.HasNetDays,
+    OTP.BaselineDate,
+    OTP.DueDateOLD,
+    OTP.ClearingDateOLD,
+    OTP.DueDate,
+    If(OTP.DueDate<MakeDate(2013,05,13), -1, 1) as DueDateFlag,
+    OTP.ClearingDate,
+    OTP.NetDays,
+    OTP.IsRelevant,
+    OTP.IsPaidOnTime,
+    OTP.IsPaidOnTime2,
+    OTP.Arrear,
+    OTP.PaidAfterDays,
+    OTP.LateDays,
+    OTP.PaidAfterDays_Class
+FROM 'lib://Procurement/OTP.qvd'
+(qvd);
