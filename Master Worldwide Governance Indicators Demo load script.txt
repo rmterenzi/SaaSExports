@@ -1,487 +1,942 @@
 ///$tab Main
+//Binary lib://QLIK/shoecare.qvf;
+
 SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
-SET MoneyFormat='$#,##0.00;($#,##0.00)';
-SET TimeFormat='h:mm:ss TT';
-SET DateFormat='M/D/YYYY';
-SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET MoneyFormat='£#,##0.00;-£#,##0.00';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='DD MMM YYYY';
+SET TimestampFormat='DD/MM/YYYY hh:mm:ss[.fff]';
+SET FirstWeekDay=0;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-GB';
 SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
-///$tab Product
-ProductGroup:
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+///$tab Load from QVDs
 LOAD
-    "Product Group Desc",
-    "Product Group"
-FROM [lib://Consumer Goods/ProductGroup.qvd]
+    SessionNumber,
+    BasketPurchased,
+    ProductDisplayName,
+    ProductQuantity,
+    ProductBaseValuePerItem,
+    ProductValuePerItem,
+    ProductCurrencyCode
+FROM [lib://DigitalConsumerAnalytics/Basket.qvd]
 (qvd);
 
-ProductLine:
 LOAD
-    "Product Line Desc",
-    "Product Line"
-FROM [lib://Consumer Goods/ProductLine.qvd]
+    SessionNumber,
+    BasketProductsViewed,
+    BasketProductsAdded,
+    AbandonedSession,
+    PurchasedSession,
+    AbandonandPurchaseSession,
+    BasketProductsFailedAdd,
+    BasketProductsRemoved,
+    BasketProductsPurchased,
+    BasketAbandonedValue,
+    BasketPurchasedValue,
+    SessionMetricValue,
+    SessionExitPage,
+    SessionCookiesEnabled,
+    SessionShortSession,
+    SessionSinglePage,
+    SessionScriptError,
+    SessionMultiPage,
+    SessionDuration,
+    SessionOffsiteTime,
+    SessionIdleTime,
+    SessionPages,
+    SystemLanguage,
+    SystemConnection,
+    SessionPopupStatus,
+    SessionOptOutStatus,
+    UserDataVolume,
+    UserDuration,
+    NetworkDataVolume,
+    NetworkDuration,
+    SessionFirstInteraction,
+    Attributions
+FROM [lib://DigitalConsumerAnalytics/Outcomes.qvd]
 (qvd);
 
-ProductSubGroup:
 LOAD
-    "Product Sub Group Desc",
-    "Product Sub Group"
-FROM [lib://Consumer Goods/ProductSubGroup.qvd]
+    CountryCode,
+    SessionNumber,
+    DemographicLocation,
+    DemographicCityName,
+    LandingSearchTerm,
+    LandingSearchEngine,
+    Num(Date(AddYears(StartTimeDate, 3), 'DD MMM YYYY'))&Mid(SessionStartTimestamp, Index(SessionStartTimestamp, '.')) as SessionStartTimestamp,
+    Date(AddYears(StartTimeDate, 3), 'DD MMM YYYY') as StartTimeDate,
+//     Date(AddYears(StartTimeDate, 3), 'MMM YYYY') as StartTimeMonthYear,
+ 
+    Date#(Month(AddYears(StartTimeDate, 3))&' '&Year(AddYears(StartTimeDate, 3)), 'MMM YYYY') as StartTimeMonthYear,
+    
+    Date(AddYears(StartTimeDate, 3), 'YYYY') as StartTimeYear,			
+    WeekDay(Date(AddYears(StartTimeDate, 3))) as StartDayName,
+    StartHour,
+    StartDay,
+    LandingReferrer,
+    DeviceType,
+    LandingCampaign,
+    LandingPlacement,
+    LandingCreative,
+    LandingCampaignType,
+    CookieUniqueVisitorTrackingId,
+    CookieFrequency,
+    NewCustomer,
+    VisitorUiid,
+    %UserKey,
+//     VisitorLastUpdateTimestamp,
+    VisitorUserType,
+    VisitorIdentifications,
+    Country
+FROM [lib://DigitalConsumerAnalytics/StartSession.qvd]
 (qvd);
 
-ProductType:
 LOAD
-    "Product Type Desc",
-    "Product Type"
-FROM [lib://Consumer Goods/ProductType.qvd]
+    %UserKey,
+    email,
+    gender,
+    firstName,
+    lastName,
+    phoneNumber,
+    UserCounter
+FROM [lib://DigitalConsumerAnalytics/UserData.qvd]
 (qvd);
 
-ItemBranch:
+Exit Script;
+///$tab QVD LOAD
 LOAD
-    "Item Branch 3rd Item Number",
-    "Item Branch G/L Category",
-    "Short Name",
-    "Item Branch 2nd Item Number",
-    "Item-Branch Key",
-    "Item Branch Reorder Quantity",
-    Horsepower,
-    "Item Branch Category Code 6",
-    "Item Branch Category Code 7",
-    "Item Branch Primary Supplier"
-FROM [lib://Consumer Goods/ItemBranch.qvd]
+    SessionNumber,
+    //DemographicOrganisation,
+    //DemographicIsp,
+    //DemographicLatitude,
+    //DemographicLongitude,
+
+geomakepoint(DemographicLatitude, DemographicLongitude) as DemographicLocation,
+
+    DemographicCityName,
+    DemographicCountryCode as CountryCode,
+    //DemographicRegionCode,
+    LandingSearchTerm,
+    LandingSearchEngine,
+    SessionStartTimestamp,
+
+    date(StartTimeDate) as StartTimeDate,
+    monthname(date(StartTimeDate)) as StartTimeMonthYear,
+    year(date(StartTimeDate)) as StartTimeYear,
+
+
+
+weekday(StartTimeDate) as StartDayName,
+
+    StartHour,
+    //StartYear,
+    //StartMonth,
+    StartDay,
+    //IpAddress,
+    //BrowserName,
+    //BrowserVersion,
+    //PlatformName,
+    //SessionEntryPage,
+
+
+    //LandingReferrer,
+
+subfield(LandingReferrer,'/',1)&'//'&subfield(LandingReferrer,'/',3) as LandingReferrer,
+    
+//PlatformSystemInfo,
+
+    //PlatformSystemType,
+
+if (PlatformSystemType = 'Mobile/PDA', 'Mobile','PC') as DeviceType,
+
+    //BrowserGroup,
+    //PlatformGroup,
+    //BrowserUserAgent,
+    LandingCampaign,
+    LandingPlacement,
+    LandingCreative,
+    LandingCampaignType,
+    CookieUniqueVisitorTrackingId,
+    CookieFrequency,
+    NewCustomer,
+    //CookiePreviousVisitTimestamp,
+    //if (VisitorUiid = 'Not Given', recno(), VisitorUiid) as VisitorUiid,
+   VisitorUiid,
+
+VisitorUiid as %UserKey,
+
+
+    VisitorLastUpdateTimestamp,
+    VisitorUserType,
+    VisitorIdentifications
+
+FROM [lib://QVDStore/StartSession.qvd]
 (qvd);
 
-ItemClass:
+
+
 LOAD
-    "Item Class Desc",
-    "Item Class"
-FROM [lib://Consumer Goods/ItemClass.qvd]
+    SessionNumber,
+    BasketPurchased,
+    //Visits,
+    //BasketUser,
+    //ProductID,
+    //ProductActionType,
+    //ProductActionTimestamp,
+    //ProductSkuNum,
+    ProductDisplayName,
+    //SkuFlag,
+    ProductQuantity,
+    ProductBaseValuePerItem,
+    ProductValuePerItem,
+    ProductCurrencyCode
+FROM [lib://QVDStore/Basket.qvd]
 (qvd);
 
-ItemMaster:
+// LOAD
+//     SessionNumber,
+//     BasketUserA,
+//     ProductDisplayNameA,
+//     ProductActionTimestampA,
+//     ProductVolume,
+//     PurchasePath
+// FROM [lib://QVDStore/BasketPathTemp.qvd]
+// (qvd);
+
+// LOAD
+//     SessionNumber,
+//     ErrorDescription,
+//     ErrorTimestamp,
+//     ErrorTimeStampNum,
+//     ErrorFlag,
+//     ErrorCount,
+//     lapsedhour,
+//     lapsedmin,
+//     lapsedsecond,
+//     lapsederrortime
+// FROM [lib://QVDStore/Errors.qvd]
+// (qvd);
+
 LOAD
-    "Short Name",
-    "Item Count",
-    "Product Price Group",
-    "Product Department",
-    "Product Line",
-    "Product Group",
-    "Product Type",
-    "Master Planning Family",
-    "Product Sub Group"
-FROM [lib://Consumer Goods/ItemMaster.qvd]
+    SessionNumber,
+    BasketProductsViewed,
+    BasketProductsAdded,
+    AbandonedSession,
+    PurchasedSession,
+    AbandonandPurchaseSession,
+    BasketProductsFailedAdd,
+    BasketProductsRemoved,
+    BasketProductsPurchased,
+    BasketAbandonedValue,
+    BasketPurchasedValue,
+    SessionMetricValue,
+    SessionExitPage,
+    SessionCookiesEnabled,
+    SessionShortSession,
+    SessionSinglePage,
+    SessionScriptError,
+    SessionMultiPage,
+    SessionDuration,
+    SessionOffsiteTime,
+    SessionIdleTime,
+    SessionPages,
+    SystemLanguage,
+    SystemConnection,
+    SessionPopupStatus,
+    SessionOptOutStatus,
+    UserDataVolume,
+    UserDuration,
+    NetworkDataVolume,
+    NetworkDuration,
+    SessionFirstInteraction,
+    Attributions
+    //deleteme
+FROM [lib://QVDStore/Outcomes.qvd]
 (qvd);
 
-linkBasket:
+// LOAD
+//     SessionNumber,
+//     PageLoadDuration,
+//     PageImagesCompleteDuration,
+//     PageBrowserSizeWidth,
+//     PageBrowserSizeHeight,
+//     PageLoadTimestamp,
+//     PageInstanceID,
+//     PageSequenceInSession,
+//     AttributionSequenceInSession,
+//     PageIsDeadEnd,
+//     PageAliasName1,
+//     PageAliasValue1,
+//     PageAliasName2,
+//     PageAliasValue2,
+//     PageAliasName3,
+//     PageAliasValue3,
+//     PageAliasName4,
+//     PageAliasValue4,
+//     PageAliasName5,
+//     PageAliasValue5,
+//     PageAliasName6,
+//     PageAliasValue6,
+//     PageAliasName7,
+//     PageAliasValue7,
+//     PageAliasName8,
+//     PageAliasValue8,
+//     PageAliasName9,
+//     PageAliasValue9,
+//     PageAliasName10,
+//     PageAliasValue10
+// FROM [lib://QVDStore/PagesTable.qvd]
+// (qvd);
+
+// LOAD
+//     SessionNumber,
+//     PurchasePathVolume,
+//     PurchaseChainEngine
+// FROM [lib://QVDStore/PurchasePath.qvd]
+// (qvd);
+
+// LOAD
+//     SessionNumber,
+//     FormName,
+//     FormStartTimestamp,
+//     FormIsSuccess,
+//     "FieldName"
+// FROM [lib://QVDStore/rptformoutcome.qvd]
+// (qvd);
+
+
+// LOAD
+//     SessionNumber,
+//     GoalName,
+//     GoalTimestamp,
+//     GoalRevenue
+// FROM [lib://QVDStore/rptgoals.qvd]
+// (qvd);
+
+
+// LOAD
+//     SessionNumber,
+//     //InternalSearchName,
+//     //InternalSearchTimestamp,
+//     InternalSearchField,
+//     InternalSearchTerm
+// FROM [lib://QVDStore/rptinternalsearch.qvd]
+// (qvd);
+
+// LOAD
+//     SessionNumber,
+//     PromotionName,
+//     PromotionPlacement,
+//     PromotionCreative,
+//     PromotionType,
+//     PromotionTimestamp
+// FROM [lib://QVDStore/rptpromotions.qvd]
+// (qvd);
+
+// LOAD
+//     SessionNumber,
+//     StepEventID,
+//     IsLastStep,
+//     IsCompleteStep,
+//     IsReloadStep
+// FROM [lib://QVDStore/rpttransactionstepsummary.qvd]
+// (qvd);
+
+
+// LOAD
+//     SessionNumber,
+//     TransactionMaxStepSeq,
+//     TransactionEndTimestamp,
+//     TransactionIsComplete
+// FROM [lib://QVDStore/rpttransactionsummary.qvd]
+// (qvd);
+
+// LOAD
+//     VisitorUiid,
+//     SessionDays,
+//     PurchaseDays,
+//     LastPurchase,
+//     LastVisit,
+//     BiggestPurchase,
+//     LastError,
+//     NewCustomerSummaryFlag,
+//     VisitSinceError,
+//     Visit_AfterError
+// FROM [lib://QVDStore/SummaryFinal.qvd]
+// (qvd);
+
+// LOAD
+//     VisitorUiidA,
+//     NewCustomerA,
+//     PurchaseDateA,
+//     ErrorDateA,
+//     StartDayA,
+//     PurchasedValueA
+// FROM [lib://QVDStore/SummaryOut.qvd]
+// (qvd);
+
+///$tab CountryCodes
+Left Join (StartSession)
+
 LOAD
-    BasketItem,
-    "Order Number"
-FROM [lib://Consumer Goods/linkBasket.qvd]
-(qvd);
+
+    Name as Country,
+    Code as CountryCode
+
+FROM [lib://QVDStore/ISO_Codes_Country_2Letter.csv]
+(txt, utf8, embedded labels, delimiter is ',', msq);
+///$tab User Data
+LOAD
+    email as %UserKey,
+    email,
+    gender,
+    firstName,
+    lastName,
+    phoneNumber,
+    1 as UserCounter
+
+FROM [lib://QVDStore/UserData.csv]
+(txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+///$tab !!!!  EXIT !!!!
+Exit Script;
+///$tab autoCalendar
+[autoCalendar]: 
+
+DECLARE FIELD DEFINITION Tagged ('$date')
+FIELDS
+  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter'),
+  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$axis', '$yearquarter'),
+  Month($1) AS [Month] Tagged ('$month'),
+  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth'),
+  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber'),
+  Date(Floor($1)) AS [Date] Tagged ('$date');
+
+DERIVE FIELDS FROM FIELDS [SessionStartTimestamp], [CookiePreviousVisitTimestamp], [VisitorLastUpdateTimestamp], [deleteme], [TransactionEndTimestamp] USING [autoCalendar] ;
+///$tab Auto-generated section
+LIB CONNECT TO [MySQL];
+
+StartSession:
+SQL SELECT 
+`SessionNumber`,
+	`DemographicOrganisation`,
+	`DemographicIsp`,
+	`DemographicLatitude`,
+	`DemographicLongitude`,
+	`DemographicCityName`,
+	`DemographicCountryCode`,
+	`DemographicRegionCode`,
+	`LandingSearchTerm`,
+	`LandingSearchEngine`,
+	`SessionStartTimestamp`,
+    date(floor(SessionStartTimestamp)) as StartTimeDate,
+    hour(floor(SessionStartTimestamp)) as StartHour,
+    YEAR (SessionStartTimestamp) as StartYear,
+    MONTH(floor(SessionStartTimestamp)) as StartMonth,
+    DAY(SessionStartTimestamp) as StartDay,
+	`IpAddress`,
+	`BrowserName`,
+	`BrowserVersion`,
+	`PlatformName`,
+	`SessionEntryPage`,
+	`LandingReferrer`,
+	`PlatformSystemInfo`,
+	`PlatformSystemType`,
+	`BrowserGroup`,
+	`PlatformGroup`,
+	`BrowserUserAgent`,
+	`LandingCampaign`,
+	`LandingPlacement`,
+	`LandingCreative`,
+	`LandingCampaignType`,
+	`CookieUniqueVisitorTrackingId`,
+	//`CookieFrequency`,
+     if(isnull(CookieFrequency) or CookieFrequency=1,'X',CookieFrequency) as CookieFrequency,
+     if(isnull(CookieFrequency) or CookieFrequency=1,'Yes','No') as NewCustomer,
+	`CookiePreviousVisitTimestamp`,
+	//`VisitorUiid`,
+    if(ISNULL(VisitorUiid),'Not Given',VisitorUiid) as VisitorUiid,
+	`VisitorLastUpdateTimestamp`,
+	`VisitorUserType`,
+	`VisitorIdentifications`
+FROM `shoecare`.`rptsessionstart`;
+
+Outcomes:
+LOAD 
+	[SessionNumber] AS [SessionNumber],
+	[BasketProductsViewed] AS [BasketProductsViewed],
+	[BasketProductsAdded] AS [BasketProductsAdded],
+      if (BasketAbandonedValue > 0, '1', '0') as AbandonedSession,
+    if (BasketPurchasedValue > 0, '1', '0') as PurchasedSession,
+    if (BasketAbandonedValue > 0 and BasketPurchasedValue>0, '1', '0') as AbandonandPurchaseSession,
+	[BasketProductsFailedAdd] AS [BasketProductsFailedAdd],
+	[BasketProductsRemoved] AS [BasketProductsRemoved],
+	[BasketProductsPurchased] AS [BasketProductsPurchased],
+	[BasketAbandonedValue] AS [BasketAbandonedValue],
+	[BasketPurchasedValue] AS [BasketPurchasedValue],
+	[SessionMetricValue] AS [SessionMetricValue],
+	[SessionExitPage] AS [SessionExitPage],
+	[SessionCookiesEnabled] AS [SessionCookiesEnabled],
+	[SessionShortSession] AS [SessionShortSession],
+	[SessionSinglePage] AS [SessionSinglePage],
+	[SessionScriptError] AS [SessionScriptError],
+	[SessionMultiPage] AS [SessionMultiPage],
+	[SessionDuration] AS [SessionDuration],
+	[SessionOffsiteTime] AS [SessionOffsiteTime],
+	[SessionIdleTime] AS [SessionIdleTime],
+	[SessionPages] AS [SessionPages],
+	[SystemLanguage] AS [SystemLanguage],
+	[SystemConnection] AS [SystemConnection],
+	[SessionPopupStatus] AS [SessionPopupStatus],
+	[SessionOptOutStatus] AS [SessionOptOutStatus],
+	[UserDataVolume] AS [UserDataVolume],
+	[UserDuration] AS [UserDuration],
+	[NetworkDataVolume] AS [NetworkDataVolume],
+	[NetworkDuration] AS [NetworkDuration],
+	[SessionFirstInteraction] AS [SessionFirstInteraction],
+	[Attributions] AS [Attributions],
+	[SessionStartTimestamp] AS [deleteme];
+
+SQL SELECT 
+`SessionNumber`,
+	`BasketProductsViewed`,
+	`BasketProductsAdded`,
+	`BasketProductsFailedAdd`,
+	`BasketProductsRemoved`,
+	`BasketProductsPurchased`,
+	`BasketAbandonedValue`,
+	`BasketPurchasedValue`,
+  
+	`SessionMetricValue`,
+	`SessionExitPage`,
+	`SessionCookiesEnabled`,
+	`SessionShortSession`,
+	`SessionSinglePage`,
+	`SessionScriptError`,
+	`SessionMultiPage`,
+	`SessionDuration`,
+	`SessionOffsiteTime`,
+	`SessionIdleTime`,
+	`SessionPages`,
+	`SystemLanguage`,
+	`SystemConnection`,
+	`SessionPopupStatus`,
+	`SessionOptOutStatus`,
+	`UserDataVolume`,
+	`UserDuration`,
+	`NetworkDataVolume`,
+	`NetworkDuration`,
+	`SessionFirstInteraction`,
+	`Attributions`,
+	`SessionStartTimestamp`
+FROM `shoecare`.`rptsessionoutcome`;
+
+[rpttransactionsummary]:
+LOAD 
+	[SessionNumber] AS [SessionNumber],
+	[TransactionMaxStepSeq] AS [TransactionMaxStepSeq],
+	[TransactionEndTimestamp] AS [TransactionEndTimestamp],
+	[TransactionIsComplete] AS [TransactionIsComplete];
+
+SQL SELECT 
+`SessionNumber`,
+	`TransactionMaxStepSeq`,
+	`TransactionEndTimestamp`,
+	`TransactionIsComplete`
+FROM `shoecare`.`rpttransactionsummary`;
+
+[rpttransactionstepsummary]:
+LOAD 
+	[SessionNumber] AS [SessionNumber],
+	[StepEventID] AS [StepEventID],
+	[IsLastStep] AS [IsLastStep],
+	[IsCompleteStep] AS [IsCompleteStep],
+	[IsReloadStep] AS [IsReloadStep];
+
+SQL SELECT 
+`SessionNumber`,
+	`StepEventID`,
+	`IsLastStep`,
+	`IsCompleteStep`,
+	`IsReloadStep`
+FROM `shoecare`.`rpttransactionstepsummary`;
+
+PagesTable:
+LOAD SessionNumber,
+//     BrowserVersion,
+//     PlatformName,
+//     SessionEntryPage,
+//     LandingReferrer,
+//     PlatformSystemInfo,
+    PageLoadDuration,
+    PageImagesCompleteDuration,
+    PageBrowserSizeWidth,
+    PageBrowserSizeHeight,
+    PageLoadTimestamp,
+    PageInstanceID,
+    PageSequenceInSession,
+    AttributionSequenceInSession,
+    PageIsDeadEnd,
+    PageAliasName1,
+    PageAliasValue1,
+    PageAliasName2,
+    PageAliasValue2,
+    PageAliasName3,
+    PageAliasValue3,
+    PageAliasName4,
+    PageAliasValue4,
+    PageAliasName5,
+    PageAliasValue5,
+    PageAliasName6,
+    PageAliasValue6,
+    PageAliasName7,
+    PageAliasValue7,
+    PageAliasName8,
+    PageAliasValue8,
+    PageAliasName9,
+    PageAliasValue9,
+    PageAliasName10,
+    PageAliasValue10;
+SQL SELECT SessionNumber,
+//     BrowserVersion,
+//     PlatformName,
+//     SessionEntryPage,
+//     LandingReferrer,
+//     PlatformSystemInfo,
+    PageLoadDuration,
+    PageImagesCompleteDuration,
+    PageBrowserSizeWidth,
+    PageBrowserSizeHeight,
+    PageLoadTimestamp,
+    PageInstanceID,
+    PageSequenceInSession,
+    AttributionSequenceInSession,
+    PageIsDeadEnd,
+    PageAliasName1,
+    PageAliasValue1,
+    PageAliasName2,
+    PageAliasValue2,
+    PageAliasName3,
+    PageAliasValue3,
+    PageAliasName4,
+    PageAliasValue4,
+    PageAliasName5,
+    PageAliasValue5,
+    PageAliasName6,
+    PageAliasValue6,
+    PageAliasName7,
+    PageAliasValue7,
+    PageAliasName8,
+    PageAliasValue8,
+    PageAliasName9,
+    PageAliasValue9,
+    PageAliasName10,
+    PageAliasValue10
+FROM shoecare.rptpages;
+
+
+
+LOAD SessionNumber,
+    GoalName,
+    GoalTimestamp,
+    GoalRevenue;
+SQL SELECT SessionNumber,
+    GoalName,
+    GoalTimestamp,
+    GoalRevenue
+FROM shoecare.rptgoals;
+
 
 Basket:
-LOAD
-    BasketItem,
-    "Basket Produce Line",
-    "Basket Product Group Desc",
-    "Basket Product Line Desc",
-    "Basket Product Sub Group Desc",
-    "Basket Product Type Desc",
-    "Basket Item Desc"
-FROM [lib://Consumer Goods/Basket.qvd]
-(qvd);
+LOAD SessionNumber,
+    BasketProductsPurchased as BasketPurchased,
+    Visits,
+    VisitorUiid as BasketUser,
+    ProductID,
+  //  ProductDisplayName,
+    ProductActionType,
+    ProductActionTimestamp,
+    ProductSkuNum,
+    if (ProductDisplayName='null' or ISNULL(ProductDisplayName), if(ISNULL(ProductSkuNum),'Not Provided', ProductSkuNum),ProductDisplayName) as ProductDisplayName,
+    if(ISNULL(ProductSkuNum),1,0) as SkuFlag,
+    ProductQuantity,
+    ProductBaseValuePerItem,
+    ProductValuePerItem,
+    ProductCurrencyCode;
+SQL SELECT SessionNumber,
+    BasketProductsPurchased,
+    Visits,
+    VisitorUiid,
+    ProductID,
+    ProductDisplayName,
+    ProductActionType,
+    ProductActionTimestamp,
+    ProductSkuNum,
+    ProductQuantity,
+    ProductBaseValuePerItem,
+    ProductValuePerItem,
+    ProductCurrencyCode
+FROM shoecare.rptbasketactionsoutcome;
 
-BusinessFamily:
-LOAD
-    "Business Family Name",
-    "Business Family"
-FROM [lib://Consumer Goods/BusinessFamily.qvd]
-(qvd);
 
-Channel:
-LOAD
-    "Channel Name",
-    Channel
-FROM [lib://Consumer Goods/Channel.qvd]
-(qvd);
 
-Distribution:
-LOAD
-    "Distribution Channel Mgr Name",
-    "Distribution Channel Mgr"
-FROM [lib://Consumer Goods/Distribution.qvd]
-(qvd);
+LOAD SessionNumber,
+    FormName,
+    FormStartTimestamp,
+    FormIsSuccess,
+    `FieldName`;
+SQL SELECT SessionNumber,
+    FormName,
+    FormStartTimestamp,
+    FormIsSuccess,
+    `FieldName`
+FROM shoecare.rptformoutcome;
 
-MasterPlanning:
-LOAD
-    "Master Planning Family Desc",
-    "Master Planning Family"
-FROM [lib://Consumer Goods/MasterPlanning.qvd]
-(qvd);
+LIB CONNECT TO 'MySQL';
 
-Zone:
-LOAD
-    "Zone Mgr Name",
-    "Zone Mgr"
-FROM [lib://Consumer Goods/Zone.qvd]
-(qvd);
-///$tab Customer
-CustomerAddress:
-LOAD
-    "Address Number",
-    "Customer Address 1",
-    "Customer Address 2",
-    "Customer Address 3",
-    "Customer Address 4",
-    "Zip Code",
-    City,
-    County,
-    State,
-    Country
-FROM [lib://Consumer Goods/CustomerAddress.qvd]
-(qvd);
+LOAD SessionNumber,
+    InternalSearchName,
+    InternalSearchTimestamp,
+    InternalSearchField,
+    InternalSearchTerm;
+SQL SELECT SessionNumber,
+    InternalSearchName,
+    InternalSearchTimestamp,
+    InternalSearchField,
+    InternalSearchTerm
+FROM shoecare.rptinternalsearch;
 
-CustomerClassification:
-LOAD
-    CustKey,
-    Cust_Increasing,
-    Cust_Decreasing,
-    Cust_Steady,
-    Cust_New,
-    Cust_Lost,
-    Cust_Other,
-    "Customer Growth",
-    "Customer Growth Percent"
-FROM [lib://Consumer Goods/CustomerClassification.qvd]
-(qvd);
+LIB CONNECT TO 'MySQL';
+ErrorsTemp:
+LOAD SessionNumber,
+    ErrorDescription,
+    if(IsNull(ErrorDescription),0,1) as ErrorFlag,
+    floor(ErrorTimestamp) + frac(ErrorTimestamp) as ErrorTimeStampNum,
+    ErrorTimestamp,
+    ErrorAttributeName1,
+    ErrorAttributeValue1,
+    ErrorAttributeName2,
+    ErrorAttributeValue2;
+SQL SELECT SessionNumber,
+    ErrorDescription,
+    ErrorTimestamp,
+    ErrorAttributeName1,
+    ErrorAttributeValue1,
+    ErrorAttributeName2,
+    ErrorAttributeValue2
+FROM shoecare.rptpageerrorsoutcome;
 
-CustomerMapCoordinates:
-LOAD
-    State,
-    "Customer X",
-    "Customer Y"
-FROM [lib://Consumer Goods/CustomerMapCoordinates.qvd]
-(qvd);
+ErrorsTemp2:
+LOAD *, 
+	1 as pointless
+//	if (Peek(SessionNumber)=SessionNumber,Hour(ErrorTimestamp-peek(ErrorTimestamp))&':'&minute(ErrorTimestamp-peek(ErrorTimestamp))&':'&second(ErrorTimestamp-peek(ErrorTimestamp)),0) as lapsederrortime
+RESIDENT ErrorsTemp WHERE NOT(ISNULL(ErrorTimestamp)) order by SessionNumber, ErrorTimestamp;
 
-Customers:
-LOAD
-    Division,
-    "Business Family",
-    "Customer Type",
-    Channel,
-    "Category Code 5",
-    "Zone Mgr",
-    "Category Code 7",
-    "Regional Sales Mgr",
-    "Distribution Channel Mgr",
-    "Region Code",
-    "Price Discount Cde 4",
-    "Line of Business",
-    "Sales Volume",
-    Customer,
-    "Address Number",
-    "Customer Number",
-    Consolidated,
-    "Search Type",
-    Phone,
-    "Business Unit",
-    "SIC Code",
-    "Tax Certificate"
-FROM [lib://Consumer Goods/Customers.qvd]
-(qvd);
+ErrorsTemp3:
+// LOAD *,
+// 	if (Peek(SessionNumber)=SessionNumber,Hour(ErrorTimestamp-peek(ErrorTimestamp))&':'&minute(ErrorTimestamp-peek(ErrorTimestamp))&':'&second(ErrorTimestamp-peek(ErrorTimestamp)),0) as lapsederrortime;
+noconcatenate LOAD 
+    MAX(SessionNumber) as SessionNumber,
+    MAXSTRING(ErrorDescription) as ErrorDescription,
+    MAX(ErrorTimestamp) as ErrorTimestamp,
+    MAX(ErrorTimeStampNum) as ErrorTimeStampNum,
+    MAX(ErrorFlag) as ErrorFlag,
+	ONLY(1) as ErrorCount 
+    RESIDENT ErrorsTemp2 GROUP BY SessionNumber, ErrorDescription, ErrorTimestamp;
 
-CustomerType:
-LOAD
-    "Customer Type Name",
-    "Customer Type"
-FROM [lib://Consumer Goods/CustomerType.qvd]
-(qvd);
-///$tab Orders
-OrderCount:
-LOAD
-    "Order Number",
-    OrderCount
-FROM [lib://Consumer Goods/OrderCount.qvd]
-(qvd);
+Errors:
+	
+    LOAD *,
+    If(LEN(lapsedhour)<2,'0'&lapsedhour,lapsedhour) & ':' & If(LEN(lapsedmin)<2,'0'&lapsedmin,lapsedmin) & ':' & If(LEN(lapsedsecond)<2,'0'&lapsedsecond,lapsedsecond) as lapsederrortime;
+    
+    LOAD *,
+    if (Peek(SessionNumber)=SessionNumber,Hour(ErrorTimestamp-peek(ErrorTimestamp)),0) as lapsedhour,
+    if (Peek(SessionNumber)=SessionNumber,Minute(ErrorTimestamp-peek(ErrorTimestamp)),0) as lapsedmin,
+    if (Peek(SessionNumber)=SessionNumber,second(ErrorTimestamp-peek(ErrorTimestamp)),0) as lapsedsecond
+ 	//if (Peek(SessionNumber)=SessionNumber,num(Hour(ErrorTimestamp-peek(ErrorTimestamp)),'00#')&':'&minute(ErrorTimestamp-peek(ErrorTimestamp))&':'&second(ErrorTimestamp-peek(ErrorTimestamp)),0) as lapsederrortime
+    RESIDENT ErrorsTemp3;
 
-OrderDates1:
-LOAD
-    "Order Date 2",
-    OrderYear,
-    OrderMonth,
-    OrderQuarter,
-    "Order Date Header"
-FROM [lib://Consumer Goods/OrderDates1.qvd]
-(qvd);
-///$tab Sales
-Sales:
-LOAD
-    NoOfItem,
-    MaxNoOfItem,
-    DateKey,
-    "Item-Branch Key",
-    "Order Number"
-FROM [lib://Consumer Goods/Sales.qvd]
-(qvd);
 
-[Salesdecile-1]:
-LOAD
-    "Sales by Customer by YearQuarter",
-    Low,
-    High
-FROM [lib://Consumer Goods/Salesdecile-1.qvd]
-(qvd);
+DROP TABLE ErrorsTemp;
 
-SalesDetails:
-LOAD
-    "Address Number",
-    BudKey,
-    AggKey,
-    "Ship To",
-    "Sales Rep",
-    "Item Class",
-    CustKey,
-    "Family Class",
-    "Sales Amount Based on List Price",
-    "Line Desc 1",
-    "Invoice Number",
-    "Backlog Amount",
-    "Sales Quantity",
-    "Qty Backordered",
-    "Actual Delivery Date Temp",
-    "Last Status",
-    "Number Of Days Late",
-    "Doc Type",
-    "Order Status Primary",
-    "Order Status",
-    "Line Number",
-    "Item Number",
-    "Line Type",
-    "List Price",
-    "Sales Cost Amount",
-    "Order Margin",
-    "Open Order Cost Amount",
-    "Discount Amount",
-    "Invoice Date Temp",
-    "Company Number Detail",
-    "Payment Terms",
-    "Sales Unit Cost Price",
-    "Open Order Quantity",
-    "Unit Price",
-    "Business Unit Details",
-    "Next Status",
-    "Promised Delivery Date Temp",
-    "Sales Margin Amount",
-    "U/M",
-    "Parent Address Number",
-    "Open Order Amount",
-    "Sales Amount",
-    "BackOrder Amount",
-    "Sales Price",
-    "Address Order Number",
-    "Late Shipment",
-    "Order Type Detail",
-    Shipments,
-    DateKey,
-    "Item-Branch Key",
-    "Order Number"
-FROM [lib://Consumer Goods/SalesDetails.qvd]
-(qvd);
+DROP TABLE ErrorsTemp2;
 
-SalesHeader:
-LOAD
-    "Order Number",
-    "Address Number Header",
-    "Order Gross Amount",
-    "Order Type Header",
-    "Business Unit Order Header",
-    "Order Date Header",
-    "Hold Orders Code Header",
-    "Company Number Header",
-    "Stop Code Header",
-    "Zone Code Header",
-    "Hold Code Header",
-    "Ship To Address Header",
-    "Parent Address Number Header",
-    "Orderby Header",
-    "Freight Code Header"
-FROM [lib://Consumer Goods/SalesHeader.qvd]
-(qvd);
+DROP TABLE ErrorsTemp3;
 
-SalesRegion:
-LOAD
-    "Region Name",
-    "Region Code"
-FROM [lib://Consumer Goods/SalesRegion.qvd]
-(qvd);
+LIB CONNECT TO 'MySQL';
 
-SalesRep:
-LOAD
-    "Sales Rep",
-    "Sales Rep Name"
-FROM [lib://Consumer Goods/SalesRep.qvd]
-(qvd);
-
-[Sheet1-2]:
-LOAD
-    "Sales Rep Name",
-    "Sales Rep Performance"
-FROM [lib://Consumer Goods/Sheet1-2.qvd]
-(qvd);
-
-AggSales:
-LOAD
-    AggKey,
-    "YTD Sales Amount",
-    "LY YTD Sales Amount",
-    "TM Sales Amount",
-    "LY TM Sales Amount",
-    "LY Tot Sales Amount",
-    "YTD Sales Margin Amount",
-    "LY YTD Sales Margin Amount",
-    "TM Sales Margin Amount",
-    "LY TM Sales Margin Amount",
-    "LY Tot Sales Margin Amount",
-    "Current Open Amount",
-    "Current BackOrder Amount",
-    "Current Backlog Amount"
-FROM [lib://Consumer Goods/AggSales.qvd]
-(qvd);
-
-Budget3:
-LOAD
-    DummyField,
-    BudgetInput2,
-    BudgetYear,
-    BudgetPeriod,
-    "Type",
-    "Budget Amount",
-    "Actual Amount",
-    BudKey,
-    BudgetInput
-FROM [lib://Consumer Goods/Budget3.qvd]
-(qvd);
-
-BudgetPeriod:
-LOAD
-    BudgetPeriod,
-    textBudgetPeriod
-FROM [lib://Consumer Goods/BudgetPeriod.qvd]
-(qvd);
-
-YTDBudget:
-LOAD
-    BudKey,
-    "YTD Budget Amount",
-    "TM Budget Amount"
-FROM [lib://Consumer Goods/YTDBudget.qvd]
-(qvd);
-
-Division:
-LOAD
-    "Division Name",
-    Division
-FROM [lib://Consumer Goods/Division.qvd]
-(qvd);
-
-FamilyClass:
-LOAD
-    "Family Class Desc",
-    "Family Class"
-FROM [lib://Consumer Goods/FamilyClass.qvd]
-(qvd);
-///$tab Geo
-maptype:
-LOAD
-    maptype
-FROM [lib://Consumer Goods/maptype.qvd]
-(qvd);
-
-Province:
-LOAD
-    State,
-    state_abbr,
-    state_name
-FROM [lib://Consumer Goods/Province.qvd]
-(qvd);
-
-Regional:
-LOAD
-    "Regional Sales Mgr Name",
-    "Regional Sales Mgr"
-FROM [lib://Consumer Goods/Regional.qvd]
-(qvd);
-
-Sheet1:
-LOAD
-    State,
-    Area
-FROM [lib://Consumer Goods/Sheet1.qvd]
-(qvd);
-
-ShipToAddress2:
-LOAD
-    "Ship To",
-    "Ship To Customer Address 1",
-    "Ship To Customer Address 2",
-    "Ship To Customer Address 3",
-    "Ship To Customer Address 4",
-    "Ship To Zip Code",
-    "Ship To City",
-    "Ship To County",
-    "Ship To State",
-    "Ship To Country",
-    "Ship To Zip Code Short"
-FROM [lib://Consumer Goods/ShipToAddress2.qvd]
-(qvd);
-
-ShipToMapCoordinates:
-LOAD
-    "Ship To State",
-    "Ship To X",
-    "Ship To Y"
-FROM [lib://Consumer Goods/ShipToMapCoordinates.qvd]
-(qvd);
-
-ZipData:
-LOAD
-    "Ship To Zip Code Short",
-    latitude,
-    longitude,
-    QlikPoint
-FROM [lib://Consumer Goods/ZipData.qvd]
-(qvd);
-
-///$tab Calendar
-DataDates2:
-LOAD
-    DateKey,
-    "Day",
-    "Month",
-    Quarter,
-    "Week",
-    "Week Ending Date",
-    "Weekday",
-    "Year",
-    YearMonth
-FROM [lib://Consumer Goods/DataDates2.qvd]
-(qvd);
-
-FiscalRank:
-LOAD
-    Fiscal,
-    FiscalRank
-FROM [lib://Consumer Goods/FiscalRank.qvd]
-(qvd);
-
-[Sheet1-1]:
-LOAD
-    Metric
-FROM [lib://Consumer Goods/Sheet1-1.qvd]
-(qvd);
+LOAD SessionNumber,
+    PromotionName,
+    PromotionPlacement,
+    PromotionCreative,
+    PromotionType,
+    PromotionTimestamp;
+SQL SELECT SessionNumber,
+    PromotionName,
+    PromotionPlacement,
+    PromotionCreative,
+    PromotionType,
+    PromotionTimestamp
+FROM shoecare.rptpromotions;
 
 
 
 
+
+[autoCalendar]: 
+  DECLARE FIELD DEFINITION Tagged ('$date')
+FIELDS
+  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter'),
+  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$axis', '$yearquarter'),
+  Month($1) AS [Month] Tagged ('$month'),
+  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth'),
+  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber'),
+  Date(Floor($1)) AS [Date] Tagged ('$date');
+
+DERIVE FIELDS FROM FIELDS [SessionStartTimestamp], [CookiePreviousVisitTimestamp], [VisitorLastUpdateTimestamp], [deleteme], [TransactionEndTimestamp] USING [autoCalendar] ;
+///$tab Summary User
+SummaryTemp:
+LOAD SessionNumber as SessionNumberA,
+	VisitorUiid as VisitorUiidA,
+    NewCustomer as NewCustomerA,
+    floor(SessionStartTimestamp) as StartDayA
+    RESIDENT StartSession where NOT (ISNULL(VisitorUiid));
+    
+ left join (SummaryTemp)
+ 
+ LOAD SessionNumber as SessionNumberA,
+ PurchasedSession as PurchasedSessionA,
+ BasketPurchasedValue as PurchasedValueA
+ Resident Outcomes;
+ 
+  left join (SummaryTemp)
+ 
+ LOAD 
+ 	SessionNumber as SessionNumberA,
+ 	ErrorFlag as ErrorFlagA,
+    floor(ErrorTimestamp) as ErrorTimeStampA
+    RESIDENT Errors;
+ 		
+ 
+ SummaryOut:
+ LOAD 
+ 	VisitorUiidA,
+    NewCustomerA,
+    if (PurchasedSessionA=1, StartDayA,0) as PurchaseDateA,
+    if (ErrorFlagA=1,ErrorTimeStampA,0) as ErrorDateA,
+    StartDayA,
+    PurchasedValueA
+    RESIDENT SummaryTemp;
+
+
+
+Drop Table SummaryTemp;
+
+SummaryNearlyFinal:
+LOAD *,
+	If(LastError=0,'No Error',LastVisit-LastError) as Visit_AfterError;
+Load
+	VisitorUiidA as VisitorUiid,
+    COUNT(DISTINCT StartDayA) as SessionDays,
+    // Redefined the Purchase Days field to reflect actual purchases
+    COUNT(DISTINCT PurchaseDateA)-1 as PurchaseDays,
+    date(MAX(PurchaseDateA)) as LastPurchase,
+    date(MAX(StartDayA)) as LastVisit,
+    MAX(PurchasedValueA) as BiggestPurchase,
+    date(MAX(ErrorDateA)) as LastError,
+    MINSTRING(NewCustomerA) as NewCustomerSummaryFlag,
+    If (MAX(ErrorDateA)=MAX(StartDayA),'No','Yes') as VisitSinceError
+    RESIDENT SummaryOut GROUP BY VisitorUiidA;
+    
+SummaryFinal:
+NoConcatenate LOAD * RESIDENT SummaryNearlyFinal WHERE NOT(ISNULL(LastVisit));
+
+DROP TABLE SummaryNearlyFinal;
+
+BasketSummary:
+LOAD 
+SessionNumber, 
+ProductDisplayName as ProductDisplayNameA,
+ProductActionTimestamp as ProductActionTimestampA,
+BasketPurchased as BasketPurchasedA,
+BasketUser as BasketUserA
+Resident Basket WHERE NOT(ISNULL(BasketUser)) order by BasketUser,  ProductSkuNum, ProductActionTimestamp, SessionNumber;
+ 
+ 
+BasketPathTemp:
+LOAD 
+SessionNumber,
+BasketUserA,
+ProductDisplayNameA,
+ProductActionTimestampA,
+if (BasketPurchasedA=0, 1, BasketPurchasedA) as ProductVolume,
+BasketUserA &',' & ProductDisplayNameA & ',' & if(BasketPurchasedA=0,'Abandon', 'Purchase') as PurchasePath
+Resident BasketSummary;
+
+DROP TABLE BasketSummary;
+LIB CONNECT TO 'MySQL';
+
+///$tab Purchase Path
+startext:
+LOAD SessionNumber, 
+    LandingSearchTerm as LandingSearchTermx,
+    LandingSearchEngine as LandingSearchEnginex,
+    NewCustomer as NewCustomerx
+    RESIDENT StartSession;
+    
+left join (startext)
+LOAD SessionNumber,
+   BasketProductsViewed as ProductsViewedx,
+    BasketProductsAdded as ProductsAddedx,
+    BasketProductsFailedAdd as ProductsFailedAddx,
+    BasketProductsRemoved as ProductsRemovedx,
+    BasketProductsPurchased as ProductsPurchasedx,
+    PurchasedSession as PurchasedSessionx,
+    AbandonedSession as AbandonSessionx,
+    AbandonandPurchaseSession as AbandonandPurchaseSessionx,
+    BasketPurchasedValue as PurchasedValuex
+    RESIDENT Outcomes;
+    
+ PurchasePath:
+ LOAD SessionNumber, 
+ 	1 as PurchasePathVolume,
+    if(ISNULL(LandingSearchEnginex),'None', LandingSearchEnginex) & ',' & 
+    if (ProductsViewedx > 0, 'Products Viewed,','No Action,') &
+    if (ProductsAddedx >0, 'Products Added,', '') &
+    if (ProductsPurchasedx > 0, 'Products Purchased,', '') &
+    If (LandingSearchEnginex ='Yes', 'Products Adbandonned,', '') &
+    if( PurchasedSessionx= 'No', 'No Purchase',if (PurchasedValuex> 100, 'Purchase £100+',if (PurchasedValuex> 50,'Purchase £50-£100',if(PurchasedValuex=0,'No Purchase','Purchase <£50'))) )
+    as PurchaseChainEngine
+    
+    Resident startext;
+    
+    drop table startext;
+
+///$tab QVD Write
+store StartSession into 'lib://QVDStore/StartSession.qvd';
+store Basket into 'lib://QVDStore/Basket.qvd';
+store SummaryFinal into 'lib://QVDStore/SummaryFinal.qvd';
+store Outcomes into 'lib://QVDStore/Outcomes.qvd';
+store rptformoutcome into 'lib://QVDStore/rptformoutcome.qvd';
+store BasketPathTemp into 'lib://QVDStore/BasketPathTemp.qvd';
+store rpttransactionsummary into 'lib://QVDStore/rpttransactionsummary.qvd';
+store rpttransactionstepsummary into 'lib://QVDStore/rpttransactionstepsummary.qvd';
+store rptinternalsearch into 'lib://QVDStore/rptinternalsearch.qvd';
+store PurchasePath into 'lib://QVDStore/PurchasePath.qvd';
+store Errors into 'lib://QVDStore/Errors.qvd';
+store PagesTable into 'lib://QVDStore/PagesTable.qvd';
+store rptpromotions into 'lib://QVDStore/rptpromotions.qvd';
+store rptgoals into 'lib://QVDStore/rptgoals.qvd';
+store SummaryOut into 'lib://QVDStore/SummaryOut.qvd';
+store SummaryOut into 'lib://QVDStore/SummaryOut.qvd';
