@@ -1,32 +1,4 @@
-///$tab **Read Me**
-/*
-
-██╗░░░██╗██╗███████╗██╗░░░░░██╗██████╗░  ██████╗░███████╗███╗░░░███╗░█████╗░  ░█████╗░██████╗░██████╗░
-██║░░░██║██║╚════██║██║░░░░░██║██╔══██╗  ██╔══██╗██╔════╝████╗░████║██╔══██╗  ██╔══██╗██╔══██╗██╔══██╗
-╚██╗░██╔╝██║░░███╔═╝██║░░░░░██║██████╦╝  ██║░░██║█████╗░░██╔████╔██║██║░░██║  ███████║██████╔╝██████╔╝
-░╚████╔╝░██║██╔══╝░░██║░░░░░██║██╔══██╗  ██║░░██║██╔══╝░░██║╚██╔╝██║██║░░██║  ██╔══██║██╔═══╝░██╔═══╝░
-░░╚██╔╝░░██║███████╗███████╗██║██████╦╝  ██████╔╝███████╗██║░╚═╝░██║╚█████╔╝  ██║░░██║██║░░░░░██║░░░░░
-░░░╚═╝░░░╚═╝╚══════╝╚══════╝╚═╝╚═════╝░  ╚═════╝░╚══════╝╚═╝░░░░░╚═╝░╚════╝░  ╚═╝░░╚═╝╚═╝░░░░░╚═╝░░░░░
-
-
----- App 1 of 2 ----
-
-In this Vizlib Demo App you MUST also upload the other .qvf to your Qlik server.
-
-The on the next section in the DLE you will find "binary [lib://fileName (owner)/12345678-1234-abcd-abcd-1a2b3c4d5e6f];".
-	This is the connection to the data in the other app.
-	Replace the placeholder information with the app's location to use this Demo App to it's full potential. 
-    	Equally, you can watch the Vizlib Webinar "Data Storytelling - The final ChAPPter" to understand how this works...
-    	...or, watch the Webinar explaining how to use the Vizlib Demo Apps where we cover how to use this app as well as others.
-    
-Also, uncomment the entire section of ***Uncomment this area***
-*/
-///$tab Main & BInary Connection
-//Your app section goes here
-//binary [lib://fileName (owner)/12345678-1234-abcd-abcd-1a2b3c4d5e6f];
-
-//@luke remember to update this :point-up:
-
+///$tab Main
 SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
@@ -47,10 +19,30 @@ SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
 SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
 
+///$tab Colors
+/* Qlik Colors */
 
-
-///$tab Books
-Set dataManagerTables = '','Book_Dataset_1';
+colors:
+load * Inline [
+  color_id,color_type,color_name,color_r,color_g,color_b,color_hex
+  1,c,QlikGreen,0,152,69,#009845
+  2,f,Tanzanite,28,53,94,#1C355E
+  3,f,Slate,36,75,90,#244B5A
+  4,f,Turquoise,0,101,128,#006580
+  5,f,Aquamarine,16,207,201,#10CFC9
+  6,f,Wine,135,0,100,#870064
+  7,f,Amethyst,101,93,198,#655DC6
+  8,f,Stone,196,207,218,#C4CFDA
+  9,s,Sapphire,0,92,185,#005CB9
+  10,s,Emerald,0,105,55,#006937
+  11,s,Ruby,231,0,76,#E7004C
+  12,s,QlikGrey,84,86,90,#54565A
+  13,h,Coral,255,142,159,#FF8E9F
+  14,h,Topaz,255,199,42,#FFC72A
+  15,h,Peridot,194,213,0,#C2D500
+];
+///$tab Sales data
+Set dataManagerTables = '','SalesData';
 //This block renames script tables from non generated section which conflict with the names of managed tables
 
 For each name in $(dataManagerTables) 
@@ -73,108 +65,45 @@ Set dataManagerTables = ;
 
 Unqualify *;
 
-[Book_Dataset_1]:
 LOAD
-	[Title]										AS [Book_Title],
-	[Category]									AS [Book_Category],
-	num([Price] * 0.80, '#0.00') 				AS [Price_Before_Tax],
-	num([Price_After_Tax], '#0.00') 			AS [Price_After_Tax],
-	[Tax_amount]								AS [Book_Tax_amount],
-	[Avilability]								AS [Book_Avilability],
-	[Book_Description]							AS [Book_Book_Description],
-	[Image_Link]								AS [Book_Image_Link],
-	[Stars]										AS [Book_Stars],
-    Date(RAND()*12/RAND()*30/RAND()*2000)		AS [BOOK_Year]
- FROM [lib://AttachedFiles/Book_Dataset_1.csv]
-(txt, utf8, embedded labels, delimiter is ',', msq);
-
-///$tab Aircraft
-Set dataManagerTables = '','Sheet1','Formatted for export';
-//This block renames script tables from non generated section which conflict with the names of managed tables
-
-For each name in $(dataManagerTables) 
-    Let index = 0;
-    Let currentName = name; 
-    Let tableNumber = TableNumber(name); 
-    Let matches = 0; 
-    Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
-        index = index + 1; 
-        currentName = name & '-' & index; 
-        tableNumber = TableNumber(currentName) 
-        matches = Match('$(currentName)', $(dataManagerTables));
-    Loop 
-    If index > 0 then 
-            Rename Table '$(name)' to '$(currentName)'; 
-    EndIf; 
-Next; 
-Set dataManagerTables = ;
-
-
-Unqualify *;
-
-__countryAliasesBase:
-LOAD
-	Alias AS [__Country],
-	ISO3Code AS [__ISO3Code]
-FROM [lib://AttachedFiles/countryAliases.qvd]
-(qvd);
-
-__countryGeoBase:
-LOAD
-	ISO3Code AS [__ISO3Code],
-	ISO2Code AS [__ISO2Code],
-	Polygon AS [__Polygon]
-FROM [lib://AttachedFiles/countryGeo.qvd]
-(qvd);
-
-__countryName2IsoThree:
-MAPPING LOAD
-	__Country,
-	__ISO3Code
-RESIDENT __countryAliasesBase;
-
-__countryCodeIsoThree2Polygon:
-MAPPING LOAD
-	__ISO3Code,
-	__Polygon
-RESIDENT __countryGeoBase;
-
-[Sheet1]:
-LOAD
-	[Name]					AS [Aircraft_Name],
-	[PrimaryRole]			AS [Aircraft_PrimaryRole],
-	[Manufacturer]			AS [Aircraft_Manufacturer],
-	[Number]				AS [Aircraft_Number],
-	Date([ActiveSince] ) 	AS [Aircraft_ActiveSince],
-	Date([LastBuilt] )		AS [Aircraft_LastBuilt],
-	Date([Retired] ) 		AS [Aircraft_Retired],
-	[State]					AS [Aircraft_State],
-	[Crew]					AS [Aircraft_Crew],
-	[Length]				AS [Aircraft_Length],
-	[Wingspan]				AS [Aircraft_Wingspan],
-	[Height]				AS [Aircraft_Height],
-	[WingArea]				AS [Aircraft_WingArea],
-	[MaxSpeed]				AS [Aircraft_MaxSpeed],
-	[Image URL]				AS [Aircraft_Image URL],
-	[ww2aircraft.Country]	AS [Aircraft_ww2aircraft.Country],
-	APPLYMAP( '__countryCodeIsoThree2Polygon', APPLYMAP( '__countryName2IsoThree', LOWER([ww2aircraft.Country])), '-') AS [Aircraft_Sheet1.ww2aircraft.Country_GeoInfo]
- FROM [lib://AttachedFiles/48ef4bb1-34d0-4f8b-bc16-e895c4aefc1d.xlsx]
+    Address,
+    CategoryID,
+    CategoryName,
+    Product,
+    City,
+    ContactName,
+    "COS",
+    Country,
+    Market,
+    Customer,
+    CustomerID,
+    Description,
+    Discount,
+    EmployeeID,
+    Fax,
+    Freight,
+    GP,
+    "Month",
+    OrderDate,
+    WeekNr,
+    DayNr,
+    OrderID,
+    Phone,
+    PostalCode,
+    ProductID,
+    ProductName,
+    Quantity,
+    Quarter,
+    Sales,
+    Forecast,
+    ShipperID,
+    SupplierID,
+    "Year",
+    CountryCode
+FROM [lib://Whats New/Sales_Nov2022.xlsx]
 (ooxml, embedded labels, table is Sheet1);
 
-[Formatted for export]:
-LOAD
-	[Action],
-	[URL],
-	[Theme]
- FROM [lib://AttachedFiles/Vizlib Actions - Theme.xlsx]
-(ooxml, embedded labels, table is [Formatted for export]);
 
-
-
-TAG FIELD [ww2aircraft.Country] WITH '$geoname', '$relates_Sheet1.ww2aircraft.Country_GeoInfo';
-TAG FIELD [Sheet1.ww2aircraft.Country_GeoInfo] WITH '$geopolygon', '$hidden', '$relates_ww2aircraft.Country';
-
-DROP TABLES __countryAliasesBase, __countryGeoBase;
 [autoCalendar]: 
   DECLARE FIELD DEFINITION Tagged ('$date')
 FIELDS
@@ -200,233 +129,69 @@ FIELDS
   (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
   Week(Today())-Week($1) AS [WeekRelNo] ;
 
-DERIVE FIELDS FROM FIELDS [ActiveSince], [LastBuilt], [Retired] USING [autoCalendar] ;
-///$tab ***Uncomment this area***
-// Unqualify *;
-
-// __countryAliasesBase:
-// LOAD
-// 	Alias AS [__Country],
-// 	ISO3Code AS [__ISO3Code]
-// FROM [lib://AttachedFiles/countryAliases.qvd]
-// (qvd);
-
-// __countryGeoBase:
-// LOAD
-// 	ISO3Code AS [__ISO3Code],
-// 	ISO2Code AS [__ISO2Code],
-// 	Polygon AS [__Polygon]
-// FROM [lib://AttachedFiles/countryGeo.qvd]
-// (qvd);
-
-// __countryName2IsoThree:
-// MAPPING LOAD
-// 	__Country,
-// 	__ISO3Code
-// RESIDENT __countryAliasesBase;
-
-// __countryCodeIsoThree2Polygon:
-// MAPPING LOAD
-// 	__ISO3Code,
-// 	__Polygon
-// RESIDENT __countryGeoBase;
-
-// [Rail_Equipment_Accident_Incident_Data_temp_e6b8d891-248e-f782-75e6-26eecf67]:
-// LOAD
-// 	[Reporting_Railroad_Code],
-// 	[Reporting_Railroad_Name],
-// 	[Report_Year],
-// 	[Accident_Number],
-// 	[PDF_Link],
-// 	[Accident_Year],
-// 	[Accident_Month],
-// 	[Other_Railroad_Code],
-// 	[Other_Railroad_Name],
-// 	[Other_Accident_Number],
-// 	[Other_Accident_Year],
-// 	[Other_Accident_Month],
-// 	[Maintenance_Railroad_Code],
-// 	[Maintenance_Railroad_Name],
-// 	[Maintenance_Accident_Number],
-// 	[Maintenance_Accident_Year],
-// 	[Maintenance_Accident_Month],
-// 	[Grade_Crossing_ID],
-// 	[Day],
-// 	Date(Date#([Date], 'MM/DD/YYYY') ) AS [Date],
-// 	[Time],
-// 	[Accident_Type_Code],
-// 	[Accident_Type],
-// 	[Hazmat_Cars],
-// 	[Hazmat_Cars_Damaged],
-// 	[Hazmat_Released_Cars],
-// 	[Persons_Evacuated],
-// 	[Subdivision],
-// 	[Division_Code],
-// 	[Division],
-// 	[Station],
-// 	[Milepost],
-// 	[State_Code],
-// 	[State_Abbreviation],
-// 	[State_Name],
-// 	[County_Code],
-// 	[County_Name],
-// 	[District],
-// 	[Temperature],
-// 	[Visibility_Code],
-// 	[Visibility],
-// 	[Weather_Condition_Code],
-// 	[Weather_Condition],
-// 	[Track_Type_Code],
-// 	[Track_Type],
-// 	[Track_Name],
-// 	[Track_Class],
-// 	[Track_Density],
-// 	[Train_Direction_Code],
-// 	[Train_Direction],
-// 	[Equipment_Type_Code],
-// 	[Equipment_Type],
-// 	[Equipment_Attended],
-// 	[Train_Number],
-// 	[Train_Speed],
-// 	[Recorded_Estimated_Speed],
-// 	[Maximum_Speed],
-// 	[Gross_Tonnage],
-// 	[Signalization_Code],
-// 	[Signalization],
-// 	[Method_of_Operation_Code],
-// 	[Method_of_Operation],
-// 	[Adjunct_Code_1],
-// 	[Adjunct_Code_Name_1],
-// 	[Adjunct_Code_2],
-// 	[Adjunct_Code_Name_2],
-// 	[Adjunct_Code_3],
-// 	[Adjunct_Code_Name_3],
-// 	[Remote_Control_Locomotive_Code],
-// 	[Remote_Control_Locomotive],
-// 	[First_Car_Initials],
-// 	[First_Car_Number],
-// 	[First_Car_Position],
-// 	[First_Car_Loaded],
-// 	[Causing_Car_Initials],
-// 	[Causing_Car_Number],
-// 	[Causing_Car_Position],
-// 	[Causing_Car_Loaded],
-// 	[Positive_Alcohol_Tests],
-// 	[Positive_Drug_Tests],
-// 	[Passengers_Transported],
-// 	[Head_End_Locomotives],
-// 	[Mid_Train_Manual_Locomotives],
-// 	[Mid_Train_Remote_Locomotives],
-// 	[Rear_End_Manual_Locomotives],
-// 	[Rear_End_Remote_Locomotives],
-// 	[Derailed_Head_End_Locomotives],
-// 	[Derailed_Mid_Train_Manual_Locomotives],
-// 	[Derailed_Mid_Train_Remote_Locomotives],
-// 	[Derailed_Rear_End_Manual_Locomotives],
-// 	[Derailed_Rear_End_Remote_Locomotives],
-// 	[Loaded_Freight_Cars],
-// 	[Loaded_Passenger_Cars],
-// 	[Empty_Freight_Cars],
-// 	[Empty_Passenger_Cars],
-// 	[Cabooses],
-// 	[Derailed_Loaded_Freight_Cars],
-// 	[Derailed_Loaded_Passenger_Cars],
-// 	[Derailed_Empty_Freight_Cars],
-// 	[Derailed_Empty_Passenger_Cars],
-// 	[Derailed_Cabooses],
-// 	[Equipment_Damage_Cost],
-// 	[Track_Damage_Cost],
-// 	[Total_Damage_Cost],
-// 	[Primary_Accident_Cause_Code],
-// 	[Primary_Accident_Cause],
-// 	[Contributing_Accident_Cause_Code],
-// 	[Contributing_Accident_Cause],
-// 	[Accident_Cause_Code],
-// 	[Accident_Cause],
-// 	[Engineers_On_Duty],
-// 	[Firemen_On_Duty],
-// 	[Conductors_On_Duty],
-// 	[Brakemen_On_Duty],
-// 	[Hours_Engineers_On_Duty],
-// 	[Minutes_Engineers_On_Duty],
-// 	[Hours_Conductors_On_Duty],
-// 	[Minutes_Conductors_On_Duty],
-// 	[Railroad_Employees_Killed],
-// 	[Railroad_Employees_Injured],
-// 	[Passengers_Killed],
-// 	[Passengers_Injured],
-// 	[Others_Killed],
-// 	[Others_Injured],
-// 	[Persons_Killed_For_Reporting_Railroad],
-// 	[Persons_Injured_For_Reporting_Railroad],
-// 	[Total_Persons_Killed],
-// 	[Total_Persons_Injured],
-// 	[Total_Killed_Form_54],
-// 	[Total_Injured_Form_54],
-// 	[Special_Study_1],
-// 	[Special_Study_2],
-// 	[Latitude],
-// 	[Longitude],
-// 	[Narrative],
-// 	[Joint_Track_Type],
-// 	[Joint_Track_Class],
-// 	[Class_Code],
-// 	[Class],
-// 	[Joint_CD],
-// 	[Incident_Key],
-// 	[Report_Key],
-// 	[Reporting_Railroad_Company_Grouping],
-// 	[Reporting_Railroad_Class],
-// 	[Reporting_Railroad_SMT_Grouping],
-// 	[Reporting_Parent_Railroad_Company_Code],
-// 	[Reporting_Parent_Railroad_Company_Name],
-// 	[Reporting_Railroad_Holding_Company],
-// 	[Other_Railroad_Company_Grouping],
-// 	[Other_Railroad_Class],
-// 	[Other_Railroad_SMT_Grouping],
-// 	[Other_Parent_Railroad_Company_Code],
-// 	[Other_Parent_Railroad_Company_Name],
-// 	[Other_Railroad_Holding_Company],
-// 	[Maintenance_Railroad_Company_Grouping],
-// 	[Maintenance_Railroad_Class],
-// 	[Maintenance_Railroad_SMT_Grouping],
-// 	[Maintenance_Parent_Railroad_Company_Code],
-// 	[Maintenance_Parent_Railroad_Company_Name],
-// 	[Maintenance_Railroad_Holding_Company],
-// 	'-' AS [Extra_61d2f18b-5b03-37d6-5a56-bbefe8e2]
-// RESIDENT [Rail_Equipment_Accident_Incident_Data];
-// DROP TABLE [Rail_Equipment_Accident_Incident_Data];
-// DROP FIELD [Extra_61d2f18b-5b03-37d6-5a56-bbefe8e2];
-
-// [Sheet1_temp_cda6766b-e09b-3ade-f093-c1682974]:
-// LOAD
-// 	[Aircraft_Name],
-// 	[Aircraft_PrimaryRole],
-// 	[Aircraft_Manufacturer],
-// 	[Aircraft_Number],
-// 	Date([Aircraft_ActiveSince] ) AS [Aircraft_ActiveSince],
-// 	Date([Aircraft_LastBuilt] ) AS [Aircraft_LastBuilt],
-// 	Date([Aircraft_Retired] ) AS [Aircraft_Retired],
-// 	[Aircraft_State],
-// 	[Aircraft_Crew],
-// 	[Aircraft_Length],
-// 	[Aircraft_Wingspan],
-// 	[Aircraft_Height],
-// 	[Aircraft_WingArea],
-// 	[Aircraft_MaxSpeed],
-// 	[Aircraft_Image URL],
-// 	[Aircraft_ww2aircraft.Country],
-// 	[Aircraft_Sheet1.ww2aircraft.Country_GeoInfo],
-// 	APPLYMAP( '__countryCodeIsoThree2Polygon', APPLYMAP( '__countryName2IsoThree', LOWER([Aircraft_ww2aircraft.Country])), '-') AS [Sheet1.Aircraft_ww2aircraft.Country_GeoInfo]
-// RESIDENT [Sheet1];
-// DROP TABLE [Sheet1];
+DERIVE FIELDS FROM FIELDS [OrderDate] USING [autoCalendar] ;
 
 
 
-// RENAME TABLE [Rail_Equipment_Accident_Incident_Data_temp_e6b8d891-248e-f782-75e6-26eecf67] to [Rail_Equipment_Accident_Incident_Data];
+///$tab Employees
+[Employees]:
+LOAD
+	[EmployeeID],
+	[EmployeeName],
+	[Title],
+	[Hire Date],
+	[Office],
+	[Extension],
+	[Reports To],
+	[Year Salary]
+FROM [lib://Whats New/organization.xlsx]
+(ooxml, embedded labels, table is Employees);
 
-// TAG FIELD [Aircraft_ww2aircraft.Country] WITH '$geoname', '$relates_Sheet1.Aircraft_ww2aircraft.Country_GeoInfo';
-// TAG FIELD [Sheet1.Aircraft_ww2aircraft.Country_GeoInfo] WITH '$geopolygon', '$hidden', '$relates_Aircraft_ww2aircraft.Country';RENAME TABLE [Sheet1_temp_cda6766b-e09b-3ade-f093-c1682974] to [Sheet1];
+[Colors]:
+LOAD
+	[Title],
+	[Color1],
+	[Color2]
+FROM [lib://Whats New/organization.xlsx]
+(ooxml, embedded labels, table is Colors);
 
-// DROP TABLES __countryAliasesBase, __countryGeoBase;
-// DERIVE FIELDS FROM FIELDS [Date], [Aircraft_ActiveSince], [Aircraft_LastBuilt], [Aircraft_Retired] USING [autoCalendar] ;
+[Hierarchy]:
+LOAD
+	[EmployeeID],
+	[EmpName],
+	[ManagerID],
+	[EmpName1],
+	[EmpName2],
+	[EmpName3],
+	[EmpName4],
+	[EmpName5],
+	[Manager],
+	[EmpHierarchy],
+	[Depth]
+FROM [lib://Whats New/organization.xlsx]
+(ooxml, embedded labels, table is Hierarchy);
+///$tab Calendar
+// A custom calendar showing years, week nr at quarter start and week number
+
+[r]: 
+  DECLARE FIELD DEFINITION Tagged ('$date')
+FIELDS
+	Dual(Year($1), YearStart($1)) 								 		  AS [Year] 			 Tagged ('$axis'),
+	Dual('W'&week(QuarterStart($1)),weekstart(QuarterStart($1))) 		  AS [StartWeekQuarter]  Tagged ('$axis', '$simplified'),
+	Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),weekstart(QuarterStart($1)))AS [_StartWeekQuarter] Tagged ('$axis', '$qualified','$hidden'),
+  	Dual(Year($1)&'-'&week($1),weekstart($1)) 							  AS [Week] 		 Tagged ('$axis', '$qualified'),
+  	Dual(week($1),weekstart($1)) 							  			  AS [_YearWeek] 		 Tagged ('$axis', '$simplified','$hidden')
+;
+
+DERIVE FIELDS FROM FIELDS [fiscyear] USING [r];
+///$tab Circles
+// Helper dimension for the circles in gauge
+// j in percent and i in radians 0-2 pi
+
+circle_segments: Load (RecNo()-1)/100*2*pi() as r, (RecNo()-1)/100 as rp autogenerate 101;
+///$tab Scatter Test - Feb 2023
+5:Load recno() as id5, rand() as x5, rand() as y5 autogenerate 5000;
+10:Load recno() as id10, rand() as x10, rand() as y10 autogenerate 10000;
+///$tab More lines test data - May 2023
+morelines: load rowno() as id, rand() as val AutoGenerate 5000;
+morecats: load rowno() as cat AutoGenerate 10;
