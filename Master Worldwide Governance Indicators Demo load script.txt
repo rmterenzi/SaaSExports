@@ -1,12 +1,40 @@
-///$tab Main
+///$tab **Read Me**
+/*
+
+██╗░░░██╗██╗███████╗██╗░░░░░██╗██████╗░  ██████╗░███████╗███╗░░░███╗░█████╗░  ░█████╗░██████╗░██████╗░
+██║░░░██║██║╚════██║██║░░░░░██║██╔══██╗  ██╔══██╗██╔════╝████╗░████║██╔══██╗  ██╔══██╗██╔══██╗██╔══██╗
+╚██╗░██╔╝██║░░███╔═╝██║░░░░░██║██████╦╝  ██║░░██║█████╗░░██╔████╔██║██║░░██║  ███████║██████╔╝██████╔╝
+░╚████╔╝░██║██╔══╝░░██║░░░░░██║██╔══██╗  ██║░░██║██╔══╝░░██║╚██╔╝██║██║░░██║  ██╔══██║██╔═══╝░██╔═══╝░
+░░╚██╔╝░░██║███████╗███████╗██║██████╦╝  ██████╔╝███████╗██║░╚═╝░██║╚█████╔╝  ██║░░██║██║░░░░░██║░░░░░
+░░░╚═╝░░░╚═╝╚══════╝╚══════╝╚═╝╚═════╝░  ╚═════╝░╚══════╝╚═╝░░░░░╚═╝░╚════╝░  ╚═╝░░╚═╝╚═╝░░░░░╚═╝░░░░░
+
+
+---- App 1 of 2 ----
+
+In this Vizlib Demo App you MUST also upload the other .qvf to your Qlik server.
+
+The on the next section in the DLE you will find "binary [lib://fileName (owner)/12345678-1234-abcd-abcd-1a2b3c4d5e6f];".
+	This is the connection to the data in the other app.
+	Replace the placeholder information with the app's location to use this Demo App to it's full potential. 
+    	Equally, you can watch the Vizlib Webinar "Data Storytelling - The final ChAPPter" to understand how this works...
+    	...or, watch the Webinar explaining how to use the Vizlib Demo Apps where we cover how to use this app as well as others.
+    
+Also, uncomment the entire section of ***Uncomment this area***
+*/
+///$tab Main & BInary Connection
+//Your app section goes here
+//binary [lib://fileName (owner)/12345678-1234-abcd-abcd-1a2b3c4d5e6f];
+
+//@luke remember to update this :point-up:
+
 SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
 SET MoneyFormat='$#,##0.00;-$#,##0.00';
-SET TimeFormat='hh:mm:ss TT';
-SET DateFormat='YYYY/MM/DD';
-SET TimestampFormat='YYYY/MM/DD hh:mm:ss[.fff] TT';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
 SET FirstWeekDay=6;
 SET BrokenWeeks=1;
 SET ReferenceDay=0;
@@ -19,8 +47,10 @@ SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
 SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
 
-///$tab Auto-generated section
-Set dataManagerTables = '','capital-project-detail-data-milestones-1';
+
+
+///$tab Books
+Set dataManagerTables = '','Book_Dataset_1';
 //This block renames script tables from non generated section which conflict with the names of managed tables
 
 For each name in $(dataManagerTables) 
@@ -43,107 +73,360 @@ Set dataManagerTables = ;
 
 Unqualify *;
 
-[capital-project-detail-data-milestones-1]:
+[Book_Dataset_1]:
 LOAD
-	Date(Date#([PUB_DATE], 'YYYYMMDD') ) AS [PUB_DATE],
-	[BORO],
-	[MANAGING_AGCY_CD],
-	[MANAGING_AGCY],
-	[PROJECT_ID],
-	[PROJECT_DESCR],
-	[SEQ_NUMBER],
-	[TASK_DESCRIPTION],
-	Timestamp([ORIG_START_DATE] ) AS [ORIG_START_DATE],
-	Timestamp([ORIG_END_DATE] ) AS [ORIG_END_DATE],
-	Timestamp([TASK_START_DATE] ) AS [TASK_START_DATE],
-	Timestamp([TASK_END_DATE] ) AS [TASK_END_DATE]
- FROM [lib://AttachedFiles/capital-project-detail-data-milestones-1.csv]
-(txt, codepage is 28591, embedded labels, delimiter is ',', msq);
-///$tab Sample Data
-BarChartURL:
-LOAD * INLINE [
-	BORO		,	CODE	,	MEASURE	,	URL
-	MANHATTAN	,	47B750	,	7500	,	https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_New_York_City.svg/640px-Flag_of_New_York_City.svg.png
-	BROOKLYN	,	3BA9E5	,	2000	,	https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Flag_of_Brooklyn%2C_New_York.svg/2560px-Flag_of_Brooklyn%2C_New_York.svg.png
-	QUEENS		,	CE2960	,	2500	,	https://imgs.6sqft.com/wp-content/uploads/2017/06/14120117/Queens-borough-flag.png
-	BRONX		,	F5F5F5	,	1500	,	https://imgs.6sqft.com/wp-content/uploads/2017/06/14114659/Bronx-borough-flag.png
-	CITYWIDE	,	76767	,	3000	,	https://upload.wikimedia.org/wikipedia/commons/c/c0/Flag_of_New_York_City%2C_New_York_%281915%E2%80%931977%29.png
-	RICHMOND	,	7B7B7B	,	6000	,	https://www.crwflags.com/fotw/images/u/us-ny-si1-l.gif
-];
+	[Title]										AS [Book_Title],
+	[Category]									AS [Book_Category],
+	num([Price] * 0.80, '#0.00') 				AS [Price_Before_Tax],
+	num([Price_After_Tax], '#0.00') 			AS [Price_After_Tax],
+	[Tax_amount]								AS [Book_Tax_amount],
+	[Avilability]								AS [Book_Avilability],
+	[Book_Description]							AS [Book_Book_Description],
+	[Image_Link]								AS [Book_Image_Link],
+	[Stars]										AS [Book_Stars],
+    Date(RAND()*12/RAND()*30/RAND()*2000)		AS [BOOK_Year]
+ FROM [lib://AttachedFiles/Book_Dataset_1.csv]
+(txt, utf8, embedded labels, delimiter is ',', msq);
+
+///$tab Aircraft
+Set dataManagerTables = '','Sheet1','Formatted for export';
+//This block renames script tables from non generated section which conflict with the names of managed tables
+
+For each name in $(dataManagerTables) 
+    Let index = 0;
+    Let currentName = name; 
+    Let tableNumber = TableNumber(name); 
+    Let matches = 0; 
+    Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
+        index = index + 1; 
+        currentName = name & '-' & index; 
+        tableNumber = TableNumber(currentName) 
+        matches = Match('$(currentName)', $(dataManagerTables));
+    Loop 
+    If index > 0 then 
+            Rename Table '$(name)' to '$(currentName)'; 
+    EndIf; 
+Next; 
+Set dataManagerTables = ;
 
 
-ExampleShowcase:
-LOAD * INLINE [
-    BORO        ,   PROJECT                 ,   TICKET_STATUS_DIMENSION     ,   PREDICTED_PROJECT_COST  ,   CURRENT_PROJECT_COST    ,   SPI     ,   CPI     ,   PV      ,   EV        ,   DAYS ,   CURRENT_DAYS   ,   EFFECTIVENESS   ,   PM   ,   2022/01/01   ,   2022/01/08   ,   2022/01/15   ,   2022/01/22   ,   2022/01/29   ,   2022/02/05   ,   2022/02/12   ,   2022/02/19   ,   2022/02/25   ,   2022/03/04   ,   2022/03/11   ,   2022/03/18   ,   2022/03/25   ,   2022/04/01   ,   2022/04/08   ,
-    MANHATTAN   ,   NEW YORK LIBRARY        ,   IMPLEMENTING                ,   95500                   ,   60000                   ,   0.75    ,   0.68    ,   45000   ,   40000     ,   14   ,   9              ,   75              ,   SJ   ,   65           ,   75           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    MANHATTAN   ,   FIRE DEPARTMENT         ,   IMPLEMENTING                ,   20000                   ,   5000                    ,   1.05    ,   0.98    ,   65000   ,   71500     ,   14   ,   2              ,   85              ,   PP   ,   85           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    MANHATTAN   ,   POLICE DEPARTMENT       ,   IMPLEMENTING                ,   67500                   ,   35000                   ,   0.56    ,   0.40    ,   54000   ,   75000     ,   14   ,   16             ,   25              ,   PP   ,   65           ,   35           ,   25           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    BROOKLYN    ,   STREET REPAIR           ,   EVALUATING                  ,   43000                   ,   6000                    ,   0.45    ,   0.39    ,   20000   ,   18500     ,   30   ,   3              ,   80              ,   LT   ,   80           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    BROOKLYN    ,   AMBULANCE DEPARTMENT    ,   IMPLEMENTING                ,   73000                   ,   75000                   ,   0.62    ,   0.60    ,   36000   ,   30000     ,   7    ,   5              ,   90              ,   FN   ,   90           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    QUEENS      ,   CHILDERN SERVICES       ,   COMPLETED                   ,   87500                   ,   80500                   ,   0.49    ,   0.50    ,   87000   ,   84500     ,   14   ,   14             ,   80              ,   KZ   ,   90           ,   80           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    QUEENS      ,   PARENTING SERVICES      ,   EVALUATING                  ,   25500                   ,   3000                    ,   0.98    ,   0.99    ,   12500   ,   35000     ,   7    ,   14             ,   5               ,   BG   ,   40           ,   5            ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    BRONX       ,   LAW DEPARTMENT          ,   EVALUATING                  ,   25000                   ,   2000                    ,   0.45    ,   0.42    ,   35500   ,   36500     ,   21   ,   7              ,   25              ,   VL   ,   25           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    BRONX       ,   CITY UNIVERSITY         ,   IMPLEMENTING                ,   10000                   ,   8000                    ,   0.28    ,   0.48    ,   40000   ,   40500     ,   14   ,   13             ,   85              ,   AS   ,   35           ,   85           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    BRONX       ,   CITY ELEMENTARY         ,   COMPLETED                   ,   45000                   ,   50000                   ,   0.77    ,   0.97    ,   49500   ,   39500     ,   21   ,   19             ,   95              ,   MM   ,   75           ,   90           ,   95           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    CITYWIDE    ,   ZOO RENOVATIONS         ,   IMPLEMENTING                ,   90000                   ,   82500                   ,   0.75    ,   0.79    ,   12000   ,   11500     ,   7    ,   5              ,   65              ,   BS   ,   65           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    CITYWIDE    ,   LIBRARY RENOVATIONS     ,   EVALUATING                  ,   100000                  ,   2500                    ,   0.55    ,   0.50    ,   50000   ,   50500     ,   7    ,   1              ,   90              ,   DN   ,   90           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    CITYWIDE    ,   GARBAGE DEPARTMENT      ,   COMPLETED                   ,   30500                   ,   30000                   ,   0.50    ,   0.46    ,   40500   ,   41500     ,   7    ,   8              ,   60              ,   SS   ,   65           ,   60           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    CITYWIDE    ,   TIME SQUARE ELECTRICS   ,   EVALUATING                  ,   43000                   ,   500                     ,   1.02    ,   0.95    ,   14500   ,   15500     ,   14   ,   7              ,   15              ,   SS   ,   15           ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,                ,
-    RICHMOND    ,   TRANSPORT RENOVATIONS   ,   COMPLETED                   ,   50000                   ,   40000                   ,   1.00    ,   0.90    ,   10000   ,   10000     ,   60   ,   72             ,   45              ,   QV   ,   50           ,   60           ,   65           ,   60           ,   40           ,   35           ,   35           ,   40           ,   45           ,   50           ,   45           ,                ,                ,                ,                ,
-    RICHMOND    ,   ENGINEERING PROJECT     ,   COMPLETED                   ,   60500                   ,   30000                   ,   0.50    ,   0.74    ,   15000   ,   15500     ,   90   ,   105            ,   75              ,   QS   ,   70           ,   45           ,   55           ,   35           ,   50           ,   45           ,   75           ,   80           ,   80           ,   80           ,   65           ,    55          ,   70           ,   75           ,   75           ,
-];
+Unqualify *;
+
+__countryAliasesBase:
+LOAD
+	Alias AS [__Country],
+	ISO3Code AS [__ISO3Code]
+FROM [lib://AttachedFiles/countryAliases.qvd]
+(qvd);
+
+__countryGeoBase:
+LOAD
+	ISO3Code AS [__ISO3Code],
+	ISO2Code AS [__ISO2Code],
+	Polygon AS [__Polygon]
+FROM [lib://AttachedFiles/countryGeo.qvd]
+(qvd);
+
+__countryName2IsoThree:
+MAPPING LOAD
+	__Country,
+	__ISO3Code
+RESIDENT __countryAliasesBase;
+
+__countryCodeIsoThree2Polygon:
+MAPPING LOAD
+	__ISO3Code,
+	__Polygon
+RESIDENT __countryGeoBase;
+
+[Sheet1]:
+LOAD
+	[Name]					AS [Aircraft_Name],
+	[PrimaryRole]			AS [Aircraft_PrimaryRole],
+	[Manufacturer]			AS [Aircraft_Manufacturer],
+	[Number]				AS [Aircraft_Number],
+	Date([ActiveSince] ) 	AS [Aircraft_ActiveSince],
+	Date([LastBuilt] )		AS [Aircraft_LastBuilt],
+	Date([Retired] ) 		AS [Aircraft_Retired],
+	[State]					AS [Aircraft_State],
+	[Crew]					AS [Aircraft_Crew],
+	[Length]				AS [Aircraft_Length],
+	[Wingspan]				AS [Aircraft_Wingspan],
+	[Height]				AS [Aircraft_Height],
+	[WingArea]				AS [Aircraft_WingArea],
+	[MaxSpeed]				AS [Aircraft_MaxSpeed],
+	[Image URL]				AS [Aircraft_Image URL],
+	[ww2aircraft.Country]	AS [Aircraft_ww2aircraft.Country],
+	APPLYMAP( '__countryCodeIsoThree2Polygon', APPLYMAP( '__countryName2IsoThree', LOWER([ww2aircraft.Country])), '-') AS [Aircraft_Sheet1.ww2aircraft.Country_GeoInfo]
+ FROM [lib://AttachedFiles/48ef4bb1-34d0-4f8b-bc16-e895c4aefc1d.xlsx]
+(ooxml, embedded labels, table is Sheet1);
+
+[Formatted for export]:
+LOAD
+	[Action],
+	[URL],
+	[Theme]
+ FROM [lib://AttachedFiles/Vizlib Actions - Theme.xlsx]
+(ooxml, embedded labels, table is [Formatted for export]);
 
 
-ExampleDate:
-LOAD * INLINE [
-    PROJECT_DATE            ,   DATE_DATE    ,   MEASURE_DATE
-    NEW YORK LIBRARY        ,   2022/01/01   ,   65
-    NEW YORK LIBRARY        ,   2022/01/08   ,   75
-    FIRE DEPARTMENT         ,   2022/01/01   ,   85
-    POLICE DEPARTMENT       ,   2022/01/01   ,   65
-    POLICE DEPARTMENT       ,   2022/01/08   ,   35
-    POLICE DEPARTMENT       ,   2022/01/15   ,   25
-    STREET REPAIR           ,   2022/01/01   ,   80
-    AMBULANCE DEPARTMENT    ,   2022/01/01   ,   90
-    CHILDERN SERVICES       ,   2022/01/01   ,   90
-    CHILDERN SERVICES       ,   2022/01/08   ,   80
-    PARENTING SERVICES      ,   2022/01/01   ,   40
-    PARENTING SERVICES      ,   2022/01/08   ,   5 
-    LAW DEPARTMENT          ,   2022/01/01   ,   25
-    CITY UNIVERSITY         ,   2022/01/01   ,   35
-    CITY UNIVERSITY         ,   2022/01/01   ,   85
-    CITY ELEMENTARY         ,   2022/01/01   ,   75
-    CITY ELEMENTARY         ,   2022/01/08   ,   90
-    CITY ELEMENTARY         ,   2022/01/15   ,   95
-    ZOO RENOVATIONS         ,   2022/01/01   ,   65
-    LIBRARY RENOVATIONS     ,   2022/01/01   ,   90
-    GARBAGE DEPARTMENT      ,   2022/01/01   ,   65
-    GARBAGE DEPARTMENT      ,   2022/01/08   ,   60
-    TIME SQUARE ELECTRICS   ,   2022/01/01   ,   15
-    TRANSPORT RENOVATIONS   ,   2022/01/01   ,   50
-    TRANSPORT RENOVATIONS   ,   2022/01/08   ,   60
-    TRANSPORT RENOVATIONS   ,   2022/01/15   ,   65
-    TRANSPORT RENOVATIONS   ,   2022/01/22   ,   60
-    TRANSPORT RENOVATIONS   ,   2022/01/29   ,   40
-    TRANSPORT RENOVATIONS   ,   2022/02/05   ,   35
-    TRANSPORT RENOVATIONS   ,   2022/02/12   ,   35
-    TRANSPORT RENOVATIONS   ,   2022/02/19   ,   40
-    TRANSPORT RENOVATIONS   ,   2022/02/25   ,   45
-    TRANSPORT RENOVATIONS   ,   2022/03/04   ,   50
-    TRANSPORT RENOVATIONS   ,   2022/03/04   ,   45
-    ENGINEERING PROJECT     ,   2022/01/01   ,   70
-    ENGINEERING PROJECT     ,   2022/01/08   ,   45
-    ENGINEERING PROJECT     ,   2022/01/15   ,   55
-    ENGINEERING PROJECT     ,   2022/01/22   ,   35
-    ENGINEERING PROJECT     ,   2022/01/29   ,   50
-    ENGINEERING PROJECT     ,   2022/02/05   ,   45
-    ENGINEERING PROJECT     ,   2022/02/12   ,   75
-    ENGINEERING PROJECT     ,   2022/02/19   ,   90
-    ENGINEERING PROJECT     ,   2022/02/25   ,   90
-    ENGINEERING PROJECT     ,   2022/03/04   ,   90
-    ENGINEERING PROJECT     ,   2022/03/11   ,   65
-    ENGINEERING PROJECT     ,   2022/03/18   ,   55
-    ENGINEERING PROJECT     ,   2022/03/25   ,   70
-    ENGINEERING PROJECT     ,   2022/04/01   ,   75
-    ENGINEERING PROJECT     ,   2022/04/08   ,   75
-];
+
+TAG FIELD [ww2aircraft.Country] WITH '$geoname', '$relates_Sheet1.ww2aircraft.Country_GeoInfo';
+TAG FIELD [Sheet1.ww2aircraft.Country_GeoInfo] WITH '$geopolygon', '$hidden', '$relates_ww2aircraft.Country';
+
+DROP TABLES __countryAliasesBase, __countryGeoBase;
+[autoCalendar]: 
+  DECLARE FIELD DEFINITION Tagged ('$date')
+FIELDS
+  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter', '$cyclic'),
+  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$yearquarter', '$qualified'),
+  Dual('Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [_YearQuarter] Tagged ('$yearquarter', '$hidden', '$simplified'),
+  Month($1) AS [Month] Tagged ('$month', '$cyclic'),
+  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth', '$qualified'),
+  Dual(Month($1), monthstart($1)) AS [_YearMonth] Tagged ('$axis', '$yearmonth', '$simplified', '$hidden'),
+  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber', '$cyclic'),
+  Date(Floor($1)) AS [Date] Tagged ('$axis', '$date', '$qualified'),
+  Date(Floor($1), 'D') AS [_Date] Tagged ('$axis', '$date', '$hidden', '$simplified'),
+  If (DayNumberOfYear($1) <= DayNumberOfYear(Today()), 1, 0) AS [InYTD] ,
+  Year(Today())-Year($1) AS [YearsAgo] ,
+  If (DayNumberOfQuarter($1) <= DayNumberOfQuarter(Today()),1,0) AS [InQTD] ,
+  4*Year(Today())+Ceil(Month(Today())/3)-4*Year($1)-Ceil(Month($1)/3) AS [QuartersAgo] ,
+  Ceil(Month(Today())/3)-Ceil(Month($1)/3) AS [QuarterRelNo] ,
+  If(Day($1)<=Day(Today()),1,0) AS [InMTD] ,
+  12*Year(Today())+Month(Today())-12*Year($1)-Month($1) AS [MonthsAgo] ,
+  Month(Today())-Month($1) AS [MonthRelNo] ,
+  If(WeekDay($1)<=WeekDay(Today()),1,0) AS [InWTD] ,
+  (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
+  Week(Today())-Week($1) AS [WeekRelNo] ;
+
+DERIVE FIELDS FROM FIELDS [ActiveSince], [LastBuilt], [Retired] USING [autoCalendar] ;
+///$tab ***Uncomment this area***
+// Unqualify *;
+
+// __countryAliasesBase:
+// LOAD
+// 	Alias AS [__Country],
+// 	ISO3Code AS [__ISO3Code]
+// FROM [lib://AttachedFiles/countryAliases.qvd]
+// (qvd);
+
+// __countryGeoBase:
+// LOAD
+// 	ISO3Code AS [__ISO3Code],
+// 	ISO2Code AS [__ISO2Code],
+// 	Polygon AS [__Polygon]
+// FROM [lib://AttachedFiles/countryGeo.qvd]
+// (qvd);
+
+// __countryName2IsoThree:
+// MAPPING LOAD
+// 	__Country,
+// 	__ISO3Code
+// RESIDENT __countryAliasesBase;
+
+// __countryCodeIsoThree2Polygon:
+// MAPPING LOAD
+// 	__ISO3Code,
+// 	__Polygon
+// RESIDENT __countryGeoBase;
+
+// [Rail_Equipment_Accident_Incident_Data_temp_e6b8d891-248e-f782-75e6-26eecf67]:
+// LOAD
+// 	[Reporting_Railroad_Code],
+// 	[Reporting_Railroad_Name],
+// 	[Report_Year],
+// 	[Accident_Number],
+// 	[PDF_Link],
+// 	[Accident_Year],
+// 	[Accident_Month],
+// 	[Other_Railroad_Code],
+// 	[Other_Railroad_Name],
+// 	[Other_Accident_Number],
+// 	[Other_Accident_Year],
+// 	[Other_Accident_Month],
+// 	[Maintenance_Railroad_Code],
+// 	[Maintenance_Railroad_Name],
+// 	[Maintenance_Accident_Number],
+// 	[Maintenance_Accident_Year],
+// 	[Maintenance_Accident_Month],
+// 	[Grade_Crossing_ID],
+// 	[Day],
+// 	Date(Date#([Date], 'MM/DD/YYYY') ) AS [Date],
+// 	[Time],
+// 	[Accident_Type_Code],
+// 	[Accident_Type],
+// 	[Hazmat_Cars],
+// 	[Hazmat_Cars_Damaged],
+// 	[Hazmat_Released_Cars],
+// 	[Persons_Evacuated],
+// 	[Subdivision],
+// 	[Division_Code],
+// 	[Division],
+// 	[Station],
+// 	[Milepost],
+// 	[State_Code],
+// 	[State_Abbreviation],
+// 	[State_Name],
+// 	[County_Code],
+// 	[County_Name],
+// 	[District],
+// 	[Temperature],
+// 	[Visibility_Code],
+// 	[Visibility],
+// 	[Weather_Condition_Code],
+// 	[Weather_Condition],
+// 	[Track_Type_Code],
+// 	[Track_Type],
+// 	[Track_Name],
+// 	[Track_Class],
+// 	[Track_Density],
+// 	[Train_Direction_Code],
+// 	[Train_Direction],
+// 	[Equipment_Type_Code],
+// 	[Equipment_Type],
+// 	[Equipment_Attended],
+// 	[Train_Number],
+// 	[Train_Speed],
+// 	[Recorded_Estimated_Speed],
+// 	[Maximum_Speed],
+// 	[Gross_Tonnage],
+// 	[Signalization_Code],
+// 	[Signalization],
+// 	[Method_of_Operation_Code],
+// 	[Method_of_Operation],
+// 	[Adjunct_Code_1],
+// 	[Adjunct_Code_Name_1],
+// 	[Adjunct_Code_2],
+// 	[Adjunct_Code_Name_2],
+// 	[Adjunct_Code_3],
+// 	[Adjunct_Code_Name_3],
+// 	[Remote_Control_Locomotive_Code],
+// 	[Remote_Control_Locomotive],
+// 	[First_Car_Initials],
+// 	[First_Car_Number],
+// 	[First_Car_Position],
+// 	[First_Car_Loaded],
+// 	[Causing_Car_Initials],
+// 	[Causing_Car_Number],
+// 	[Causing_Car_Position],
+// 	[Causing_Car_Loaded],
+// 	[Positive_Alcohol_Tests],
+// 	[Positive_Drug_Tests],
+// 	[Passengers_Transported],
+// 	[Head_End_Locomotives],
+// 	[Mid_Train_Manual_Locomotives],
+// 	[Mid_Train_Remote_Locomotives],
+// 	[Rear_End_Manual_Locomotives],
+// 	[Rear_End_Remote_Locomotives],
+// 	[Derailed_Head_End_Locomotives],
+// 	[Derailed_Mid_Train_Manual_Locomotives],
+// 	[Derailed_Mid_Train_Remote_Locomotives],
+// 	[Derailed_Rear_End_Manual_Locomotives],
+// 	[Derailed_Rear_End_Remote_Locomotives],
+// 	[Loaded_Freight_Cars],
+// 	[Loaded_Passenger_Cars],
+// 	[Empty_Freight_Cars],
+// 	[Empty_Passenger_Cars],
+// 	[Cabooses],
+// 	[Derailed_Loaded_Freight_Cars],
+// 	[Derailed_Loaded_Passenger_Cars],
+// 	[Derailed_Empty_Freight_Cars],
+// 	[Derailed_Empty_Passenger_Cars],
+// 	[Derailed_Cabooses],
+// 	[Equipment_Damage_Cost],
+// 	[Track_Damage_Cost],
+// 	[Total_Damage_Cost],
+// 	[Primary_Accident_Cause_Code],
+// 	[Primary_Accident_Cause],
+// 	[Contributing_Accident_Cause_Code],
+// 	[Contributing_Accident_Cause],
+// 	[Accident_Cause_Code],
+// 	[Accident_Cause],
+// 	[Engineers_On_Duty],
+// 	[Firemen_On_Duty],
+// 	[Conductors_On_Duty],
+// 	[Brakemen_On_Duty],
+// 	[Hours_Engineers_On_Duty],
+// 	[Minutes_Engineers_On_Duty],
+// 	[Hours_Conductors_On_Duty],
+// 	[Minutes_Conductors_On_Duty],
+// 	[Railroad_Employees_Killed],
+// 	[Railroad_Employees_Injured],
+// 	[Passengers_Killed],
+// 	[Passengers_Injured],
+// 	[Others_Killed],
+// 	[Others_Injured],
+// 	[Persons_Killed_For_Reporting_Railroad],
+// 	[Persons_Injured_For_Reporting_Railroad],
+// 	[Total_Persons_Killed],
+// 	[Total_Persons_Injured],
+// 	[Total_Killed_Form_54],
+// 	[Total_Injured_Form_54],
+// 	[Special_Study_1],
+// 	[Special_Study_2],
+// 	[Latitude],
+// 	[Longitude],
+// 	[Narrative],
+// 	[Joint_Track_Type],
+// 	[Joint_Track_Class],
+// 	[Class_Code],
+// 	[Class],
+// 	[Joint_CD],
+// 	[Incident_Key],
+// 	[Report_Key],
+// 	[Reporting_Railroad_Company_Grouping],
+// 	[Reporting_Railroad_Class],
+// 	[Reporting_Railroad_SMT_Grouping],
+// 	[Reporting_Parent_Railroad_Company_Code],
+// 	[Reporting_Parent_Railroad_Company_Name],
+// 	[Reporting_Railroad_Holding_Company],
+// 	[Other_Railroad_Company_Grouping],
+// 	[Other_Railroad_Class],
+// 	[Other_Railroad_SMT_Grouping],
+// 	[Other_Parent_Railroad_Company_Code],
+// 	[Other_Parent_Railroad_Company_Name],
+// 	[Other_Railroad_Holding_Company],
+// 	[Maintenance_Railroad_Company_Grouping],
+// 	[Maintenance_Railroad_Class],
+// 	[Maintenance_Railroad_SMT_Grouping],
+// 	[Maintenance_Parent_Railroad_Company_Code],
+// 	[Maintenance_Parent_Railroad_Company_Name],
+// 	[Maintenance_Railroad_Holding_Company],
+// 	'-' AS [Extra_61d2f18b-5b03-37d6-5a56-bbefe8e2]
+// RESIDENT [Rail_Equipment_Accident_Incident_Data];
+// DROP TABLE [Rail_Equipment_Accident_Incident_Data];
+// DROP FIELD [Extra_61d2f18b-5b03-37d6-5a56-bbefe8e2];
+
+// [Sheet1_temp_cda6766b-e09b-3ade-f093-c1682974]:
+// LOAD
+// 	[Aircraft_Name],
+// 	[Aircraft_PrimaryRole],
+// 	[Aircraft_Manufacturer],
+// 	[Aircraft_Number],
+// 	Date([Aircraft_ActiveSince] ) AS [Aircraft_ActiveSince],
+// 	Date([Aircraft_LastBuilt] ) AS [Aircraft_LastBuilt],
+// 	Date([Aircraft_Retired] ) AS [Aircraft_Retired],
+// 	[Aircraft_State],
+// 	[Aircraft_Crew],
+// 	[Aircraft_Length],
+// 	[Aircraft_Wingspan],
+// 	[Aircraft_Height],
+// 	[Aircraft_WingArea],
+// 	[Aircraft_MaxSpeed],
+// 	[Aircraft_Image URL],
+// 	[Aircraft_ww2aircraft.Country],
+// 	[Aircraft_Sheet1.ww2aircraft.Country_GeoInfo],
+// 	APPLYMAP( '__countryCodeIsoThree2Polygon', APPLYMAP( '__countryName2IsoThree', LOWER([Aircraft_ww2aircraft.Country])), '-') AS [Sheet1.Aircraft_ww2aircraft.Country_GeoInfo]
+// RESIDENT [Sheet1];
+// DROP TABLE [Sheet1];
+
+
+
+// RENAME TABLE [Rail_Equipment_Accident_Incident_Data_temp_e6b8d891-248e-f782-75e6-26eecf67] to [Rail_Equipment_Accident_Incident_Data];
+
+// TAG FIELD [Aircraft_ww2aircraft.Country] WITH '$geoname', '$relates_Sheet1.Aircraft_ww2aircraft.Country_GeoInfo';
+// TAG FIELD [Sheet1.Aircraft_ww2aircraft.Country_GeoInfo] WITH '$geopolygon', '$hidden', '$relates_Aircraft_ww2aircraft.Country';RENAME TABLE [Sheet1_temp_cda6766b-e09b-3ade-f093-c1682974] to [Sheet1];
+
+// DROP TABLES __countryAliasesBase, __countryGeoBase;
+// DERIVE FIELDS FROM FIELDS [Date], [Aircraft_ActiveSince], [Aircraft_LastBuilt], [Aircraft_Retired] USING [autoCalendar] ;
