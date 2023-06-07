@@ -1,131 +1,130 @@
 
 SHEETS
-{"qInfo":{"qId":"KTSrjQx","qType":"sheet"},"qMeta":{"title":"Product Profile","description":"Drill into market share and brand-loyalty by Product, HCP, Decile Category and Rx Metric.","createdDate":"2023-06-07T13:00:53.107Z","modifiedDate":"2023-06-07T13:00:53.107Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"KTSrjQx","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"hGpjfT","qType":"sheet"},"qMeta":{"title":"Qlik Brands Performance","description":"Compare market share and trends for the Qlik Branded product against competitors by: HCP, Decile Category, Market and Product.","createdDate":"2023-06-07T13:00:53.151Z","modifiedDate":"2023-06-07T13:00:53.151Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"hGpjfT","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"XVTNaf","qType":"sheet"},"qMeta":{"title":"Prescriber Profile","description":"Define territory engagement strategy by understanding geo-concentration and which HCP\u2019s drive the majority of prescription volume. Drill into HCP engagement-level and compare with Rx performance.","createdDate":"2023-06-07T13:00:53.218Z","modifiedDate":"2023-06-07T13:00:53.218Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"XVTNaf","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"5a9a72bc-3301-4788-b906-21b5a2f1a6cc","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"5a9a72bc-3301-4788-b906-21b5a2f1a6cc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.001Z","modifiedDate":"2023-06-07T12:57:28.105Z","publishTime":"2023-06-07T12:57:28.105Z","published":true,"privileges":["read","publish","change_owner"],"title":"Reporting","description":"Pivot Table showing row level details of fires which can be expanded and interacted with."},"qData":[]}
+{"qInfo":{"qId":"71a00f94-6f30-4007-8fc6-54702b64b77e","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"71a00f94-6f30-4007-8fc6-54702b64b77e","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.003Z","modifiedDate":"2023-06-07T12:57:26.493Z","publishTime":"2023-06-07T12:57:26.493Z","published":true,"privileges":["read","publish","change_owner"],"title":"Heatmap + Animator","description":"Show the fire count or density over each year using Qlik GeoAnalytics Animator layer. Apply province\/year\/decade\/cause filters to see specific details animated over time."},"qData":[]}
+{"qInfo":{"qId":"7b4e3139-c444-429b-948d-689132c92a87","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"7b4e3139-c444-429b-948d-689132c92a87","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.005Z","modifiedDate":"2023-06-07T12:57:25.002Z","publishTime":"2023-06-07T12:57:25.002Z","published":true,"privileges":["read","publish","change_owner"],"title":"Bin Cluster -> Point Drill Down","description":"Clustered bins colored by either fire count or damage. Each bin can be clicked on to drill into the actual fire location points."},"qData":[]}
+{"qInfo":{"qId":"04fafec4-9e50-438e-b9c1-fae783dab0c7","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"04fafec4-9e50-438e-b9c1-fae783dab0c7","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:00.989Z","modifiedDate":"2023-06-07T12:57:23.398Z","publishTime":"2023-06-07T12:57:23.398Z","published":true,"privileges":["read","publish","change_owner"],"title":"Analysis","description":"Deeper analysis showing which months report the most number of fires vs which months report the most damaging ones as well as the outliers. Included in this sheet is a heat map which can be toggled between fire count or damage."},"qData":[]}
+{"qInfo":{"qId":"ccdeca99-7e2d-4e0c-aa00-97e9c9214c77","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"ccdeca99-7e2d-4e0c-aa00-97e9c9214c77","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.012Z","modifiedDate":"2023-06-07T12:57:21.714Z","publishTime":"2023-06-07T12:57:21.714Z","published":true,"privileges":["read","publish","change_owner"],"title":"Dashboard","description":"Dashboard containing high level summary of fire count and damage size by province, year, decade, cause as well as a cluster map showing the count vs damage breakdown."},"qData":[]}
+{"qInfo":{"qId":"40d2f7a1-ff9e-439f-834e-39802ab57db8","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"40d2f7a1-ff9e-439f-834e-39802ab57db8","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.000Z","modifiedDate":"2023-06-07T12:57:19.987Z","publishTime":"2023-06-07T12:57:19.987Z","published":true,"privileges":["read","publish","change_owner"],"title":"Introduction","description":"Data is provided by the Canadian National Fire Database (CNFDB) and is a collection of forest fire locations and fire perimeters as provided by Canadian fire management agencies including provinces, territories, and Parks Canada."},"qData":[]}
 
 OBJECTS ON SHEETS
-{"name":"sHYMqq","type":"com-qliktech-horizlist","col":13,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":54.166666666666664,"width":12.5,"height":8.333333333333332}}
-{"name":"CLHaJP","type":"com-qliktech-horizlist","col":10,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":41.66666666666667,"width":12.5,"height":8.333333333333332}}
-{"name":"JSyPEct","type":"table","col":0,"row":9,"colspan":7,"rowspan":3,"bounds":{"y":75,"x":0,"width":29.166666666666668,"height":25}}
-{"name":"wkmeuNq","type":"com-qliktech-horizlist","col":7,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":29.166666666666668,"width":12.5,"height":8.333333333333332}}
-{"name":"RUHpDLG","type":"filterpane","col":16,"row":0,"colspan":4,"rowspan":1,"bounds":{"y":0,"x":66.66666666666666,"width":16.666666666666664,"height":8.333333333333332}}
-{"name":"TyAKGPm","type":"piechart","col":0,"row":4,"colspan":7,"rowspan":5,"bounds":{"y":33.33333333333333,"x":0,"width":29.166666666666668,"height":41.66666666666667}}
-{"name":"rXufbv","type":"filterpane","col":20,"row":0,"colspan":4,"rowspan":1,"bounds":{"y":0,"x":83.33333333333334,"width":16.666666666666664,"height":8.333333333333332}}
-{"name":"UbPyGkf","type":"scatterplot","col":7,"row":1,"colspan":17,"rowspan":6,"bounds":{"y":8.333333333333332,"x":29.166666666666668,"width":70.83333333333334,"height":50}}
-{"name":"mqKce","type":"barchart","col":7,"row":7,"colspan":17,"rowspan":5,"bounds":{"y":58.333333333333336,"x":29.166666666666668,"width":70.83333333333334,"height":41.66666666666667}}
-{"name":"jmscx","type":"gauge","col":0,"row":0,"colspan":7,"rowspan":4,"bounds":{"y":0,"x":0,"width":29.166666666666668,"height":33.33333333333333}}
-{"name":"RKvbtL","type":"gauge","col":0,"row":1,"colspan":6,"rowspan":3,"bounds":{"y":8.333333333333332,"x":0,"width":25,"height":25}}
-{"name":"DbdCjH","type":"barchart","col":15,"row":0,"colspan":9,"rowspan":7,"bounds":{"y":0,"x":62.5,"width":37.5,"height":58.333333333333336}}
-{"name":"yJVyvV","type":"treemap","col":0,"row":4,"colspan":6,"rowspan":3,"bounds":{"y":33.33333333333333,"x":0,"width":25,"height":25}}
-{"name":"FjhBmZ","type":"scatterplot","col":6,"row":0,"colspan":9,"rowspan":7,"bounds":{"y":0,"x":25,"width":37.5,"height":58.333333333333336}}
-{"name":"hZvUc","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":12.5,"width":12.5,"height":8.333333333333332}}
-{"name":"NCmxT","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":0,"width":12.5,"height":8.333333333333332}}
-{"name":"RLjmFtK","type":"linechart","col":0,"row":7,"colspan":24,"rowspan":5,"bounds":{"y":58.333333333333336,"x":0,"width":100,"height":41.66666666666667}}
-{"name":"KncmCR","type":"table","col":9,"row":8,"colspan":15,"rowspan":4,"bounds":{"y":36.36363636363637,"x":37.5,"width":62.5,"height":18.181818181818183}}
-{"name":"QpUNuC","type":"com-qliktech-wordcloud","col":0,"row":0,"colspan":9,"rowspan":6,"bounds":{"x":0,"y":0,"width":37.5,"height":27.272727272727277}}
-{"name":"GyRR","type":"gridchart","col":9,"row":1,"colspan":15,"rowspan":7,"bounds":{"y":4.545454545454546,"x":37.5,"width":62.5,"height":31.818181818181817}}
-{"name":"NjG","type":"filterpane","col":18,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":75,"width":12.5,"height":4.545454545454546}}
-{"name":"UpzqPpN","type":"filterpane","col":21,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":87.5,"width":12.5,"height":4.545454545454546}}
-{"name":"hHnPZe","type":"filterpane","col":9,"row":0,"colspan":2,"rowspan":1,"bounds":{"y":0,"x":37.5,"width":8.333333333333332,"height":4.545454545454546}}
-{"name":"JmrdjvQ","type":"filterpane","col":11,"row":0,"colspan":2,"rowspan":1,"bounds":{"y":0,"x":45.83333333333333,"width":8.333333333333332,"height":4.545454545454546}}
-{"name":"GnbTzU","type":"filterpane","col":13,"row":0,"colspan":2,"rowspan":1,"bounds":{"y":0,"x":54.166666666666664,"width":8.333333333333332,"height":4.545454545454546}}
-{"name":"QuKznQ","type":"map","col":0,"row":6,"colspan":9,"rowspan":6,"bounds":{"x":0,"y":27.272727272727277,"width":37.5,"height":27.272727272727277}}
-{"name":"CNPdpkx","type":"combochart","col":9,"row":17,"colspan":15,"rowspan":5,"bounds":{"x":37.5,"y":77.27272727272727,"width":62.5,"height":22.727272727272727}}
-{"name":"kczYqp","type":"barchart","col":0,"row":12,"colspan":9,"rowspan":5,"bounds":{"x":0,"y":54.54545454545454,"width":37.5,"height":22.72727272727273}}
-{"name":"EPJeaG","type":"scatterplot","col":9,"row":12,"colspan":15,"rowspan":5,"bounds":{"x":37.5,"y":54.54545454545454,"width":62.5,"height":22.72727272727273}}
-{"name":"bPjaPer","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1,"bounds":{"y":0,"x":62.5,"width":12.5,"height":4.545454545454546}}
-{"name":"rsyT","type":"distributionplot","col":0,"row":17,"colspan":9,"rowspan":5,"bounds":{"x":0,"y":77.27272727272727,"width":37.5,"height":22.727272727272727}}
+{"name":"hrxEAXp","type":"pivot-table","col":0,"row":1,"colspan":24,"rowspan":11}
+{"name":"AzhDdJX","type":"filterpane","col":0,"row":0,"colspan":24,"rowspan":1}
+{"name":"pncuJKm","type":"ideviomap","col":3,"row":2,"colspan":20,"rowspan":10}
+{"name":"AakdbN","type":"idevioheatmaplayer","col":0,"row":11,"colspan":3,"rowspan":1}
+{"name":"AMzUGAQ","type":"idevioanimator","col":6,"row":0,"colspan":17,"rowspan":2}
+{"name":"GrpPRd","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"cvDTwh","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"bewxkV","type":"filterpane","col":0,"row":1,"colspan":3,"rowspan":1}
+{"name":"mXCGGJ","type":"filterpane","col":3,"row":1,"colspan":3,"rowspan":1}
+{"name":"jxmVgcr","type":"swr-sense-navigation","col":0,"row":2,"colspan":3,"rowspan":2}
+{"name":"xTkQNuN","type":"ideviomap","col":3,"row":2,"colspan":21,"rowspan":10}
+{"name":"FcCujA","type":"idevioarealayer","col":0,"row":10,"colspan":3,"rowspan":1}
+{"name":"kPEjfnc","type":"ideviobubblelayer","col":0,"row":11,"colspan":3,"rowspan":1}
+{"name":"uskjNz","type":"swr-sense-navigation","col":6,"row":0,"colspan":18,"rowspan":2}
+{"name":"TBnux","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"BvcGJj","type":"filterpane","col":0,"row":1,"colspan":3,"rowspan":1}
+{"name":"GjaLLbr","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"nwyyNmh","type":"filterpane","col":3,"row":1,"colspan":3,"rowspan":1}
+{"name":"FBnyeJ","type":"text-image","col":0,"row":2,"colspan":3,"rowspan":2}
+{"name":"Anmxcs","type":"combochart","col":4,"row":7,"colspan":10,"rowspan":5}
+{"name":"HeRsp","type":"scatterplot","col":14,"row":7,"colspan":10,"rowspan":5}
+{"name":"jNrkHf","type":"filterpane","col":2,"row":1,"colspan":2,"rowspan":1}
+{"name":"YGkYeb","type":"distributionplot","col":14,"row":2,"colspan":10,"rowspan":5}
+{"name":"jqsx","type":"filterpane","col":0,"row":0,"colspan":2,"rowspan":1}
+{"name":"upsGn","type":"filterpane","col":2,"row":0,"colspan":2,"rowspan":1}
+{"name":"unRT","type":"filterpane","col":0,"row":1,"colspan":2,"rowspan":1}
+{"name":"aehzK","type":"kpi","col":14,"row":0,"colspan":3,"rowspan":2}
+{"name":"PAaFwm","type":"kpi","col":4,"row":0,"colspan":3,"rowspan":2}
+{"name":"ZLWpezj","type":"kpi","col":7,"row":0,"colspan":7,"rowspan":2}
+{"name":"JFjpBG","type":"kpi","col":17,"row":0,"colspan":7,"rowspan":2}
+{"name":"PMPQdzg","type":"ideviomap","col":4,"row":2,"colspan":10,"rowspan":5}
+{"name":"BHmjG","type":"treemap","col":0,"row":4,"colspan":4,"rowspan":7}
+{"name":"jRHZcS","type":"idevioheatmaplayer","col":0,"row":11,"colspan":4,"rowspan":1}
+{"name":"gnRNnBJ","type":"swr-sense-navigation","col":0,"row":2,"colspan":4,"rowspan":2}
+{"name":"zAma","type":"ideviomap","col":7,"row":2,"colspan":11,"rowspan":5}
+{"name":"wnxLE","type":"ideviobubblelayer","col":0,"row":11,"colspan":3,"rowspan":1}
+{"name":"NvGEVB","type":"ideviobubblelayer","col":4,"row":11,"colspan":3,"rowspan":1}
+{"name":"Ushc","type":"linechart","col":7,"row":7,"colspan":17,"rowspan":5}
+{"name":"eZJxV","type":"kpi","col":18,"row":0,"colspan":6,"rowspan":2}
+{"name":"XMrqbWx","type":"barchart","col":0,"row":4,"colspan":7,"rowspan":7}
+{"name":"wMDPW","type":"kpi","col":6,"row":0,"colspan":3,"rowspan":2}
+{"name":"WFJLRSJ","type":"kpi","col":12,"row":0,"colspan":3,"rowspan":2}
+{"name":"DsrPF","type":"kpi","col":9,"row":0,"colspan":3,"rowspan":2}
+{"name":"mzmDpH","type":"kpi","col":15,"row":0,"colspan":3,"rowspan":2}
+{"name":"ETEyKWn","type":"piechart","col":18,"row":2,"colspan":6,"rowspan":5}
+{"name":"SfUjzPP","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"hkZJUqG","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"zZSbds","type":"filterpane","col":0,"row":1,"colspan":3,"rowspan":1}
+{"name":"SdUbVwe","type":"filterpane","col":3,"row":1,"colspan":3,"rowspan":1}
+{"name":"VBghE","type":"swr-sense-navigation","col":0,"row":2,"colspan":7,"rowspan":2}
+{"name":"ReHeDG","type":"text-image","col":0,"row":0,"colspan":5,"rowspan":3}
+{"name":"FdPvH","type":"text-image","col":5,"row":0,"colspan":15,"rowspan":12}
+{"name":"teZJDPk","type":"text-image","col":0,"row":3,"colspan":5,"rowspan":3}
+{"name":"KXQgP","type":"text-image","col":0,"row":6,"colspan":5,"rowspan":3}
+{"name":"yRFpdP","type":"text-image","col":0,"row":9,"colspan":5,"rowspan":3}
 
 DIMENSIONS
-{"qInfo":{"qId":"uVmnrU","qType":"dimension"},"qMeta":{"title":"Qlik Brands","description":"","createdDate":"2023-06-07T13:00:53.139Z","modifiedDate":"2023-06-07T13:00:53.139Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"dimension","id":"uVmnrU","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"hdBTC","qType":"dimension"},"qMeta":{"title":"Year > Month","description":"","createdDate":"2023-06-07T13:00:53.152Z","modifiedDate":"2023-06-07T13:00:53.152Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"dimension","id":"hdBTC","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"FGwWXjk","qType":"dimension"},"qMeta":{"title":"Time","description":"","createdDate":"2023-06-07T13:00:53.205Z","modifiedDate":"2023-06-07T13:00:53.205Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"dimension","id":"FGwWXjk","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
+{"qInfo":{"qId":"HMAexQ","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"HMAexQ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.008Z","modifiedDate":"2023-06-07T12:57:01.008Z","privileges":["read","update","delete","publish","change_owner"],"title":"Month -> Year -> Province Drill","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"e0b58495-59d6-4469-82ab-2418fa6e60e5","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"e0b58495-59d6-4469-82ab-2418fa6e60e5","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.013Z","modifiedDate":"2023-06-07T12:57:01.013Z","privileges":["read","update","delete","publish","change_owner"],"title":"Cluster -> Fire","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"fNSn","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"fNSn","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.014Z","modifiedDate":"2023-06-07T12:57:01.014Z","privileges":["read","update","delete","publish","change_owner"],"title":"Province","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"kaSPwtr","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"kaSPwtr","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.015Z","modifiedDate":"2023-06-07T12:57:01.015Z","privileges":["read","update","delete","publish","change_owner"],"title":"Year -> Region","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"nrpEPex","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"nrpEPex","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.015Z","modifiedDate":"2023-06-07T12:57:01.015Z","privileges":["read","update","delete","publish","change_owner"],"title":"Cause","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"rUKmZyk","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"rUKmZyk","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.019Z","modifiedDate":"2023-06-07T12:57:01.019Z","privileges":["read","update","delete","publish","change_owner"],"title":"Province -> Year -> Month Drill","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"wAFpZg","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"wAFpZg","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.019Z","modifiedDate":"2023-06-07T12:57:01.019Z","privileges":["read","update","delete","publish","change_owner"],"title":"Bin -> Point Cluster","description":"","tags":[]},"qData":[]}
 
 MEASURES
-{"qInfo":{"qId":"VjMwHS","qType":"measure"},"qMeta":{"title":"Total Calls","description":"","createdDate":"2023-06-07T13:00:53.077Z","modifiedDate":"2023-06-07T13:00:53.077Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"VjMwHS","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"WuPxvwt","qType":"measure"},"qMeta":{"title":"Non Qlik Brands Rx Total","description":"","createdDate":"2023-06-07T13:00:53.085Z","modifiedDate":"2023-06-07T13:00:53.085Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"WuPxvwt","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"Yncxqb","qType":"measure"},"qMeta":{"title":"Calls Per Product","description":"","createdDate":"2023-06-07T13:00:53.085Z","modifiedDate":"2023-06-07T13:00:53.085Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"Yncxqb","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"jZgGHb","qType":"measure"},"qMeta":{"title":"Qlik Brands Rx Total","description":"","createdDate":"2023-06-07T13:00:53.117Z","modifiedDate":"2023-06-07T13:00:53.117Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"jZgGHb","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"jpJXRP","qType":"measure"},"qMeta":{"title":"Qlik Brands %","description":"","createdDate":"2023-06-07T13:00:53.117Z","modifiedDate":"2023-06-07T13:00:53.117Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"jpJXRP","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"kHDhN","qType":"measure"},"qMeta":{"title":"MKT %","description":"","createdDate":"2023-06-07T13:00:53.117Z","modifiedDate":"2023-06-07T13:00:53.117Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"kHDhN","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"njfSqp","qType":"measure"},"qMeta":{"title":"% Loyalists","description":"","createdDate":"2023-06-07T13:00:53.122Z","modifiedDate":"2023-06-07T13:00:53.122Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"njfSqp","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"cnRxmFA","qType":"measure"},"qMeta":{"title":"Number of HCPs","description":"","createdDate":"2023-06-07T13:00:53.147Z","modifiedDate":"2023-06-07T13:00:53.147Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"cnRxmFA","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"cxJqrnm","qType":"measure"},"qMeta":{"title":"Calls per Prescriber","description":"","createdDate":"2023-06-07T13:00:53.148Z","modifiedDate":"2023-06-07T13:00:53.148Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"cxJqrnm","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"AjummD","qType":"measure"},"qMeta":{"title":"Rx Total","description":"","createdDate":"2023-06-07T13:00:53.203Z","modifiedDate":"2023-06-07T13:00:53.203Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"AjummD","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
-{"qInfo":{"qId":"GtxezL","qType":"measure"},"qMeta":{"title":"Last Call Date","description":"","createdDate":"2023-06-07T13:00:53.206Z","modifiedDate":"2023-06-07T13:00:53.206Z","published":true,"publishTime":"2018-07-11T14:12:50.231Z","approved":true,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"GtxezL","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
+{"qInfo":{"qId":"PJbd","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"PJbd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.008Z","modifiedDate":"2023-06-07T12:57:01.008Z","privileges":["read","update","delete","publish","change_owner"],"title":"Fire Count","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"jmCbGR","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"jmCbGR","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.014Z","modifiedDate":"2023-06-07T12:57:01.014Z","privileges":["read","update","delete","publish","change_owner"],"title":"Fire Size (HA)","description":"","tags":[]},"qData":[]}
 
 VARIABLES
-{"qName":"var_zoom","qDefinition":"=If(max(aggr(if(max( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) )-min( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) ) <def_map_size AND max((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))-min((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))<def_map_size,_zoom_level,null()),_zoom_level))>def_zoom_level, max(aggr(if(max( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) )-min( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) ) <def_map_size AND max((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))-min((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))<def_map_size,_zoom_level,null()),_zoom_level)),def_zoom_level)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"276cf889-19da-4599-b173-65be61b9db95","qType":"variable"},"qData":[]}
-{"qName":"var_mc2","qDefinition":"=256*pow(2,=If(max(aggr(if(max( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) )-min( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) ) <def_map_size AND max((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))-min((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))<def_map_size,_zoom_level,null()),_zoom_level))>def_zoom_level, max(aggr(if(max( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) )-min( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) ) <def_map_size AND max((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))-min((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))<def_map_size,_zoom_level,null()),_zoom_level)),def_zoom_level))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"6e99282c-0a84-4ba0-9481-ddd6a4440dc7","qType":"variable"},"qData":[]}
-{"qName":"var_mc1","qDefinition":"=256*pow(2,(=If(max(aggr(if(max( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) )-min( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) ) <def_map_size AND max((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))-min((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))<def_map_size,_zoom_level,null()),_zoom_level))>def_zoom_level, max(aggr(if(max( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) )-min( round(256*pow(2,(_zoom_level -1)))+( longitude  *((256*pow(2,_zoom_level ))\/360)) ) <def_map_size AND max((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))-min((256*pow(2,(_zoom_level-1)))+((0.5*log((1+(sin((latitude)*pi()\/180)))\/(1-(sin((latitude)*pi()\/180)))))*((-256*pow(2,_zoom_level))\/(2*pi()))))<def_map_size,_zoom_level,null()),_zoom_level)),def_zoom_level)-1))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"8a44701f-6824-4486-aba8-0e5c12067bcc","qType":"variable"},"qData":[]}
-{"qName":"var_mid_lat","qDefinition":"=median(latitude)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"36f41dcc-fe57-49fe-b7bc-4b9f0ffb33c7","qType":"variable"},"qData":[]}
-{"qName":"var_mid_long","qDefinition":"=median(longitude)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"ce177101-c61d-4c27-83f6-18255395c3f0","qType":"variable"},"qData":[]}
-{"qName":"var_maptype","qDefinition":"=if(isnull(only(maptype)),fieldvalue( 'maptype', 4 ),maptype)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"fb7a2025-516c-4678-8026-2ba02574522c","qType":"variable"},"qData":[]}
-{"qName":"var_XMin","qDefinition":"=(256*pow(2,((var_zoom)-1)))+((var_mid_long)*((256*pow(2,(var_zoom)))\/360))-(def_map_size*0.5)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"080f281d-224f-401e-80f9-515b9282b0fe","qType":"variable"},"qData":[]}
-{"qName":"var_XMax","qDefinition":"=((256*pow(2,((var_zoom)-1)))+((var_mid_long)*((256*pow(2,(var_zoom)))\/360))+(def_map_size*0.5))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"7096743e-b27f-47d3-8b21-9d4b68c84d70","qType":"variable"},"qData":[]}
-{"qName":"var_YMin","qDefinition":"=((256*pow(2,((var_zoom)-1)))+((0.5*log((1+(sin((var_mid_lat)*pi()\/180)))\/(1-(sin((var_mid_lat)*pi()\/180)))))*((-256*pow(2,(var_zoom)))\/(2*pi())))+(def_map_size*0.5))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"ad067ec4-79f5-4e0e-8957-131c03ab8195","qType":"variable"},"qData":[]}
-{"qName":"vFiscalYear","qDefinition":"If(Not ISNULL(GETFIELDSELECTIONS([Fiscal Year])),  Min([Fiscal Year]), Max([Fiscal Year]))\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"bee834ed-45c6-4d64-a8e7-9b63e9e2b41e","qType":"variable"},"qData":[]}
-{"qName":"vMakeToday","qDefinition":"43086","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"4d178be0-a6ad-4099-a3ce-3ab62954647f","qType":"variable"},"qData":[]}
-{"qName":"gmap_key","qDefinition":"ABQIAAAA7W2bEWcqAgTowOMGdFIe2hQm4zh46PqEYHNJP2kJC-LeSh8JXRSiHUDFsCXo2yWt6mtiPWUCxpZstg","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"0650a4ef-33b0-4b0c-9283-9dc25bc52706","qType":"variable"},"qData":[]}
-{"qName":"max_zoom_level","qDefinition":"16","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"b49a9fdc-0e95-4d68-acfa-121a0d2fe9d3","qType":"variable"},"qData":[]}
-{"qName":"def_zoom_level","qDefinition":"12","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"75c23331-6ee6-466f-9ac0-8de18641bc82","qType":"variable"},"qData":[]}
-{"qName":"def_map_size","qDefinition":"400","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"2e193a9f-a143-4b9e-9c39-cbe448ec1290","qType":"variable"},"qData":[]}
-{"qName":"var_pi180","qDefinition":"=pi()\/180","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"d50482bc-ea40-4b82-8c66-fdafb8f070e0","qType":"variable"},"qData":[]}
-{"qName":"var_lat_offset","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"8d2d6921-17f5-4403-8e2d-b5e9d22b56ef","qType":"variable"},"qData":[]}
-{"qName":"var_YMax","qDefinition":"=((256*pow(2,((var_zoom)-1)))+((0.5*log((1+(sin((var_mid_lat)*pi()\/180)))\/(1-(sin((var_mid_lat)*pi()\/180)))))*((-256*pow(2,(var_zoom)))\/(2*pi())))-(def_map_size*0.5))","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"76b330d3-d0bc-431f-a6a9-525b60623691","qType":"variable"},"qData":[]}
+{"qName":"chunkSize","qDefinition":"1000","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"2697256a-5a5a-44bf-a821-87dd42a21012","qType":"variable"},"qData":[]}
+{"qName":"row","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"75cf8a5d-b8ba-41b4-ab79-82b9add5e158","qType":"variable"},"qData":[]}
+{"qName":"name","qDefinition":"Security","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"a6794eaa-12ef-48b9-b090-f3239533e548","qType":"variable"},"qData":[]}
+{"qName":"chunk","qDefinition":"3000","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"41223990-7f07-4e5e-a691-70a7bb9d19c3","qType":"variable"},"qData":[]}
+{"qName":"i","qDefinition":"423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"d2c5400b-dbaa-4952-a965-54b77dc0fd24","qType":"variable"},"qData":[]}
+{"qName":"vTabName","qDefinition":"@1","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e7c24731-063c-4bf8-854f-ae8bce91a80d","qType":"variable"},"qData":[]}
+{"qName":"currentName","qDefinition":"Security","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"2723626f-837d-4759-b243-1f601f04bbc5","qType":"variable"},"qData":[]}
+{"qName":"numRows","qDefinition":"3423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e9f0ff74-4f06-451d-a37f-2ff74daf46a3","qType":"variable"},"qData":[]}
+{"qName":"vClusterPoint","qDefinition":"1","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"bd15073d-c722-484b-836f-d8d17330cd6a","qType":"variable"},"qData":[]}
+{"qName":"n","qDefinition":"4","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"9a761156-1cce-43db-8228-a533a3ad4b1c","qType":"variable"},"qData":[]}
+{"qName":"f","qDefinition":"tmpField_0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c3a3b40f-016e-4caa-8599-49bc41cdd92d","qType":"variable"},"qData":[]}
+{"qName":"vHeatMap","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"54969adf-c1b3-411a-b3db-2fb653c302f2","qType":"variable"},"qData":[]}
+{"qName":"rowNr","qDefinition":"3423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"a687c3ee-99d4-446f-acc1-193718535ea2","qType":"variable"},"qData":[]}
+{"qName":"dataManagerTables","qDefinition":"'','New York Stock Exchange \u2013 historical stock prices','Security'","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c9c20318-3e27-4c74-9513-8aa7bbfcd90e","qType":"variable"},"qData":[]}
+{"qName":"index","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5f312a6b-215b-4868-9085-7e66b115f16a","qType":"variable"},"qData":[]}
+{"qName":"chunks","qDefinition":"3.423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"1fa6c282-b406-47ce-8338-b37655c20b1d","qType":"variable"},"qData":[]}
+{"qName":"PointsInlineTable","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c7956eb1-2dfe-40e0-a16e-5f95de6a9bbe","qType":"variable"},"qData":[]}
+{"qName":"vPeek","qDefinition":"National Parks","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5ff9cc3c-5ee3-40ee-919f-399c28ebe50a","qType":"variable"},"qData":[]}
+{"qName":"vButton","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"00789762-ad76-4fe3-8d2f-561a086632fa","qType":"variable"},"qData":[]}
+{"qName":"matches","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e82d9240-e3f8-4891-9abc-1d01e73a23ce","qType":"variable"},"qData":[]}
+{"qName":"chunkText","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5bbd32ea-29b8-47f6-9f4c-646b0e52b629","qType":"variable"},"qData":[]}
+{"qName":"NameTableInlineTable","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e83b48b5-45e0-4254-9a11-17a7e797e806","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":47,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":12,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":10,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":7,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":18,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":20,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":3,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":2,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":3,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":14,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$ascii","$text","$hidden","$system"],"qSrcTables":[]}
-{"qName":"Product_Id","qCardinal":25,"qTags":["$numeric","$integer","$key"],"qSrcTables":["Products","Rxs","Markets"]}
-{"qName":"Products","qCardinal":25,"qTags":["$ascii","$text"],"qSrcTables":["Products"]}
-{"qName":"Flag Qlikazine","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Products"]}
-{"qName":"Flag Qlikastat","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Products"]}
-{"qName":"Qlik Brands","qCardinal":2,"qTags":["$numeric","$integer","$key"],"qSrcTables":["Products","QlikBrands"]}
-{"qName":"Qlik Brands Name","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["QlikBrands"]}
-{"qName":"RxFactId","qCardinal":12425,"qTags":["$ascii","$text","$key"],"qSrcTables":["Rxs","LinkTable"]}
-{"qName":"NRx","qCardinal":6022,"qTags":["$numeric"],"qSrcTables":["Rxs"]}
-{"qName":"TRx","qCardinal":7445,"qTags":["$numeric"],"qSrcTables":["Rxs"]}
-{"qName":"Market_Id","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Markets"]}
-{"qName":"Markets","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Markets"]}
-{"qName":"CallFactId","qCardinal":1269,"qTags":["$ascii","$text","$key"],"qSrcTables":["Visits","LinkTable"]}
-{"qName":"_D","qCardinal":5,"qTags":["$numeric","$integer"],"qSrcTables":["Visits"]}
-{"qName":"_SA","qCardinal":13,"qTags":["$numeric","$integer"],"qSrcTables":["Visits"]}
-{"qName":"_SE","qCardinal":22,"qTags":["$numeric","$integer"],"qSrcTables":["Visits"]}
-{"qName":"_SXA","qCardinal":18,"qTags":["$numeric","$integer"],"qSrcTables":["Visits"]}
-{"qName":"PersonId","qCardinal":188,"qTags":["$ascii","$text","$key"],"qSrcTables":["Physicians","GeoPoint","LinkTable"]}
-{"qName":"HCP","qCardinal":19,"qTags":["$ascii","$text"],"qSrcTables":["Physicians"]}
-{"qName":"Address","qCardinal":16,"qTags":["$ascii","$text"],"qSrcTables":["Physicians"]}
-{"qName":"City","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Physicians"]}
-{"qName":"ST","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Physicians"]}
-{"qName":"Zip","qCardinal":9,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Mapped Target Status","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Physicians"]}
-{"qName":"latitude","qCardinal":17,"qTags":["$numeric"],"qSrcTables":["Physicians"]}
-{"qName":"longitude","qCardinal":17,"qTags":["$numeric"],"qSrcTables":["Physicians"]}
-{"qName":"Prescriber Count","qCardinal":1,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Max Visit Weeks","qCardinal":9,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Physicians"]}
-{"qName":"Market Decile","qCardinal":9,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Qlikazine Decile","qCardinal":8,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Prod. Decile","qCardinal":7,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Decile Category","qCardinal":6,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Call Priority","qCardinal":4,"qTags":["$ascii","$text","$key"],"qSrcTables":["Physicians","Call Priorities"]}
-{"qName":"Call Priority Sort","qCardinal":4,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"Last Visit Weeks","qCardinal":10,"qTags":["$numeric","$integer"],"qSrcTables":["Physicians"]}
-{"qName":"MakePoint","qCardinal":17,"qTags":["$ascii","$text","$geopoint"],"qSrcTables":["GeoPoint"]}
-{"qName":"Rx Metrics","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Metric Rxs"]}
-{"qName":"Rx Metric Value","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Metric Rxs"]}
-{"qName":"FactId","qCardinal":12431,"qTags":["$ascii","$text"],"qSrcTables":["LinkTable"]}
-{"qName":"Territory Number","qCardinal":1,"qTags":["$ascii","$text","$key"],"qSrcTables":["LinkTable","Employees"]}
-{"qName":"Weeks","qCardinal":106,"qTags":["$numeric","$integer","$key","$timestamp","$date"],"qSrcTables":["LinkTable","Weeks1"]}
-{"qName":"Regional Director","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
-{"qName":"Territory Manager","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Employees"]}
-{"qName":"Date","qCardinal":106,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Weeks1"]}
-{"qName":"Year","qCardinal":3,"qTags":["$numeric","$integer"],"qSrcTables":["Weeks1"]}
-{"qName":"Quarter","qCardinal":4,"qTags":["$numeric","$integer"],"qSrcTables":["Weeks1"]}
-{"qName":"Month","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Weeks1"]}
-{"qName":"MonthYear","qCardinal":25,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Weeks1"]}
+{"qName":"Geometry","qCardinal":342929,"qTags":["$ascii","$text"],"qSrcTables":["Point"]}
+{"qName":"SRC_AGENCY","qCardinal":12,"qTags":["$ascii","$text"],"qSrcTables":["Point"]}
+{"qName":"FIRE_ID","qCardinal":304244,"qTags":[],"qSrcTables":["Point"]}
+{"qName":"FIRENAME","qCardinal":28397,"qTags":[],"qSrcTables":["Point"]}
+{"qName":"LATITUDE","qCardinal":126381,"qTags":["$numeric"],"qSrcTables":["Point"]}
+{"qName":"LONGITUDE","qCardinal":172315,"qTags":["$numeric"],"qSrcTables":["Point"]}
+{"qName":"GEOID","qCardinal":395760,"qTags":["$ascii","$text","$key"],"qSrcTables":["Point","Binning","Cluster"]}
+{"qName":"YEAR","qCardinal":66,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
+{"qName":"MONTH","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
+{"qName":"DAY","qCardinal":31,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
+{"qName":"DECADE","qCardinal":7,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
+{"qName":"SIZE_HA","qCardinal":13837,"qTags":["$numeric"],"qSrcTables":["Point"]}
+{"qName":"CAUSE","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Point"]}
+{"qName":"_autoIndex_","qCardinal":397842,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
+{"qName":"HH10W15","qCardinal":1677,"qTags":["$ascii","$text"],"qSrcTables":["Binning"]}
+{"qName":"CenterPoint","qCardinal":1677,"qTags":["$ascii","$text"],"qSrcTables":["Binning"]}
+{"qName":"Clusters_ClusterID","qCardinal":365,"qTags":["$ascii","$text"],"qSrcTables":["Cluster"]}
+{"qName":"Clusters_ClusterCenter","qCardinal":365,"qTags":["$ascii","$text"],"qSrcTables":["Cluster"]}
+{"qName":"Clusters_PointCount","qCardinal":261,"qTags":["$numeric","$integer"],"qSrcTables":["Cluster"]}
+{"qName":"Points_Geometry","qCardinal":340614,"qTags":["$ascii","$text"],"qSrcTables":["Cluster"]}
