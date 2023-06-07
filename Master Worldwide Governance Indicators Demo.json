@@ -1,130 +1,169 @@
 
 SHEETS
-{"qInfo":{"qId":"c2ac94af-6419-4e4b-bc0f-781c52dee5aa","qType":"sheet"},"qMeta":{"title":"My new sheet","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"c2ac94af-6419-4e4b-bc0f-781c52dee5aa","approved":false,"published":false,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T14:24:51.421Z","modifiedDate":"2023-06-07T14:24:51.421Z","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"d64dc096-7b0b-4e85-878a-9a5bd26125e7","qType":"sheet"},"qMeta":{"title":"VizTip test (Delete) (1)","description":"","createdDate":"2023-06-07T14:23:48.899Z","modifiedDate":"2023-06-07T14:24:18.299Z","published":true,"publishTime":"2023-06-07T14:24:18.299Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"d64dc096-7b0b-4e85-878a-9a5bd26125e7","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"293c61fd-e4fb-44b9-a693-c36b330e5336","qType":"sheet"},"qMeta":{"title":"VizTip test (Delete)","description":"","createdDate":"2023-06-07T14:23:49.063Z","modifiedDate":"2023-06-07T14:24:16.586Z","published":true,"publishTime":"2023-06-07T14:24:16.586Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"293c61fd-e4fb-44b9-a693-c36b330e5336","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"1175a188-1cea-49b5-8999-bb1fdf281bbf","qType":"sheet"},"qMeta":{"title":"Viztip 2","description":"https:\/\/data.world\/city-of-ny\/s7yh-frbm","createdDate":"2023-06-07T14:23:48.935Z","modifiedDate":"2023-06-07T14:24:14.929Z","published":true,"publishTime":"2023-06-07T14:24:14.929Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1175a188-1cea-49b5-8999-bb1fdf281bbf","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"ce61d28d-4cf4-41e6-b13a-92d84e5dec83","qType":"sheet"},"qMeta":{"title":"Viztip 1","description":"https:\/\/data.world\/city-of-ny\/s7yh-frbm","createdDate":"2023-06-07T14:23:49.045Z","modifiedDate":"2023-06-07T14:24:13.144Z","published":true,"publishTime":"2023-06-07T14:24:13.144Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"ce61d28d-4cf4-41e6-b13a-92d84e5dec83","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"b4ba688c-c3b1-4927-8b11-7df342e42292","qType":"sheet"},"qMeta":{"title":"Basic & No Viztip","description":"https:\/\/data.world\/city-of-ny\/s7yh-frbm","createdDate":"2023-06-07T14:23:49.033Z","modifiedDate":"2023-06-07T14:24:11.302Z","published":true,"publishTime":"2023-06-07T14:24:11.302Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"b4ba688c-c3b1-4927-8b11-7df342e42292","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"846f4dae-3211-4412-b38a-1943aca47a2a","qType":"sheet"},"qMeta":{"title":"How to (Page 2)","description":"On this page, examples that you can try out and play around with. \n\nIf you want to add any styles to your text, image, table, bulletpoints, etc. you can use the styles tag (style=\"\") within the element (i.e. <p style=\"color:blue; font-size:16px\">.\n\nYou can also add CSS Class to elements by knowing what Qlik calls their style classes. Using their names will also affect the way your HTML is presented within the HTML Tooltip.","createdDate":"2023-06-07T14:23:48.989Z","modifiedDate":"2023-06-07T14:24:09.251Z","published":true,"publishTime":"2023-06-07T14:24:09.251Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"846f4dae-3211-4412-b38a-1943aca47a2a","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"563b86ef-7109-465e-9cd2-a26fe15c68a9","qType":"sheet"},"qMeta":{"title":"How to (Page 1)","description":"Introduction to the application and some learning resources for you to delve deeper into.","createdDate":"2023-06-07T14:23:48.955Z","modifiedDate":"2023-06-07T14:24:07.305Z","published":true,"publishTime":"2023-06-07T14:24:07.305Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"563b86ef-7109-465e-9cd2-a26fe15c68a9","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"ab77c6fa-2005-4b55-9c14-fe3d0ddb5c32","qType":"sheet"},"qMeta":{"title":"Vizlib Table Example","description":"Viztips on the Vizlib Table!","createdDate":"2023-06-07T14:23:49.059Z","modifiedDate":"2023-06-07T14:24:05.212Z","published":true,"publishTime":"2023-06-07T14:24:05.212Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"ab77c6fa-2005-4b55-9c14-fe3d0ddb5c32","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"0dc2f702-eced-4610-bbc4-10e08154cac6","qType":"sheet"},"qMeta":{"title":"Vizlib Filter Example","description":"Understand how Viztips can help with your day-to-day data exploration","createdDate":"2023-06-07T14:23:48.926Z","modifiedDate":"2023-06-07T14:24:03.257Z","published":true,"publishTime":"2023-06-07T14:24:03.257Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"0dc2f702-eced-4610-bbc4-10e08154cac6","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"96d73819-d27e-4db8-9435-8c8fd1ff5a75","qType":"sheet"},"qMeta":{"title":"Contents","description":"","createdDate":"2023-06-07T14:23:48.992Z","modifiedDate":"2023-06-07T14:24:01.174Z","published":true,"publishTime":"2023-06-07T14:24:01.174Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"96d73819-d27e-4db8-9435-8c8fd1ff5a75","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"1fbaa33b-371f-4c46-8735-a2329838724b","qType":"sheet"},"qMeta":{"title":"My new sheet","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1fbaa33b-371f-4c46-8735-a2329838724b","approved":false,"published":false,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T14:21:51.638Z","modifiedDate":"2023-06-07T14:21:51.638Z","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"9d59d058-9c32-4a14-8dd7-ddd119e3b8e4","qType":"sheet"},"qMeta":{"title":"Feature - Self Serve","description":"","createdDate":"2023-06-07T14:19:49.067Z","modifiedDate":"2023-06-07T14:20:42.451Z","published":true,"publishTime":"2023-06-07T14:20:42.451Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"9d59d058-9c32-4a14-8dd7-ddd119e3b8e4","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"ba2ede18-17ab-4202-ae6a-0232c3db24e8","qType":"sheet"},"qMeta":{"title":"Feature - PDF","description":"","createdDate":"2023-06-07T14:19:49.090Z","modifiedDate":"2023-06-07T14:20:40.247Z","published":true,"publishTime":"2023-06-07T14:20:40.247Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"ba2ede18-17ab-4202-ae6a-0232c3db24e8","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"c8b78b52-7f40-43a8-83e2-b57a899f89f2","qType":"sheet"},"qMeta":{"title":"Feature - Trends","description":"","createdDate":"2023-06-07T14:19:49.102Z","modifiedDate":"2023-06-07T14:20:37.974Z","published":true,"publishTime":"2023-06-07T14:20:37.974Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"c8b78b52-7f40-43a8-83e2-b57a899f89f2","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"3e4638ae-d787-47b9-a42c-21709c771bee","qType":"sheet"},"qMeta":{"title":"Feature - Timeline","description":"","createdDate":"2023-06-07T14:19:48.939Z","modifiedDate":"2023-06-07T14:20:35.717Z","published":true,"publishTime":"2023-06-07T14:20:35.717Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"3e4638ae-d787-47b9-a42c-21709c771bee","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"8c722aae-b251-4007-b2e1-916295403658","qType":"sheet"},"qMeta":{"title":"Feature - Overview","description":"","createdDate":"2023-06-07T14:19:49.033Z","modifiedDate":"2023-06-07T14:20:33.398Z","published":true,"publishTime":"2023-06-07T14:20:33.398Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"8c722aae-b251-4007-b2e1-916295403658","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"942c5c76-9fd5-4b8e-b213-16b867f78bc4","qType":"sheet"},"qMeta":{"title":"Basic - Self Serve","description":"","createdDate":"2023-06-07T14:19:49.049Z","modifiedDate":"2023-06-07T14:20:29.397Z","published":true,"publishTime":"2023-06-07T14:20:29.397Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"942c5c76-9fd5-4b8e-b213-16b867f78bc4","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"43c30c17-ca5c-4e5e-9256-822f920a2e25","qType":"sheet"},"qMeta":{"title":"Basic - PDF","description":"","createdDate":"2023-06-07T14:19:48.943Z","modifiedDate":"2023-06-07T14:20:27.238Z","published":true,"publishTime":"2023-06-07T14:20:27.238Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"43c30c17-ca5c-4e5e-9256-822f920a2e25","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"c5925660-8b18-4b5c-82ca-d9afeca62eb1","qType":"sheet"},"qMeta":{"title":"Basic - Trends","description":"","createdDate":"2023-06-07T14:19:49.094Z","modifiedDate":"2023-06-07T14:20:24.819Z","published":true,"publishTime":"2023-06-07T14:20:24.819Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"c5925660-8b18-4b5c-82ca-d9afeca62eb1","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"b4ba688c-c3b1-4927-8b11-7df342e42292","qType":"sheet"},"qMeta":{"title":"Basic - Timeline","description":"","createdDate":"2023-06-07T14:19:49.085Z","modifiedDate":"2023-06-07T14:20:22.289Z","published":true,"publishTime":"2023-06-07T14:20:22.289Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"b4ba688c-c3b1-4927-8b11-7df342e42292","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"69ea86a6-0117-44bf-9a02-7a43a2a5ea69","qType":"sheet"},"qMeta":{"title":"Basic - Overview","description":"","createdDate":"2023-06-07T14:19:48.990Z","modifiedDate":"2023-06-07T14:20:18.762Z","published":true,"publishTime":"2023-06-07T14:20:18.762Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"69ea86a6-0117-44bf-9a02-7a43a2a5ea69","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"563b86ef-7109-465e-9cd2-a26fe15c68a9","qType":"sheet"},"qMeta":{"title":"Learning Resources","description":"Introduction to the application and some learning resources for you to delve deeper into.","createdDate":"2023-06-07T14:19:48.954Z","modifiedDate":"2023-06-07T14:20:16.460Z","published":true,"publishTime":"2023-06-07T14:20:16.460Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"563b86ef-7109-465e-9cd2-a26fe15c68a9","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"1c43e51b-99fc-43e4-8d84-7b4f3a095530","qType":"sheet"},"qMeta":{"title":"Detailed Viztips","description":"","createdDate":"2023-06-07T14:19:48.924Z","modifiedDate":"2023-06-07T14:20:13.794Z","published":true,"publishTime":"2023-06-07T14:20:13.794Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"1c43e51b-99fc-43e4-8d84-7b4f3a095530","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"afe250c0-85a7-4519-bfa7-3539710edb95","qType":"sheet"},"qMeta":{"title":"Detailed Tooltips","description":"","createdDate":"2023-06-07T14:19:49.074Z","modifiedDate":"2023-06-07T14:20:11.612Z","published":true,"publishTime":"2023-06-07T14:20:11.612Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"afe250c0-85a7-4519-bfa7-3539710edb95","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"0dc2f702-eced-4610-bbc4-10e08154cac6","qType":"sheet"},"qMeta":{"title":"Detailed Actions","description":"","createdDate":"2023-06-07T14:19:48.915Z","modifiedDate":"2023-06-07T14:20:09.361Z","published":true,"publishTime":"2023-06-07T14:20:09.361Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"0dc2f702-eced-4610-bbc4-10e08154cac6","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"846f4dae-3211-4412-b38a-1943aca47a2a","qType":"sheet"},"qMeta":{"title":"Vizlib Features","description":"An overview of the actions Vizlib provides you","createdDate":"2023-06-07T14:19:49.003Z","modifiedDate":"2023-06-07T14:20:06.094Z","published":true,"publishTime":"2023-06-07T14:20:06.094Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"846f4dae-3211-4412-b38a-1943aca47a2a","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"96d73819-d27e-4db8-9435-8c8fd1ff5a75","qType":"sheet"},"qMeta":{"title":"Contents","description":"","createdDate":"2023-06-07T14:19:49.053Z","modifiedDate":"2023-06-07T14:20:03.048Z","published":true,"publishTime":"2023-06-07T14:20:03.048Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"96d73819-d27e-4db8-9435-8c8fd1ff5a75","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","publish","change_owner"]},"qData":[]}
 
 OBJECTS ON SHEETS
-{"bounds":{"x":0,"y":0,"width":100,"height":100},"col":0,"colspan":24,"name":"RSU","row":0,"rowspan":12,"smartGrid":{"rowIdx":0,"itemIdx":0,"item":{"width":1}},"type":"auto-chart"}
-{"name":"e93ec56a-46e3-4b1a-9c8e-80ae8dd1c5ee","type":"VizlibLineChart","col":0,"row":0,"colspan":12,"rowspan":6,"bounds":{"y":0,"x":0,"width":50,"height":50}}
-{"name":"jZuam","type":"VizlibBarChart","col":12,"row":0,"colspan":12,"rowspan":6,"bounds":{"y":0,"x":50,"width":50,"height":50}}
-{"name":"ZbXM","type":"VizlibBarChart","col":12,"row":6,"colspan":12,"rowspan":6,"bounds":{"y":50,"x":50,"width":50,"height":50}}
-{"name":"fhennaM","type":"VizlibAdvancedTextObject","col":0,"row":6,"colspan":4,"rowspan":6,"bounds":{"y":50,"x":0,"width":16.666666666666664,"height":50}}
-{"name":"WMJKYS","type":"VizlibKPI","col":4,"row":6,"colspan":4,"rowspan":6,"bounds":{"y":50,"x":16.666666666666664,"width":16.666666666666664,"height":50}}
-{"name":"mAEAmj","type":"VizlibLive","col":8,"row":6,"colspan":4,"rowspan":6,"bounds":{"y":50,"x":33.33333333333333,"width":16.666666666666664,"height":50}}
-{"name":"VujFy","type":"VizlibBarChart","col":0,"row":0,"colspan":12,"rowspan":12,"bounds":{"y":0,"x":0,"width":50,"height":100}}
-{"name":"gDMSuA","type":"kpi","col":12,"row":0,"colspan":12,"rowspan":6,"bounds":{"y":0,"x":50,"width":50,"height":50}}
-{"name":"EsttW","type":"kpi","col":12,"row":6,"colspan":12,"rowspan":6,"bounds":{"y":50,"x":50,"width":50,"height":50}}
-{"name":"c6b7ae37-be2e-4d22-8a47-f591da65dfb5","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
-{"name":"c1fb5860-d8d5-49fe-a90b-e6dff6e23f18","type":"VizlibBarChart","col":0,"row":8,"colspan":10,"rowspan":10,"bounds":{"y":44.44444444444444,"x":0,"width":27.77777777777778,"height":55.55555555555556}}
-{"name":"b9ff512d-c1b5-41fd-a5c4-ff5f305c4fde","type":"VizlibBarChart","col":0,"row":0,"colspan":10,"rowspan":7,"bounds":{"y":0,"x":0,"width":27.77777777777778,"height":38.88888888888889}}
-{"name":"jePVnx","type":"VizlibContainer","col":11,"row":0,"colspan":25,"rowspan":18,"bounds":{"y":0,"x":30.555555555555557,"width":69.44444444444444,"height":100}}
-{"name":"db831c2d-33ba-4b01-935c-617eb03fbba6","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
-{"name":"38c9020a-4d49-4d1a-a774-c8bb36667585","type":"VizlibBarChart","col":1,"row":1,"colspan":20,"rowspan":8,"bounds":{"y":5.555555555555555,"x":2.7777777777777777,"width":55.55555555555556,"height":44.44444444444444}}
-{"name":"8ab5b0ad-c2d8-4ead-9cf0-42683cedf488","type":"VizlibRidgelinePlot","col":1,"row":10,"colspan":34,"rowspan":7,"bounds":{"y":55.55555555555556,"x":2.7777777777777777,"width":94.44444444444444,"height":38.88888888888889}}
-{"name":"NRxhKcd","type":"VizlibBarChart","col":22,"row":1,"colspan":13,"rowspan":8,"bounds":{"y":5.555555555555555,"x":61.111111111111114,"width":36.11111111111111,"height":44.44444444444444}}
-{"name":"EnBmst","type":"VizlibKPI","col":0,"row":0,"colspan":12,"rowspan":6,"bounds":{"y":0,"x":0,"width":33.33333333333333,"height":33.33333333333333}}
-{"name":"JUaemy","type":"VizlibKPI","col":24,"row":0,"colspan":12,"rowspan":6,"bounds":{"y":0,"x":66.66666666666666,"width":33.33333333333333,"height":33.33333333333333}}
-{"name":"bREcErs","type":"VizlibKPI","col":12,"row":0,"colspan":12,"rowspan":6,"bounds":{"y":0,"x":33.33333333333333,"width":33.33333333333333,"height":33.33333333333333}}
-{"name":"xvmyAV","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
-{"name":"CrQXhr","type":"VizlibKPI","col":0,"row":6,"colspan":36,"rowspan":2,"bounds":{"y":33.33333333333333,"x":0,"width":100,"height":11.11111111111111}}
-{"name":"gHCLmw","type":"VizlibBarChart","col":0,"row":8,"colspan":18,"rowspan":10,"bounds":{"y":44.44444444444444,"x":0,"width":50,"height":55.55555555555556}}
-{"name":"cmTRUB","type":"VizlibRidgelinePlot","col":18,"row":8,"colspan":18,"rowspan":10,"bounds":{"y":44.44444444444444,"x":50,"width":50,"height":55.55555555555556}}
-{"name":"dWmWbP","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-6.666666666666667,"x":-3.3333333333333335,"width":0,"height":0}}
-{"name":"KRpqw","type":"VizlibAdvancedTextObject","col":0,"row":0,"colspan":30,"rowspan":3,"bounds":{"y":0,"x":0,"width":100,"height":20}}
-{"name":"TDFvfaZ","type":"VizlibKPI","col":1,"row":5,"colspan":13,"rowspan":7,"bounds":{"y":33.33333333333333,"x":3.3333333333333335,"width":43.333333333333336,"height":46.666666666666664}}
-{"name":"uWmHNX","type":"VizlibFilter","col":16,"row":4,"colspan":13,"rowspan":3,"bounds":{"y":26.666666666666668,"x":53.333333333333336,"width":43.333333333333336,"height":20}}
-{"name":"pJvqZHM","type":"VizlibKPI","col":16,"row":7,"colspan":13,"rowspan":7,"bounds":{"y":46.666666666666664,"x":53.333333333333336,"width":43.333333333333336,"height":46.666666666666664}}
+{"bounds":{"x":0,"y":0,"width":100,"height":100},"col":0,"colspan":24,"name":"pDYxH","row":0,"rowspan":12,"smartGrid":{"rowIdx":0,"itemIdx":0,"item":{"width":1}},"type":"auto-chart"}
+{"name":"fb40f1de-e2db-4188-96e4-020ce4041d91","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-8.333333333333332,"x":-4.166666666666666,"width":0,"height":0}}
+{"name":"fd2c4e04-cd34-4dce-a964-09cdf8a21224","type":"cl-custom-report","col":0,"row":2,"colspan":24,"rowspan":10,"bounds":{"y":16.666666666666664,"x":0,"width":100,"height":83.33333333333334}}
+{"name":"PNKvjN","type":"VizlibButton","col":0,"row":0,"colspan":12,"rowspan":2,"bounds":{"y":0,"x":0,"width":50,"height":16.666666666666664}}
+{"name":"c0abcc35-e59f-43eb-aa2e-4aa5db7b2da1","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"JmGJnPR","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":18,"bounds":{"y":0,"x":0,"width":2.7777777777777777,"height":100}}
+{"name":"993753d4-cc81-4cef-8b1a-6cb8e2fe9b62","type":"VizlibTable","col":1,"row":0,"colspan":35,"rowspan":18,"bounds":{"y":0,"x":2.7777777777777777,"width":97.22222222222221,"height":100}}
+{"name":"853e7644-26b3-4cc1-bf7b-e7650c42f403","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"jfMC","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":18,"bounds":{"y":0,"x":0,"width":2.7777777777777777,"height":100}}
+{"name":"ETjrYDV","type":"map","col":23,"row":0,"colspan":13,"rowspan":18,"bounds":{"y":0,"x":63.888888888888886,"width":36.11111111111111,"height":100}}
+{"name":"BASg","type":"VizlibGridChart","col":12,"row":9,"colspan":11,"rowspan":9,"bounds":{"y":50,"x":33.33333333333333,"width":30.555555555555557,"height":50}}
+{"name":"pKqLY","type":"VizlibGridChart","col":1,"row":9,"colspan":11,"rowspan":9,"bounds":{"y":50,"x":2.7777777777777777,"width":30.555555555555557,"height":50}}
+{"name":"RLNRJER","type":"VizlibLineChart","col":1,"row":2,"colspan":22,"rowspan":7,"bounds":{"y":11.11111111111111,"x":2.7777777777777777,"width":61.111111111111114,"height":38.88888888888889}}
+{"name":"NxfYe","type":"VizlibButton","col":1,"row":0,"colspan":22,"rowspan":2,"bounds":{"y":0,"x":2.7777777777777777,"width":61.111111111111114,"height":11.11111111111111}}
+{"name":"7dd22d9d-e32a-4152-b205-33b901f75d16","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"3a839bb3-d29a-4377-8e28-a7cc33cb4ced","type":"VizlibGantt","col":1,"row":3,"colspan":35,"rowspan":12,"bounds":{"y":16.666666666666664,"x":2.7777777777777777,"width":97.22222222222221,"height":66.66666666666666}}
+{"name":"d6e634e1-3461-496c-9fba-1a60c6e109da","type":"VizlibKPI","col":13,"row":0,"colspan":23,"rowspan":3,"bounds":{"y":0,"x":36.11111111111111,"width":63.888888888888886,"height":16.666666666666664}}
+{"name":"eaacd2a9-ca6d-46d4-b027-f8af2e5b2717","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":18,"bounds":{"y":0,"x":0,"width":2.7777777777777777,"height":100}}
+{"name":"0f75d205-49ad-4f28-8009-e4f51e84db28","type":"VizlibKPI","col":1,"row":15,"colspan":35,"rowspan":3,"bounds":{"y":83.33333333333334,"x":2.7777777777777777,"width":97.22222222222221,"height":16.666666666666664}}
+{"name":"snDHm","type":"VizlibButton","col":1,"row":0,"colspan":12,"rowspan":3,"bounds":{"y":0,"x":2.7777777777777777,"width":33.33333333333333,"height":16.666666666666664}}
+{"name":"6dcc50bd-e4b6-42f8-bc26-82671563e48c","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"bb9b5636-f5af-4cba-bbda-1f6a71fc23cd","type":"VizlibKPI","col":1,"row":0,"colspan":35,"rowspan":4,"bounds":{"y":0,"x":2.7777777777777777,"width":97.22222222222221,"height":22.22222222222222}}
+{"name":"DWcDFSJ","type":"VizlibToolbar","col":0,"row":1,"colspan":1,"rowspan":17,"bounds":{"y":5.555555555555555,"x":0,"width":2.7777777777777777,"height":94.44444444444444}}
+{"name":"1e0802af-e935-450e-93b1-5f2208160b9a","type":"VizlibMekkoChart","col":1,"row":4,"colspan":15,"rowspan":14,"bounds":{"y":22.22222222222222,"x":2.7777777777777777,"width":41.66666666666667,"height":77.77777777777779}}
+{"name":"TzBPTn","type":"VizlibKPI","col":16,"row":4,"colspan":20,"rowspan":14,"bounds":{"y":22.22222222222222,"x":44.44444444444444,"width":55.55555555555556,"height":77.77777777777779}}
+{"name":"PPcXb","type":"VizlibKPI","col":0,"row":0,"colspan":1,"rowspan":1,"bounds":{"y":0,"x":0,"width":2.7777777777777777,"height":5.555555555555555}}
+{"name":"62614d59-5015-4722-b91c-e660c265e872","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-8.333333333333332,"x":-4.166666666666666,"width":0,"height":0}}
+{"name":"czfvpQ","type":"cl-custom-report","col":0,"row":0,"colspan":24,"rowspan":12,"bounds":{"y":0,"x":0,"width":100,"height":100}}
+{"name":"bd37018c-e389-417a-9c10-178a973d4a61","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-8.333333333333332,"x":-4.166666666666666,"width":0,"height":0}}
+{"name":"2240b14d-1652-4c04-8255-2ffb72bfd7e0","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":12,"bounds":{"y":0,"x":0,"width":4.166666666666666,"height":100}}
+{"name":"MQqKU","type":"VizlibTable","col":1,"row":0,"colspan":23,"rowspan":12,"bounds":{"y":0,"x":4.166666666666666,"width":95.83333333333334,"height":100}}
+{"name":"JJPqXQ","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-8.333333333333332,"x":-4.166666666666666,"width":0,"height":0}}
+{"name":"rnFNcsm","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":12,"bounds":{"y":0,"x":0,"width":4.166666666666666,"height":100}}
+{"name":"uxtHKP","type":"VizlibContainer","col":1,"row":0,"colspan":23,"rowspan":12,"bounds":{"y":0,"x":4.166666666666666,"width":95.83333333333334,"height":100}}
+{"name":"trHsWn","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"fSFmBJp","type":"VizlibGantt","col":1,"row":3,"colspan":35,"rowspan":12,"bounds":{"y":16.666666666666664,"x":2.7777777777777777,"width":97.22222222222221,"height":66.66666666666666}}
+{"name":"KgwzbF","type":"VizlibKPI","col":1,"row":0,"colspan":35,"rowspan":3,"bounds":{"y":0,"x":2.7777777777777777,"width":97.22222222222221,"height":16.666666666666664}}
+{"name":"BvuhY","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":18,"bounds":{"y":0,"x":0,"width":2.7777777777777777,"height":100}}
+{"name":"ByqdNgM","type":"VizlibKPI","col":1,"row":15,"colspan":35,"rowspan":3,"bounds":{"y":83.33333333333334,"x":2.7777777777777777,"width":97.22222222222221,"height":16.666666666666664}}
+{"name":"306c7199-7d94-4dfa-97aa-a630eed404cf","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"APuSsD","type":"VizlibKPI","col":1,"row":0,"colspan":35,"rowspan":4,"bounds":{"y":0,"x":2.7777777777777777,"width":97.22222222222221,"height":22.22222222222222}}
+{"name":"mTZDJN","type":"VizlibToolbar","col":0,"row":0,"colspan":1,"rowspan":18,"bounds":{"y":0,"x":0,"width":2.7777777777777777,"height":100}}
+{"name":"gJup","type":"VizlibMekkoChart","col":1,"row":4,"colspan":15,"rowspan":14,"bounds":{"y":22.22222222222222,"x":2.7777777777777777,"width":41.66666666666667,"height":77.77777777777779}}
+{"name":"VrurF","type":"VizlibKPI","col":16,"row":4,"colspan":20,"rowspan":14,"bounds":{"y":22.22222222222222,"x":44.44444444444444,"width":55.55555555555556,"height":77.77777777777779}}
 {"name":"dmTxP","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-6.666666666666667,"x":-3.3333333333333335,"width":0,"height":0}}
 {"name":"CzaVF","type":"VizlibAdvancedTextObject","col":3,"row":2,"colspan":24,"rowspan":11,"bounds":{"y":13.333333333333334,"x":10,"width":80,"height":73.33333333333333}}
-{"name":"eb847698-cfbd-4ad6-9986-8b227f316405","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
-{"name":"dfc00bee-674c-4123-a661-9217225a3634","type":"VizlibLineObject","col":17,"row":0,"colspan":2,"rowspan":18,"bounds":{"y":0,"x":47.22222222222222,"width":5.555555555555555,"height":100}}
-{"name":"21f0c856-31cf-4a4f-b625-9a7be1dc1fea","type":"VizlibAdvancedTextObject","col":0,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":0,"width":47.22222222222222,"height":27.77777777777778}}
-{"name":"1916a936-988b-45ec-94df-590cc3ee7b8d","type":"VizlibAdvancedTextObject","col":19,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":52.77777777777778,"width":47.22222222222222,"height":27.77777777777778}}
-{"name":"fzzMu","type":"VizlibTable","col":1,"row":5,"colspan":15,"rowspan":12,"bounds":{"y":27.77777777777778,"x":2.7777777777777777,"width":41.66666666666667,"height":66.66666666666666}}
-{"name":"HLzsJJ","type":"VizlibTable","col":20,"row":5,"colspan":15,"rowspan":12,"bounds":{"y":27.77777777777778,"x":55.55555555555556,"width":41.66666666666667,"height":66.66666666666666}}
+{"name":"fca1ba0d-4e50-4ae6-907e-45ab615f0bb7","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"f0d43db2-7ff3-4c69-a192-2e8834669fe3","type":"VizlibLineObject","col":17,"row":0,"colspan":2,"rowspan":18,"bounds":{"y":0,"x":47.22222222222222,"width":5.555555555555555,"height":100}}
+{"name":"rcJmDt","type":"VizlibAdvancedTextObject","col":0,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":0,"width":47.22222222222222,"height":27.77777777777778}}
+{"name":"jjQbAs","type":"VizlibAdvancedTextObject","col":19,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":52.77777777777778,"width":47.22222222222222,"height":27.77777777777778}}
+{"name":"JSmgKE","type":"VizlibFilter","col":0,"row":5,"colspan":17,"rowspan":4,"bounds":{"y":27.77777777777778,"x":0,"width":47.22222222222222,"height":22.22222222222222}}
+{"name":"LqrVU","type":"VizlibBarChart","col":0,"row":9,"colspan":17,"rowspan":9,"bounds":{"y":50,"x":0,"width":47.22222222222222,"height":50}}
+{"name":"QyasLb","type":"VizlibBarChart","col":19,"row":9,"colspan":17,"rowspan":9,"bounds":{"y":50,"x":52.77777777777778,"width":47.22222222222222,"height":50}}
+{"name":"jHDYGz","type":"VizlibFilter","col":19,"row":5,"colspan":17,"rowspan":4,"bounds":{"y":27.77777777777778,"x":52.77777777777778,"width":47.22222222222222,"height":22.22222222222222}}
+{"name":"c54d623c-b519-4add-875e-0694484df072","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
+{"name":"c20051a8-9634-44ca-83fa-46a2ae9af30c","type":"VizlibLineObject","col":17,"row":0,"colspan":2,"rowspan":18,"bounds":{"y":0,"x":47.22222222222222,"width":5.555555555555555,"height":100}}
+{"name":"pKnUU","type":"VizlibGantt","col":0,"row":5,"colspan":17,"rowspan":13,"bounds":{"y":27.77777777777778,"x":0,"width":47.22222222222222,"height":72.22222222222221}}
+{"name":"eJTECJ","type":"VizlibAdvancedTextObject","col":0,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":0,"width":47.22222222222222,"height":27.77777777777778}}
+{"name":"wgPPku","type":"VizlibAdvancedTextObject","col":19,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":52.77777777777778,"width":47.22222222222222,"height":27.77777777777778}}
+{"name":"AGBWXe","type":"VizlibGantt","col":19,"row":5,"colspan":17,"rowspan":13,"bounds":{"y":27.77777777777778,"x":52.77777777777778,"width":47.22222222222222,"height":72.22222222222221}}
 {"name":"NDPAPZX","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
 {"name":"RpDS","type":"VizlibLineObject","col":17,"row":0,"colspan":2,"rowspan":18,"bounds":{"y":0,"x":47.22222222222222,"width":5.555555555555555,"height":100}}
 {"name":"eFqpnP","type":"VizlibAdvancedTextObject","col":0,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":0,"width":47.22222222222222,"height":27.77777777777778}}
 {"name":"PQbRdS","type":"VizlibAdvancedTextObject","col":19,"row":0,"colspan":17,"rowspan":5,"bounds":{"y":0,"x":52.77777777777778,"width":47.22222222222222,"height":27.77777777777778}}
-{"name":"pTCznvT","type":"VizlibFilter","col":0,"row":5,"colspan":17,"rowspan":5,"bounds":{"y":27.77777777777778,"x":0,"width":47.22222222222222,"height":27.77777777777778}}
-{"name":"jvmnJ","type":"VizlibFilter","col":19,"row":5,"colspan":17,"rowspan":5,"bounds":{"y":27.77777777777778,"x":52.77777777777778,"width":47.22222222222222,"height":27.77777777777778}}
-{"name":"VMDpt","type":"VizlibBarChart","col":0,"row":10,"colspan":17,"rowspan":8,"bounds":{"y":55.55555555555556,"x":0,"width":47.22222222222222,"height":44.44444444444444}}
-{"name":"hCLwLmQ","type":"VizlibBarChart","col":19,"row":10,"colspan":17,"rowspan":8,"bounds":{"y":55.55555555555556,"x":52.77777777777778,"width":47.22222222222222,"height":44.44444444444444}}
+{"name":"wJdjs","type":"VizlibButton","col":19,"row":5,"colspan":17,"rowspan":2,"bounds":{"y":27.77777777777778,"x":52.77777777777778,"width":47.22222222222222,"height":11.11111111111111}}
+{"name":"JaXaNG","type":"VizlibGantt","col":0,"row":5,"colspan":17,"rowspan":13,"bounds":{"y":27.77777777777778,"x":0,"width":47.22222222222222,"height":72.22222222222221}}
+{"name":"gPJFZt","type":"VizlibGantt","col":19,"row":7,"colspan":17,"rowspan":11,"bounds":{"y":38.88888888888889,"x":52.77777777777778,"width":47.22222222222222,"height":61.111111111111114}}
+{"name":"dWmWbP","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-6.666666666666667,"x":-3.3333333333333335,"width":0,"height":0}}
+{"name":"JyQRJ","type":"text-image","col":0,"row":0,"colspan":10,"rowspan":2,"bounds":{"y":0,"x":0,"width":33.33333333333333,"height":13.333333333333334}}
+{"name":"PTLa","type":"text-image","col":20,"row":0,"colspan":10,"rowspan":2,"bounds":{"y":0,"x":66.66666666666666,"width":33.33333333333333,"height":13.333333333333334}}
+{"name":"ZHjFBPy","type":"text-image","col":10,"row":0,"colspan":10,"rowspan":2,"bounds":{"y":0,"x":33.33333333333333,"width":33.33333333333333,"height":13.333333333333334}}
+{"name":"nynagL","type":"VizlibLineObject","col":9,"row":2,"colspan":2,"rowspan":13,"bounds":{"y":13.333333333333334,"x":30,"width":6.666666666666667,"height":86.66666666666667}}
+{"name":"gZPGmpq","type":"VizlibLineObject","col":19,"row":2,"colspan":2,"rowspan":13,"bounds":{"y":13.333333333333334,"x":63.33333333333333,"width":6.666666666666667,"height":86.66666666666667}}
+{"name":"RxxPQ","type":"VizlibKPI","col":0,"row":2,"colspan":9,"rowspan":4,"bounds":{"y":13.333333333333334,"x":0,"width":30,"height":26.666666666666668}}
+{"name":"yNVSpTM","type":"VizlibKPI","col":21,"row":2,"colspan":9,"rowspan":4,"bounds":{"y":13.333333333333334,"x":70,"width":30,"height":26.666666666666668}}
+{"name":"KHUKX","type":"VizlibKPI","col":11,"row":2,"colspan":8,"rowspan":4,"bounds":{"y":13.333333333333334,"x":36.666666666666664,"width":26.666666666666668,"height":26.666666666666668}}
+{"name":"jAypv","type":"VizlibButton","col":0,"row":6,"colspan":9,"rowspan":3,"bounds":{"y":40,"x":0,"width":30,"height":20}}
+{"name":"TEpJHq","type":"VizlibAdvancedTextObject","col":0,"row":9,"colspan":9,"rowspan":6,"bounds":{"y":60,"x":0,"width":30,"height":40}}
+{"name":"pzCxaYs","type":"VizlibBarChart","col":11,"row":9,"colspan":8,"rowspan":6,"bounds":{"y":60,"x":36.666666666666664,"width":26.666666666666668,"height":40}}
+{"name":"hdAUmp","type":"VizlibBarChart","col":21,"row":6,"colspan":9,"rowspan":9,"bounds":{"y":40,"x":70,"width":30,"height":60}}
+{"name":"AUVmMEj","type":"VizlibAdvancedTextObject","col":11,"row":6,"colspan":8,"rowspan":3,"bounds":{"y":40,"x":36.666666666666664,"width":26.666666666666668,"height":20}}
 {"name":"aTh","type":"VizlibAdvancedTextObject","col":17,"row":1,"colspan":18,"rowspan":16,"bounds":{"y":5.555555555555555,"x":47.22222222222222,"width":50,"height":88.88888888888889}}
 {"name":"bbd7c6bc-bb5f-4541-a2be-f8273d464c97","type":"VizlibSheetMenuPlus","col":-1,"row":-1,"colspan":0,"rowspan":0,"bounds":{"y":-5.555555555555555,"x":-2.7777777777777777,"width":0,"height":0}}
 {"name":"QHaQgWz","type":"VizlibAdvancedTextObject","col":1,"row":1,"colspan":16,"rowspan":7,"bounds":{"y":5.555555555555555,"x":2.7777777777777777,"width":44.44444444444444,"height":38.88888888888889}}
 {"name":"bCFqZtB","type":"VizlibKPI","col":1,"row":8,"colspan":16,"rowspan":9,"bounds":{"y":44.44444444444444,"x":2.7777777777777777,"width":44.44444444444444,"height":50}}
-{"name":"bbtJfJ","type":"VizlibButton","col":0,"row":17,"colspan":18,"rowspan":1,"bounds":{"y":94.44444444444444,"x":0,"width":50,"height":5.555555555555555}}
 
 DIMENSIONS
+{"qInfo":{"qId":"ZWHDsm","qType":"dimension"},"qMeta":{"title":"Railroad_YearDate","description":"","createdDate":"2023-06-07T14:19:49.071Z","modifiedDate":"2023-06-07T14:19:49.071Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"dimension","id":"ZWHDsm","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
 
 MEASURES
-{"qInfo":{"qId":"mDBHJ","qType":"measure"},"qMeta":{"title":"Rand100","description":"","createdDate":"2023-06-07T14:23:49.048Z","modifiedDate":"2023-06-07T14:23:49.048Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"mDBHJ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
+{"qInfo":{"qId":"RgVMCp","qType":"measure"},"qMeta":{"title":"avg_Loaded_Freight_Cars","description":"","createdDate":"2023-06-07T14:19:49.070Z","modifiedDate":"2023-06-07T14:19:49.070Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"RgVMCp","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
+{"qInfo":{"qId":"UZpzwc","qType":"measure"},"qMeta":{"title":"avg_Empty_Passenger_Cars","description":"","createdDate":"2023-06-07T14:19:49.071Z","modifiedDate":"2023-06-07T14:19:49.071Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"UZpzwc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
+{"qInfo":{"qId":"jERmxDP","qType":"measure"},"qMeta":{"title":"avg_Empty_Freight_Cars","description":"","createdDate":"2023-06-07T14:19:49.109Z","modifiedDate":"2023-06-07T14:19:49.109Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"jERmxDP","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
+{"qInfo":{"qId":"rkPQyYR","qType":"measure"},"qMeta":{"title":"avg_Loaded_Passenger_Cars","description":"","createdDate":"2023-06-07T14:19:49.116Z","modifiedDate":"2023-06-07T14:19:49.116Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"measure","id":"rkPQyYR","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"],"tags":[]},"qData":[]}
 
 VARIABLES
-{"qName":"name","qDefinition":"capital-project-detail-data-milestones-1","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"235d243c-0ef7-4421-b9ae-a5610e876136","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"name","qDefinition":"Formatted for export","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"235d243c-0ef7-4421-b9ae-a5610e876136","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"index","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"eed83c40-befe-4a72-83de-5d7769695a74","qType":"variable"},"qData":[],"qIsScriptCreated":true}
-{"qName":"currentName","qDefinition":"capital-project-detail-data-milestones-1","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"38034cb6-cb3a-49c6-b25b-192473e0b684","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"currentName","qDefinition":"Formatted for export","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"38034cb6-cb3a-49c6-b25b-192473e0b684","qType":"variable"},"qData":[],"qIsScriptCreated":true}
 {"qName":"matches","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"30df59e8-53fa-41a6-b76f-eeb2fbcae4f5","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"v_ganttGroup","qDefinition":"Aircraft_Manufacturer","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"33082bdc-2716-4f17-b516-322caa0c98ee","qType":"variable"},"qData":[]}
+{"qName":"v_YesNo","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c0c2de7b-0060-4d39-9fe1-53472be82037","qType":"variable"},"qData":[]}
+{"qName":"v_Railroad_date_min","qDefinition":"=Date(MIN(Date), 'M\/D\/YYYY')","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e5f2fc48-97b8-4b86-9c29-7b0a651ddb07","qType":"variable"},"qData":[]}
+{"qName":"v_Railroad_date_max","qDefinition":"=Date(MAX(Date), 'M\/D\/YYYY')","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"9392eaab-deb7-4c8d-95d3-8610e3851591","qType":"variable"},"qData":[]}
+{"qName":"v_Numberofevents","qDefinition":"=count(Accident_Number)","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c46acf16-2273-491b-b378-67238ad0f1ac","qType":"variable"},"qData":[]}
+{"qName":"ClimberCustomReportczfvpQ","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"b5e744ed-f337-43e1-bf4b-e93db6533ca5","qType":"variable"},"qData":[]}
+{"qName":"v_Date_min","qDefinition":"=Date(Date), 'M\/D\/YYYY')","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"bd63614b-d1c8-4e28-a6f9-0cfa7b5eead5","qType":"variable"},"qData":[]}
+{"qName":"v_Date_max","qDefinition":"=Date(Date), 'M\/D\/YYYY')","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"a85e0837-2553-442e-97a7-38ef28f0d996","qType":"variable"},"qData":[]}
+{"qName":"ClimberCustomReport6d895d8a57a24f6b9a41133f724d5302","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"22afa570-d85c-479b-8562-5c54f9bf0f80","qType":"variable"},"qData":[]}
+{"qName":"ClimberCustomReportfd2c4e04cd344dcea96409cdf8a21224","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"cf16d048-ad5e-40fa-a935-ca6596b09b93","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":45,"qTags":["$key","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":4,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":4,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":4,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":28,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qName":"PUB_DATE","qCardinal":1,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"BORO","qCardinal":6,"qTags":["$key","$ascii","$text"],"qSrcTables":["capital-project-detail-data-milestones-1","BarChartURL","ExampleShowcase"]}
-{"qName":"MANAGING_AGCY_CD","qCardinal":23,"qTags":["$numeric","$integer"],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"MANAGING_AGCY","qCardinal":23,"qTags":["$ascii","$text"],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"PROJECT_ID","qCardinal":5075,"qTags":[],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"PROJECT_DESCR","qCardinal":4982,"qTags":["$ascii","$text"],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"SEQ_NUMBER","qCardinal":30,"qTags":["$numeric","$integer"],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"TASK_DESCRIPTION","qCardinal":23,"qTags":["$ascii","$text"],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"ORIG_START_DATE","qCardinal":0,"qTags":[],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"ORIG_END_DATE","qCardinal":0,"qTags":[],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"TASK_START_DATE","qCardinal":0,"qTags":[],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"TASK_END_DATE","qCardinal":0,"qTags":[],"qSrcTables":["capital-project-detail-data-milestones-1"]}
-{"qName":"CODE","qCardinal":6,"qTags":[],"qSrcTables":["BarChartURL"]}
-{"qName":"MEASURE","qCardinal":6,"qTags":["$numeric","$integer"],"qSrcTables":["BarChartURL"]}
-{"qName":"URL","qCardinal":6,"qTags":["$ascii","$text"],"qSrcTables":["BarChartURL"]}
-{"qName":"PROJECT","qCardinal":16,"qTags":["$ascii","$text"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"TICKET_STATUS_DIMENSION","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"PREDICTED_PROJECT_COST","qCardinal":15,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"CURRENT_PROJECT_COST","qCardinal":15,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"SPI","qCardinal":13,"qTags":["$numeric"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"CPI","qCardinal":15,"qTags":["$numeric"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"PV","qCardinal":16,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"EV","qCardinal":15,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"DAYS","qCardinal":6,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"CURRENT_DAYS","qCardinal":13,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"EFFECTIVENESS","qCardinal":11,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"PM","qCardinal":14,"qTags":["$ascii","$text"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/01\/01","qCardinal":11,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/01\/08","qCardinal":9,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/01\/15","qCardinal":5,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/01\/22","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/01\/29","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/02\/05","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/02\/12","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/02\/19","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/02\/25","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/03\/04","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/03\/11","qCardinal":3,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/03\/18","qCardinal":2,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/03\/25","qCardinal":2,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/04\/01","qCardinal":2,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"2022\/04\/08","qCardinal":2,"qTags":[],"qSrcTables":["ExampleShowcase"]}
-{"qName":"PROJECT_DATE","qCardinal":16,"qTags":["$ascii","$text"],"qSrcTables":["ExampleDate"]}
-{"qName":"DATE_DATE","qCardinal":15,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["ExampleDate"]}
-{"qName":"MEASURE_DATE","qCardinal":16,"qTags":["$numeric","$integer"],"qSrcTables":["ExampleDate"]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":30,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":3,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":3,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":3,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":17,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$ascii","$text","$hidden","$system"],"qSrcTables":[]}
+{"qName":"Book_Title","qCardinal":999,"qTags":[],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Book_Category","qCardinal":50,"qTags":["$ascii","$text"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Price_Before_Tax","qCardinal":903,"qTags":["$numeric"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Price_After_Tax","qCardinal":903,"qTags":["$numeric"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Book_Tax_amount","qCardinal":1,"qTags":["$numeric","$integer"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Book_Avilability","qCardinal":21,"qTags":["$numeric","$integer"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Book_Book_Description","qCardinal":999,"qTags":["$text"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Book_Image_Link","qCardinal":1000,"qTags":["$ascii","$text"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Book_Stars","qCardinal":5,"qTags":["$numeric","$integer"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"BOOK_Year","qCardinal":1000,"qTags":["$numeric"],"qSrcTables":["Book_Dataset_1"]}
+{"qName":"Aircraft_Name","qCardinal":339,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_PrimaryRole","qCardinal":25,"qTags":["$ascii","$text"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Manufacturer","qCardinal":115,"qTags":["$ascii","$text"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Number","qCardinal":296,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_ActiveSince","qCardinal":19,"qTags":["$numeric","$integer"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_LastBuilt","qCardinal":29,"qTags":["$numeric","$integer"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Retired","qCardinal":45,"qTags":["$numeric","$integer"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_State","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Crew","qCardinal":13,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Length","qCardinal":278,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Wingspan","qCardinal":247,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Height","qCardinal":221,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_WingArea","qCardinal":263,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_MaxSpeed","qCardinal":210,"qTags":[],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Image URL","qCardinal":57,"qTags":["$ascii","$text"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_ww2aircraft.Country","qCardinal":16,"qTags":["$ascii","$text"],"qSrcTables":["Sheet1"]}
+{"qName":"Aircraft_Sheet1.ww2aircraft.Country_GeoInfo","qCardinal":14,"qTags":["$ascii","$text"],"qSrcTables":["Sheet1"]}
+{"qName":"Action","qCardinal":31,"qTags":["$ascii","$text"],"qSrcTables":["Formatted for export"]}
+{"qName":"URL","qCardinal":31,"qTags":["$ascii","$text"],"qSrcTables":["Formatted for export"]}
+{"qName":"Theme","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Formatted for export"]}
