@@ -1,274 +1,254 @@
-///$tab Main
-SET ThousandSep='.';
-SET DecimalSep=',';
-SET MoneyThousandSep='.';
-SET MoneyDecimalSep=',';
-SET MoneyFormat='#.##0,00 €;-#.##0,00 €';
-SET TimeFormat='h:mm:ss';
-SET DateFormat='DD/MM/YYYY';
-SET TimestampFormat='DD/MM/YYYY h:mm:ss[.fff]';
-SET MonthNames='ene;feb;mar;abr;may;jun;jul;ago;sep;oct;nov;dic';
-SET DayNames='lun;mar;mié;jue;vie;sáb;dom';
-SET LongMonthNames='enero;febrero;marzo;abril;mayo;junio;julio;agosto;septiembre;octubre;noviembre;diciembre';
-SET LongDayNames='lunes;martes;miércoles;jueves;viernes;sábado;domingo';
+///$tab Section
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$#,##0.00;($#,##0.00)';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 SET FirstWeekDay=0;
 SET BrokenWeeks=1;
 SET ReferenceDay=0;
 SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+
+///$tab Main
+// countryISO:
+// mapping LOAD
+//     Country,
+//     CountryCode
+// FROM [lib://Human Capital Management data/Sheet2.qvd]
+// (qvd);
+
+// countryISO3:
+// mapping LOAD
+//     "Alpha-2 code",
+//     "Alpha-3 code"
+// FROM [lib://ISO]
+// (html, codepage is 1252, embedded labels, table is @1);
 
 
-///$tab Variables
-LET vDemoDay = MakeDate(2013,05,13);
+// LOAD
+//     Course_ID,
+//     Course,
+//     "Course Type",
+//     "Developmental Program"
+// FROM [lib://Human Capital Management data/Courses.qvd]
+// (qvd);
 
-///$tab Transactions
-Transactions:
-LOAD
-    %CalendarLink,
-    %Company,
-    %DomesticMaster,
-    %RandomId,
-    %SrcCatID,
-    %VendorRecID,
-    AmountDC,
-    AmountEUR,
-    AmountLC,
-    "Company Code",
-    CostCenter,
-    CostCenterText,
-    Counter,
-    CreationDate,
-    DocCurrency,
-    "Document Date",
-    "Document Number",
-    "Document Type",
-    DomesticMaster,
-    FiscalYear,
-    G_PostingKey,
-    G_PostingText,
-    GLAccountID,
-    GLAccountText,
-    GlobalMaster,
-    HasInternalOrder,
-    HasOrderReference,
-    HasPO,
-    HeaderText,
-    InternalOrder,
-    IsReversed,
-    IsServiceTrans,
-    LastChangeDate,
-    "Line Item",
-    "Local Currency",
-    MaterialDescr,
-    MaterialID,
-    MatGrpDescr,
-    MatGrpID,
-    MMID,
-    OPEX_CAPEX,
-    OutOfScopeReason,
-    ParkedBy_Name,
-    ParkedByID,
-    PO_ItemNo,
-    PO_ItemText,
-    POID,
-    POCoverage,
-    "Posting Date",
-    PostingClass,
-    PostingClearing,
-    Reference,
-    Scope,
-    Spend.CategoryLead,
-    SrcCatID,
-    "Transaction Code",
-    V_LinkedGLAccountID,
-    V_LinkedGLAccountName,
-    V_PostingKey,
-    V_PostingText,
-    VendorName,
-    VendorRecID,
-    WBS
-FROM 'lib://Procurement/Transactions.qvd'
+
+
+// Load
+// *,
+// applymap('countryISO3', CountryCode) as CountryCode3,
+// subfield(Month,'-',2) as Year
+// ;
+// LOAD
+//     if(SubStringCount("Month",'Jan')=1,dual(replace("Month",'2013','2014'),1),
+//     	if(SubStringCount("Month",'Feb')=1,dual(replace("Month",'2013','2014'),2),
+//         	if(SubStringCount("Month",'Mar')=1,dual(replace("Month",'2013','2014'),3),
+//             	if(SubStringCount("Month",'Apr')=1,dual(replace("Month",'2013','2014'),4),
+//                 	if(SubStringCount("Month",'May')=1,dual(replace("Month",'2013','2014'),5),
+//                     	if(SubStringCount("Month",'Jun')=1,dual(replace("Month",'2013','2014'),6))))))) as "Month",
+//     Employee_ID,
+//     AutoNumber(Employee_ID&"Employee Name"&Salary) as EmployeeCount,
+//     //"Employee No",
+//     "Employee Name",
+//     Reason,
+//     "Job Family",
+//     Job,
+//     Position,
+//     Geography,
+//     Country,
+//     applymap('countryISO', Country) as CountryCode,
+//     "Town or City",
+//     Location,
+//     Gender,
+//     Band,
+//     Position1,
+//     "Employment Status",
+//     "Organization Type",
+//     "Organization Class",
+//     Organization,
+//     "Ethnic Group",
+//     Recruiting_Channel,
+//     Recruiting_Source,
+//     Salary,
+//     "Employee Type",
+//     "Terminated Employee",
+//     Termination,
+//     NewHire,
+//     "New Hires",
+//     Tenure,
+//     "Tenure Group",
+//     "Age",
+//     "Age Group"
+// FROM [lib://Human Capital Management data/Employees.qvd]
+// (qvd) where Employee_ID <>10 and Employee_ID <>284 and Employee_ID <>315 and Employee_ID <>1357 and Gender <>'-';
+
+// LOAD
+//     Employee_ID,
+//     Director,
+//     VP
+// FROM [lib://Human Capital Management data/Hierarchy$.qvd]
+// (qvd) where Employee_ID <>10 and Employee_ID <>284 and Employee_ID <>315 and Employee_ID <>1357 ;
+
+
+// LOAD
+//     Employee_ID,
+//     Course_ID,
+//     "# Enrollment",
+//     "Training Hours",
+//     "Training Cost",
+//     "# Program Completion"
+// FROM [lib://Human Capital Management data/Training.qvd]
+// (qvd) where Employee_ID <>10 and Employee_ID <>284 and Employee_ID <>315 and Employee_ID <>1357;
+
+// LOAD
+//     Employee_ID,
+//     "Question Type",
+//     Score,
+//     Responses
+// FROM [lib://HR/Survey$.qvd]
+// (qvd) where Employee_ID <>10 and Employee_ID <>284 and Employee_ID <>315 and Employee_ID <>1357;
+
+// LOAD
+//     World.Name as CountryCode3,
+//     World.Name as CountryShort,
+//     World.Area
+// FROM 'lib://KML Files For Maps/World.kml'
+// (kml, Table is [World.shp/Features]);
+
+
+
+
+
+
+
+
+
+
+///$tab Auto-generated section
+///$autogenerated
+
+[Training]:
+LOAD [Employee_ID],
+	[Course_ID],
+	[# Enrollment],
+	[Training Hours],
+	[Training Cost],
+	[# Program Completion]
+ FROM [lib://AttachedFiles/Training.qvd]
 (qvd);
 
-
-
-
-///$tab Calendar
-Calendar:
-LOAD
-    %CalendarLink,
-    PostingDay,
-    PostingMonthNum,
-    PostingMonth,
-    PostingYear,
-    PostingWeek,
-    IsCurrentYTD,
-    PostingYearWeek,
-    PostingYearMonth
-FROM 'lib://Procurement/Calendar.qvd'
+[Survey$]:
+LOAD [Employee_ID],
+	[Question Type],
+	[Score],
+	[Responses]
+ FROM [lib://AttachedFiles/Survey$.qvd]
 (qvd);
 
-
-///$tab Category
-Category:
-LOAD
-    %SrcCatID,
-    Spend_SrcCat.Level1Text,
-    Spend_SrcCat.Level2Text,
-    Spend_SrcCat.Level3Text,
-    Spend_SrcCat.ServicesGoods,
-    Spend_SrcCat.TextPath,
-    Spend_SrcCat.ID_and_Path
-FROM 'lib://Procurement/Category.qvd'
+[Hierarchy$]:
+LOAD [Employee_ID],
+	[Director],
+	[VP]
+ FROM [lib://AttachedFiles/Hierarchy$.qvd]
 (qvd);
 
-CategoryHierarchy:
-LOAD
-    %SrcCatID,
-    SrcCatID_Path,
-    SrcCatText_Path,
-    SrcCatID_Text_Path
-FROM 'lib://Procurement/CategoryHierarchy.qvd'
-(qvd);
-///$tab Contracts
-Contract:
-LOAD
-    %ContractID,
-    Contracts.AgreedOnDate,
-    Contracts.AutomaticAlertDate,
-    Contracts.ContractName,
-    Contracts.CountryAbbrev,
-    Contracts.Country,
-    Contracts.CreationDate,
-    Contracts.Currency,
-    Contracts.EffectiveDate,
-    Contracts.EffectiveDate_LatestAmendment,
-    Contracts.EvergreenReminderDate,
-    Contracts.FurtherInfoTermination,
-    Contracts.InternalContractor_Name,
-    Contracts.IsContract,
-    Contracts.Kind,
-    Contracts.Language,
-    Contracts.LegalJurisdiction,
-    Contracts.Link,
-    Contracts.Operator,
-    Contracts.OtherContractor_Name,
-    Contracts.Role_InternalContractor,
-    Contracts.Role_OtherContractor,
-    Contracts.Scope,
-    Contracts.Status,
-    Contracts.Subject,
-    Contracts.SumTotalValues,
-    Contracts.TerminatedDate,
-    Contracts.TerminationProlongationDate,
-    Contracts.TerminationTimespan,
-    Contracts.TerminationType,
-    Contracts.TermsConditions,
-    Contracts.TermsOfPayment,
-    Contracts.tp_ID,
-    Contracts.EffectiveYear,
-    Contracts.EffectiveMonth,
-    Contracts.TerminatedYear,
-    Contracts.TerminatedMonth,
-    Contracts.TerminationProlongationYear,
-    Contracts.TerminationProlongationMonth,
-    Contracts.EvergreenReminderYear,
-    Contracts.EvergreenReminderMonth
-FROM 'lib://Procurement/Contract.qvd'
+[Employees]:
+LOAD 
+	[Month] AS [Month],
+	[Employee_ID] AS [Employee_ID],
+	[EmployeeCount] AS [EmployeeCount],
+	[Employee Name] AS [Employee Name],
+	[Reason] AS [Reason],
+	[Job Family] AS [Job Family],
+	[Job] AS [Job],
+	[Position] AS [Position],
+	[Geography] AS [Geography],
+	[Country] AS [Country],
+	[CountryCode] AS [CountryCode],
+	[Town or City] AS [Town or City],
+	[Location] AS [Location],
+	[Gender] AS [Gender],
+	[Band] AS [Band],
+	[Position1] AS [Position1],
+	[Employment Status] AS [Employment Status],
+	[Organization Type] AS [Organization Type],
+	[Organization Class] AS [Organization Class],
+	[Organization] AS [Organization],
+	[Ethnic Group] AS [Ethnic Group],
+	[Recruiting_Channel] AS [Recruiting_Channel],
+	[Recruiting_Source] AS [Recruiting_Source],
+	[Salary] AS [Salary],
+	[Employee Type] AS [Employee Type],
+	[Terminated Employee] AS [Terminated Employee],
+	[Termination] AS [Termination],
+	[NewHire] AS [NewHire],
+	[New Hires] AS [New Hires],
+	[Tenure] AS [Tenure],
+	[Tenure Group] AS [Tenure Group],
+	[Age] AS [Age],
+	[Age Group] AS [Age Group],
+	[CountryCode3] AS [CountryCode3-world.Name],
+	[Year] AS [Year];
+LOAD [Month],
+	[Employee_ID],
+	[EmployeeCount],
+	[Employee Name],
+	[Reason],
+	[Job Family],
+	[Job],
+	[Position],
+	[Geography],
+	[Country],
+	[CountryCode],
+	[Town or City],
+	[Location],
+	[Gender],
+	[Band],
+	[Position1],
+	[Employment Status],
+	[Organization Type],
+	[Organization Class],
+	[Organization],
+	[Ethnic Group],
+	[Recruiting_Channel],
+	[Recruiting_Source],
+	[Salary],
+	[Employee Type],
+	[Terminated Employee],
+	[Termination],
+	[NewHire],
+	[New Hires],
+	[Tenure],
+	[Tenure Group],
+	[Age],
+	[Age Group],
+	[CountryCode3],
+	[Year]
+ FROM [lib://AttachedFiles/Employees.qvd]
 (qvd);
 
-ContractDates:
-LOAD
-    %ContractID,
-    ContractDates.ContractID,
-    ContractDates.Loop,
-    ContractDates.Date,
-    ContractDates.Start,
-    ContractDates.End,
-    ContractDates.WeekStart,
-    ContractDates.Year,
-    ContractDates.Month,
-    ContractDates.Event,
-    ContractDates.EventAutoID
-FROM 'lib://Procurement/ContractDates.qvd'
+[countryISO3]:
+LOAD [Course_ID],
+	[Course],
+	[Course Type],
+	[Developmental Program]
+ FROM [lib://AttachedFiles/countryISO3.qvd]
 (qvd);
 
-ContractParty:
-LOAD
-    %ContractID,
-    %DomesticMaster,
-    ContractingParty.City,
-    ContractingParty.ContractID,
-    ContractingParty.CountryAbbrev,
-    ContractingParty.Country,
-    ContractingParty.DomesticMaster,
-    ContractingParty.GlobalMaster,
-    ContractingParty.IsInternalContractor,
-    ContractingParty.IsOtherContractor,
-    ContractingParty.Link,
-    ContractingParty.Name,
-    ContractingParty.Role,
-    ContractingParty.ZIPCode
-FROM 'lib://Procurement/ContractParty.qvd'
-(qvd);
-///$tab Vendors
-Vendor:
-LOAD
-    %SourceID,
-    %VendorRecID,
-    Vendors.Address,
-    Vendors.CentralPostingBlock,
-    Vendors.CentralPurchasingBlock,
-    Vendors.City,
-    Vendors.CountryAbbrev,
-    Vendors.Country,
-    Vendors.CreationDate,
-    Vendors.DomesticMaster,
-    Vendors.GlobalMaster,
-    Vendors.IsActive,
-    Vendors.IsOneTimeVendor,
-    Vendors.LastChangeDate,
-    Vendors.MarkedForDeletion,
-    Vendors.PostingClass,
-    Vendors.VATID,
-    Vendors.VendorName1,
-    Vendors.VendorName2,
-    Vendors.VendorRecID,
-    Vendors.ZIPCode,
-    Vendors.Zone
-FROM 'lib://Procurement/Vendor.qvd'
-(qvd);
-///$tab Company
-Company:
-LOAD
-    Company.CompanyCode,
-    Company.FullName,
-    Company.Entity,
-    Company.CountryAbbrev,
-    Company.Country,
-    Company.City,
-    %Company
-FROM 'lib://Procurement/Company.qvd'
-(qvd);
-///$tab OTP
-OTP:
-LOAD
-    %RandomId,
-    OTP.HasDueDate,
-    OTP.IsPaid,
-    OTP.HasNetDays,
-    OTP.BaselineDate,
-    OTP.DueDateOLD,
-    OTP.ClearingDateOLD,
-    OTP.DueDate,
-    If(OTP.DueDate<MakeDate(2013,05,13), -1, 1) as DueDateFlag,
-    OTP.ClearingDate,
-    OTP.NetDays,
-    OTP.IsRelevant,
-    OTP.IsPaidOnTime,
-    OTP.IsPaidOnTime2,
-    OTP.Arrear,
-    OTP.PaidAfterDays,
-    OTP.LateDays,
-    OTP.PaidAfterDays_Class
-FROM 'lib://Procurement/OTP.qvd'
-(qvd);
+[World.shp/Features]:
+LOAD 
+	[world.Name] AS [CountryCode3-world.Name],
+	[world.Area] AS [world.Area];
+LOAD [world.Name],
+	[world.Area]
+ FROM [lib://AttachedFiles/world.kml]
+(kml, Table is [World.shp/Features]);
+
+
