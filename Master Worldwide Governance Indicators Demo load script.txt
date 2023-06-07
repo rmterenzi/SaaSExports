@@ -3,195 +3,485 @@ SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
-SET MoneyFormat='$#,##0.00;-$#,##0.00';
+SET MoneyFormat='$#,##0.00;($#,##0.00)';
 SET TimeFormat='h:mm:ss TT';
 SET DateFormat='M/D/YYYY';
 SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
-SET FirstWeekDay=6;
-SET BrokenWeeks=1;
-SET ReferenceDay=0;
-SET FirstMonthOfYear=1;
-SET CollationLocale='en-US';
-SET CreateSearchIndexOnReload=1;
 SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
-SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
-SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
-SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
-
-///$tab Colors
-/* Qlik Colors */
-
-colors:
-load * Inline [
-  color_id,color_type,color_name,color_r,color_g,color_b,color_hex
-  1,c,QlikGreen,0,152,69,#009845
-  2,f,Tanzanite,28,53,94,#1C355E
-  3,f,Slate,36,75,90,#244B5A
-  4,f,Turquoise,0,101,128,#006580
-  5,f,Aquamarine,16,207,201,#10CFC9
-  6,f,Wine,135,0,100,#870064
-  7,f,Amethyst,101,93,198,#655DC6
-  8,f,Stone,196,207,218,#C4CFDA
-  9,s,Sapphire,0,92,185,#005CB9
-  10,s,Emerald,0,105,55,#006937
-  11,s,Ruby,231,0,76,#E7004C
-  12,s,QlikGrey,84,86,90,#54565A
-  13,h,Coral,255,142,159,#FF8E9F
-  14,h,Topaz,255,199,42,#FFC72A
-  15,h,Peridot,194,213,0,#C2D500
-];
-///$tab Sales data
-Set dataManagerTables = '','SalesData';
-//This block renames script tables from non generated section which conflict with the names of managed tables
-
-For each name in $(dataManagerTables) 
-    Let index = 0;
-    Let currentName = name; 
-    Let tableNumber = TableNumber(name); 
-    Let matches = 0; 
-    Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
-        index = index + 1; 
-        currentName = name & '-' & index; 
-        tableNumber = TableNumber(currentName) 
-        matches = Match('$(currentName)', $(dataManagerTables));
-    Loop 
-    If index > 0 then 
-            Rename Table '$(name)' to '$(currentName)'; 
-    EndIf; 
-Next; 
-Set dataManagerTables = ;
-
-
-Unqualify *;
-
+///$tab Product
+ProductGroup:
 LOAD
-    Address,
-    CategoryID,
-    CategoryName,
-    Product,
+    "Product Group Desc",
+    "Product Group"
+FROM [lib://Consumer Goods/ProductGroup.qvd]
+(qvd);
+
+ProductLine:
+LOAD
+    "Product Line Desc",
+    "Product Line"
+FROM [lib://Consumer Goods/ProductLine.qvd]
+(qvd);
+
+ProductSubGroup:
+LOAD
+    "Product Sub Group Desc",
+    "Product Sub Group"
+FROM [lib://Consumer Goods/ProductSubGroup.qvd]
+(qvd);
+
+ProductType:
+LOAD
+    "Product Type Desc",
+    "Product Type"
+FROM [lib://Consumer Goods/ProductType.qvd]
+(qvd);
+
+ItemBranch:
+LOAD
+    "Item Branch 3rd Item Number",
+    "Item Branch G/L Category",
+    "Short Name",
+    "Item Branch 2nd Item Number",
+    "Item-Branch Key",
+    "Item Branch Reorder Quantity",
+    Horsepower,
+    "Item Branch Category Code 6",
+    "Item Branch Category Code 7",
+    "Item Branch Primary Supplier"
+FROM [lib://Consumer Goods/ItemBranch.qvd]
+(qvd);
+
+ItemClass:
+LOAD
+    "Item Class Desc",
+    "Item Class"
+FROM [lib://Consumer Goods/ItemClass.qvd]
+(qvd);
+
+ItemMaster:
+LOAD
+    "Short Name",
+    "Item Count",
+    "Product Price Group",
+    "Product Department",
+    "Product Line",
+    "Product Group",
+    "Product Type",
+    "Master Planning Family",
+    "Product Sub Group"
+FROM [lib://Consumer Goods/ItemMaster.qvd]
+(qvd);
+
+linkBasket:
+LOAD
+    BasketItem,
+    "Order Number"
+FROM [lib://Consumer Goods/linkBasket.qvd]
+(qvd);
+
+Basket:
+LOAD
+    BasketItem,
+    "Basket Produce Line",
+    "Basket Product Group Desc",
+    "Basket Product Line Desc",
+    "Basket Product Sub Group Desc",
+    "Basket Product Type Desc",
+    "Basket Item Desc"
+FROM [lib://Consumer Goods/Basket.qvd]
+(qvd);
+
+BusinessFamily:
+LOAD
+    "Business Family Name",
+    "Business Family"
+FROM [lib://Consumer Goods/BusinessFamily.qvd]
+(qvd);
+
+Channel:
+LOAD
+    "Channel Name",
+    Channel
+FROM [lib://Consumer Goods/Channel.qvd]
+(qvd);
+
+Distribution:
+LOAD
+    "Distribution Channel Mgr Name",
+    "Distribution Channel Mgr"
+FROM [lib://Consumer Goods/Distribution.qvd]
+(qvd);
+
+MasterPlanning:
+LOAD
+    "Master Planning Family Desc",
+    "Master Planning Family"
+FROM [lib://Consumer Goods/MasterPlanning.qvd]
+(qvd);
+
+Zone:
+LOAD
+    "Zone Mgr Name",
+    "Zone Mgr"
+FROM [lib://Consumer Goods/Zone.qvd]
+(qvd);
+///$tab Customer
+CustomerAddress:
+LOAD
+    "Address Number",
+    "Customer Address 1",
+    "Customer Address 2",
+    "Customer Address 3",
+    "Customer Address 4",
+    "Zip Code",
     City,
-    ContactName,
-    "COS",
-    Country,
-    Market,
+    County,
+    State,
+    Country
+FROM [lib://Consumer Goods/CustomerAddress.qvd]
+(qvd);
+
+CustomerClassification:
+LOAD
+    CustKey,
+    Cust_Increasing,
+    Cust_Decreasing,
+    Cust_Steady,
+    Cust_New,
+    Cust_Lost,
+    Cust_Other,
+    "Customer Growth",
+    "Customer Growth Percent"
+FROM [lib://Consumer Goods/CustomerClassification.qvd]
+(qvd);
+
+CustomerMapCoordinates:
+LOAD
+    State,
+    "Customer X",
+    "Customer Y"
+FROM [lib://Consumer Goods/CustomerMapCoordinates.qvd]
+(qvd);
+
+Customers:
+LOAD
+    Division,
+    "Business Family",
+    "Customer Type",
+    Channel,
+    "Category Code 5",
+    "Zone Mgr",
+    "Category Code 7",
+    "Regional Sales Mgr",
+    "Distribution Channel Mgr",
+    "Region Code",
+    "Price Discount Cde 4",
+    "Line of Business",
+    "Sales Volume",
     Customer,
-    CustomerID,
-    Description,
-    Discount,
-    EmployeeID,
-    Fax,
-    Freight,
-    GP,
-    "Month",
-    OrderDate,
-    WeekNr,
-    DayNr,
-    OrderID,
+    "Address Number",
+    "Customer Number",
+    Consolidated,
+    "Search Type",
     Phone,
-    PostalCode,
-    ProductID,
-    ProductName,
-    Quantity,
-    Quarter,
-    Sales,
-    Forecast,
-    ShipperID,
-    SupplierID,
-    "Year",
-    CountryCode
-FROM [lib://Whats New/Sales_Nov2022.xlsx]
-(ooxml, embedded labels, table is Sheet1);
+    "Business Unit",
+    "SIC Code",
+    "Tax Certificate"
+FROM [lib://Consumer Goods/Customers.qvd]
+(qvd);
 
-
-[autoCalendar]: 
-  DECLARE FIELD DEFINITION Tagged ('$date')
-FIELDS
-  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
-  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter', '$cyclic'),
-  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$yearquarter', '$qualified'),
-  Dual('Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [_YearQuarter] Tagged ('$yearquarter', '$hidden', '$simplified'),
-  Month($1) AS [Month] Tagged ('$month', '$cyclic'),
-  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth', '$qualified'),
-  Dual(Month($1), monthstart($1)) AS [_YearMonth] Tagged ('$axis', '$yearmonth', '$simplified', '$hidden'),
-  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber', '$cyclic'),
-  Date(Floor($1)) AS [Date] Tagged ('$axis', '$date', '$qualified'),
-  Date(Floor($1), 'D') AS [_Date] Tagged ('$axis', '$date', '$hidden', '$simplified'),
-  If (DayNumberOfYear($1) <= DayNumberOfYear(Today()), 1, 0) AS [InYTD] ,
-  Year(Today())-Year($1) AS [YearsAgo] ,
-  If (DayNumberOfQuarter($1) <= DayNumberOfQuarter(Today()),1,0) AS [InQTD] ,
-  4*Year(Today())+Ceil(Month(Today())/3)-4*Year($1)-Ceil(Month($1)/3) AS [QuartersAgo] ,
-  Ceil(Month(Today())/3)-Ceil(Month($1)/3) AS [QuarterRelNo] ,
-  If(Day($1)<=Day(Today()),1,0) AS [InMTD] ,
-  12*Year(Today())+Month(Today())-12*Year($1)-Month($1) AS [MonthsAgo] ,
-  Month(Today())-Month($1) AS [MonthRelNo] ,
-  If(WeekDay($1)<=WeekDay(Today()),1,0) AS [InWTD] ,
-  (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
-  Week(Today())-Week($1) AS [WeekRelNo] ;
-
-DERIVE FIELDS FROM FIELDS [OrderDate] USING [autoCalendar] ;
-
-
-
-///$tab Employees
-[Employees]:
+CustomerType:
 LOAD
-	[EmployeeID],
-	[EmployeeName],
-	[Title],
-	[Hire Date],
-	[Office],
-	[Extension],
-	[Reports To],
-	[Year Salary]
-FROM [lib://Whats New/organization.xlsx]
-(ooxml, embedded labels, table is Employees);
-
-[Colors]:
+    "Customer Type Name",
+    "Customer Type"
+FROM [lib://Consumer Goods/CustomerType.qvd]
+(qvd);
+///$tab Orders
+OrderCount:
 LOAD
-	[Title],
-	[Color1],
-	[Color2]
-FROM [lib://Whats New/organization.xlsx]
-(ooxml, embedded labels, table is Colors);
+    "Order Number",
+    OrderCount
+FROM [lib://Consumer Goods/OrderCount.qvd]
+(qvd);
 
-[Hierarchy]:
+OrderDates1:
 LOAD
-	[EmployeeID],
-	[EmpName],
-	[ManagerID],
-	[EmpName1],
-	[EmpName2],
-	[EmpName3],
-	[EmpName4],
-	[EmpName5],
-	[Manager],
-	[EmpHierarchy],
-	[Depth]
-FROM [lib://Whats New/organization.xlsx]
-(ooxml, embedded labels, table is Hierarchy);
+    "Order Date 2",
+    OrderYear,
+    OrderMonth,
+    OrderQuarter,
+    "Order Date Header"
+FROM [lib://Consumer Goods/OrderDates1.qvd]
+(qvd);
+///$tab Sales
+Sales:
+LOAD
+    NoOfItem,
+    MaxNoOfItem,
+    DateKey,
+    "Item-Branch Key",
+    "Order Number"
+FROM [lib://Consumer Goods/Sales.qvd]
+(qvd);
+
+[Salesdecile-1]:
+LOAD
+    "Sales by Customer by YearQuarter",
+    Low,
+    High
+FROM [lib://Consumer Goods/Salesdecile-1.qvd]
+(qvd);
+
+SalesDetails:
+LOAD
+    "Address Number",
+    BudKey,
+    AggKey,
+    "Ship To",
+    "Sales Rep",
+    "Item Class",
+    CustKey,
+    "Family Class",
+    "Sales Amount Based on List Price",
+    "Line Desc 1",
+    "Invoice Number",
+    "Backlog Amount",
+    "Sales Quantity",
+    "Qty Backordered",
+    "Actual Delivery Date Temp",
+    "Last Status",
+    "Number Of Days Late",
+    "Doc Type",
+    "Order Status Primary",
+    "Order Status",
+    "Line Number",
+    "Item Number",
+    "Line Type",
+    "List Price",
+    "Sales Cost Amount",
+    "Order Margin",
+    "Open Order Cost Amount",
+    "Discount Amount",
+    "Invoice Date Temp",
+    "Company Number Detail",
+    "Payment Terms",
+    "Sales Unit Cost Price",
+    "Open Order Quantity",
+    "Unit Price",
+    "Business Unit Details",
+    "Next Status",
+    "Promised Delivery Date Temp",
+    "Sales Margin Amount",
+    "U/M",
+    "Parent Address Number",
+    "Open Order Amount",
+    "Sales Amount",
+    "BackOrder Amount",
+    "Sales Price",
+    "Address Order Number",
+    "Late Shipment",
+    "Order Type Detail",
+    Shipments,
+    DateKey,
+    "Item-Branch Key",
+    "Order Number"
+FROM [lib://Consumer Goods/SalesDetails.qvd]
+(qvd);
+
+SalesHeader:
+LOAD
+    "Order Number",
+    "Address Number Header",
+    "Order Gross Amount",
+    "Order Type Header",
+    "Business Unit Order Header",
+    "Order Date Header",
+    "Hold Orders Code Header",
+    "Company Number Header",
+    "Stop Code Header",
+    "Zone Code Header",
+    "Hold Code Header",
+    "Ship To Address Header",
+    "Parent Address Number Header",
+    "Orderby Header",
+    "Freight Code Header"
+FROM [lib://Consumer Goods/SalesHeader.qvd]
+(qvd);
+
+SalesRegion:
+LOAD
+    "Region Name",
+    "Region Code"
+FROM [lib://Consumer Goods/SalesRegion.qvd]
+(qvd);
+
+SalesRep:
+LOAD
+    "Sales Rep",
+    "Sales Rep Name"
+FROM [lib://Consumer Goods/SalesRep.qvd]
+(qvd);
+
+[Sheet1-2]:
+LOAD
+    "Sales Rep Name",
+    "Sales Rep Performance"
+FROM [lib://Consumer Goods/Sheet1-2.qvd]
+(qvd);
+
+AggSales:
+LOAD
+    AggKey,
+    "YTD Sales Amount",
+    "LY YTD Sales Amount",
+    "TM Sales Amount",
+    "LY TM Sales Amount",
+    "LY Tot Sales Amount",
+    "YTD Sales Margin Amount",
+    "LY YTD Sales Margin Amount",
+    "TM Sales Margin Amount",
+    "LY TM Sales Margin Amount",
+    "LY Tot Sales Margin Amount",
+    "Current Open Amount",
+    "Current BackOrder Amount",
+    "Current Backlog Amount"
+FROM [lib://Consumer Goods/AggSales.qvd]
+(qvd);
+
+Budget3:
+LOAD
+    DummyField,
+    BudgetInput2,
+    BudgetYear,
+    BudgetPeriod,
+    "Type",
+    "Budget Amount",
+    "Actual Amount",
+    BudKey,
+    BudgetInput
+FROM [lib://Consumer Goods/Budget3.qvd]
+(qvd);
+
+BudgetPeriod:
+LOAD
+    BudgetPeriod,
+    textBudgetPeriod
+FROM [lib://Consumer Goods/BudgetPeriod.qvd]
+(qvd);
+
+YTDBudget:
+LOAD
+    BudKey,
+    "YTD Budget Amount",
+    "TM Budget Amount"
+FROM [lib://Consumer Goods/YTDBudget.qvd]
+(qvd);
+
+Division:
+LOAD
+    "Division Name",
+    Division
+FROM [lib://Consumer Goods/Division.qvd]
+(qvd);
+
+FamilyClass:
+LOAD
+    "Family Class Desc",
+    "Family Class"
+FROM [lib://Consumer Goods/FamilyClass.qvd]
+(qvd);
+///$tab Geo
+maptype:
+LOAD
+    maptype
+FROM [lib://Consumer Goods/maptype.qvd]
+(qvd);
+
+Province:
+LOAD
+    State,
+    state_abbr,
+    state_name
+FROM [lib://Consumer Goods/Province.qvd]
+(qvd);
+
+Regional:
+LOAD
+    "Regional Sales Mgr Name",
+    "Regional Sales Mgr"
+FROM [lib://Consumer Goods/Regional.qvd]
+(qvd);
+
+Sheet1:
+LOAD
+    State,
+    Area
+FROM [lib://Consumer Goods/Sheet1.qvd]
+(qvd);
+
+ShipToAddress2:
+LOAD
+    "Ship To",
+    "Ship To Customer Address 1",
+    "Ship To Customer Address 2",
+    "Ship To Customer Address 3",
+    "Ship To Customer Address 4",
+    "Ship To Zip Code",
+    "Ship To City",
+    "Ship To County",
+    "Ship To State",
+    "Ship To Country",
+    "Ship To Zip Code Short"
+FROM [lib://Consumer Goods/ShipToAddress2.qvd]
+(qvd);
+
+ShipToMapCoordinates:
+LOAD
+    "Ship To State",
+    "Ship To X",
+    "Ship To Y"
+FROM [lib://Consumer Goods/ShipToMapCoordinates.qvd]
+(qvd);
+
+ZipData:
+LOAD
+    "Ship To Zip Code Short",
+    latitude,
+    longitude,
+    QlikPoint
+FROM [lib://Consumer Goods/ZipData.qvd]
+(qvd);
+
 ///$tab Calendar
-// A custom calendar showing years, week nr at quarter start and week number
+DataDates2:
+LOAD
+    DateKey,
+    "Day",
+    "Month",
+    Quarter,
+    "Week",
+    "Week Ending Date",
+    "Weekday",
+    "Year",
+    YearMonth
+FROM [lib://Consumer Goods/DataDates2.qvd]
+(qvd);
 
-[r]: 
-  DECLARE FIELD DEFINITION Tagged ('$date')
-FIELDS
-	Dual(Year($1), YearStart($1)) 								 		  AS [Year] 			 Tagged ('$axis'),
-	Dual('W'&week(QuarterStart($1)),weekstart(QuarterStart($1))) 		  AS [StartWeekQuarter]  Tagged ('$axis', '$simplified'),
-	Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),weekstart(QuarterStart($1)))AS [_StartWeekQuarter] Tagged ('$axis', '$qualified','$hidden'),
-  	Dual(Year($1)&'-'&week($1),weekstart($1)) 							  AS [Week] 		 Tagged ('$axis', '$qualified'),
-  	Dual(week($1),weekstart($1)) 							  			  AS [_YearWeek] 		 Tagged ('$axis', '$simplified','$hidden')
-;
+FiscalRank:
+LOAD
+    Fiscal,
+    FiscalRank
+FROM [lib://Consumer Goods/FiscalRank.qvd]
+(qvd);
 
-DERIVE FIELDS FROM FIELDS [fiscyear] USING [r];
-///$tab Circles
-// Helper dimension for the circles in gauge
-// j in percent and i in radians 0-2 pi
+[Sheet1-1]:
+LOAD
+    Metric
+FROM [lib://Consumer Goods/Sheet1-1.qvd]
+(qvd);
 
-circle_segments: Load (RecNo()-1)/100*2*pi() as r, (RecNo()-1)/100 as rp autogenerate 101;
-///$tab Scatter Test - Feb 2023
-5:Load recno() as id5, rand() as x5, rand() as y5 autogenerate 5000;
-10:Load recno() as id10, rand() as x10, rand() as y10 autogenerate 10000;
-///$tab More lines test data - May 2023
-morelines: load rowno() as id, rand() as val AutoGenerate 5000;
-morecats: load rowno() as cat AutoGenerate 10;
+
+
+
