@@ -3,63 +3,260 @@ SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
-SET MoneyFormat='$#,##0.00;-$#,##0.00';
+SET MoneyFormat='$#,##0.00;($#,##0.00)';
 SET TimeFormat='h:mm:ss TT';
-SET DateFormat='M/D/YYYY';
-SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
-SET FirstWeekDay=6;
+SET DateFormat='DD-MM-YY';
+SET TimestampFormat='DD-MM-YY h:mm:ss[.fff] TT';
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET FirstWeekDay=0;
 SET BrokenWeeks=1;
 SET ReferenceDay=0;
 SET FirstMonthOfYear=1;
 SET CollationLocale='en-US';
-SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
-SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
-SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
-SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET hidePrefix = '_';
+
+let vMeasureOperator = '=[MeasureOperator]';
+let vMeasureField = '=[MeasureField]';
 
 
-///$tab Point_Demo
-Point:
+///$tab Facility
+Facility:
 LOAD
-    Geometry,
-    SRC_AGENCY,
-    FIRE_ID,
-    FIRENAME,
-    LATITUDE,
-    LONGITUDE,
-    GEOID,
-    "YEAR",
-    "MONTH",
-    "DAY",
-    DECADE,
-    SIZE_HA,
-    CAUSE,
-    _autoIndex_
-FROM [lib://CFW (qlikdemo_qservice)/Cities\Point_Demo.qvd]
+    _facility_identifier,
+    Facility
+FROM [lib://Orthopaedics/Facility.qvd]
+(qvd);
+///$tab Clinician
+Clinician:
+LOAD
+    _mo_code,
+    Clinician
+FROM [lib://Orthopaedics/Clinician.qvd]
+(qvd);
+///$tab Clinical Variation
+[Clinical Variation]:
+LOAD
+    _facility_identifier,
+    _stay_number,
+    _episode_sequence_number,
+    cvd_d,
+    cvd_p,
+    MRN,
+    _date,
+    "LOS Type",
+    _indigenous_status,
+    _emergency_status,
+    "Age",
+    _age_grouping,
+    _sex,
+    _specialty_unit_code,
+    _mo_code,
+    _an_drg_pccl,
+    _cost_weight_d,
+    _los_exc_sd,
+    _peer_alos_exc_sd,
+    _cases_gt_peer_exc_sd,
+    _peer_var_exc_sd,
+    _complication,
+    "Complication Detail",
+    _complication_post_procedural,
+    "Complication Post Procedural Detail",
+    _unplanned_readmit_this_hosp_28_days,
+    _mortality,
+    "Mortality Detail",
+    _condition_arising_during_episode,
+    _condition_onset,
+    _count_medical,
+    _count_surgical,
+    _count_uncoded,
+    _count_total,
+    _drg_type,
+    _an_drg_an_drg_version
+FROM [lib://Orthopaedics/Clinical Variation.qvd]
+(qvd);
+
+[Clinical Variation Diagnosis]:
+LOAD
+    cvd_d,
+    DX_P,
+    DX_01,
+    DX_02,
+    DX_03,
+    DX_04,
+    DX_05,
+    DX_06,
+    DX_07,
+    DX_08,
+    DX_09,
+    DX_10,
+    DX_11,
+    DX_12,
+    DX_13,
+    DX_14,
+    DX_15,
+    DX_16,
+    DX_17,
+    DX_18,
+    DX_19,
+    DX_20,
+    DX_21,
+    DX_22,
+    DX_23,
+    DX_24,
+    DX_25,
+    DX_26,
+    DX_27,
+    DX_28,
+    DX_29,
+    DX_30,
+    DX_31,
+    DX_32,
+    DX_33,
+    DX_34,
+    DX_35,
+    DX_36,
+    DX_37,
+    DX_38,
+    DX_39,
+    DX_40,
+    DX_41,
+    DX_42,
+    DX_43,
+    DX_44,
+    DX_45,
+    DX_46,
+    DX_47,
+    DX_48,
+    DX_49,
+    DX_50
+FROM [lib://Orthopaedics/Clinical Variation Diagnosis.qvd]
+(qvd);
+
+[Clinical Variation Procedure]:
+LOAD
+    cvd_p,
+    PR_P,
+    PR_01,
+    PR_02,
+    PR_03,
+    PR_04,
+    PR_05,
+    PR_06,
+    PR_07,
+    PR_08,
+    PR_09,
+    PR_10,
+    PR_11,
+    PR_12,
+    PR_13,
+    PR_14,
+    PR_15,
+    PR_16,
+    PR_17,
+    PR_18,
+    PR_19,
+    PR_20,
+    PR_21,
+    PR_22,
+    PR_23,
+    PR_24,
+    PR_25,
+    PR_26,
+    PR_27,
+    PR_28,
+    PR_29,
+    PR_30,
+    PR_31,
+    PR_32,
+    PR_33,
+    PR_34,
+    PR_35,
+    PR_36,
+    PR_37,
+    PR_38,
+    PR_39,
+    PR_40,
+    PR_41,
+    PR_42,
+    PR_43,
+    PR_44,
+    PR_45,
+    PR_46,
+    PR_47,
+    PR_48,
+    PR_49,
+    PR_50
+FROM [lib://Orthopaedics/Clinical Variation Procedure.qvd]
 (qvd);
 
 
-///$tab Binning_Demo
-Binning:
+///$tab DRG
+DRG:
 LOAD
-    GEOID,
-    HH10W15,
-    CenterPoint
-FROM [lib://CFW (qlikdemo_qservice)/Cities\HH10W15GridTable_Demo.qvd]
-(qvd) where HH10W15<>'[[[[0.525,0.202073],[0,0.404145],[-0.525,0.202073],[-0.525,-0.202073],[0,-0.404145],[0.525,-0.202073],[0.525,0.202073]]]]';
+    DRG,
+    "DRG Split",
+    _drg_type,
+    _an_drg_an_drg_version
+FROM [lib://Orthopaedics/DRG.qvd]
+(qvd);
 
-
-///$tab Cluster_Demo
-Cluster:
+[DRG Detail]:
 LOAD
-    GEOID,
-    Clusters_ClusterID,
-    Clusters_ClusterCenter,
-    Clusters_PointCount,
-    Points_Geometry
-FROM [lib://CFW (qlikdemo_qservice)/Cities\Cluster_Demo.qvd]
+    _drg_type,
+    "DRG Type"
+FROM [lib://Orthopaedics/DRG Detail.qvd]
 (qvd);
 
 
-///$tab exit
-exit script;
+///$tab Complexity Level
+[Patient Clinical Complexity Level]:
+LOAD
+    _an_drg_pccl,
+    "Clinical Complexity Level"
+FROM [lib://Orthopaedics/PatientClinicalComplexityLevel.qvd]
+(qvd);
+///$tab Emergency Status
+[Emergency Status]:
+LOAD
+    _emergency_status,
+    Urgency
+FROM [lib://Orthopaedics/Emergency Status.qvd]
+(qvd);
+
+
+///$tab Gender
+Gender:
+LOAD
+    _sex,
+    Gender
+FROM [lib://Orthopaedics/Sex.qvd]
+(qvd);
+///$tab Age Grouping
+[Age Grouping]:
+LOAD
+    _age_grouping,
+    "Age Group"
+FROM [lib://Orthopaedics/Age Grouping.qvd]
+(qvd);
+
+
+///$tab Calendar
+Calendar:
+LOAD
+    _date,
+    _date_name,
+    "Financial Year",
+    _MonthID,
+    "Month",
+    _episode_week,
+    _episode_week_name,
+    _YearMonthID,
+    "Year Month",
+    "Year",
+    _CounterDay
+FROM [lib://Orthopaedics/Calendar.qvd]
+(qvd);
+
