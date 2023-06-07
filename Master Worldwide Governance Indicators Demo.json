@@ -1,130 +1,307 @@
 
 SHEETS
-{"qInfo":{"qId":"5a9a72bc-3301-4788-b906-21b5a2f1a6cc","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"5a9a72bc-3301-4788-b906-21b5a2f1a6cc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.001Z","modifiedDate":"2023-06-07T12:57:28.105Z","publishTime":"2023-06-07T12:57:28.105Z","published":true,"privileges":["read","publish","change_owner"],"title":"Reporting","description":"Pivot Table showing row level details of fires which can be expanded and interacted with."},"qData":[]}
-{"qInfo":{"qId":"71a00f94-6f30-4007-8fc6-54702b64b77e","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"71a00f94-6f30-4007-8fc6-54702b64b77e","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.003Z","modifiedDate":"2023-06-07T12:57:26.493Z","publishTime":"2023-06-07T12:57:26.493Z","published":true,"privileges":["read","publish","change_owner"],"title":"Heatmap + Animator","description":"Show the fire count or density over each year using Qlik GeoAnalytics Animator layer. Apply province\/year\/decade\/cause filters to see specific details animated over time."},"qData":[]}
-{"qInfo":{"qId":"7b4e3139-c444-429b-948d-689132c92a87","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"7b4e3139-c444-429b-948d-689132c92a87","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.005Z","modifiedDate":"2023-06-07T12:57:25.002Z","publishTime":"2023-06-07T12:57:25.002Z","published":true,"privileges":["read","publish","change_owner"],"title":"Bin Cluster -> Point Drill Down","description":"Clustered bins colored by either fire count or damage. Each bin can be clicked on to drill into the actual fire location points."},"qData":[]}
-{"qInfo":{"qId":"04fafec4-9e50-438e-b9c1-fae783dab0c7","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"04fafec4-9e50-438e-b9c1-fae783dab0c7","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:00.989Z","modifiedDate":"2023-06-07T12:57:23.398Z","publishTime":"2023-06-07T12:57:23.398Z","published":true,"privileges":["read","publish","change_owner"],"title":"Analysis","description":"Deeper analysis showing which months report the most number of fires vs which months report the most damaging ones as well as the outliers. Included in this sheet is a heat map which can be toggled between fire count or damage."},"qData":[]}
-{"qInfo":{"qId":"ccdeca99-7e2d-4e0c-aa00-97e9c9214c77","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"ccdeca99-7e2d-4e0c-aa00-97e9c9214c77","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.012Z","modifiedDate":"2023-06-07T12:57:21.714Z","publishTime":"2023-06-07T12:57:21.714Z","published":true,"privileges":["read","publish","change_owner"],"title":"Dashboard","description":"Dashboard containing high level summary of fire count and damage size by province, year, decade, cause as well as a cluster map showing the count vs damage breakdown."},"qData":[]}
-{"qInfo":{"qId":"40d2f7a1-ff9e-439f-834e-39802ab57db8","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"40d2f7a1-ff9e-439f-834e-39802ab57db8","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.000Z","modifiedDate":"2023-06-07T12:57:19.987Z","publishTime":"2023-06-07T12:57:19.987Z","published":true,"privileges":["read","publish","change_owner"],"title":"Introduction","description":"Data is provided by the Canadian National Fire Database (CNFDB) and is a collection of forest fire locations and fire perimeters as provided by Canadian fire management agencies including provinces, territories, and Parks Canada."},"qData":[]}
+{"qInfo":{"qId":"KYKr","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"KYKr","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.604Z","modifiedDate":"2023-06-07T12:54:12.535Z","publishTime":"2023-06-07T12:54:12.535Z","published":true,"privileges":["read","publish","change_owner"],"title":"Bed Day Analysis","description":"This screen focused on the potential to save bed days by making improvements in length of stay at DRG and clinician level. The first chart shows the potential bed day saving for each DRG if all clinicians currently above the average figure, were to reduce length of stay to the average level. Users can drill into DRG and see the potential saving at clinician level."},"qData":[]}
+{"qInfo":{"qId":"cc057dcd-b2f9-4b92-a4fc-8c5259fcbcbc","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"cc057dcd-b2f9-4b92-a4fc-8c5259fcbcbc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.601Z","modifiedDate":"2023-06-07T12:54:10.907Z","publishTime":"2023-06-07T12:54:10.907Z","published":true,"privileges":["read","publish","change_owner"],"title":"Procedure Details","description":"Each DRG is linked to multiple procedure codes for each patient. This screen enables analysis of the linked procedure codes by individual patient, comparing length of stay with volume of procedures."},"qData":[]}
+{"qInfo":{"qId":"0b8e67c4-0f5c-4807-80f9-da99949775cc","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"0b8e67c4-0f5c-4807-80f9-da99949775cc","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.596Z","modifiedDate":"2023-06-07T12:54:09.314Z","publishTime":"2023-06-07T12:54:09.314Z","published":true,"privileges":["read","publish","change_owner"],"title":"Diagnosis Details","description":"Within each DRG is a primary diagnosis and potentially multiple diagnosis codes depending on the individual case. This screen enables analysis of the underlying diagnosis codes by individual patient, comparing length of stay with volume of diagnoses."},"qData":[]}
+{"qInfo":{"qId":"YLnwxXS","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"YLnwxXS","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.599Z","modifiedDate":"2023-06-07T12:54:07.769Z","publishTime":"2023-06-07T12:54:07.769Z","published":true,"privileges":["read","publish","change_owner"],"title":"Risk Adjusted Variation","description":"This screen provides analysis by patient age group looking at variation in complexity, by facility, length of stay, mortality rate and DRG. The scatter plot in the top right is using an adjusted complexity co-efficient of variation to group DRG\u2019s by multiple measures \u2013 complication rate, average length of stay and mortality. By selecting a DRG the user is able to drill down to the primary diagnosis group."},"qData":[]}
+{"qInfo":{"qId":"aLvPhq","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"aLvPhq","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.610Z","modifiedDate":"2023-06-07T12:54:06.088Z","publishTime":"2023-06-07T12:54:06.088Z","published":true,"privileges":["read","publish","change_owner"],"title":"Patient Analysis","description":"Moving down another level, this screen enables users to analyze the data at patient level. Users can analyse all patients by number of DRG\u2019s, diagnoses and procedures, comparing length of stay, complication rates and complexity."},"qData":[]}
+{"qInfo":{"qId":"4cfa672f-97fe-45c5-945c-a067dc8c08ee","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"4cfa672f-97fe-45c5-945c-a067dc8c08ee","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.608Z","modifiedDate":"2023-06-07T12:54:04.373Z","publishTime":"2023-06-07T12:54:04.373Z","published":true,"privileges":["read","publish","change_owner"],"title":"Variation Discovery","description":"This screen enables the user to drill further into clinician variation, looking at factors such as complexity and mortality, along with complication rates and DRG volume."},"qData":[]}
+{"qInfo":{"qId":"JjhuXG","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"JjhuXG","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.589Z","modifiedDate":"2023-06-07T12:54:02.691Z","publishTime":"2023-06-07T12:54:02.691Z","published":true,"privileges":["read","publish","change_owner"],"title":"Orthopaedic Clinical Variation","description":"This first analysis screen gives an overview of episode volume by DRG, complexity and length of stay variation. Select a DRG to drill down to LOS variation by clinician and use the drop down selections across the top to filter further into the data."},"qData":[]}
+{"qInfo":{"qId":"gzjJEB","qType":"sheet"},"qMeta":{"_resourcetype":"app.object","_objecttype":"sheet","id":"gzjJEB","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.587Z","modifiedDate":"2023-06-07T12:54:00.940Z","publishTime":"2023-06-07T12:54:00.940Z","published":true,"privileges":["read","publish","change_owner"],"title":"Welcome","description":"This application looks at the different types of variation, focusing on what can be done to reduce unwarranted variation in health service delivery. It highlights the potential for a sophisticated approach to analyzing variation that would offer health systems an important additional source of service improvement. For demonstration purposes, the application is specifically using data from the Orthopaedic department."},"qData":[]}
 
 OBJECTS ON SHEETS
-{"name":"hrxEAXp","type":"pivot-table","col":0,"row":1,"colspan":24,"rowspan":11}
-{"name":"AzhDdJX","type":"filterpane","col":0,"row":0,"colspan":24,"rowspan":1}
-{"name":"pncuJKm","type":"ideviomap","col":3,"row":2,"colspan":20,"rowspan":10}
-{"name":"AakdbN","type":"idevioheatmaplayer","col":0,"row":11,"colspan":3,"rowspan":1}
-{"name":"AMzUGAQ","type":"idevioanimator","col":6,"row":0,"colspan":17,"rowspan":2}
-{"name":"GrpPRd","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
-{"name":"cvDTwh","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
-{"name":"bewxkV","type":"filterpane","col":0,"row":1,"colspan":3,"rowspan":1}
-{"name":"mXCGGJ","type":"filterpane","col":3,"row":1,"colspan":3,"rowspan":1}
-{"name":"jxmVgcr","type":"swr-sense-navigation","col":0,"row":2,"colspan":3,"rowspan":2}
-{"name":"xTkQNuN","type":"ideviomap","col":3,"row":2,"colspan":21,"rowspan":10}
-{"name":"FcCujA","type":"idevioarealayer","col":0,"row":10,"colspan":3,"rowspan":1}
-{"name":"kPEjfnc","type":"ideviobubblelayer","col":0,"row":11,"colspan":3,"rowspan":1}
-{"name":"uskjNz","type":"swr-sense-navigation","col":6,"row":0,"colspan":18,"rowspan":2}
-{"name":"TBnux","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
-{"name":"BvcGJj","type":"filterpane","col":0,"row":1,"colspan":3,"rowspan":1}
-{"name":"GjaLLbr","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
-{"name":"nwyyNmh","type":"filterpane","col":3,"row":1,"colspan":3,"rowspan":1}
-{"name":"FBnyeJ","type":"text-image","col":0,"row":2,"colspan":3,"rowspan":2}
-{"name":"Anmxcs","type":"combochart","col":4,"row":7,"colspan":10,"rowspan":5}
-{"name":"HeRsp","type":"scatterplot","col":14,"row":7,"colspan":10,"rowspan":5}
-{"name":"jNrkHf","type":"filterpane","col":2,"row":1,"colspan":2,"rowspan":1}
-{"name":"YGkYeb","type":"distributionplot","col":14,"row":2,"colspan":10,"rowspan":5}
-{"name":"jqsx","type":"filterpane","col":0,"row":0,"colspan":2,"rowspan":1}
-{"name":"upsGn","type":"filterpane","col":2,"row":0,"colspan":2,"rowspan":1}
-{"name":"unRT","type":"filterpane","col":0,"row":1,"colspan":2,"rowspan":1}
-{"name":"aehzK","type":"kpi","col":14,"row":0,"colspan":3,"rowspan":2}
-{"name":"PAaFwm","type":"kpi","col":4,"row":0,"colspan":3,"rowspan":2}
-{"name":"ZLWpezj","type":"kpi","col":7,"row":0,"colspan":7,"rowspan":2}
-{"name":"JFjpBG","type":"kpi","col":17,"row":0,"colspan":7,"rowspan":2}
-{"name":"PMPQdzg","type":"ideviomap","col":4,"row":2,"colspan":10,"rowspan":5}
-{"name":"BHmjG","type":"treemap","col":0,"row":4,"colspan":4,"rowspan":7}
-{"name":"jRHZcS","type":"idevioheatmaplayer","col":0,"row":11,"colspan":4,"rowspan":1}
-{"name":"gnRNnBJ","type":"swr-sense-navigation","col":0,"row":2,"colspan":4,"rowspan":2}
-{"name":"zAma","type":"ideviomap","col":7,"row":2,"colspan":11,"rowspan":5}
-{"name":"wnxLE","type":"ideviobubblelayer","col":0,"row":11,"colspan":3,"rowspan":1}
-{"name":"NvGEVB","type":"ideviobubblelayer","col":4,"row":11,"colspan":3,"rowspan":1}
-{"name":"Ushc","type":"linechart","col":7,"row":7,"colspan":17,"rowspan":5}
-{"name":"eZJxV","type":"kpi","col":18,"row":0,"colspan":6,"rowspan":2}
-{"name":"XMrqbWx","type":"barchart","col":0,"row":4,"colspan":7,"rowspan":7}
-{"name":"wMDPW","type":"kpi","col":6,"row":0,"colspan":3,"rowspan":2}
-{"name":"WFJLRSJ","type":"kpi","col":12,"row":0,"colspan":3,"rowspan":2}
-{"name":"DsrPF","type":"kpi","col":9,"row":0,"colspan":3,"rowspan":2}
-{"name":"mzmDpH","type":"kpi","col":15,"row":0,"colspan":3,"rowspan":2}
-{"name":"ETEyKWn","type":"piechart","col":18,"row":2,"colspan":6,"rowspan":5}
-{"name":"SfUjzPP","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
-{"name":"hkZJUqG","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
-{"name":"zZSbds","type":"filterpane","col":0,"row":1,"colspan":3,"rowspan":1}
-{"name":"SdUbVwe","type":"filterpane","col":3,"row":1,"colspan":3,"rowspan":1}
-{"name":"VBghE","type":"swr-sense-navigation","col":0,"row":2,"colspan":7,"rowspan":2}
-{"name":"ReHeDG","type":"text-image","col":0,"row":0,"colspan":5,"rowspan":3}
-{"name":"FdPvH","type":"text-image","col":5,"row":0,"colspan":15,"rowspan":12}
-{"name":"teZJDPk","type":"text-image","col":0,"row":3,"colspan":5,"rowspan":3}
-{"name":"KXQgP","type":"text-image","col":0,"row":6,"colspan":5,"rowspan":3}
-{"name":"yRFpdP","type":"text-image","col":0,"row":9,"colspan":5,"rowspan":3}
+{"name":"nRxvC","type":"table","col":0,"row":7,"colspan":24,"rowspan":5}
+{"name":"xPNPHCG","type":"combochart","col":0,"row":1,"colspan":24,"rowspan":6}
+{"name":"jfCfK","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"knmYp","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"qjzwj","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"XMTQB","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"emnjVp","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"vJJKWe","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"TQXtdd","type":"kpi","col":21,"row":0,"colspan":3,"rowspan":1}
+{"name":"d0e3fc94-09d5-4667-870d-f97e021ee44c","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"6eb579ae-6a53-4e71-b36b-4d6a0e049764","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"9626abbf-0693-4511-ae65-ce62cdf711e9","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"b30b08a0-ed94-47ba-9cea-d45ac44461bb","type":"barchart","col":0,"row":1,"colspan":15,"rowspan":6}
+{"name":"c415bf15-8aed-46b6-bc05-039143d9aa31","type":"table","col":0,"row":7,"colspan":24,"rowspan":5}
+{"name":"fuEDxc","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"KpGsye","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"yTbjJCh","type":"scatterplot","col":15,"row":1,"colspan":9,"rowspan":6}
+{"name":"rzphcxe","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"Qpgej","type":"kpi","col":21,"row":0,"colspan":3,"rowspan":1}
+{"name":"d922a1ff-044a-4022-bc24-ac4d9fbe95e9","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"24bd8883-a007-42b4-a4fb-02596ec6accb","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"94631bbc-f5af-4636-96be-d5b3c28b927f","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"eyyHM","type":"barchart","col":0,"row":1,"colspan":15,"rowspan":6}
+{"name":"wkCst","type":"table","col":0,"row":7,"colspan":24,"rowspan":5}
+{"name":"xGMjby","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"RJanbyn","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"tkZXbUJ","type":"scatterplot","col":15,"row":1,"colspan":9,"rowspan":6}
+{"name":"uAMKj","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"RxXDp","type":"kpi","col":21,"row":0,"colspan":3,"rowspan":1}
+{"name":"wBTJBv","type":"barchart","col":8,"row":7,"colspan":8,"rowspan":5}
+{"name":"fhSxGzp","type":"barchart","col":16,"row":7,"colspan":8,"rowspan":5}
+{"name":"pfgcqxB","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"ZEFhTa","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"QDWEFB","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"TLggD","type":"treemap","col":0,"row":1,"colspan":10,"rowspan":4}
+{"name":"rqGCfaZ","type":"treemap","col":0,"row":5,"colspan":10,"rowspan":2}
+{"name":"FUwWJ","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"AYLAYLd","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"NmPHLG","type":"scatterplot","col":10,"row":1,"colspan":14,"rowspan":6}
+{"name":"ePnMAm","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"DhNaBj","type":"barchart","col":0,"row":7,"colspan":8,"rowspan":5}
+{"name":"YuPdvh","type":"kpi","col":21,"row":0,"colspan":3,"rowspan":1}
+{"name":"BFmsDZm","type":"scatterplot","col":0,"row":1,"colspan":12,"rowspan":6}
+{"name":"rmhauFh","type":"scatterplot","col":12,"row":1,"colspan":12,"rowspan":6}
+{"name":"XvBcfTt","type":"scatterplot","col":0,"row":7,"colspan":12,"rowspan":5}
+{"name":"QFGjgc","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"CxfkWmL","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"fnKNexa","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"bpjvf","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"uTZyJ","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"XSLb","type":"table","col":12,"row":7,"colspan":12,"rowspan":5}
+{"name":"HnJsCG","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"ZhGAdk","type":"kpi","col":21,"row":0,"colspan":3,"rowspan":1}
+{"name":"04f806cf-73a3-45bd-908e-0b10e45dddac","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"a087be50-aa6a-4568-ac9e-2f439de13792","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"60948bed-61c3-4890-8559-3f6e0bf51651","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"jEfFd","type":"kpi","col":0,"row":1,"colspan":4,"rowspan":2}
+{"name":"wqRZPBA","type":"kpi","col":4,"row":1,"colspan":4,"rowspan":2}
+{"name":"gNeLx","type":"kpi","col":0,"row":3,"colspan":4,"rowspan":2}
+{"name":"jVYqH","type":"kpi","col":4,"row":3,"colspan":4,"rowspan":2}
+{"name":"nTYwcV","type":"text-image","col":0,"row":5,"colspan":8,"rowspan":2}
+{"name":"ndAr","type":"table","col":0,"row":7,"colspan":10,"rowspan":5}
+{"name":"amYvcH","type":"scatterplot","col":10,"row":7,"colspan":8,"rowspan":5}
+{"name":"EjKRS","type":"barchart","col":18,"row":7,"colspan":6,"rowspan":5}
+{"name":"sSKHAqt","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"cyRwbgd","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"PSvddB","type":"scatterplot","col":8,"row":1,"colspan":16,"rowspan":6}
+{"name":"tmYBhh","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"CGLgm","type":"kpi","col":21,"row":0,"colspan":3,"rowspan":1}
+{"name":"Cwmzpex","type":"kpi","col":18,"row":1,"colspan":6,"rowspan":2}
+{"name":"HqZBwxa","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":1}
+{"name":"HvtJzhZ","type":"filterpane","col":3,"row":0,"colspan":3,"rowspan":1}
+{"name":"JQajU","type":"kpi","col":0,"row":1,"colspan":4,"rowspan":2}
+{"name":"LXjEmdY","type":"kpi","col":4,"row":1,"colspan":4,"rowspan":2}
+{"name":"jxkC","type":"kpi","col":8,"row":1,"colspan":4,"rowspan":2}
+{"name":"vMeQb","type":"combochart","col":0,"row":9,"colspan":24,"rowspan":3}
+{"name":"gCvSc","type":"combochart","col":0,"row":3,"colspan":24,"rowspan":6}
+{"name":"MkFZK","type":"filterpane","col":6,"row":0,"colspan":3,"rowspan":1}
+{"name":"sKTRVF","type":"filterpane","col":9,"row":0,"colspan":3,"rowspan":1}
+{"name":"JwfLQm","type":"filterpane","col":12,"row":0,"colspan":3,"rowspan":1}
+{"name":"nRcyPTf","type":"filterpane","col":15,"row":0,"colspan":3,"rowspan":1}
+{"name":"mDFazv","type":"kpi","col":12,"row":1,"colspan":4,"rowspan":2}
+{"name":"jhnwa","type":"text-image","col":11,"row":0,"colspan":13,"rowspan":12}
+{"name":"XkEjGqp","type":"text-image","col":0,"row":0,"colspan":11,"rowspan":12}
 
 DIMENSIONS
-{"qInfo":{"qId":"HMAexQ","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"HMAexQ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.008Z","modifiedDate":"2023-06-07T12:57:01.008Z","privileges":["read","update","delete","publish","change_owner"],"title":"Month -> Year -> Province Drill","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"e0b58495-59d6-4469-82ab-2418fa6e60e5","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"e0b58495-59d6-4469-82ab-2418fa6e60e5","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.013Z","modifiedDate":"2023-06-07T12:57:01.013Z","privileges":["read","update","delete","publish","change_owner"],"title":"Cluster -> Fire","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"fNSn","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"fNSn","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.014Z","modifiedDate":"2023-06-07T12:57:01.014Z","privileges":["read","update","delete","publish","change_owner"],"title":"Province","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"kaSPwtr","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"kaSPwtr","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.015Z","modifiedDate":"2023-06-07T12:57:01.015Z","privileges":["read","update","delete","publish","change_owner"],"title":"Year -> Region","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"nrpEPex","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"nrpEPex","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.015Z","modifiedDate":"2023-06-07T12:57:01.015Z","privileges":["read","update","delete","publish","change_owner"],"title":"Cause","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"rUKmZyk","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"rUKmZyk","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.019Z","modifiedDate":"2023-06-07T12:57:01.019Z","privileges":["read","update","delete","publish","change_owner"],"title":"Province -> Year -> Month Drill","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"wAFpZg","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"wAFpZg","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.019Z","modifiedDate":"2023-06-07T12:57:01.019Z","privileges":["read","update","delete","publish","change_owner"],"title":"Bin -> Point Cluster","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"ZjkPk","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"ZjkPk","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.590Z","modifiedDate":"2023-06-07T12:53:50.590Z","privileges":["read","update","delete","publish","change_owner"],"title":"Date","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"MVnyxr","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"MVnyxr","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.590Z","modifiedDate":"2023-06-07T12:53:50.590Z","privileges":["read","update","delete","publish","change_owner"],"title":"Stay Number","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"JZBqGm","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"JZBqGm","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.590Z","modifiedDate":"2023-06-07T12:53:50.590Z","privileges":["read","update","delete","publish","change_owner"],"title":"Gender","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"naNMR","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"naNMR","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.591Z","modifiedDate":"2023-06-07T12:53:50.591Z","privileges":["read","update","delete","publish","change_owner"],"title":"Principle Procedure","description":"Principle Procedure","tags":["Procedure"]},"qData":[]}
+{"qInfo":{"qId":"REMaAJ","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"REMaAJ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.591Z","modifiedDate":"2023-06-07T12:53:50.591Z","privileges":["read","update","delete","publish","change_owner"],"title":"Facility","description":"Facility","tags":[]},"qData":[]}
+{"qInfo":{"qId":"a5f51153-958d-460c-9155-aaf2dc3ae772","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"a5f51153-958d-460c-9155-aaf2dc3ae772","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.591Z","modifiedDate":"2023-06-07T12:53:50.591Z","privileges":["read","update","delete","publish","change_owner"],"title":"Facility > Clinical Stream > Clinician","description":"Drilldown of Facility > Clinical Stream > Clinician","tags":[]},"qData":[]}
+{"qInfo":{"qId":"ERNKpHf","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"ERNKpHf","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.593Z","modifiedDate":"2023-06-07T12:53:50.593Z","privileges":["read","update","delete","publish","change_owner"],"title":"Primary Diagnosis","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"fKPQwcU","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"fKPQwcU","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.593Z","modifiedDate":"2023-06-07T12:53:50.593Z","privileges":["read","update","delete","publish","change_owner"],"title":"Year > Month> Day","description":"Drilldown - Year > Month > Day","tags":[]},"qData":[]}
+{"qInfo":{"qId":"vLFgfg","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"vLFgfg","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.593Z","modifiedDate":"2023-06-07T12:53:50.593Z","privileges":["read","update","delete","publish","change_owner"],"title":"Clinician","description":"Clinician","tags":[]},"qData":[]}
+{"qInfo":{"qId":"d2146ca8-5816-42ea-bdab-866756773cf6","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"d2146ca8-5816-42ea-bdab-866756773cf6","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.594Z","modifiedDate":"2023-06-07T12:53:50.594Z","privileges":["read","update","delete","publish","change_owner"],"title":"Clinical Complexity Level","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"CJEZJu","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"CJEZJu","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.594Z","modifiedDate":"2023-06-07T12:53:50.594Z","privileges":["read","update","delete","publish","change_owner"],"title":"DRG","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"15eaef49-5819-4ba9-9523-f6f9fb14ba75","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"15eaef49-5819-4ba9-9523-f6f9fb14ba75","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.594Z","modifiedDate":"2023-06-07T12:53:50.594Z","privileges":["read","update","delete","publish","change_owner"],"title":"DRG Type","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"369ed052-4b15-4200-a9b2-d85e1b598382","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"369ed052-4b15-4200-a9b2-d85e1b598382","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.594Z","modifiedDate":"2023-06-07T12:53:50.594Z","privileges":["read","update","delete","publish","change_owner"],"title":"DRG Split","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"JvpmbT","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"JvpmbT","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.602Z","modifiedDate":"2023-06-07T12:53:50.602Z","privileges":["read","update","delete","publish","change_owner"],"title":"DRG - Clinician","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"xzbnjy","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"xzbnjy","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.605Z","modifiedDate":"2023-06-07T12:53:50.605Z","privileges":["read","update","delete","publish","change_owner"],"title":"DRG > Primary Dx","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"yPhWdVd","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"yPhWdVd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.646Z","modifiedDate":"2023-06-07T12:53:50.646Z","privileges":["read","update","delete","publish","change_owner"],"title":"Year Month","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"KTFsT","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"KTFsT","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.646Z","modifiedDate":"2023-06-07T12:53:50.646Z","privileges":["read","update","delete","publish","change_owner"],"title":"Urgency","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"qnsy","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"qnsy","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.647Z","modifiedDate":"2023-06-07T12:53:50.647Z","privileges":["read","update","delete","publish","change_owner"],"title":"MRN","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"LsNA","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"LsNA","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.648Z","modifiedDate":"2023-06-07T12:53:50.648Z","privileges":["read","update","delete","publish","change_owner"],"title":"Age Group","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"jJrU","qType":"dimension"},"qMeta":{"_resourcetype":"app.object","_objecttype":"dimension","id":"jJrU","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.648Z","modifiedDate":"2023-06-07T12:53:50.648Z","privileges":["read","update","delete","publish","change_owner"],"title":"Diagnosis","description":"","tags":[]},"qData":[]}
 
 MEASURES
-{"qInfo":{"qId":"PJbd","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"PJbd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.008Z","modifiedDate":"2023-06-07T12:57:01.008Z","privileges":["read","update","delete","publish","change_owner"],"title":"Fire Count","description":"","tags":[]},"qData":[]}
-{"qInfo":{"qId":"jmCbGR","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"jmCbGR","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:57:01.014Z","modifiedDate":"2023-06-07T12:57:01.014Z","privileges":["read","update","delete","publish","change_owner"],"title":"Fire Size (HA)","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"CSL","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"CSL","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.590Z","modifiedDate":"2023-06-07T12:53:50.590Z","privileges":["read","update","delete","publish","change_owner"],"title":"Complications Rate (%)","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"vhTmeP","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"vhTmeP","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.591Z","modifiedDate":"2023-06-07T12:53:50.591Z","privileges":["read","update","delete","publish","change_owner"],"title":"Total Episodes","description":"Total Episodes","tags":[]},"qData":[]}
+{"qInfo":{"qId":"ZgELVRu","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"ZgELVRu","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.592Z","modifiedDate":"2023-06-07T12:53:50.592Z","privileges":["read","update","delete","publish","change_owner"],"title":"Coded Episodes (%)","description":"Coded Episodes (%)","tags":[]},"qData":[]}
+{"qInfo":{"qId":"JhSjg","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"JhSjg","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.592Z","modifiedDate":"2023-06-07T12:53:50.592Z","privileges":["read","update","delete","publish","change_owner"],"title":"Complications","description":"Complications","tags":[]},"qData":[]}
+{"qInfo":{"qId":"mQESUp","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"mQESUp","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.592Z","modifiedDate":"2023-06-07T12:53:50.592Z","privileges":["read","update","delete","publish","change_owner"],"title":"Mortality","description":"Mortality","tags":[]},"qData":[]}
+{"qInfo":{"qId":"Ypw","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"Ypw","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.602Z","modifiedDate":"2023-06-07T12:53:50.602Z","privileges":["read","update","delete","publish","change_owner"],"title":"Mortality Rate (%)","description":"Mortality Rate (%)","tags":[]},"qData":[]}
+{"qInfo":{"qId":"sgJPN","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"sgJPN","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.602Z","modifiedDate":"2023-06-07T12:53:50.602Z","privileges":["read","update","delete","publish","change_owner"],"title":"ALOS","description":"Average Length of Stay","tags":[]},"qData":[]}
+{"qInfo":{"qId":"vzvDk","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"vzvDk","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.602Z","modifiedDate":"2023-06-07T12:53:50.602Z","privileges":["read","update","delete","publish","change_owner"],"title":"Conditions Arising","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"AsKTjPJ","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"AsKTjPJ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.605Z","modifiedDate":"2023-06-07T12:53:50.605Z","privileges":["read","update","delete","publish","change_owner"],"title":"Adjusted Complexity Coefficient of Variation","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"AsvzPZ","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"AsvzPZ","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.605Z","modifiedDate":"2023-06-07T12:53:50.605Z","privileges":["read","update","delete","publish","change_owner"],"title":"# of Diagnoses","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"fdYgs","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"fdYgs","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.605Z","modifiedDate":"2023-06-07T12:53:50.605Z","privileges":["read","update","delete","publish","change_owner"],"title":"# of Procedures","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"mmHmEG","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"mmHmEG","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.613Z","modifiedDate":"2023-06-07T12:53:50.613Z","privileges":["read","update","delete","publish","change_owner"],"title":"# of DRGs","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"cYPeG","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"cYPeG","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.647Z","modifiedDate":"2023-06-07T12:53:50.647Z","privileges":["read","update","delete","publish","change_owner"],"title":"Average Complexity","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"WCkmWN","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"WCkmWN","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.647Z","modifiedDate":"2023-06-07T12:53:50.647Z","privileges":["read","update","delete","publish","change_owner"],"title":"Potential Bed Day Savings","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"YKmSzse","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"YKmSzse","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.647Z","modifiedDate":"2023-06-07T12:53:50.647Z","privileges":["read","update","delete","publish","change_owner"],"title":"Variation (Days)","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"YmLdrA","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"YmLdrA","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.648Z","modifiedDate":"2023-06-07T12:53:50.648Z","privileges":["read","update","delete","publish","change_owner"],"title":"Potential LOS Savings","description":"","tags":[]},"qData":[]}
+{"qInfo":{"qId":"mMxcw","qType":"measure"},"qMeta":{"_resourcetype":"app.object","_objecttype":"measure","id":"mMxcw","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-07T12:53:50.648Z","modifiedDate":"2023-06-07T12:53:50.648Z","privileges":["read","update","delete","publish","change_owner"],"title":"Total Bed Nights","description":"","tags":[]},"qData":[]}
 
 VARIABLES
-{"qName":"chunkSize","qDefinition":"1000","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"2697256a-5a5a-44bf-a821-87dd42a21012","qType":"variable"},"qData":[]}
-{"qName":"row","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"75cf8a5d-b8ba-41b4-ab79-82b9add5e158","qType":"variable"},"qData":[]}
-{"qName":"name","qDefinition":"Security","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"a6794eaa-12ef-48b9-b090-f3239533e548","qType":"variable"},"qData":[]}
-{"qName":"chunk","qDefinition":"3000","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"41223990-7f07-4e5e-a691-70a7bb9d19c3","qType":"variable"},"qData":[]}
-{"qName":"i","qDefinition":"423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"d2c5400b-dbaa-4952-a965-54b77dc0fd24","qType":"variable"},"qData":[]}
-{"qName":"vTabName","qDefinition":"@1","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e7c24731-063c-4bf8-854f-ae8bce91a80d","qType":"variable"},"qData":[]}
-{"qName":"currentName","qDefinition":"Security","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"2723626f-837d-4759-b243-1f601f04bbc5","qType":"variable"},"qData":[]}
-{"qName":"numRows","qDefinition":"3423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e9f0ff74-4f06-451d-a37f-2ff74daf46a3","qType":"variable"},"qData":[]}
-{"qName":"vClusterPoint","qDefinition":"1","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"bd15073d-c722-484b-836f-d8d17330cd6a","qType":"variable"},"qData":[]}
-{"qName":"n","qDefinition":"4","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"9a761156-1cce-43db-8228-a533a3ad4b1c","qType":"variable"},"qData":[]}
-{"qName":"f","qDefinition":"tmpField_0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c3a3b40f-016e-4caa-8599-49bc41cdd92d","qType":"variable"},"qData":[]}
-{"qName":"vHeatMap","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"54969adf-c1b3-411a-b3db-2fb653c302f2","qType":"variable"},"qData":[]}
-{"qName":"rowNr","qDefinition":"3423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"a687c3ee-99d4-446f-acc1-193718535ea2","qType":"variable"},"qData":[]}
-{"qName":"dataManagerTables","qDefinition":"'','New York Stock Exchange \u2013 historical stock prices','Security'","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c9c20318-3e27-4c74-9513-8aa7bbfcd90e","qType":"variable"},"qData":[]}
-{"qName":"index","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5f312a6b-215b-4868-9085-7e66b115f16a","qType":"variable"},"qData":[]}
-{"qName":"chunks","qDefinition":"3.423","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"1fa6c282-b406-47ce-8338-b37655c20b1d","qType":"variable"},"qData":[]}
-{"qName":"PointsInlineTable","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c7956eb1-2dfe-40e0-a16e-5f95de6a9bbe","qType":"variable"},"qData":[]}
-{"qName":"vPeek","qDefinition":"National Parks","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5ff9cc3c-5ee3-40ee-919f-399c28ebe50a","qType":"variable"},"qData":[]}
-{"qName":"vButton","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"00789762-ad76-4fe3-8d2f-561a086632fa","qType":"variable"},"qData":[]}
-{"qName":"matches","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e82d9240-e3f8-4891-9abc-1d01e73a23ce","qType":"variable"},"qData":[]}
-{"qName":"chunkText","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"5bbd32ea-29b8-47f6-9f4c-646b0e52b629","qType":"variable"},"qData":[]}
-{"qName":"NameTableInlineTable","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e83b48b5-45e0-4254-9a11-17a7e797e806","qType":"variable"},"qData":[]}
+{"qName":"vMeasureOperator","qDefinition":"=[MeasureOperator]","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"ca6b5446-3cf1-4ea3-9600-60285ef0f12b","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"vMeasureField","qDefinition":"=[MeasureField]","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"99a52437-f578-4c31-bbfc-75c414189460","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"vDimensionField","qDefinition":"=[DimensionField]","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"47fa0a51-0cce-474e-ac24-06f51c8309b8","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":20,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":3,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":2,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":3,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":14,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$ascii","$text","$hidden","$system"],"qSrcTables":[]}
-{"qName":"Geometry","qCardinal":342929,"qTags":["$ascii","$text"],"qSrcTables":["Point"]}
-{"qName":"SRC_AGENCY","qCardinal":12,"qTags":["$ascii","$text"],"qSrcTables":["Point"]}
-{"qName":"FIRE_ID","qCardinal":304244,"qTags":[],"qSrcTables":["Point"]}
-{"qName":"FIRENAME","qCardinal":28397,"qTags":[],"qSrcTables":["Point"]}
-{"qName":"LATITUDE","qCardinal":126381,"qTags":["$numeric"],"qSrcTables":["Point"]}
-{"qName":"LONGITUDE","qCardinal":172315,"qTags":["$numeric"],"qSrcTables":["Point"]}
-{"qName":"GEOID","qCardinal":395760,"qTags":["$ascii","$text","$key"],"qSrcTables":["Point","Binning","Cluster"]}
-{"qName":"YEAR","qCardinal":66,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
-{"qName":"MONTH","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
-{"qName":"DAY","qCardinal":31,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
-{"qName":"DECADE","qCardinal":7,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
-{"qName":"SIZE_HA","qCardinal":13837,"qTags":["$numeric"],"qSrcTables":["Point"]}
-{"qName":"CAUSE","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Point"]}
-{"qName":"_autoIndex_","qCardinal":397842,"qTags":["$numeric","$integer"],"qSrcTables":["Point"]}
-{"qName":"HH10W15","qCardinal":1677,"qTags":["$ascii","$text"],"qSrcTables":["Binning"]}
-{"qName":"CenterPoint","qCardinal":1677,"qTags":["$ascii","$text"],"qSrcTables":["Binning"]}
-{"qName":"Clusters_ClusterID","qCardinal":365,"qTags":["$ascii","$text"],"qSrcTables":["Cluster"]}
-{"qName":"Clusters_ClusterCenter","qCardinal":365,"qTags":["$ascii","$text"],"qSrcTables":["Cluster"]}
-{"qName":"Clusters_PointCount","qCardinal":261,"qTags":["$numeric","$integer"],"qSrcTables":["Cluster"]}
-{"qName":"Points_Geometry","qCardinal":340614,"qTags":["$ascii","$text"],"qSrcTables":["Cluster"]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":157,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":12,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":11,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":5,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":52,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$hidden","$system","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_facility_identifier","qCardinal":4,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"Facility","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Facility"]}
+{"qIsHidden":true,"qName":"_mo_code","qCardinal":76,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qName":"Clinician","qCardinal":42,"qTags":["$ascii","$text"],"qSrcTables":["Clinician"]}
+{"qIsHidden":true,"qName":"_stay_number","qCardinal":31349,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_episode_sequence_number","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"cvd_d","qCardinal":31386,"qTags":["$key","$ascii","$text"],"qSrcTables":["Clinical Variation","Clinical Variation Diagnosis"]}
+{"qName":"cvd_p","qCardinal":31386,"qTags":["$key","$ascii","$text"],"qSrcTables":["Clinical Variation","Clinical Variation Procedure"]}
+{"qName":"MRN","qCardinal":24887,"qTags":["$numeric","$integer"],"qSrcTables":["Clinical Variation"]}
+{"qIsHidden":true,"qName":"_date","qCardinal":1842,"qTags":["$key","$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":["$OFMap _date"]}
+{"qName":"LOS Type","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation"]}
+{"qIsHidden":true,"qName":"_indigenous_status","qCardinal":7,"qTags":["$hidden"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_emergency_status","qCardinal":5,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"Age","qCardinal":105,"qTags":["$numeric","$integer"],"qSrcTables":["Clinical Variation"]}
+{"qIsHidden":true,"qName":"_age_grouping","qCardinal":18,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_sex","qCardinal":2,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_specialty_unit_code","qCardinal":1,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_an_drg_pccl","qCardinal":5,"qTags":["$key","$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_cost_weight_d","qCardinal":1359,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_los_exc_sd","qCardinal":126,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_peer_alos_exc_sd","qCardinal":408,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_cases_gt_peer_exc_sd","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_peer_var_exc_sd","qCardinal":3125,"qTags":["$hidden","$numeric"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_complication","qCardinal":1,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"Complication Detail","qCardinal":0,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation"]}
+{"qIsHidden":true,"qName":"_complication_post_procedural","qCardinal":1,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"Complication Post Procedural Detail","qCardinal":0,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation"]}
+{"qIsHidden":true,"qName":"_unplanned_readmit_this_hosp_28_days","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_mortality","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qName":"Mortality Detail","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation"]}
+{"qIsHidden":true,"qName":"_condition_arising_during_episode","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_condition_onset","qCardinal":33,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_count_medical","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_count_surgical","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_count_uncoded","qCardinal":2,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_count_total","qCardinal":1,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_drg_type","qCardinal":3,"qTags":["$key","$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_an_drg_an_drg_version","qCardinal":307,"qTags":["$hidden","$ascii","$text","$keypart"],"qSrcTables":[]}
+{"qName":"DX_P","qCardinal":1821,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_01","qCardinal":2764,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_02","qCardinal":2249,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_03","qCardinal":1840,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_04","qCardinal":1895,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_05","qCardinal":1752,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_06","qCardinal":1411,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_07","qCardinal":1178,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_08","qCardinal":1037,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_09","qCardinal":865,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_10","qCardinal":775,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_11","qCardinal":662,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_12","qCardinal":601,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_13","qCardinal":536,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_14","qCardinal":461,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_15","qCardinal":418,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_16","qCardinal":357,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_17","qCardinal":317,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_18","qCardinal":292,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_19","qCardinal":246,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_20","qCardinal":219,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_21","qCardinal":187,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_22","qCardinal":156,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_23","qCardinal":155,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_24","qCardinal":117,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_25","qCardinal":110,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_26","qCardinal":100,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_27","qCardinal":84,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_28","qCardinal":76,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_29","qCardinal":68,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_30","qCardinal":58,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_31","qCardinal":59,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_32","qCardinal":51,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_33","qCardinal":46,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_34","qCardinal":38,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_35","qCardinal":37,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_36","qCardinal":28,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_37","qCardinal":29,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_38","qCardinal":27,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_39","qCardinal":20,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_40","qCardinal":20,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_41","qCardinal":19,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_42","qCardinal":18,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_43","qCardinal":15,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_44","qCardinal":15,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_45","qCardinal":14,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_46","qCardinal":14,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_47","qCardinal":9,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_48","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_49","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"DX_50","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Diagnosis"]}
+{"qName":"PR_P","qCardinal":807,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_01","qCardinal":750,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_02","qCardinal":630,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_03","qCardinal":486,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_04","qCardinal":349,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_05","qCardinal":255,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_06","qCardinal":207,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_07","qCardinal":148,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_08","qCardinal":125,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_09","qCardinal":121,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_10","qCardinal":87,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_11","qCardinal":88,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_12","qCardinal":77,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_13","qCardinal":62,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_14","qCardinal":60,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_15","qCardinal":45,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_16","qCardinal":40,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_17","qCardinal":34,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_18","qCardinal":36,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_19","qCardinal":30,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_20","qCardinal":32,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_21","qCardinal":26,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_22","qCardinal":25,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_23","qCardinal":19,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_24","qCardinal":18,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_25","qCardinal":15,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_26","qCardinal":17,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_27","qCardinal":15,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_28","qCardinal":14,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_29","qCardinal":14,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_30","qCardinal":13,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_31","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_32","qCardinal":9,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_33","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_34","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_35","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_36","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_37","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_38","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_39","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_40","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_41","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_42","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_43","qCardinal":7,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_44","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_45","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_46","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_47","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_48","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_49","qCardinal":4,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"PR_50","qCardinal":0,"qTags":["$ascii","$text"],"qSrcTables":["Clinical Variation Procedure"]}
+{"qName":"DRG","qCardinal":307,"qTags":["$ascii","$text"],"qSrcTables":["DRG"]}
+{"qName":"DRG Split","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["DRG"]}
+{"qName":"DRG Type","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["DRG Detail"]}
+{"qName":"Clinical Complexity Level","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Patient Clinical Complexity Level"]}
+{"qName":"Urgency","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Emergency Status"]}
+{"qName":"Gender","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Gender"]}
+{"qName":"Age Group","qCardinal":18,"qTags":["$ascii","$text"],"qSrcTables":["Age Grouping"]}
+{"qIsHidden":true,"qName":"_date_name","qCardinal":1478,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
+{"qName":"Financial Year","qCardinal":5,"qTags":["$ascii","$text"],"qSrcTables":["Calendar"]}
+{"qIsHidden":true,"qName":"_MonthID","qCardinal":49,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
+{"qName":"Month","qCardinal":49,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Calendar"]}
+{"qIsHidden":true,"qName":"_episode_week","qCardinal":213,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_episode_week_name","qCardinal":213,"qTags":["$hidden","$ascii","$text"],"qSrcTables":[]}
+{"qIsHidden":true,"qName":"_YearMonthID","qCardinal":49,"qTags":["$hidden","$numeric","$integer","$timestamp","$date"],"qSrcTables":[]}
+{"qName":"Year Month","qCardinal":49,"qTags":["$numeric","$integer","$timestamp","$date"],"qSrcTables":["Calendar"]}
+{"qName":"Year","qCardinal":5,"qTags":["$numeric","$integer"],"qSrcTables":["Calendar"]}
+{"qIsHidden":true,"qName":"_CounterDay","qCardinal":1,"qTags":["$hidden","$numeric","$integer"],"qSrcTables":[]}
