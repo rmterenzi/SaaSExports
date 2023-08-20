@@ -1,80 +1,90 @@
 
 SHEETS
-{"qInfo":{"qId":"6fcb1a19-da0e-4b35-ad5b-be44fd1f44af","qType":"sheet"},"qMeta":{"title":"My new sheet","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"6fcb1a19-da0e-4b35-ad5b-be44fd1f44af","approved":false,"published":false,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-02-14T19:54:26.703Z","modifiedDate":"2023-06-22T17:58:12.824Z","publishTime":true,"privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"15986374-8181-4587-acca-fd46ba2aecda","qType":"sheet"},"qMeta":{"title":"Story","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"15986374-8181-4587-acca-fd46ba2aecda","approved":false,"published":true,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-22T17:50:48.625Z","modifiedDate":"2023-06-22T17:58:03.407Z","publishTime":"2023-06-22T17:58:03.407Z","privileges":["read","update","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"b986c921-4715-4d1a-bfc6-ec393c2739b3","qType":"sheet"},"qMeta":{"title":"Metrics","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"b986c921-4715-4d1a-bfc6-ec393c2739b3","approved":false,"published":true,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-22T02:39:02.569Z","modifiedDate":"2023-06-22T17:50:39.400Z","publishTime":"2023-06-22T17:50:36.977Z","privileges":["read","update","publish","change_owner"]},"qData":[]}
-{"qInfo":{"qId":"8661a4ff-df87-4fab-b6a2-7c03f2195870","qType":"sheet"},"qMeta":{"title":"My new sheet (1)","description":"","_resourcetype":"app.object","_objecttype":"sheet","id":"8661a4ff-df87-4fab-b6a2-7c03f2195870","approved":false,"published":false,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-02-23T20:35:27.555Z","modifiedDate":"2023-06-22T17:30:01.936Z","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"b8df61a8-4947-4dbc-aaa1-fb312eaa25dd","qType":"sheet"},"qMeta":{"title":"MML","description":"","createdDate":"2023-08-20T12:17:42.910Z","modifiedDate":"2023-08-20T12:17:42.910Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"b8df61a8-4947-4dbc-aaa1-fb312eaa25dd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
 
 OBJECTS ON SHEETS
-{"name":"ZcuQNd","type":"filterpane","col":0,"row":0,"colspan":24,"rowspan":1,"bounds":{"y":0,"x":0,"width":100,"height":8.333333333333332}}
-{"name":"prfvAJe","type":"text-image","col":0,"row":2,"colspan":12,"rowspan":4,"bounds":{"y":16.666666666666664,"x":0,"width":50,"height":33.33333333333333}}
-{"name":"XmmkB","type":"text-image","col":12,"row":2,"colspan":12,"rowspan":4,"bounds":{"y":16.666666666666664,"x":50,"width":50,"height":33.33333333333333}}
-{"name":"nJpJ","type":"text-image","col":12,"row":6,"colspan":12,"rowspan":6,"bounds":{"y":50,"x":50,"width":50,"height":50}}
-{"name":"NxLbx","type":"text-image","col":0,"row":1,"colspan":24,"rowspan":1,"bounds":{"y":8.333333333333332,"x":0,"width":100,"height":8.333333333333332}}
-{"name":"jVPPj","type":"filterpane","col":0,"row":6,"colspan":12,"rowspan":6,"bounds":{"y":50,"x":0,"width":50,"height":50}}
-{"bounds":{"y":0,"x":70,"width":30,"height":33.33333333333333},"col":21,"colspan":9,"name":"807c5c4d-e36e-4cfb-8406-74b894248afb","row":0,"rowspan":5,"smartGrid":{"rowIdx":0,"itemIdx":0,"item":{"width":0.5}},"type":"piechart"}
-{"bounds":{"y":33.33333333333333,"x":70,"width":30,"height":33.33333333333333},"col":21,"colspan":9,"name":"60111e94-9139-4428-859c-7b5321fb182b","row":5,"rowspan":5,"smartGrid":{"rowIdx":0,"itemIdx":1,"item":{"width":0.5}},"type":"piechart"}
-{"bounds":{"y":66.66666666666666,"x":70,"width":30,"height":33.33333333333333},"col":21,"colspan":9,"name":"ac299d3f-8eba-43fc-9c85-5acd192b77f3","row":10,"rowspan":5,"smartGrid":{"rowIdx":3,"itemIdx":0,"item":{"width":1}},"type":"piechart"}
-{"name":"d7a73dc8-e419-4489-8bda-1c53e44b2abc","type":"VizlibFilter","col":16,"row":0,"colspan":5,"rowspan":5,"bounds":{"y":0,"x":53.333333333333336,"width":16.666666666666664,"height":33.33333333333333}}
-{"name":"f84c56dc-70b2-49ae-809d-c2cfeabc23c3","type":"VizlibFilter","col":11,"row":0,"colspan":5,"rowspan":5,"bounds":{"y":0,"x":36.666666666666664,"width":16.666666666666664,"height":33.33333333333333}}
-{"name":"df868324-3d9e-458c-a4a4-79d890b9401c","type":"VizlibFilter","col":0,"row":0,"colspan":5,"rowspan":5,"bounds":{"y":0,"x":0,"width":16.666666666666664,"height":33.33333333333333}}
-{"name":"f3812e5e-a7dd-4e3f-9451-da520ce26763","type":"VizlibFilter","col":5,"row":0,"colspan":6,"rowspan":5,"bounds":{"y":0,"x":16.666666666666664,"width":20,"height":33.33333333333333}}
-{"name":"YdbvGAJ","type":"text-image","col":0,"row":8,"colspan":7,"rowspan":7,"bounds":{"y":53.333333333333336,"x":0,"width":23.333333333333332,"height":46.666666666666664}}
-{"name":"rwNMmm","type":"text-image","col":7,"row":8,"colspan":7,"rowspan":7,"bounds":{"y":53.333333333333336,"x":23.333333333333332,"width":23.333333333333332,"height":46.666666666666664}}
-{"name":"xrWaYe","type":"text-image","col":14,"row":8,"colspan":7,"rowspan":7,"bounds":{"y":53.333333333333336,"x":46.666666666666664,"width":23.333333333333332,"height":46.666666666666664}}
-{"name":"UJPLrp","type":"text-image","col":0,"row":6,"colspan":21,"rowspan":2,"bounds":{"y":40,"x":0,"width":70,"height":13.333333333333334}}
-{"name":"mkpuux","type":"text-image","col":0,"row":5,"colspan":21,"rowspan":1,"bounds":{"y":33.33333333333333,"x":0,"width":70,"height":6.666666666666667}}
-{"bounds":{"y":0,"x":70,"width":30,"height":33.33333333333333},"col":21,"colspan":9,"name":"aCEnV","row":0,"rowspan":5,"smartGrid":{"rowIdx":0,"itemIdx":0,"item":{"width":0.5}},"type":"piechart"}
-{"bounds":{"y":33.33333333333333,"x":70,"width":30,"height":33.33333333333333},"col":21,"colspan":9,"name":"hmf","row":5,"rowspan":5,"smartGrid":{"rowIdx":0,"itemIdx":1,"item":{"width":0.5}},"type":"piechart"}
-{"bounds":{"y":66.66666666666666,"x":70,"width":30,"height":33.33333333333333},"col":21,"colspan":9,"name":"NGnpFR","row":10,"rowspan":5,"smartGrid":{"rowIdx":3,"itemIdx":0,"item":{"width":1}},"type":"piechart"}
-{"name":"SjcaZz","type":"treemap","col":0,"row":5,"colspan":21,"rowspan":10,"bounds":{"y":33.33333333333333,"x":0,"width":70,"height":66.66666666666666}}
-{"name":"gbcBAEz","type":"VizlibFilter","col":16,"row":0,"colspan":5,"rowspan":5,"bounds":{"y":0,"x":53.333333333333336,"width":16.666666666666664,"height":33.33333333333333}}
-{"name":"meHXcc","type":"VizlibFilter","col":11,"row":0,"colspan":5,"rowspan":5,"bounds":{"y":0,"x":36.666666666666664,"width":16.666666666666664,"height":33.33333333333333}}
-{"name":"cgZtG","type":"VizlibFilter","col":0,"row":0,"colspan":5,"rowspan":5,"bounds":{"y":0,"x":0,"width":16.666666666666664,"height":33.33333333333333}}
-{"name":"mFpRAMX","type":"VizlibFilter","col":5,"row":0,"colspan":6,"rowspan":5,"bounds":{"y":0,"x":16.666666666666664,"width":20,"height":33.33333333333333}}
-{"name":"d2500088-954c-44b0-a684-7b0e761d9850","type":"filterpane","col":0,"row":0,"colspan":24,"rowspan":3,"bounds":{"y":0,"x":0,"width":100,"height":25}}
-{"name":"9135c992-e924-4c55-a28e-24353f975fec","type":"text-image","col":0,"row":5,"colspan":12,"rowspan":3,"bounds":{"y":41.66666666666667,"x":0,"width":50,"height":25}}
-{"name":"acee8852-ba1e-497d-8ec6-9266d275d288","type":"text-image","col":12,"row":5,"colspan":12,"rowspan":3,"bounds":{"y":41.66666666666667,"x":50,"width":50,"height":25}}
-{"name":"c7f25d6c-7523-472c-937c-f948f0e47b0a","type":"text-image","col":0,"row":8,"colspan":24,"rowspan":4,"bounds":{"y":66.66666666666666,"x":0,"width":100,"height":33.33333333333333}}
-{"name":"ffa6dec6-b18a-4ce4-93de-012e5613276f","type":"text-image","col":0,"row":3,"colspan":24,"rowspan":2,"bounds":{"y":25,"x":0,"width":100,"height":16.666666666666664}}
+{"name":"wffkW","type":"kpi","col":3,"row":0,"colspan":6,"rowspan":3,"bounds":{"y":0,"x":12.5,"width":25,"height":25}}
+{"name":"VcTrg","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":4,"bounds":{"y":0,"x":0,"width":12.5,"height":33.33333333333333}}
+{"name":"ZJFXzn","type":"filterpane","col":0,"row":4,"colspan":3,"rowspan":4,"bounds":{"y":33.33333333333333,"x":0,"width":12.5,"height":33.33333333333333}}
+{"name":"JGmZfr","type":"container","col":14,"row":6,"colspan":10,"rowspan":6,"bounds":{"y":50,"x":58.333333333333336,"width":41.66666666666667,"height":50}}
+{"name":"DBhehx","type":"linechart","col":14,"row":0,"colspan":10,"rowspan":6,"bounds":{"y":0,"x":58.333333333333336,"width":41.66666666666667,"height":50}}
+{"name":"vphbFJp","type":"kpi","col":3,"row":3,"colspan":6,"rowspan":3,"bounds":{"y":25,"x":12.5,"width":25,"height":25}}
+{"name":"ZGWJPBN","type":"filterpane","col":0,"row":8,"colspan":3,"rowspan":4,"bounds":{"y":66.66666666666666,"x":0,"width":12.5,"height":33.33333333333333}}
+{"name":"sMPbYuW","type":"container","col":3,"row":6,"colspan":11,"rowspan":6,"bounds":{"y":50,"x":12.5,"width":45.83333333333333,"height":50}}
+{"name":"sxpRapD","type":"barchart","col":9,"row":0,"colspan":5,"rowspan":6,"bounds":{"y":0,"x":37.5,"width":20.833333333333336,"height":50}}
 
 DIMENSIONS
-{"qInfo":{"qId":"mfXkyz","qType":"dimension"},"qMeta":{"title":"Sector-Industry-Cust Drill","description":"","tags":[],"_resourcetype":"app.object","_objecttype":"dimension","id":"mfXkyz","approved":false,"published":false,"owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","createdDate":"2023-06-22T03:41:35.033Z","modifiedDate":"2023-06-22T03:41:35.033Z","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
 
 MEASURES
 
 VARIABLES
-{"qName":"name","qDefinition":"Success Stories","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"bc83187b-6f6c-41b5-b8b8-f335180c814a","qType":"variable"},"qData":[],"qIsScriptCreated":true}
-{"qName":"currentName","qDefinition":"Success Stories","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"3b81fe5e-0e6c-4d27-b508-965c35b6dd2b","qType":"variable"},"qData":[],"qIsScriptCreated":true}
-{"qName":"index","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"d8ebb586-6a18-4e4f-9275-36af731f227c","qType":"variable"},"qData":[],"qIsScriptCreated":true}
-{"qName":"matches","qDefinition":"0","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"684010fc-dd66-4ea0-84c5-a18a554d8837","qType":"variable"},"qData":[],"qIsScriptCreated":true}
+{"qName":"vWeek","qDefinition":"17","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"35e256ca-c90a-43bf-8c1d-6457c4944392","qType":"variable"},"qData":[]}
+{"qName":"j","qDefinition":"18","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"252ad18f-fd29-4e16-84b7-56260aa0ecee","qType":"variable"},"qData":[]}
+{"qName":"vGameHistoryConnection","qDefinition":"https:\/\/fantasy.nfl.com\/league\/1014629\/history\/2022\/teamgamecenter?teamId=12&week=17","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"4f8c3a7b-87ae-4f5b-a2d5-e6b16dc0a305","qType":"variable"},"qData":[]}
+{"qName":"vTeam","qDefinition":"12","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"0aaa9d40-6193-46bc-9978-ae152cb13162","qType":"variable"},"qData":[]}
+{"qName":"i","qDefinition":"13","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c370c15c-b941-49fb-b0e2-a8cb4361782b","qType":"variable"},"qData":[]}
+{"qName":"vTeamHistoryConnection","qDefinition":"https:\/\/fantasy.nfl.com\/league\/1014629\/history\/2022\/teamhome?teamId=12","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e6229e0a-6cad-4ca5-b255-bca654d460ec","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":22,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":7,"qTags":["$key","$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":7,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":2,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":16,"qTags":["$hidden","$system","$numeric","$integer"],"qSrcTables":[]}
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$hidden","$system","$ascii","$text"],"qSrcTables":[]}
-{"qName":"Created By","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Sector","qCardinal":8,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Customer","qCardinal":36,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Title","qCardinal":39,"qTags":["$text"],"qSrcTables":["Fact"]}
-{"qName":"Business Use Case","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Technical Use Case","qCardinal":2,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Display On Website","qCardinal":3,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Story Link","qCardinal":9,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Approval Status","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Key","qCardinal":40,"qTags":["$key","$text"],"qSrcTables":["Fact","Tech","TechPracticCat","BusinessTags","TechTags","AllTags","Business Function"]}
-{"qName":"Service Offering","qCardinal":9,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Industry","qCardinal":23,"qTags":["$ascii","$text"],"qSrcTables":["Fact"]}
-{"qName":"Summary","qCardinal":32,"qTags":["$text"],"qSrcTables":["Fact"]}
-{"qName":"Challenge","qCardinal":24,"qTags":["$text"],"qSrcTables":["Fact"]}
-{"qName":"Solution","qCardinal":39,"qTags":["$text"],"qSrcTables":["Fact"]}
-{"qName":"Value","qCardinal":20,"qTags":["$text"],"qSrcTables":["Fact"]}
-{"qName":"Technology","qCardinal":57,"qTags":["$text"],"qSrcTables":["Tech"]}
-{"qName":"Technology Practice Category","qCardinal":13,"qTags":["$ascii","$text"],"qSrcTables":["TechPracticCat"]}
-{"qName":"Business Use Case Tags","qCardinal":38,"qTags":["$ascii","$text"],"qSrcTables":["BusinessTags"]}
-{"qName":"Tech Use Case Tags","qCardinal":91,"qTags":["$ascii","$text"],"qSrcTables":["TechTags"]}
-{"qName":"Use Case Tags","qCardinal":116,"qTags":["$ascii","$text"],"qSrcTables":["AllTags"]}
-{"qName":"Business Function","qCardinal":10,"qTags":["$ascii","$text"],"qSrcTables":["Business Function"]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":56,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":3,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":3,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":3,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$FieldNo","qCardinal":47,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Info","qCardinal":1,"qTags":["$ascii","$text","$hidden","$system"],"qSrcTables":[]}
+{"qName":"TeamId","qCardinal":12,"qTags":["$numeric","$integer","$key"],"qSrcTables":["Teams2022","Games2022"]}
+{"qName":"Pos","qCardinal":12,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"Action","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"Player","qCardinal":296,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"Opp","qCardinal":33,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"Status","qCardinal":32,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"FantasyPts","qCardinal":284,"qTags":["$numeric"],"qSrcTables":["Teams2022"]}
+{"qName":"Tackles","qCardinal":53,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"TacklesAsst","qCardinal":52,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"Sacks","qCardinal":25,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"TacklesForLoss","qCardinal":21,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"TurnoverInt","qCardinal":7,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"TurnoverFFum","qCardinal":4,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"TurnoverFumRec","qCardinal":4,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"IntTD","qCardinal":3,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"FumTD","qCardinal":2,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"BlkTD","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"Saf","qCardinal":2,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"Def2ptRet","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"Blk","qCardinal":3,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"PDef","qCardinal":15,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"QBHit","qCardinal":29,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"IntYds","qCardinal":36,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"FumYds","qCardinal":19,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"PATMade","qCardinal":11,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"PATMiss","qCardinal":4,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"FG Made0-19","qCardinal":2,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"FG Made20-29","qCardinal":8,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"FG Made30-392","qCardinal":8,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"FG Made40-493","qCardinal":7,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"FG Made50+4","qCardinal":9,"qTags":["$numeric","$integer"],"qSrcTables":["Teams2022"]}
+{"qName":"FG Miss0-19","qCardinal":1,"qTags":["$ascii","$text"],"qSrcTables":["Teams2022"]}
+{"qName":"FG Miss20-29","qCardinal":2,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"FG Miss30-39","qCardinal":3,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"PassingYds","qCardinal":22,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"PassingTD","qCardinal":15,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"PassingInt2","qCardinal":13,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"RushingYds","qCardinal":121,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"Rushing1TD","qCardinal":15,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"ReceivingReceptions","qCardinal":81,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"ReceivingYds","qCardinal":165,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"ReceivingTD2","qCardinal":13,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"RetTD","qCardinal":3,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"OffensiveFumTD","qCardinal":0,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"2Pt","qCardinal":4,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"Fum","qCardinal":13,"qTags":[],"qSrcTables":["Teams2022"]}
+{"qName":"TeamName","qCardinal":12,"qTags":["$ascii","$text","$key"],"qSrcTables":["Teams2022","Team"]}
+{"qName":"TeamRank","qCardinal":12,"qTags":["$numeric","$integer"],"qSrcTables":["Team"]}
+{"qName":"Games.Week","qCardinal":17,"qTags":["$numeric","$integer"],"qSrcTables":["Games2022"]}
+{"qName":"Games.Pos","qCardinal":12,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
+{"qName":"Games.Player","qCardinal":429,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
+{"qName":"Games.Opp","qCardinal":66,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
+{"qName":"Games.Status","qCardinal":341,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
+{"qName":"Games.Stats","qCardinal":1627,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
+{"qName":"Games.FantasyPts","qCardinal":533,"qTags":[],"qSrcTables":["Games2022"]}
+{"qName":"Flg15PtGame","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Games2022"]}
