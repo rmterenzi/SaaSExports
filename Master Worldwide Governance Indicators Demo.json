@@ -1,8 +1,18 @@
 
 SHEETS
-{"qInfo":{"qId":"b8df61a8-4947-4dbc-aaa1-fb312eaa25dd","qType":"sheet"},"qMeta":{"title":"MML","description":"","createdDate":"2023-08-20T12:17:42.910Z","modifiedDate":"2023-08-20T12:27:17.954Z","published":true,"publishTime":"2023-08-20T12:27:17.954Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"b8df61a8-4947-4dbc-aaa1-fb312eaa25dd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"81390936-040b-44f8-b6fc-fdd66e587e22","qType":"sheet"},"qMeta":{"title":"Test","description":"","createdDate":"2023-08-22T13:32:23.418Z","modifiedDate":"2023-08-22T13:32:23.418Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"81390936-040b-44f8-b6fc-fdd66e587e22","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
+{"qInfo":{"qId":"b8df61a8-4947-4dbc-aaa1-fb312eaa25dd","qType":"sheet"},"qMeta":{"title":"MML","description":"","createdDate":"2023-08-22T13:32:23.430Z","modifiedDate":"2023-08-22T13:32:23.430Z","published":false,"publishTime":"1753-01-01T00:00:00.000Z","approved":false,"qSize":-1,"sourceObject":"","draftObject":"","_resourcetype":"app.object","_objecttype":"sheet","id":"b8df61a8-4947-4dbc-aaa1-fb312eaa25dd","owner":"74c7f252-fb3c-4808-910c-4f17abd9c410","ownerId":"ZBQ4V1JxU5RyoZoH2M0yn2tsk4yXDCmQ","privileges":["read","update","delete","publish","change_owner"]},"qData":[]}
 
 OBJECTS ON SHEETS
+{"name":"LvRykUa","type":"table","col":0,"row":3,"colspan":24,"rowspan":4,"bounds":{"y":25,"x":0,"width":100,"height":33.33333333333333}}
+{"name":"Lftrgp","type":"qlik-variable-input","col":22,"row":0,"colspan":2,"rowspan":3,"bounds":{"y":0,"x":91.66666666666666,"width":8.333333333333332,"height":25}}
+{"name":"MvUJjy","type":"filterpane","col":0,"row":0,"colspan":4,"rowspan":3,"bounds":{"y":0,"x":0,"width":16.666666666666664,"height":25}}
+{"name":"jUSd","type":"kpi","col":4,"row":0,"colspan":4,"rowspan":3,"bounds":{"y":0,"x":16.666666666666664,"width":16.666666666666664,"height":25}}
+{"name":"MRHMh","type":"kpi","col":18,"row":0,"colspan":4,"rowspan":3,"bounds":{"y":0,"x":75,"width":16.666666666666664,"height":25}}
+{"name":"csNjjE","type":"kpi","col":8,"row":0,"colspan":3,"rowspan":3,"bounds":{"y":0,"x":33.33333333333333,"width":12.5,"height":25}}
+{"name":"bfPwD","type":"kpi","col":11,"row":0,"colspan":3,"rowspan":3,"bounds":{"y":0,"x":45.83333333333333,"width":12.5,"height":25}}
+{"name":"dsPjc","type":"kpi","col":14,"row":0,"colspan":4,"rowspan":3,"bounds":{"y":0,"x":58.333333333333336,"width":16.666666666666664,"height":25}}
+{"name":"QPnKEX","type":"table","col":0,"row":7,"colspan":24,"rowspan":5,"bounds":{"y":58.333333333333336,"x":0,"width":100,"height":41.66666666666667}}
 {"name":"wffkW","type":"kpi","col":3,"row":0,"colspan":6,"rowspan":3,"bounds":{"y":0,"x":12.5,"width":25,"height":25}}
 {"name":"VcTrg","type":"filterpane","col":0,"row":0,"colspan":3,"rowspan":4,"bounds":{"y":0,"x":0,"width":12.5,"height":33.33333333333333}}
 {"name":"ZJFXzn","type":"filterpane","col":0,"row":4,"colspan":3,"rowspan":4,"bounds":{"y":33.33333333333333,"x":0,"width":12.5,"height":33.33333333333333}}
@@ -18,15 +28,16 @@ DIMENSIONS
 MEASURES
 
 VARIABLES
+{"qName":"vTeamHistoryConnection","qDefinition":"https:\/\/fantasy.nfl.com\/league\/1014629\/history\/2022\/teamhome?teamId=12","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e6229e0a-6cad-4ca5-b255-bca654d460ec","qType":"variable"},"qData":[]}
 {"qName":"vWeek","qDefinition":"17","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"35e256ca-c90a-43bf-8c1d-6457c4944392","qType":"variable"},"qData":[]}
 {"qName":"j","qDefinition":"18","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"252ad18f-fd29-4e16-84b7-56260aa0ecee","qType":"variable"},"qData":[]}
 {"qName":"vGameHistoryConnection","qDefinition":"https:\/\/fantasy.nfl.com\/league\/1014629\/history\/2022\/teamgamecenter?teamId=12&week=17","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"4f8c3a7b-87ae-4f5b-a2d5-e6b16dc0a305","qType":"variable"},"qData":[]}
 {"qName":"vTeam","qDefinition":"12","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"0aaa9d40-6193-46bc-9978-ae152cb13162","qType":"variable"},"qData":[]}
 {"qName":"i","qDefinition":"13","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"c370c15c-b941-49fb-b0e2-a8cb4361782b","qType":"variable"},"qData":[]}
-{"qName":"vTeamHistoryConnection","qDefinition":"https:\/\/fantasy.nfl.com\/league\/1014629\/history\/2022\/teamhome?teamId=12","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"e6229e0a-6cad-4ca5-b255-bca654d460ec","qType":"variable"},"qData":[]}
+{"qName":"vTackleValue","qDefinition":"1.8","qMeta":{"privileges":["read","update","delete"]},"qInfo":{"qId":"03d2fc58-215d-49a5-9b84-46ac20bc00fa","qType":"variable"},"qData":[]}
 
 FIELDS
-{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":56,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
+{"qIsHidden":true,"qIsSystem":true,"qName":"$Field","qCardinal":57,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Table","qCardinal":3,"qTags":["$ascii","$text","$key","$hidden","$system"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Rows","qCardinal":3,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
 {"qIsHidden":true,"qIsSystem":true,"qName":"$Fields","qCardinal":3,"qTags":["$numeric","$integer","$hidden","$system"],"qSrcTables":[]}
@@ -86,5 +97,6 @@ FIELDS
 {"qName":"Games.Opp","qCardinal":66,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
 {"qName":"Games.Status","qCardinal":341,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
 {"qName":"Games.Stats","qCardinal":1627,"qTags":["$ascii","$text"],"qSrcTables":["Games2022"]}
+{"qName":"Games.Tackles","qCardinal":15,"qTags":["$numeric","$integer"],"qSrcTables":["Games2022"]}
 {"qName":"Games.FantasyPts","qCardinal":533,"qTags":[],"qSrcTables":["Games2022"]}
 {"qName":"Flg15PtGame","qCardinal":2,"qTags":["$numeric","$integer"],"qSrcTables":["Games2022"]}
