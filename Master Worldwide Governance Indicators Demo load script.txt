@@ -206,7 +206,7 @@ Resident Teams2022Temp;
 Drop Table Teams2022Temp;
 
 Store Teams2022 Into [Lib://QVD/Teams2022.qvd](qvd);
-///$tab Team2022Games
+///$tab Team2022Gamesv1
 Exit Script;
 
 Games2022:
@@ -267,3 +267,69 @@ where RecNo() >1;
         
    Next;
 Store Games2022 Into [Lib://QVD/Games2022.qvd](qvd);   
+
+///$tab Teams2022Gamesv2
+Exit Script;
+
+Games2022:
+Load * Inline [
+TeamId,Games.Week,Games.Pos,Games.Player,Games.Opp,Games.Status,Games.Stats,Games.Tackles,Games.FantasyPts
+];
+Qualify *;
+Unqualify TeamId;
+
+LET vTeam = 1;
+LET vWeek = 1;
+
+FOR i = 1 TO 12
+    LET vWeek = 1;
+    For j = 1 TO 17
+Let vGameHistoryConnection = 'https://fantasy.nfl.com/league/1014629/history/2022/teamgamecenter?teamId=$(vTeam)&week=$(vWeek)';
+Trace i = $(i);
+Trace j = $(j);
+Trace $(vGameHistoryConnection);
+
+Games:
+Concatenate(Games2022) LOAD
+    $(i) AS TeamId,
+    $(j) AS Week,
+    F1 AS "Pos",
+    F2 AS Player,
+    F3 AS Opp,
+    F4 AS Status,
+    F5 AS Stats,
+    If(Right(SubField(F5, ',',1),4) = 'Tack', If(IsNum(SubField(SubField(F5, ',',1),' ',1)) , SubField(SubField(F5, ',',1),' ',1))) As Tackles,
+//    If(Right(SubField(F5, ',',1),4) = 'Tack', SubField(SubField(F5, ',',1),' ',1)) As Stats2,
+    Fantasy AS FantasyPts
+FROM $(vGameHistoryConnection) //[lib://FF2 (centrify_michaelterenzi)]
+(html, codepage is 28591, embedded labels, table is @1)
+where RecNo() >1;
+
+Concatenate(Games2022) LOAD
+    $(i) AS TeamId,
+    $(j) AS Week,
+    F1 AS "Pos",
+    F2 AS Player,
+    F3 AS Opp,
+    F4 AS Status,
+    F5 AS Stats,
+    If(Right(SubField(F5, ',',1),4) = 'Tack', If(IsNum(SubField(SubField(F5, ',',1),' ',1)) , SubField(SubField(F5, ',',1),' ',1))) As Tackles,
+    Fantasy AS FantasyPts
+FROM [lib://FF2 (centrify_michaelterenzi)]
+(html, codepage is 28591, embedded labels, table is @2)
+where RecNo() >1;
+
+    If $(vWeek) <17 Then 
+    vWeek = $(vWeek) + 1 
+    Trace HERE is your week: $(vWeek);
+        End If;
+    Next;
+        If $(vTeam) <12 Then 
+        vTeam = $(vTeam) + 1
+        End If;
+        
+   Next;
+
+
+Store Games2022 Into [Lib://QVD/Games2022.qvd](qvd);  
+Exit script;
