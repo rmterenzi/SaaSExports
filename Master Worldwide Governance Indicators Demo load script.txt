@@ -1,335 +1,947 @@
+///$tab ***README***
+/* 
+Change the Folder Connection path of "Demo_Data" to where you have put the demo files
+
+Reload the application!
+*/
 ///$tab Main
 SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
-SET MoneyFormat='$#,##0.00;-$#,##0.00';
+SET MoneyFormat='$#,##0.00;($#,##0.00)';
 SET TimeFormat='h:mm:ss TT';
 SET DateFormat='M/D/YYYY';
 SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
-SET FirstWeekDay=6;
-SET BrokenWeeks=1;
-SET ReferenceDay=0;
-SET FirstMonthOfYear=1;
-SET CollationLocale='en-US';
-SET CreateSearchIndexOnReload=1;
 SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
-SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
-SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
-SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
+
+Let vToday = Today();
+
+Trace $(vToday);
 
 
-
-
-///$tab Mapping
-TeamNames:
-Mapping Load * Inline [
-TeamId, TeamName
-1,Delusional Demons
-2,New Justice Team
-3,El Profeta
-4,Varnhem Gargantuans
-5,Lund Cork Eaters
-6,The Bad Lip Read Loggers
-7,Pavelsgard Butchers
-8,The Badass BrownViking
-9,Tiki Taka Juice Decks
-10,Team Gmerica
-11,Old North Pale Faces
-12,Polk High
+Currencies:
+LOAD * INLINE [
+CountryCurrency,ExchangeRate
+USD,1
+Euro,0.92233
+Yuan,6.88326
+Yen,132.169
+GBP,0.81136
+Swiss Franc,0.91946
 ];
-
-TeamNames2:
-Mapping Load * Inline [
-TeamId, TeamName
-1,Delusional Demons
-2,New Justice Team
-3,El Profeta
-4,Varnhem Gargantuans
-5,Lund Cork Eaters
-6,The Bad Lip Read Loggers
-7,Pavelsgard Butchers
-8,The Badass BrownViking
-9,Tiki Taka Juice Decks
-10,Team Gmerica
-11,Old North Pale Faces
-12,Polk High
-];
-
-TeamRank:
-Mapping Load * Inline [
-TeamId, TeamName
-1,9
-2,10
-3,1
-4,11
-5,7
-6,3
-7,4
-8,8
-9,2
-10,12
-11,5
-12,6
-];
-///$tab Teams2022
-Teams2022:
-Load *
-From [Lib://QVD/Teams2022.qvd](qvd); 
-///$tab TeamOverall
-TeamTemp:
-Load Distinct TeamId, TeamName, ApplyMap('TeamRank',TeamId) AS TeamRank
-Resident Teams2022;
-
-Team:
-NoConcatenate Load * Resident TeamTemp
-Order by TeamRank asc;
-
-Drop Field TeamId From Team; 
-Drop Table TeamTemp;
-
-//Exit Script;
-///$tab Games2022
-Games2022:
-Load *, If(Games.FantasyPts > 15, 1,0) AS Flg15PtGame
-From [Lib://QVD/Games2022.qvd](qvd); 
-///$tab Team2022RostersGen
-Exit Script; 
-
-LET vTeam = 1;
-
-Teams2022Temp:
-Load * Inline [ 
-TeamId,Pos,Action,Player,Opp,Status,PassingYds,PassingTD,PassingInt2,RushingYds,Rushing1TD,ReceivingReceptions,ReceivingYds,ReceivingTD2,RetTD,OffensiveFumTD,2Pt,Fum,FantasyPts,PATMade,PATMiss,FG Made0-19,FG Made20-29,FG Made30-392,FG Made40-493,FG Made50+4,FG Miss0-19,FG Miss20-29,FG Miss30-39,Tackles,TacklesAsst,Sacks,TacklesForLoss,TurnoverInt,TurnoverFFum,TurnoverFumRec,IntTD,FumTD,BlkTD,Saf,Def2ptRet,Blk,PDef,QBHit,IntYds,FumYds
-];
+///$tab Accounts
+Accounts:
+LOAD distinct
+*
+// FROM [lib://Data/VizLib/FinanceReport/Accounts.qvd]
+// (qvd);
+FROM [lib://PoC:DataFiles/Accounts.qvd]
+(qvd);
 
 
-// Define your initial variable value
+///$tab P&L Transactions
+Transactions:
+LOAD
+    %ClientProjectIDAutoNumber,
+    ProjectName,
+    if(isNull(Country),Pick(Floor(rand()*3)+1,'Sweden','Norway','Netherlands'),Country) as Country, //Improving the fake data quality...
+    Region,
+    %UserNameAutoNumber,
+    %CustomerAutoNumber,
+    CustomerName,
+    CustomerGroup,
+    %LeadProjectManagerAutoNumber,
+    LeadProjectManager,
+    Source,
+    Company,
+    CountryCode,
+    %TransactionKey,
+    %AccountNumber,
+    "UserID",
+  //  AddMonths(MakeDate(year("Date"), Month("Date"),1),20) as 
+    Date,
+    Currency,
+    Amount,
+    AmountLC,
+    AmountEUR,
+    HourlyPrice,
+    GLTransactionNumber,
+    GLTransactionDescription,
+    GLTransactionLink,
+    "Hours",
+    AmountUSD,
+    ForecastAmount,
+    ForecastAmountLC,
+    ForecastAmountEUR,
+    ForecastHourlyPrice,
+    BudgetAmount,
+    BudgetAmountLC,
+    BudgetAmountEUR,
+    BudgetHourlyPrice,
+    ForecastHours,
+    ForecastAmountUSD,
+    BudgetHours,
+    BudgetAmountUSD,
+    AvailableHours,
+    AvailableHoursBudget,
+    AvailableHoursTarget,
+    UserName,
+    EmployeeType,
+    RangeMin(Len(Amount),1) as actuals_flag
+// FROM [lib://Data/VizLib/FinanceReport/Transactions_NEW.qvd]
+// (qvd)
+FROM [lib://PoC:DataFiles/Transactions_NEW.qvd]
+(qvd)
+where Date <= '$(vToday)';
+;
 
 
 
-// Create a recursive loop using a LOAD statement
-FOR i = 1 TO 12
-Let vTeamHistoryConnection = 'https://fantasy.nfl.com/league/1014629/history/2022/teamhome?teamId=$(vTeam)';
-Trace i = $(i);
-Trace $(vTeamHistoryConnection);
-Offense:
-Concatenate(Teams2022Temp) LOAD
-	$(i) AS TeamId,
-    F1 AS "Pos",
-    F2 AS Action,
-    F3 AS Player,
-    F4 AS Opp,
-    F5 AS Status,
-    Passing AS PassingYds,
-    Passing1 AS PassingTD,
-    Passing2 AS PassingInt2,
-    Rushing AS RushingYds,
-    Rushing1 AS Rushing1TD,
-    Receiving AS ReceivingReceptions,
-    Receiving1 AS ReceivingYds,
-    Receiving2 AS ReceivingTD2,
-    Ret AS RetTD,
-    Misc AS FumTD,
-    Misc1 AS "2Pt",
-    Fum,
-    Fantasy AS FantasyPts   
-FROM $(vTeamHistoryConnection)
-(html, codepage is 28591, embedded labels, table is @1)
-where RecNo() >1 and [F1] <> 'Bench';
 
 
-Special:
-Outer Join(Teams2022Temp) LOAD
-    $(i) AS TeamId,
-    F1 AS "Pos",
-    F2 AS Action,
-    F3 AS Player,
-    F4 AS Opp,
-    F5 AS Status,
-    PAT AS PATMade,
-    PAT1 AS PATMiss,
-    "FG Made" AS "FG Made0-19",
-    "FG Made1" AS "FG Made20-29",
-    "FG Made2" AS "FG Made30-392",
-    "FG Made3" AS "FG Made40-493",
-    "FG Made4" AS "FG Made50+4",
-    "FG Miss" AS "FG Miss0-19",
-    "FG Miss1" AS "FG Miss20-29",
-    "FG Miss2" AS "FG Miss30-39",
-    Fantasy AS FantasyPts
-FROM $(vTeamHistoryConnection)
-(html, codepage is 28591, embedded labels, table is @2)
-where RecNo() >1 and [F1] <> 'Bench';
+
+///$tab Balance Transactions
+Concatenate (Transactions)
+
+LOAD
+*
+// FROM [lib://Data/VizLib/FinanceReport/Transactions_Balance.qvd]
+// (qvd);
+FROM [lib://PoC:DataFiles/Transactions_Balance.qvd]
+(qvd);
+///$tab KPI Transactions
+MonthlyKPIs_tmp:
+CrossTable (Date,Value,4) 
+LOAD
+    'KPI' as Source,
+    *
+// FROM [lib://Data/VizLib/FinanceReport/KPI_ExampleData.xlsx]
+// (ooxml, embedded labels, table is [Monthly KPIs]);
+FROM [lib://PoC:DataFiles/KPI_ExampleData.xlsx]
+(ooxml, embedded labels, table is [Monthly KPIs]);
 
 
-Defense:
-Outer Join(Teams2022Temp) LOAD
-	$(i) AS TeamId,
-    F1 AS "Pos",
-    F2 AS Action,
-    F3 AS Player,
-    F4 AS Opp,
-    F5 AS Status,
-    Tackles,
-    Tackles1 AS TacklesAsst,
-    Tackles2 AS Sacks,
-    Tackles3 AS TacklesForLoss,
-    Turnover AS TurnoverInt,
-    Turnover1 AS TurnoverFFum,
-    Turnover2 AS TurnoverFumRec,
-    Score AS IntTD,
-    Score1 AS FumTD,
-    Score2 AS BlkTD,
-    Score3 AS Saf,
-    Score4 AS Def2ptRet,
-    Other AS Blk,
-    Other1 AS PDef,
-    Other2 AS QBHit,
-    Return AS IntYds,
-    Return1 AS FumYds,
-    Fantasy AS FantasyPts
-FROM $(vTeamHistoryConnection)
-(html, codepage is 28591, embedded labels, table is @3)
-where RecNo() >1 and [F1] <> 'Bench';
-// LET vTeam = $(vTeam) + 1;
-  If $(vTeam) <12 Then 
- 	vTeam = $(vTeam) + 1 
-    End If;
-Next;
-//Exit script; 
-Teams2022:
-NoConcatenate Load *, ApplyMap('TeamNames',TeamId) AS TeamName
-Resident Teams2022Temp; 
+Concatenate (Transactions)
 
-Drop Table Teams2022Temp;
+MonthlyKPIs:
+LOAD
+Source,
+Date(num#(Date)) as Date,
+"KPI Description",
+KPI_ID as %AccountNumber,
+Country,
+Value
+Resident MonthlyKPIs_tmp;
 
-Store Teams2022 Into [Lib://QVD/Teams2022.qvd](qvd);
-///$tab Team2022Gamesv1
-Exit Script;
+Drop Table MonthlyKPIs_tmp;
 
-Games2022:
-Load * Inline [
-TeamId,Games.Week,Games.Pos,Games.Player,Games.Opp,Games.Status,Games.Stats,Games.FantasyPts
-];
-Qualify *;
-Unqualify TeamId;
 
-LET vTeam = 1;
-LET vWeek = 1;
 
-FOR i = 1 TO 12
-	LET vWeek = 1;
-	For j = 1 TO 17
-Let vGameHistoryConnection = 'https://fantasy.nfl.com/league/1014629/history/2022/teamgamecenter?teamId=$(vTeam)&week=$(vWeek)';
-Trace i = $(i);
-Trace j = $(j);
-Trace $(vGameHistoryConnection);
 
-Games:
-Concatenate(Games2022) LOAD
-	$(i) AS TeamId,
-    $(j) AS Week,
-    F1 AS "Pos",
-    F2 AS Player,
-    F3 AS Opp,
-    F4 AS Status,
-    F5 AS Stats,
- //   SubField(F5, ',') As Stats2,
-    Fantasy AS FantasyPts
-FROM $(vGameHistoryConnection) //[lib://FF2 (centrify_michaelterenzi)]
-(html, codepage is 28591, embedded labels, table is @1)
-where RecNo() >1;
 
-Concatenate(Games2022) LOAD
-	$(i) AS TeamId,
-    $(j) AS Week,
-    F1 AS "Pos",
-    F2 AS Player,
-    F3 AS Opp,
-    F4 AS Status,
-    F5 AS Stats,
- //   SubField(F5, ',') As Stats2,
-    Fantasy AS FantasyPts
-FROM [lib://FF2 (centrify_michaelterenzi)]
-(html, codepage is 28591, embedded labels, table is @2)
-where RecNo() >1;
 
-	If $(vWeek) <17 Then 
- 	vWeek = $(vWeek) + 1 
-    Trace HERE is your week: $(vWeek);
-    	End If;
-	Next;
- 		If $(vTeam) <12 Then 
- 		vTeam = $(vTeam) + 1
- 		End If;
+///$tab SUB Account Mapping
+/****************************************************************
+SUB clsp_FinanceReport
+This sub-routine will vastly simplify the use of the Finance Report extension. 
+The extension will work also with any other load script but please study the section in the readme-file for specifics on how to set up the data.
+*****************************************************************/
+
+SUB clsp_FinanceReport
+
+TRACE ****** clsp_FinanceReport ********;
+
+      //File path and File name. Defined in clsp_FinanceReport_Options
+      LET vL.FilePath=PEEK('clsp_FilePath');
+      LET vL.FileName=PEEK('clsp_FileName');
+
+DROP TABLE clsp_FinanceReport_Options;
+
+TRACE ******Variables for Export *******;
+//Variables for the export format. Used in the property panel as a default option. 
+//Typically the export format is the same as the table format but that can be changed in the Excel-settings
+//Cofigure this setting in 'Export Number Formats' in the extension. 
+//It is also possible to manually set another format in the extension setting if one instance of the extension should have a different format.
+
+  	  variablesForExport:
+      LOAD 
+          RowNumExportFormatCode
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is tNumFormat)
+      
+      ;
+      
+FOR vExportFormat = 1 to NoOfRows('variablesForExport')
+   
+   	  IF LEN($(vExportFormat))=1 THEN
+      LET vExportNumber= 0&$(vExportFormat);
+      ELSE
+      LET vExportNumber =$(vExportFormat);
+      END IF
+
+      LET vCLFRExportFormat$(vExportNumber) = PEEK('RowNumExportFormatCode',vExportFormat-1,'variablesForExport');
+
+
+NEXT vExportFormat
+
+
+DROP TABLE variablesForExport;
+
+TRACE ****** Read Excel Options *******;
+
+      //Options defined in excel file  
+	  clsp_FinanceOptions:  
+      LOAD DISTINCT
+          Sheet,
+          TransactionTable,
+          AccountField,
+          ExtraGroups,
+          ExtraMappingIntervals
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, header is 1 lines, table is Options)
+      where Len(trim(Sheet))>0
+      //AND Sheet='OH'
+      ; //Making sure no invalid rows are loaded
+
+
+
+//Starting the loop for each finance report
+
+FOR clsp_FinceReportRow = 0 TO NoOfRows('clsp_FinanceOptions')-1;
+
+let clsp_FinanceReportNoOfSetups=NoOfRows('clsp_FinanceOptions'); //Used only for the trace below
+let clsp_FinanceReportNowLoadingSetup=$(clsp_FinceReportRow)+1; //Used only for the trace below
+TRACE '****** Loading $(clsp_FinanceReportNowLoadingSetup) of $(clsp_FinanceReportNoOfSetups) Finance Report setups ******';
+
+//Varibles for the finance report
+LET vL.SheetName= PEEK('Sheet',$(clsp_FinceReportRow),'clsp_FinanceOptions');
+LET vL.TransactionTable= PEEK('TransactionTable',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Name of the transaction table
+LET vL.AccountField= PEEK('AccountField',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Field name for the account key
+LET vL.ExtraGroups= PEEK('ExtraGroups',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Extra groups name
+LET vL.ExtraMappingIntervals= PEEK('ExtraMappingIntervals',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Used e.g for cost center
+
+//If no Extra mapping field, set variable, used later 
+IF LEN('$(vL.ExtraMappingIntervals)')<1 THEN
+LET vL.ExtraMappingIntervals='NOEXTRAFIELD';
+END IF
+
+
+
+TRACE ****** Import Data from Excel *******;
+
+
+      clsp_importData_$(vL.SheetName):
+      LOAD 
+      	*,
+       DUAL([tmpReportRow], 
+       		//Building dual value for the report row (Details described on each row below.)
+       		([%ReportRowID]* 100000) + 							//Set report row number can be anything from 1 to infinity
+            ([RowNumExportFormatCode]*1000)+					//Set the export format from 1 to 99.
+            ([StyleNum] * 10)+									//Style is from 0 to 99
+            [preventExpand]) 					AS [reportRow]	//Should always be either 1 or 0 (1 prevents expand)
+      
+      ;
+      
+      LOAD
+        //Grain=====================================================================================
+        *,
+        [RowNumber]								AS [%ReportRowID],
+        //Dimension=================================================================================
+		IF([RowType]='EmptyRow',
+        	IF(ISNULL([ReportRow]),
+        	' ',
+            [ReportRow]),
+            [ReportRow])						AS [tmpReportRow],
+        IF([PreventExpand]=1,
+        	0,
+        	1)									AS [preventExpand],
+        IF([RowType]='EmptyRow',2,
+        	IF(ISNULL([Calculation]),
+            1,
+        Calculation))							AS [calculation],
+	  	1										AS [NOEXTRAFIELD]
+        //Measure===================================================================================
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is $(vL.SheetName))
+     where Len(trim(RowNumber))>0; //Rows without a row number are excluded to avoid loading incomplete rows
+     
+
+//Used later in the logic for subtotals etc.
+LET vL.MinRowNumber = PEEK('%ReportRowID',0);
+LET vL.MaxRowNumber = PEEK('%ReportRowID',-1);
+
+     
+DROP FIELD tmpReportRow, preventExpand,ReportRow,Calculation;
+DROP FIELDS $(vL.ExtraGroups);
+
+IF len(vL.ExtraGroups)>0 THEN
+
+TRACE ****** Extra Groups ******;
+
+//1. Get numeric value for each Report Row
+//The reportRow is the most granular level of the report
+      map_ReportRowNumericValue_$(vL.SheetName):
+      MAPPING 
+      LOAD 
+          TEXT(reportRow) 																			AS reportRow,
+          NUM(reportRow) 																			AS reportRowNumeric
+      RESIDENT clsp_importData_$(vL.SheetName)
+      ;
+
+//Looping through any extra groups (columns) specified in the Excel-file.
+FOR EACH vL.ExtraColumn in $(vL.ExtraGroups)
+
+//2. Get min row number for each extra grouping
+//NOTE! The extra colmns need to be an aggregatation of the rows!
+      map_MinRowGroupNumeric_$(vL.SheetName):
+      MAPPING 
+      LOAD 
+          TEXT($(vL.ExtraColumn)) 									 								AS $(vL.ExtraColumn),
+          MIN(APPLYMAP('map_ReportRowNumericValue_$(vL.SheetName)',TEXT(ReportRow))) 								AS MinRowGroupNumeric
+
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is $(vL.SheetName))
+      WHERE Len(Trim(RowNumber))>0
+      GROUP BY $(vL.ExtraColumn)
+      ;
+
+      
+//3. Add extra columns to the data model
+//NOTE! The extra colmns need to be an aggregatation of the rows!
+      LEFT JOIN(clsp_importData_$(vL.SheetName))
+      LOAD
+		  RowNumber,
+          DUAL(TEXT(ReportRow),APPLYMAP('map_ReportRowNumericValue_$(vL.SheetName)',TEXT(ReportRow))) 				AS reportRow,
+          DUAL(TEXT($(vL.ExtraColumn)),APPLYMAP('map_MinRowGroupNumeric_$(vL.SheetName)',TEXT($(vL.ExtraColumn))))  AS $(vL.ExtraColumn)
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is $(vL.SheetName))
+      WHERE Len(Trim(RowNumber))>0
+      ;
+
+NEXT vL.ExtraColumn
+
+ELSE
+TRACE ****** No Extra Groups Used ******;
+ENDIF
+
+TRACE ***** Regular Rows ******;
+
+      clsp_$(vL.SheetName):
+      LOAD
+         *,
+         IF(ISTEXT([accountFrom]),1,0) 			AS [isText],
+      ;
+      LOAD DISTINCT 
+        //Grain=====================================================================================
+        [%ReportRowID],
+        //Dimension=================================================================================
+        [%ReportRowID]							AS [rowNumber],
+        IF(INDEX([accounts],'-')>0,								//Identifying intervals
+            SUBFIELD([accounts],'-',1),							
+                [accounts])						AS [accountFrom],
+
+        IF(INDEX([accounts],'-')>0,
+             SUBFIELD([accounts],'-',2),
+                [accounts])						AS [accountTo],
+		ExtraIntervall			    			AS  ExtraIntervallMapping,
+       
+        //Measure===================================================================================
+        ;
+        LOAD 
+        [%ReportRowID]							AS [%ReportRowID],
         
-   Next;
-Store Games2022 Into [Lib://QVD/Games2022.qvd](qvd);   
+        $(vL.ExtraMappingIntervals)				AS ExtraIntervall,
+        SUBFIELD([Accounts], ',') 				AS [accounts] //Creating one new row per account or account interval in the list
+       RESIDENT clsp_importData_$(vL.SheetName)
+       WHERE [RowType]='Regular'
+       ORDER BY [%ReportRowID]
+       ;
 
-///$tab Teams2022Gamesv2
-Exit Script;
+       tmp_AccountsWithText:
+       LOAD
+       [%ReportRowID]		   			  AS [%ReportRowID],
+       [rowNumber]			   			  AS [rowNumber],
+       [accountFrom]           			  AS $(vL.AccountField),
+       ExtraIntervallMapping 			  AS ExtraIntervallMapping
+       RESIDENT clsp_$(vL.SheetName)
+       WHERE [isText]=1
+       ;
+       
+//Matching the account intervals
+//Only accounts that are also in the transaction table will be included so make sure the transaction table is complete
+//(i.e. the transaction table must include any budgets, forecasts etc before this script is run.)
+       INNER JOIN(clsp_$(vL.SheetName))
+       cl_IntervalTable:
+       INTERVALMATCH($(vL.AccountField))
+       LOAD
+       [accountFrom],
+       [accountTo]
+       RESIDENT clsp_$(vL.SheetName)
+       WHERE [isText]=0
+       ORDER BY [%ReportRowID]
+       ;
 
-Games2022:
-Load * Inline [
-TeamId,Games.Week,Games.Pos,Games.Player,Games.Opp,Games.Status,Games.Stats,Games.Tackles,Games.FantasyPts
-];
-Qualify *;
-Unqualify TeamId;
+//Adding non-numeric accounts (since they cannot be matched by the interval match)
+       CONCATENATE(clsp_$(vL.SheetName))
+       LOAD
+       [%ReportRowID],
+       [rowNumber],
+       $(vL.AccountField),
+       ExtraIntervallMapping
+       RESIDENT tmp_AccountsWithText
+       ;
 
-LET vTeam = 1;
-LET vWeek = 1;
+DROP TABLE tmp_AccountsWithText;
 
-FOR i = 1 TO 12
-    LET vWeek = 1;
-    For j = 1 TO 17
-Let vGameHistoryConnection = 'https://fantasy.nfl.com/league/1014629/history/2022/teamgamecenter?teamId=$(vTeam)&week=$(vWeek)';
-Trace i = $(i);
-Trace j = $(j);
-Trace $(vGameHistoryConnection);
+DROP FIELDS [accountFrom], [accountTo], [isText];
 
-Games:
-Concatenate(Games2022) LOAD
-    $(i) AS TeamId,
-    $(j) AS Week,
-    F1 AS "Pos",
-    F2 AS Player,
-    F3 AS Opp,
-    F4 AS Status,
-    F5 AS Stats,
-    If(Right(SubField(F5, ',',1),4) = 'Tack', If(IsNum(SubField(SubField(F5, ',',1),' ',1)) , SubField(SubField(F5, ',',1),' ',1))) As Tackles,
-//    If(Right(SubField(F5, ',',1),4) = 'Tack', SubField(SubField(F5, ',',1),' ',1)) As Stats2,
-    Fantasy AS FantasyPts
-FROM $(vGameHistoryConnection) //[lib://FF2 (centrify_michaelterenzi)]
-(html, codepage is 28591, embedded labels, table is @1)
-where RecNo() >1;
+//This part is only run if we have an extra field for matching intervals
+//(i.e. if more than accounts are used for mapping report rows to the transactions)
+//The section will use the combination of account intervals and the extra intervals.
+IF '$(vL.ExtraMappingIntervals)'<>'NOEXTRAFIELD'  THEN
 
-Concatenate(Games2022) LOAD
-    $(i) AS TeamId,
-    $(j) AS Week,
-    F1 AS "Pos",
-    F2 AS Player,
-    F3 AS Opp,
-    F4 AS Status,
-    F5 AS Stats,
-    If(Right(SubField(F5, ',',1),4) = 'Tack', If(IsNum(SubField(SubField(F5, ',',1),' ',1)) , SubField(SubField(F5, ',',1),' ',1))) As Tackles,
-    Fantasy AS FantasyPts
-FROM [lib://FF2 (centrify_michaelterenzi)]
-(html, codepage is 28591, embedded labels, table is @2)
-where RecNo() >1;
+TRACE ***** ExtraMappingIntervals ******;
 
-    If $(vWeek) <17 Then 
-    vWeek = $(vWeek) + 1 
-    Trace HERE is your week: $(vWeek);
-        End If;
-    Next;
-        If $(vTeam) <12 Then 
-        vTeam = $(vTeam) + 1
-        End If;
+      clsp_$(vL.SheetName)_costcenters_interval:
+      LOAD
+         *,
+         IF(ISTEXT($(vL.ExtraMappingIntervals)From),1,0) 	AS [isText]
+      ;
+      LOAD DISTINCT 
+        //Grain=====================================================================================
+        //Dimension=================================================================================
+        IF(INDEX($(vL.ExtraMappingIntervals)Mapping,'-')>0,
+            SUBFIELD($(vL.ExtraMappingIntervals)Mapping,'-',1),
+                $(vL.ExtraMappingIntervals)Mapping)		AS $(vL.ExtraMappingIntervals)From,
+
+        IF(INDEX($(vL.ExtraMappingIntervals)Mapping,'-')>0,
+             SUBFIELD($(vL.ExtraMappingIntervals)Mapping,'-',2),
+                $(vL.ExtraMappingIntervals)Mapping)		AS $(vL.ExtraMappingIntervals)To,
+        $(vL.ExtraMappingIntervals)Mapping,
+        $(vL.AccountField),
+        [%ReportRowID],
+        //Measure===================================================================================
+        ;
+        LOAD
+        [%ReportRowID],
+        TRIM(SUBFIELD(ExtraIntervallMapping, ','))  AS $(vL.ExtraMappingIntervals)Mapping,
+        $(vL.AccountField)						  AS $(vL.AccountField)
+       RESIDENT clsp_$(vL.SheetName)
+       ;
+       
+DROP FIELD $(vL.ExtraMappingIntervals)Mapping FROM clsp_$(vL.SheetName);
+
+DROP FIELD $(vL.ExtraMappingIntervals) FROM clsp_importData_$(vL.SheetName) ;
+
+      clsp_$(vL.SheetName)_costcenters:
+      LOAD 
+         $(vL.AccountField)									AS Acc,
+         [%ReportRowID],
+         $(vL.ExtraMappingIntervals)From + ITERNO() - 1  	AS ExtraMapping
+         WHILE $(vL.ExtraMappingIntervals)From + ITERNO() - 1 <= $(vL.ExtraMappingIntervals)To;
+      LOAD
+          $(vL.ExtraMappingIntervals)From,
+          $(vL.ExtraMappingIntervals)To,
+          $(vL.AccountField),
+          [%ReportRowID]
+      RESIDENT clsp_$(vL.SheetName)_costcenters_interval
+      WHERE [isText]=0; //Get only the numeric intervals
+      ;
+      
+       CONCATENATE(clsp_$(vL.SheetName)_costcenters)
+       LOAD
+       [%ReportRowID]					AS [%ReportRowID],
+       $(vL.AccountField)				AS Acc,
+       $(vL.ExtraMappingIntervals)From	AS ExtraMapping
+       RESIDENT clsp_$(vL.SheetName)_costcenters_interval
+       WHERE [isText]=1; //Adding the text values
+       
+
+      
+DROP TABLE clsp_$(vL.SheetName)_costcenters_interval;
+
+//Get all unique values from the transaction table to make sure we only create values that exist i the transaction table
+       map_ExtraMappingExists:
+       MAPPING
+       LOAD DISTINCT
+       $(vL.ExtraMappingIntervals),
+       1
+       RESIDENT $(vL.TransactionTable)
+       ;
+       
+//Create extra rows for all possible combinations (where they exist in the transaction table)
+       LEFT JOIN(clsp_$(vL.SheetName))
+       LOAD DISTINCT
+       //JoinKey=================================================================================
+       [Acc]							AS $(vL.AccountField),
+       [%ReportRowID],
+       //Dimensions=============================================================================
+       [Acc]&'|'&[ExtraMapping] 		AS [tmp_FinanceReportID], //The account plus the extra mapping table
+       [ExtraMapping]					AS [ExtraMapping]
+       //Measures================================================================================
+       RESIDENT clsp_$(vL.SheetName)_costcenters
+       WHERE APPLYMAP('map_ExtraMappingExists',[ExtraMapping],0)=1
+       ;
+
+UNMAP map_ExtraMappingExists;
+      
+DROP TABLE clsp_$(vL.SheetName)_costcenters;
+
+RENAME TABLE clsp_$(vL.SheetName) TO tmp_clsp_$(vL.SheetName);
+ 
+       NOCONCATENATE
+       clsp_$(vL.SheetName):
+       LOAD
+       *,
+       IF(ISNULL([tmp_FinanceReportID]),$(vL.AccountField), [tmp_FinanceReportID]) AS [%FinanceReportID]
+       RESIDENT tmp_clsp_$(vL.SheetName)
+       WHERE NOT ISNULL($(vL.AccountField));
+
+DROP FIELD ExtraMapping, [tmp_FinanceReportID];
+
+DROP TABLE tmp_clsp_$(vL.SheetName);
+
+
+
+       map_FinanceKey:
+	   MAPPING
+       LOAD
+       	[%FinanceReportID],
+        [%FinanceReportID]
+       RESIDENT clsp_$(vL.SheetName)
+       ;
+
+//Adding the new key to the transaction table with an applymap 
+//Using applymap instead of join to be able to set an alternative value
+TRACE ***** Add new key to transaction table *****;
+
+RENAME TABLE $(vL.TransactionTable) TO tmp_$(vL.TransactionTable);
+       NOCONCATENATE
+       $(vL.TransactionTable):
+       LOAD
+       *,
+       APPLYMAP('map_FinanceKey',$(vL.AccountField)&'|'&$(vL.ExtraMappingIntervals),$(vL.AccountField))	AS [%FinanceReportID]
+       RESIDENT tmp_$(vL.TransactionTable)
+       ;
+       
+UNMAP map_FinanceKey;
+
+DROP TABLE tmp_$(vL.TransactionTable);
+DROP FIELD '$(vL.AccountField)' FROM clsp_$(vL.SheetName);
+
+ELSE
+
+TRACE ***** Add new key to transaction table *****;
+
+RENAME TABLE $(vL.TransactionTable) TO tmp_$(vL.TransactionTable);
+ 	
+       NOCONCATENATE
+       $(vL.TransactionTable):
+       LOAD
+       *,
+       $(vL.AccountField)	AS [%FinanceReportID]
+       RESIDENT tmp_$(vL.TransactionTable)
+       ;
+
+DROP TABLE tmp_$(vL.TransactionTable);
+
+TRACE ***** Add new key to report table *****;
+
+RENAME TABLE clsp_$(vL.SheetName) TO tmp_clsp_$(vL.SheetName);
+		
+        NOCONCATENATE
+        clsp_$(vL.SheetName):
+		LOAD
+        	*,
+            $(vL.AccountField) AS [%FinanceReportID]
+        RESIDENT tmp_clsp_$(vL.SheetName);
         
-   Next;
+DROP TABLE tmp_clsp_$(vL.SheetName);
+DROP FIELD '$(vL.AccountField)' FROM clsp_$(vL.SheetName);
+
+END IF
+
+DROP FIELD [NOEXTRAFIELD];
 
 
-Store Games2022 Into [Lib://QVD/Games2022.qvd](qvd);  
-Exit script;
+
+//Adding total rows to the report setup
+//this includes logic for running totals and empty rows
+//Empty rows are connected to all other rows and will always display (this can be changed by altering the logic below)
+TRACE ****** Total Rows ******;
+
+      clsp_TotalRows:
+      LOAD
+        //Grain=====================================================================================
+        [%ReportRowID]						AS [totalRowIntervalMatchKey],
+        //Dimension=================================================================================
+        RowType								AS [rowType],
+
+        IF([RowType] <> 'Regular', 
+        	PEEK([RegularMinRow]),
+            IF([RowType] <> PREVIOUS([RowType]), 
+            [%ReportRowID], 
+            PEEK([RegularMinRow]))) 		AS [RegularMinRow],
+        IF([RowType] = 'RunningTotal', -1, 
+        	IF([RowType] <> 'Regular', 
+            PEEK([tmp_RunningSubtotalMinRow]), 
+            	IF(PEEK([tmp_RunningSubtotalMinRow]) = -1 OR ROWNO() = 1, 
+                [%ReportRowID], PEEK([tmp_RunningSubtotalMinRow]))
+                )) 							AS [tmp_RunningSubtotalMinRow],
+       IF(LEFT([RowType],7) = 'Regular', 
+       	[%ReportRowID],
+
+        PEEK(RegularMaxRow)) 				AS [RegularMaxRow],
+        $(vL.MinRowNumber) 					AS [MinRowNumber],
+        $(vL.MaxRowNumber) 					AS [MaxRowNumber],
+        [RowFromOverride]					AS [RowFromOverride],
+        [RowToOverride]						AS [RowToOverride]
+        //Measure===================================================================================
+       RESIDENT clsp_importData_$(vL.SheetName)
+       ORDER BY [%ReportRowID]
+       ;
+       
+      LEFT JOIN (clsp_TotalRows)
+      LOAD DISTINCT
+        //Joinkey=====================================================================================
+        [totalRowIntervalMatchKey]            AS [totalRowIntervalMatchKey],   
+        //Dimensions==================================================================================
+        IF(ISNULL(PEEK([totalRowIntervalMatchKey])),
+            [RegularMinRow],
+            PEEK([totalRowIntervalMatchKey])) AS [MinRunningSubTotal]
+        //Measures====================================================================================
+      RESIDENT clsp_TotalRows
+      WHERE rowType='RunningSubTotal' OR rowType='RunningTotal'
+      ;
+      
+
+      LEFT JOIN (clsp_TotalRows)
+      LOAD DISTINCT
+        //Joinkey=====================================================================================
+        [totalRowIntervalMatchKey]          AS [totalRowIntervalMatchKey],    
+        //Dimensions==================================================================================
+      IF(NOT ISNULL([MinRunningSubTotal]),
+        IF([MinRunningSubTotal]>IF(ISNULL([tmp_RunningSubtotalMinRow]),0,[tmp_RunningSubtotalMinRow]),
+            [MinRunningSubTotal],
+            [tmp_RunningSubtotalMinRow]
+            ),[tmp_RunningSubtotalMinRow])  AS [RunningSubtotalMinRow]
+        //Measures====================================================================================
+      RESIDENT clsp_TotalRows
+      WHERE [rowType]='RunningSubTotal'
+      ;
+
+DROP FIELDS tmp_RunningSubtotalMinRow, MinRunningSubTotal;
+
+
+       clsp_TotalIntervals:
+       LOAD
+         //Grain=====================================================================================
+        [totalRowIntervalMatchKey],
+         //Dimension=================================================================================
+         IF(ISNULL([RowFromOverride]),
+           IF([rowType]='SubTotal',
+              [RegularMinRow],
+              IF([rowType]='RunningSubTotal',
+              [RunningSubtotalMinRow],
+             [MinRowNumber])),
+             [RowFromOverride])				AS [RowFrom],
+		
+		IF(ISNULL([RowToOverride]),
+       		IF([rowType]='EmptyRow',
+       		[MaxRowNumber],
+           [RegularMaxRow]),
+           [RowToOverride])                AS [RowTo]
+        //Measure===================================================================================
+      RESIDENT clsp_TotalRows
+      WHERE NOT MATCH([rowType], 'Regular')
+      ;
+           
+DROP TABLE clsp_TotalRows;
+
+	   clsp_TotalIntervalMatch:
+       NOCONCATENATE
+       INTERVALMATCH([%ReportRowID])
+       LOAD
+       [RowFrom],
+       [RowTo]
+       RESIDENT clsp_TotalIntervals;
+       
+	   LEFT JOIN(clsp_TotalIntervalMatch)
+       LOAD
+       *
+       RESIDENT clsp_TotalIntervals;
+
+DROP TABLE clsp_TotalIntervals;
+       
+       LEFT JOIN(clsp_TotalIntervalMatch)
+       LOAD
+       *
+       RESIDENT clsp_$(vL.SheetName);
+       
+
+       CONCATENATE(clsp_$(vL.SheetName))
+       LOAD DISTINCT
+       [totalRowIntervalMatchKey]	AS [%ReportRowID],
+       [rowNumber],
+       [%FinanceReportID]
+       RESIDENT clsp_TotalIntervalMatch
+       WHERE NOT ISNULL([%FinanceReportID])
+       ;
+   
+   
+DROP TABLE clsp_TotalIntervalMatch;
+
+//Adding all the data from the original Excel-template (such as RowNumFormat, RowGroup, ReportRow etc.
+	  JOIN(clsp_$(vL.SheetName))
+      LOAD
+      	*
+      RESIDENT clsp_importData_$(vL.SheetName);
+      
+
+DROP TABLE clsp_importData_$(vL.SheetName);
+
+TRACE ***** Rename Fields ******;
+//Renaming all the fields to include a prefix
+
+FOR i = 1 to NoOfFields('clsp_$(vL.SheetName)')
+
+Fields:
+LOAD
+  FieldName($(i),'clsp_$(vL.SheetName)') as FieldName
+AutoGenerate 1
+;
+
+NEXT i
+
+//Adding the prefix to make sure the names are unique when using multiple reports
+//(If custom names are needed an alternative mapping table should be used here. Do not change in other places in the script!)
+map_RenameFields_$(vL.SheetName):
+MAPPING
+LOAD DISTINCT
+	FieldName,
+    '$(vL.SheetName)'&'_' &FieldName
+RESIDENT Fields;
+
+DROP TABLE Fields;
+RENAME FIELDS USING map_RenameFields_$(vL.SheetName);
+
+UNMAP map_RenameFields_$(vL.SheetName);
+
+NEXT clsp_FinceReportRow
+
+DROP TABLE clsp_FinanceOptions;
+
+END SUB
+
+
+
+
+
+///$tab CALL Account Mapping
+/************************************
+There is typically no need to change these settings.
+Change the data connection path to point to the files and make your settings in the first tab of the Excel-file.
+************************************/
+clsp_FinanceReport_Options:
+LOAD
+   'lib://PoC:DataFiles'				AS clsp_FilePath, 
+   'FinanceReport_Template_US.xlsx'		AS clsp_FileName
+AUTOGENERATE 1;
+        
+CALL clsp_FinanceReport;  
+
+
+
+
+
+///$tab Calendar
+Let vMsr = 'OPERATING REVENUE';
+Let vComparison = 'Budget|Sum({<PnL_reportRow = {"$' &'(vMsr)"}, $' &'(vSetCM)>}BudgetAmountEUR)';
+Let vDimPicker = 'Country';
+
+
+
+Let vBackFill = False();
+
+Inner Keep(Transactions)
+dates: load distinct Date Resident Transactions Where actuals_flag = 1 and Year(Date)*100+Num(Month(Date)) <> 202006;
+
+
+If $(vBackFill) Then 
+
+    min_max:
+    Load
+        Floor(min(Date)) as min_date,
+        Floor(max(Date)) as max_date
+    Resident
+        dates;
+
+    Let StartDate = peek('min_date',0,'min_max');
+    Let EndDate = peek('max_date',0,'min_max');
+
+
+    Drop Tables dates, min_max;
+	
+    dates:
+    Load
+        Date($(StartDate)+(Iterno()-1),'YYYYMMDD') as Date 	
+    Autogenerate
+        (1)
+    While 
+        Date($(StartDate)+(Iterno()-1)) <=Date($(EndDate));
+
+End If;
+
+
+calendar:
+Load
+	*,
+    Date(Date) as Date_tmp,
+    Num(Date) as date_num,
+	Year(Date) AS [Year],
+    Year(Date) as year_num,
+    Num(Month(Date)) as month_num,
+	dual('FY '&year(addmonths(Date,6)),year(addmonths(Date,6))) as FiscalYear,
+	Month(Date) AS [Month],
+	num(Month(Date)) AS [MonthNum],
+	num(Week(Date),00) as [Week],
+	Day(Date) AS [Day],
+    AutoNumber(Year("Date")*100+Num(Month(Date)),'month_year') as month_year_num,
+    Dual(Month(Date)&'-'&Year("Date"),Year("Date")*100+Num(Month(Date))) as [Month Year],
+	Year(Date)&num(Month(Date),00) as [Year Month],
+    DayNumberOfYear(Date) as [Day of Year],
+	Dual('Q'&Num(Ceil(Num(Month(Date))/3)),Num(Ceil(NUM(Month(Date))/3),00)) as [Quarter]
+Resident
+	dates
+Order by
+	Date asc;
+
+
+
+Rename field Date to %Date;
+Rename field Date_tmp to Date;
+
+Autonumber %Date;
+///$tab Section
+
+///$tab UI/UX
+SET vSetType = 'Daily'; // Options should fall in line with below: Daily, WTD, MTD, QTD, YTD
+Set vSetIgnore = '';
+
+
+for f = 0 to NoOfFields('calendar') - 1
+
+	Let vFieldName = FieldName($(f)+1,'calendar');
+    
+    If WildMatch('$(vFieldName)','*_num') = 0 Then
+    
+    	Let vSetIgnore = vSetIgnore & ',[$(vFieldName)]=';
+        
+    End If
+    
+next f;
+
+
+
+// Date Set Analysis Variables
+Let vSetDaily = 'date_num = {"$' & '(=Max(total date_num))"} $(vSetIgnore)';
+Let vSetWTD = 'date_num = {">=$' & '(=Num(WeekStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
+Let vSetMTD = 'date_num = {">=$' & '(=Num(MonthStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
+Let vSetQTD = 'date_num = {">=$' & '(=Num(QuarterStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
+Let vSetYTD = 'date_num = {">=$' & '(=Num(YearStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
+
+Let vSetDaily_PY = 'date_num = {"$' & '(=Num(AddYears(Max(total date_num)),-1))"} $(vSetIgnore)';
+Let vSetWTD_PY = 'date_num = {">=$' & '(=Num(AddYears(WeekStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
+Let vSetMTD_PY = 'date_num = {">=$' & '(=Num(AddYears(MonthStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
+Let vSetQTD_PY = 'date_num = {">=$' & '(=Num(AddYears(QuarterStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
+Let vSetYTD_PY = 'date_num = {">=$' & '(=Num(AddYears(YearStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
+
+
+
+
+
+// Date Set Analysis Variables
+Let vSetCM = 'month_year_num = {"$' & '(=Max(total month_year_num))"} $(vSetIgnore)';
+Let vSetPM = 'month_year_num = {"$' & '(=Max(total month_year_num)-1)"} $(vSetIgnore)';
+Let vSetPY = 'month_year_num = {"$' & '(=Max(total month_year_num)-12)"} $(vSetIgnore)';
+
+
+
+
+%Dimension:
+Load * inline [
+Dimension, %DimensionField
+Country, Country
+Account, AccountNumberName
+Customer Group, CustomerGroup
+Customer Name, CustomerName
+];
+
+
+%Comparison:
+Load 
+    Comparison,
+    Replace(%ComparisonMeasure,'???','$') as [%ComparisonMeasure] 
+Inline [
+Comparison|%ComparisonMeasure
+Prior Month|Sum({<PnL_reportRow = {"???(=Only(Topic))"}, ???(vSetPM)>}AmountEUR * ???(=Only(%TopicFlag)))
+Budget|Sum({<PnL_reportRow = {"???(=Only(Topic))"}, ???(vSetCM)>}BudgetAmountEUR * ???(=Only(%TopicFlag)))
+Prior Year|Sum({<PnL_reportRow = {"???(=Only(Topic))"}, ???(vSetPY)>}AmountEUR * ???(=Only(%TopicFlag)))
+](delimiter is '|');
+
+
+
+expense_flag_map:
+Mapping Load * Inline [
+input	output
+Subcontractor Costs, External	-1
+Maintenance Cost	-1
+Other Cost	-1
+OPERATING COSTS	-1
+Salaries  & Vacation pay	-1
+Recruitment	-1
+STAFF COSTS	-1
+Communication	-1
+Other External services	-1
+Rent and other properties	-1
+Transportation and Freight	-1
+Other External costs	-1
+EXTERNAL COSTS	-1
+Group costs	-1
+TOTAL COSTS	-1
+](delimiter is '\t');
+
+
+%Topic:
+Load Distinct
+	PnL_reportRow as Topic,
+	ApplyMap('expense_flag_map',Text(PnL_reportRow),1) as %TopicFlag    	
+Resident
+	clsp_PnL
+Where
+	WildMatch(PnL_reportRow,'*%*') = 0
+//     AND Len(Trim(PnL_reportRow)) > 0
+Order by
+	PnL_RowNumber;
+    
+    
+%Period:
+Load * Inline [
+%Period
+Daily
+WTD
+MTD
+QTD
+YTD
+];
+
+%Trend:
+Load * Inline [
+Trend Type
+Actual
+Budget
+Actuals vs Budget
+];
+
