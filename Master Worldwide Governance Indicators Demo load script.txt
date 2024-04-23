@@ -3,647 +3,261 @@ SET ThousandSep=',';
 SET DecimalSep='.';
 SET MoneyThousandSep=',';
 SET MoneyDecimalSep='.';
-SET MoneyFormat='$#,##0.00;($#,##0.00)';
-SET TimeFormat='h:mm:ss TT';
-SET DateFormat='M/D/YYYY';
-SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET MoneyFormat='$#,##0.00;-$#,##0.00';
+SET TimeFormat='hh:mm:ss';
+SET DateFormat='MM/DD/YYYY';
+SET TimestampFormat='MM/DD/YYYY hh:mm:ss[.fff]';
 SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET FirstWeekDay=0;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-GB';
 
 
-///$tab Section 2
+
+
+
+
+
+///$tab General
+OPPR_ALL_DTL_GNRL_12192014:
 LOAD
-    "No of Days",
-    HRN_ID,
-    PA_PACKAGE_CODE
-FROM [lib://Data/NoOfDays.qvd]
-(qvd);
-
+    General_Transaction_ID,
+    Program_Year,
+    Payment_Publication_Date,
+    Submitting_Applicable_Manufacturer_or_Applicable_GPO_Name,
+    Covered_Recipient_Type,
+    Teaching_Hospital_ID,
+    Teaching_Hospital_Name,
+    Physician_Profile_ID,
+    Physician_First_Name,
+    Physician_Middle_Name,
+    Physician_Last_Name,
+    Physician_First_Name &' '& Physician_Middle_Name & ' ' &  Physician_Last_Name    as 'Physician_Full_Name',
+    Physician_Name_Suffix,
+    Recipient_Primary_Business_Street_Address_Line1,
+    Recipient_Primary_Business_Street_Address_Line2,
+    Recipient_City,
+    Recipient_State,
+    Recipient_Zip_Code,
+    Recipient_Country,
+    Recipient_Province,
+    Recipient_Postal_Code,
+    Physician_Primary_Type,
+    Physician_Specialty,
+    Physician_License_State_code1,
+    Physician_License_State_code2,
+    Physician_License_State_code3,
+    Physician_License_State_code4,
+    Physician_License_State_code5,
+    Product_Indicator,
+    Name_of_Associated_Covered_Drug_or_Biological1,
+    Name_of_Associated_Covered_Drug_or_Biological2,
+    Name_of_Associated_Covered_Drug_or_Biological3,
+    Name_of_Associated_Covered_Drug_or_Biological4,
+    Name_of_Associated_Covered_Drug_or_Biological5,
+    NDC_of_Associated_Covered_Drug_or_Biological1,
+    NDC_of_Associated_Covered_Drug_or_Biological2,
+    NDC_of_Associated_Covered_Drug_or_Biological3,
+    NDC_of_Associated_Covered_Drug_or_Biological4,
+    NDC_of_Associated_Covered_Drug_or_Biological5,
+    Name_of_Associated_Covered_Device_or_Medical_Supply1,
+    Name_of_Associated_Covered_Device_or_Medical_Supply2,
+    Name_of_Associated_Covered_Device_or_Medical_Supply3,
+    Name_of_Associated_Covered_Device_or_Medical_Supply4,
+    Name_of_Associated_Covered_Device_or_Medical_Supply5,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Name,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_ID,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_State,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Country,
+    Dispute_Status_for_Publication,
+    Total_Amount_of_Payment_USDollars,
+    Date_of_Payment,
+    Number_of_Payments_Included_in_Total_Amount,
+    Form_of_Payment_or_Transfer_of_Value,
+    Nature_of_Payment_or_Transfer_of_Value,
+    City_of_Travel,
+    State_of_Travel,
+    Country_of_Travel,
+    Physician_Ownership_Indicator,
+    Third_Party_Payment_Recipient_Indicator,
+    Name_of_Third_Party_Entity_Receiving_Payment_or_Transfer_of_Value,
+    Charity_Indicator,
+    Third_Party_Equals_Covered_Recipient_Indicator,
+    Contextual_Information,
+    Delay_in_Publication_of_General_Payment_Indicator
+FROM [lib://CMS/OPPR_ALL_DTL_GNRL_12192014.csv]
+(txt, codepage is 1252, embedded labels, delimiter is ',', msq);
+///$tab us_states.kml
+[US-States.shp/Features]:
 LOAD
-    Benef_ADMISSION_TYPE,
-    IDENTITY_TYPE,
-    Benef_ID,
-    HRN_ID,
-    Benef_GENDER,
-    Benef_AGE,
-    Age_Band,
-    Benef_PATIENT_NAME,
-    'State' as Benef_STATE,
-    Benef_ADMISSION_DATE,
-    Benef_ADMISSION_DATE_YEAR,
-    Benef_ADMISSION_DATE_MONTH,
-    Benef_ADMISSION_DATE_DAY,
-    Benef_BENIFICIARY_ENROL_STATUS,
-    Benef_RELATIONSHIPWITHPATIENT,
-    Benef_HOSPITAL_ID,
-    Benef_IDENTITY_STATUS//,
- //   Benef_District
-FROM [lib://Data/Benef.qvd]
-(qvd);
+    "US States.Name" as "Recipient_State",
+    "US States.Point",
+    "US States.Area"
+FROM [lib://Maps/US States.kml]
+(kml, Table is [US-States.shp/Features]);
 
+
+
+
+///$tab Ownership
+Qualify *;
+Unqualify 'Physician_Profile_ID';
+
+Ownership:
 LOAD
-    HRN_ID,
-    "No. of Packages"
-FROM [lib://Data/No.of T_ID.qvd]
-(qvd);
+    Physician_Ownership_Transaction_ID,
+    Program_Year,
+    Payment_Publication_Date,
+    Submitting_Applicable_Manufacturer_or_Applicable_GPO_Name,
+    Physician_Profile_ID,
+    Physician_First_Name,
+    Physician_Middle_Name,
+    Physician_Last_Name,
+    Physician_Name_Suffix,
+    Recipient_Primary_Business_Street_Address_Line1,
+    Recipient_Primary_Business_Street_Address_Line2,
+    Recipient_City,
+    Recipient_State,
+    Recipient_Zip_Code,
+    Recipient_Country,
+    Recipient_Province,
+    Recipient_Postal_Code,
+    Physician_Primary_Type,
+    Physician_Specialty,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Name,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_ID,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_State,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Country,
+    Dispute_Status_for_Publication,
+    Interest_Held_by_Physician_or_an_Immediate_Family_Member,
+    Dollar_Amount_Invested,
+    Value_of_Interest,
+    Terms_of_Interest
+FROM [lib://CMS/OPPR_ALL_DTL_OWNRSHP_12192014.csv]
+(txt, codepage is 1252, embedded labels, delimiter is ',', msq);
 
+
+///$tab Research
+Qualify *;
+Unqualify 'Physician_Profile_ID';
+Unqualify 'Teaching_Hospital_ID';
+
+Research:
 LOAD
-    All_MODIFIED,
-    STATUS_ID,
-    LEVEL_ID,
-    StatusReason,
-    StatusRemark,
-    StatusReply,
-    MODIFIED_DATE,
-    CREATION_DATE,
-    PKG_STATE,
-    Status_New,
-    "TIME",
-    "Days",
-    "Hours",
-    FLAG,
-    "Is Closed",
-    "Case Status",
-    Present_Status,
-    HRN_ID,
-    PA_PACKAGE_CODE
-FROM [lib://Data/StatusLog.qvd]
-(qvd);
+    Research_Transaction_ID,
+    Program_Year,
+    Payment_Publication_Date,
+    Submitting_Applicable_Manufacturer_or_Applicable_GPO_Name,
+    Covered_Recipient_Type,
+    Noncovered_Recipient_Entity_Name,
+    Teaching_Hospital_ID,
+    Teaching_Hospital_Name,
+    Physician_Profile_ID,
+    Physician_First_Name,
+    Physician_Middle_Name,
+    Physician_Last_Name,
+    Physician_Name_Suffix,
+    Recipient_Primary_Business_Street_Address_Line1,
+    Recipient_Primary_Business_Street_Address_Line2,
+    Recipient_City,
+    Recipient_State,
+    Recipient_Zip_Code,
+    Recipient_Country,
+    Recipient_Province,
+    Recipient_Postal_Code,
+    Physician_Primary_Type,
+    Physician_Specialty,
+    Physician_License_State_code1,
+    Physician_License_State_code2,
+    Physician_License_State_code3,
+    Physician_License_State_code4,
+    Physician_License_State_code5,
+    Product_Indicator,
+    Name_of_Associated_Drug_or_Biological1,
+    Name_of_Associated_Drug_or_Biological2,
+    Name_of_Associated_Drug_or_Biological3,
+    Name_of_Associated_Drug_or_Biological4,
+    Name_of_Associated_Drug_or_Biological5,
+    NDC_of_Associated_Covered_Drug_or_Biological1,
+    NDC_of_Associated_Covered_Drug_or_Biological2,
+    NDC_of_Associated_Covered_Drug_or_Biological3,
+    NDC_of_Associated_Covered_Drug_or_Biological4,
+    NDC_of_Associated_Covered_Drug_or_Biological5,
+    Name_of_Associated_Covered_Device_or_Medical_Supply1,
+    Name_of_Associated_Covered_Device_or_Medical_Supply2,
+    Name_of_Associated_Covered_Device_or_Medical_Supply3,
+    Name_of_Associated_Covered_Device_or_Medical_Supply4,
+    Name_of_Associated_Covered_Device_or_Medical_Supply5,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_ID,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Name,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_State,
+    Applicable_Manufacturer_or_Applicable_GPO_Making_Payment_Country,
+    Dispute_Status_for_Publication,
+    Total_Amount_of_Payment_USDollars,
+    Date_of_Payment,
+    Form_of_Payment_or_Transfer_of_Value,
+    Expenditure_Category1,
+    Expenditure_Category2,
+    Expenditure_Category3,
+    Expenditure_Category4,
+    Expenditure_Category5,
+    Preclinical_Research_Indicator,
+    Delay_in_Publication_of_Research_Payment_Indicator,
+    Name_of_Study,
+    Principal_Investigator_Name1,
+    Principal_Investigator_Name2,
+    Principal_Investigator_Name3,
+    Principal_Investigator_Name4,
+    Principal_Investigator_Name5,
+    ClinicalTrials_Gov_Identifier,
+    Research_Information_Link,
+    Context_of_Research
+FROM [lib://CMS/OPPR_ALL_DTL_RSRCH_12192014.csv]
+(txt, codepage is 1252, embedded labels, delimiter is ',', msq);
 
+
+///$tab Physician
+Qualify *;
+Unqualify 'Physician_Profile_ID';
+
+Physicians:
 LOAD
-    "End Date1"
-FROM [lib://Data/EndDate1.qvd]
-(qvd);
+    Physician_ID,
+    Physician_Profile_ID,
+    Physician_Profile_First_Name,
+    Physician_Profile_Middle_Name,
+    Physician_Profile_Last_Name,
+    Physician_Profile_Suffix_Name,
+    Physician_Profile_Address1,
+    Physician_Profile_Address2,
+    Physician_Profile_City,
+    Physician_Profile_State,
+    Physician_Profile_Zip_Code,
+    Physician_Profile_Country,
+    Physician_Profile_Province,
+    Physician_Registration_Address1,
+    Physician_Registration_Address2,
+    Physician_Registration_City,
+    Physician_Registration_State,
+    Physician_Registration_Zip_Code,
+    Physician_Registration_Country,
+    Physician_Registration_Province,
+    Physician_Specialty,
+    Physician_Additional_Specialty1,
+    Physician_Additional_Specialty2,
+    Physician_Additional_Specialty3,
+    Physician_Additional_Specialty4,
+    Physician_Additional_Specialty5,
+    Physician_States_on_Licenses1,
+    Physician_States_on_Licenses2,
+    Physician_States_on_Licenses3,
+    Physician_States_on_Licenses4,
+    Physician_States_on_Licenses5
+FROM [lib://CMS/OPPR_SPLMTL_PH_PRFL_12192014.csv]
+(txt, utf8, embedded labels, delimiter is ',', msq);
 
-LOAD
-    "End Date2"
-FROM [lib://Data/EndDate2.qvd]
-(qvd);
-
-LOAD
-    "Start Date1"
-FROM [lib://Data/StartDate1.qvd]
-(qvd);
-
-LOAD
-    "Start Date2"
-FROM [lib://Data/StartDate2.qvd]
-(qvd);
-
-LOAD
-    PA_ID,
-    PA_PRN_ID,
-    PA_PATIENT_NAME,
-    PA_PACKAGE_NAME,
-    PA_PACKAGE_RATE,
-    Package_Band,
-    PA_PACKAGE_CATEGORY,
-    PA_CREATION_DATE,
-    PA_SECONDARY_PACKAGE_BALANCE,
-    PA_TERTIARY_PACKAGE_BALANCE,
-    PA_TOTAL_PACKAGE_BALANCE,
-    PA_STATUS,
-    HOSPITAL_ID,
-    REASON,
-    DATE_OF_ADMISSION,
-    DATE_OF_DISCHARGE,
-    ADMISSION_TIME,
-    DISCHARGE_TIME,
-    NO_OF_DAYS,
-    DISCHARGE_STATUS,
-    HRN_ID,
-    PA_PACKAGE_CODE
-FROM [lib://Data/PA.qvd]
-(qvd);
-
-LOAD
-    
-    If(Dist_DISTRICT_NAME='Ajmer','District1',
-If(Dist_DISTRICT_NAME='Alwar','District2',
-If(Dist_DISTRICT_NAME='Banswara','District3',
-If(Dist_DISTRICT_NAME='Baran','District4',
-If(Dist_DISTRICT_NAME='Barmer','District5',
-If(Dist_DISTRICT_NAME='Bharatpur','District6',
-If(Dist_DISTRICT_NAME='Bhilwara','District7',
-If(Dist_DISTRICT_NAME='Bikaner','District8',
-If(Dist_DISTRICT_NAME='Bundi','District9',
-If(Dist_DISTRICT_NAME='Chittaurgarh','District10',
-If(Dist_DISTRICT_NAME='Churu','District11',
-If(Dist_DISTRICT_NAME='Dausa','District12',
-If(Dist_DISTRICT_NAME='Dhaulpur','District13',
-If(Dist_DISTRICT_NAME='Dungarpur','District14',
-If(Dist_DISTRICT_NAME='Ganganagar','District15',
-If(Dist_DISTRICT_NAME='Hanumangarh','District16',
-If(Dist_DISTRICT_NAME='Jaipur','District17',
-If(Dist_DISTRICT_NAME='Jaisalmer','District18',
-If(Dist_DISTRICT_NAME='Jalor','District19',
-If(Dist_DISTRICT_NAME='Jhalawar','District20',
-If(Dist_DISTRICT_NAME='Jhunjhunun','District21',
-If(Dist_DISTRICT_NAME='Jodhpur','District22',
-If(Dist_DISTRICT_NAME='Karauli','District23',
-If(Dist_DISTRICT_NAME='Kota','District24',
-If(Dist_DISTRICT_NAME='Nagaur','District25',
-If(Dist_DISTRICT_NAME='Pali','District26',
-If(Dist_DISTRICT_NAME='Pratapgarh','District27',
-If(Dist_DISTRICT_NAME='Rajasamand','District28',
-If(Dist_DISTRICT_NAME='Sawai Madhopur','District29',
-If(Dist_DISTRICT_NAME='Siker','District30',
-If(Dist_DISTRICT_NAME='Sirohi','District31',
-If(Dist_DISTRICT_NAME='Tonk','District32',
-If(Dist_DISTRICT_NAME='Udaipur','District33'))))))))))))))))))))))))))))))))) as Dist_DISTRICT_NAME,
-    DISTRICT_CODE,
-    Empanel_HOSPITAL_NAME,
-    Right(Empanel_HOSPITAL_CODE,3) as Empanel_HOSPITAL_CODE,
-    Empanel_HOSPITAL_TYPE,
-    HOSPITAL_ID,
-    Empanel_LOCATION,
-    'State' as Empanel_STATE,
-    Empanel_HOSPITAL_CATEGORY,
-    Empanel_HOSPITAL_CLASSIFICATION,
-    LATITUDE,
-    LONGITUDE,
-    Hosp_GeoPoint,
-    Coordinates,
-    Hosp_Mapper_Hospitaltype,
-        If(Zone='Ajmer','Zone1',
-		If(Zone='Bharatpur','Zone2',
-			If(Zone='Bikaner','Zone3',
-				If(Zone='Jaipur','Zone4',
-					If(Zone='Jodhpur','Zone5',
-						If(Zone='Kota','Zone6',
-							If(Zone='Udaipur','Zone7'))))))) as Zone
-FROM [lib://Data/Hospital.qvd]
-(qvd);
-
-
-LOAD
-        If(Zone='Ajmer','Zone1',
-		If(Zone='Bharatpur','Zone2',
-			If(Zone='Bikaner','Zone3',
-				If(Zone='Jaipur','Zone4',
-					If(Zone='Jodhpur','Zone5',
-						If(Zone='Kota','Zone6',
-							If(Zone='Udaipur','Zone7'))))))) as Zone,
-    "Rajasthan Zones.Point",
-    "Rajasthan Zones.Area"
-FROM [lib://Data/ZoneLevelMap.qvd]
-(qvd);
-
-
-LOAD
-    If(Dist_DISTRICT_NAME='Ajmer','District1',
-If(Dist_DISTRICT_NAME='Alwar','District2',
-If(Dist_DISTRICT_NAME='Banswara','District3',
-If(Dist_DISTRICT_NAME='Baran','District4',
-If(Dist_DISTRICT_NAME='Barmer','District5',
-If(Dist_DISTRICT_NAME='Bharatpur','District6',
-If(Dist_DISTRICT_NAME='Bhilwara','District7',
-If(Dist_DISTRICT_NAME='Bikaner','District8',
-If(Dist_DISTRICT_NAME='Bundi','District9',
-If(Dist_DISTRICT_NAME='Chittaurgarh','District10',
-If(Dist_DISTRICT_NAME='Churu','District11',
-If(Dist_DISTRICT_NAME='Dausa','District12',
-If(Dist_DISTRICT_NAME='Dhaulpur','District13',
-If(Dist_DISTRICT_NAME='Dungarpur','District14',
-If(Dist_DISTRICT_NAME='Ganganagar','District15',
-If(Dist_DISTRICT_NAME='Hanumangarh','District16',
-If(Dist_DISTRICT_NAME='Jaipur','District17',
-If(Dist_DISTRICT_NAME='Jaisalmer','District18',
-If(Dist_DISTRICT_NAME='Jalor','District19',
-If(Dist_DISTRICT_NAME='Jhalawar','District20',
-If(Dist_DISTRICT_NAME='Jhunjhunun','District21',
-If(Dist_DISTRICT_NAME='Jodhpur','District22',
-If(Dist_DISTRICT_NAME='Karauli','District23',
-If(Dist_DISTRICT_NAME='Kota','District24',
-If(Dist_DISTRICT_NAME='Nagaur','District25',
-If(Dist_DISTRICT_NAME='Pali','District26',
-If(Dist_DISTRICT_NAME='Pratapgarh','District27',
-If(Dist_DISTRICT_NAME='Rajasamand','District28',
-If(Dist_DISTRICT_NAME='Sawai Madhopur','District29',
-If(Dist_DISTRICT_NAME='Siker','District30',
-If(Dist_DISTRICT_NAME='Sirohi','District31',
-If(Dist_DISTRICT_NAME='Tonk','District32',
-If(Dist_DISTRICT_NAME='Udaipur','District33'))))))))))))))))))))))))))))))))) as Dist_DISTRICT_NAME,
-//    DISTRICTY,
-    GeoPoint
-FROM [lib://Data/District.qvd]
-(qvd);
-
-
-
-
-
-
-
-
-
-exit Script
-///$tab Section
-// Section Access;
-
-// Access:
-// LOAD
-//     Upper("Access") as [ACCESS],
-//     Upper("User ID") as [USERID],
-// //    Upper("Password") as [PASSWORD],
-//     Upper(Dist_DISTRICT_NAME) as DISTRICTY    
-// FROM [lib://Data (vm-qsdev_qlikuser)/USER ID PASSWORDS.xlsx]
-// (ooxml, embedded labels, table is Sheet1);
-
-// Section Application;
-
-
-///$tab Connection
-// LIB CONNECT TO 'Oracle (vm-qsdev_qlikuser)';
-
-// BENEFICIARY_PACKAGE_STATUS_LOG:
-// SQL SELECT *
-// FROM RSBY."BENEFICIARY_PACKAGE_STATUS_LOG";
-// Store BENEFICIARY_PACKAGE_STATUS_LOG into [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_PACKAGE_STATUS_LOG.qvd];
-// Drop Table BENEFICIARY_PACKAGE_STATUS_LOG;
-
-// BENEFICIARY_ENROLMENT:
-// SQL SELECT *
-// FROM RSBY."BENEFICIARY_ENROLMENT";
-// Store BENEFICIARY_ENROLMENT into [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_ENROLMENT.qvd];
-// Drop Table BENEFICIARY_ENROLMENT;
-
-// PATIENT_ADMISSION:
-// SQL SELECT *
-// FROM RSBY."PATIENT_ADMISSION";
-// Store PATIENT_ADMISSION into [lib://Data (vm-qsdev_qlikuser)/PATIENT_ADMISSION.qvd];
-// Drop Table PATIENT_ADMISSION;
-
-// HOSPITAL_EMPANELMENT:
-// SQL SELECT *
-// FROM RSBY."HOSPITAL_EMPANELMENT";
-// Store HOSPITAL_EMPANELMENT into [lib://Data (vm-qsdev_qlikuser)/HOSPITAL_EMPANELMENT.qvd];
-// Drop Table HOSPITAL_EMPANELMENT;
-
-// DISTRICT:
-// SQL SELECT *
-// FROM RSBY."DISTRICT";
-// Store DISTRICT into [lib://Data (vm-qsdev_qlikuser)/DISTRICT.qvd];
-// Drop Table DISTRICT;
-
-// PRE_AUTH_REQU_PKG_SELECTION:
-// SQL SELECT *
-// FROM RSBY."PRE_AUTH_REQU_PKG_SELECTION";
-// Store PRE_AUTH_REQU_PKG_SELECTION into [lib://Data (vm-qsdev_qlikuser)/PRE_AUTH_REQU_PKG_SELECTION.qvd];
-// Drop Table PRE_AUTH_REQU_PKG_SELECTION;
-
-// DISCONNECT;
-
-
-///$tab Script
-Benef:
-LOAD If(ADMISSION_TYPE = 1 ,'Normal', 
-	If(ADMISSION_TYPE = 2 ,'Emergency')) AS Benef_ADMISSION_TYPE, 
-	If(IDENTITY_TYPE = 1, 'Bhamashah Card',
-	If(IDENTITY_TYPE = 2, 'RSBY Card',
-		If(IDENTITY_TYPE = 3, 'Ration Card',
-			If(IDENTITY_TYPE = 4, 'Aadhar Card',
-				If(IDENTITY_TYPE = 5 OR IDENTITY_TYPE = 0, 'MOIC Card', IDENTITY_TYPE))))) AS IDENTITY_TYPE,
-     ID AS Benef_ID, 
-     HRN_ID as HRN_ID, 
-     GENDER AS Benef_GENDER, 
-     AGE AS Benef_AGE, 
-     If(AGE < 19, '0-18',
-     	If(AGE < 26, '19-25',
-     		If(AGE < 36, '26-35',
-     			If(AGE < 51, '36-50', '> 50')))) AS Age_Band,
-     PATIENT_NAME AS Benef_PATIENT_NAME,
-     STATE AS Benef_STATE,  
-     ADMISSION_DATE AS Benef_ADMISSION_DATE, 
-     Year(Date(ADMISSION_DATE,'MM/DD/YYYY hh:mm:ss tt')) AS Benef_ADMISSION_DATE_YEAR, 
-     Month(Date(ADMISSION_DATE,'MM/DD/YYYY hh:mm:ss tt')) AS Benef_ADMISSION_DATE_MONTH, 
-     Day(Date(ADMISSION_DATE,'MM/DD/YYYY hh:mm:ss tt')) AS Benef_ADMISSION_DATE_DAY, 
-     BENIFICIARY_ENROL_STATUS AS Benef_BENIFICIARY_ENROL_STATUS, 
-     RELATIONSHIPWITHPATIENT AS Benef_RELATIONSHIPWITHPATIENT, 
-     HOSPITAL_ID AS Benef_HOSPITAL_ID,  
-     If(IDENTITY_STATUS = 'Yes', 'NFSA',
-	If(IDENTITY_STATUS = 'No', 'MOIC',
-		If(IDENTITY_STATUS = 'N/A', 'NFSA', IDENTITY_STATUS))) AS Benef_IDENTITY_STATUS,
-     DISTRICT AS Benef_District
-FROM [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_ENROLMENT.qvd]
-(qvd);
-
-PA:
-LOAD ID AS PA_ID, 
-     HRN_ID, 
-     PRN_ID AS PA_PRN_ID, 
-     PATIENT_NAME AS PA_PATIENT_NAME,  
-     PACKAGE_CODE AS PA_PACKAGE_CODE, 
-     PACKAGE_NAME AS PA_PACKAGE_NAME, 
-     PACKAGE_RATE AS PA_PACKAGE_RATE,
-     If(PACKAGE_RATE < 1000, '0-1000',
-     	If(PACKAGE_RATE < 10000, '1000-10000',
-     		If(PACKAGE_RATE < 25000, '10000-25000',
-     			If(PACKAGE_RATE < 50000, '25000-50000',
-     				If(PACKAGE_RATE < 100000, '50000-100000', '> 100000'))))) AS Package_Band, 
-     PACKAGE_CATEGORY AS PA_PACKAGE_CATEGORY, 
-     MODIFICATION_DATE AS PA_CREATION_DATE, 
-     SECONDARY_PACKAGE_BALANCE AS PA_SECONDARY_PACKAGE_BALANCE, 
-     TERTIARY_PACKAGE_BALANCE AS PA_TERTIARY_PACKAGE_BALANCE, 
-     TOTAL_PACKAGE_BALANCE AS PA_TOTAL_PACKAGE_BALANCE, 
-     STATUS AS PA_STATUS,
-     HOSPITAL_ID,
-     If(REASON = 1, 'No-Selection',
-		If(REASON = 2, 'Rejection Due to Documents',
-			If(REASON = 3, 'Rejection Due to Fraud',
-				If(REASON = 4, 'Rejection Due to Wrong Package Selection',
-					If(REASON = 5, 'Query for More Ducments',
-						If(REASON = 6, 'Query for Diagonostic Reports')))))) AS REASON
-FROM [lib://Data (vm-qsdev_qlikuser)/PRE_AUTH_REQU_PKG_SELECTION.qvd]
-(qvd);
-
-LEFT JOIN (PA)
-
-Admission:
-LOAD HRN_ID, 
-	 DATE_OF_ADMISSION,
-	 DATE_OF_DISCHARGE,
-     ADMISSION_TIME, 
-     DISCHARGE_TIME, 
-     NO_OF_DAYS, 
-     DISCHARGE_STATUS
-     FROM [lib://Data (vm-qsdev_qlikuser)/PATIENT_ADMISSION.qvd]
-(qvd);
-
-/* Keeping PA table and Hosp table separate and associating instead of Left join*/
-//LEFT JOIN (PA)
-
-Hospital:
-//Hosp_Emp:
-LOAD Capitalize(HOSPITAL_NAME) AS Empanel_HOSPITAL_NAME, 
-     HOSPITAL_CODE AS Empanel_HOSPITAL_CODE, 
-     ID AS HOSPITAL_ID, 
-     If(HOSPITAL_TYPE = 1 , 'Private Hospital',
-		If(HOSPITAL_TYPE = 2 , 'Government Hospital', HOSPITAL_TYPE)) AS Empanel_HOSPITAL_TYPE, 
-     If(LOCATION = 0, 'No-Selection',
-	If(LOCATION = 1, 'Notified/Inaccessible Area',
-		If(LOCATION = 2, 'Rural',
-			If(LOCATION = 3, 'Urban', LOCATION)))) AS Empanel_LOCATION, 
-     STATE AS Empanel_STATE, 
-     DISTRICT AS DISTRICT_CODE,  
-     HOSPITAL_CATEGORY AS Empanel_HOSPITAL_CATEGORY,
-     If(HOSPITAL_CLASSIFICATION = 0 , 'No-Selection',
-		If(HOSPITAL_CLASSIFICATION = 1 , 'Category A',
-			If(HOSPITAL_CLASSIFICATION = 2 , 'Category B',
-				If(HOSPITAL_CLASSIFICATION = 3 , 'Category C', HOSPITAL_CLASSIFICATION)))) AS Empanel_HOSPITAL_CLASSIFICATION,
-	
-     LATITUDE,
-     LONGITUDE,
-     GeoMakePoint(LATITUDE,LONGITUDE) as Hosp_GeoPoint,
-     If(isnull(LATITUDE) OR isnull(LONGITUDE),'', LONGITUDE & ',' & LATITUDE) AS Coordinates
-     FROM [lib://Data (vm-qsdev_qlikuser)/HOSPITAL_EMPANELMENT.qvd]
-(qvd);
-
-LEFT JOIN (Hospital)
-HospitalTypeMapper:
-LOAD Capitalize(HOSPITAL_NAME) AS Empanel_HOSPITAL_NAME, 
-     HOSPITAL_CODE as Empanel_HOSPITAL_CODE, 
-     If([Hospital type] = 'DH', 'District Hospital',
-	  If([Hospital type] = 'SDH', 'Sub-District Hospital',
-		If([Hospital type] = 'SH', 'Satellite Hospital',
-			If([Hospital type] = 'MCH', 'Medical College Hospital', [Hospital type])))) AS Hosp_Mapper_Hospitaltype, 
-     Hospital_Main_Type AS Empanel_HOSPITAL_TYPE
-FROM [lib://Data (vm-qsdev_qlikuser)/List of Hospitals - For Dashboard.xlsx]
-(ooxml, embedded labels, table is [Govt + Pvt]);
-
-LEFT JOIN (Hospital)
-DistrictMapper:
-LOAD DISTRICT_CODE, 
-     DISTRICT_NAME AS Dist_DISTRICT_NAME
-FROM [lib://Data (vm-qsdev_qlikuser)/DISTRICT.qvd]
-(qvd);
-
-LEFT JOIN (Hospital)
-ZoneMapper:
-LOAD Zone, 
-     District as Dist_DISTRICT_NAME
-FROM [lib://Data (vm-qsdev_qlikuser)/Zone Mapper.xlsx]
-(ooxml, embedded labels, table is [Zone-Districts]);
-
-
-
-[No.of T_ID]:
-
-Load HRN_ID, 
-Count(PA_PACKAGE_CODE) as "No. of Packages"
-Resident PA
-group by HRN_ID;
-// Left Join
-// Load HRN_ID, 
-// Count(HRN_ID) as "No. of HRN_ID"
-// Resident Benef
-// group by HRN_ID;
-
-District:
-LOAD
-    City as Dist_DISTRICT_NAME,
-    upper(City) as DISTRICTY,
-    GeoMakePoint(Lat,Long) as GeoPoint
-FROM [lib://Data (vm-qsdev_qlikuser)/Rajasthan  District Lat Long.xlsx]
-(ooxml, embedded labels, table is Sheet1);
-
-StartDate1:
-Load
-	Date(Floor(PA_CREATION_DATE)) as [Start Date1]
-Resident PA;
-
-StartDate2:
-Load
-	Date(Floor(PA_CREATION_DATE)) as [Start Date2]
-Resident PA;
-
-EndDate1:
-Load
-	Date(Floor(PA_CREATION_DATE)) as [End Date1]
-Resident PA;
-
-EndDate2:
-Load
-	Date(Floor(PA_CREATION_DATE)) as [End Date2]
-Resident PA;
-
-StatusLoad:
-LOAD
-    HRN_ID,
-    PACKAGE_CODE as PA_PACKAGE_CODE,
-         If(REASON = 1, 'No-Selection',
-		If(REASON = 2, 'Rejection Due to Documents',
-			If(REASON = 3, 'Rejection Due to Fraud',
-				If(REASON = 4, 'Rejection Due to Wrong Package Selection',
-					If(REASON = 5, 'Query for More Documents',
-						If(REASON = 6, 'Query for Diagonostic Reports')))))) AS StatusReason,
-    REMARKS as StatusRemark,
-    MODIFIED_DATE,
-    CREATION_DATE,
-    if(ISNULL(MODIFIED_DATE),Date(CREATION_DATE),Date(MODIFIED_DATE)) as All_MODIFIED,
-    STATUS_ID,
-    LEVEL_ID,
-    PKG_STATE,
-// if(STATUS_ID=1 and LEVEL_ID=1,'preAuthApproved',
-// if(STATUS_ID=1 and LEVEL_ID=2, if(isnull(MODIFIED_DATE),'preAuthApprovalPending','queryreplytodecesion'),
-// if(STATUS_ID=1 and LEVEL_ID=3, if(isnull(MODIFIED_DATE),'fundEnhancementApprovalPending','queryFundreplybyhospital'),
-// if(STATUS_ID=1 and LEVEL_ID=4, if(isnull(MODIFIED_DATE),'claimapprovalpending','queryclaimreplybyhospital'),
-// if(STATUS_ID=1 and LEVEL_ID=6,'claimApprovalPendingAtAnalyser',
-// if(STATUS_ID=2 and LEVEL_ID=2,'preAuthPackageRejected',
-// if(STATUS_ID=2 and LEVEL_ID=3,'fundEnhancementPackageRejected',
-// if(STATUS_ID=2 and LEVEL_ID=4,'claimPackageRejected',
-// if(STATUS_ID=2 and LEVEL_ID=6,'claimRejectedByAnalyser',
-// if(STATUS_ID=3 and LEVEL_ID=2,'preAuthPackageQuery',
-// if(STATUS_ID=3 and LEVEL_ID=3,'fundEnhancementPackageQuery',
-// if(STATUS_ID=3 and LEVEL_ID=4,'claimPackageQuery',
-// if(STATUS_ID=4 and LEVEL_ID=4,'claimPackageApproved',
-// if(STATUS_ID=5 and LEVEL_ID=5,'claimPackageApprovedandPaid',
-// if(STATUS_ID=3 and LEVEL_ID=6,'claimQueryByAnalyser','NA')
-// )))))))))))))) as Status_New,
-
-REPLY as StatusReply,
-    
-if(STATUS_ID=1 and LEVEL_ID=1, 'Hospital'
-,if(STATUS_ID=1 and LEVEL_ID=2,'Hospital'
-,if(STATUS_ID=1 and LEVEL_ID=3,'Hospital'
-,if(STATUS_ID=1 and LEVEL_ID=4,'Hospital'
-,if(STATUS_ID=1 and LEVEL_ID=6,'Hospital',
-if(STATUS_ID=3 and LEVEL_ID=4,'NIA',
-if(STATUS_ID=3 and LEVEL_ID=2,'Hospital',
-if(STATUS_ID=3 and LEVEL_ID=3,'Hospital',
-if(STATUS_ID=3 and LEVEL_ID=6,'NIA',
-if(STATUS_ID=2 and LEVEL_ID=4,'NIA',
-if(STATUS_ID=2 and LEVEL_ID=2,'NIA',
-if(STATUS_ID=2 and LEVEL_ID=3,'NIA',
-if(STATUS_ID=2 and LEVEL_ID=6,'NIA',
-if(STATUS_ID=4 and LEVEL_ID=4,'NIA',
-if(STATUS_ID=5 and LEVEL_ID=5,'NIA'
-//if(Peek(STATUS_ID)=1 and Peek(LEVEL_ID)=1,
-//if(STATUS_ID=1 and (LEVEL_ID=6 or LEVEL_ID=4 or LEVEL_ID=3),'NIA'),
-
-)))))))))))))))as [FLAG]
- 
-   
-FROM [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_PACKAGE_STATUS_LOG.qvd](qvd);
-//Exit Script
-///$tab Delay
-Delay:
-Load 
-HRN_ID,
-PA_PACKAGE_CODE,
-All_MODIFIED,
-STATUS_ID,
-LEVEL_ID,
-//Status_New,
-StatusReason,
-StatusRemark,
-StatusReply,
-MODIFIED_DATE,
-CREATION_DATE,
-PKG_STATE,
-if(STATUS_ID=1 and LEVEL_ID=1,'preAuthApproved',
-if(STATUS_ID=1 and LEVEL_ID=2, if(isnull(MODIFIED_DATE),'preAuthApprovalPending','queryreplytodecesion'),
-if(STATUS_ID=1 and LEVEL_ID=3, if(isnull(MODIFIED_DATE),'fundEnhancementApprovalPending','queryFundreplybyhospital'),
-if(STATUS_ID=1 and LEVEL_ID=4, if(peek(LEVEL_ID)=1,'claimapprovalpending','claimapprovalpending'),
-if(STATUS_ID=1 and LEVEL_ID=6,'claimApprovalPendingAtAnalyser',
-if(STATUS_ID=2 and LEVEL_ID=2,'preAuthPackageRejected',
-if(STATUS_ID=2 and LEVEL_ID=3,'fundEnhancementPackageRejected',
-if(STATUS_ID=2 and LEVEL_ID=4,'claimPackageRejected',
-if(STATUS_ID=2 and LEVEL_ID=6,'claimRejectedByAnalyser',
-if(STATUS_ID=3 and LEVEL_ID=2,'preAuthPackageQuery',
-if(STATUS_ID=3 and LEVEL_ID=3,'fundEnhancementPackageQuery',
-if(STATUS_ID=3 and LEVEL_ID=4,'claimPackageQuery',
-if(STATUS_ID=4 and LEVEL_ID=4,'claimPackageApproved',
-if(STATUS_ID=5 and LEVEL_ID=5,'claimPackageApprovedandPaid',
-if(STATUS_ID=3 and LEVEL_ID=6,'claimQueryByAnalyser','NA')
-)))))))))))))) as Status_New,
-
-time(All_MODIFIED) as [TIME],
-if(Peek(HRN_ID)=HRN_ID and Peek(PA_PACKAGE_CODE)=PA_PACKAGE_CODE,
-	ceil(PEEK(All_MODIFIED)-All_MODIFIED),0)*-1 as [Days],        
-
-if(Peek(HRN_ID)=HRN_ID and Peek(PA_PACKAGE_CODE)=PA_PACKAGE_CODE,
-	((PEEK(All_MODIFIED)-All_MODIFIED)-ceil(PEEK(All_MODIFIED)-All_MODIFIED))*24,0)*-1 as [Hours],
-
-// if(Peek(STATUS_ID)=1,
-// if(STATUS_ID=1 and (LEVEL_ID=6 or LEVEL_ID=4 or LEVEL_ID=3),'NIA',[FLAG]
-// ),[FLAG]) as [FLAG];
-
-if(Peek(STATUS_ID)=1,
-if(STATUS_ID=1 and ((LEVEL_ID=3)or(peek(LEVEL_ID)<>1 and LEVEL_ID=4)),'NIA',[FLAG]
-),[FLAG]) as [FLAG];
-
-Load 
-HRN_ID,
-PA_PACKAGE_CODE,
-StatusReason,
-StatusRemark,
-MODIFIED_DATE,
-CREATION_DATE,
-Num(All_MODIFIED) as All_MODIFIED,
-PKG_STATE,
-STATUS_ID,
-LEVEL_ID,
-StatusReply,
-
-[FLAG]
-//[Case Status]
-
-Resident StatusLoad
-order by HRN_ID,PA_PACKAGE_CODE,All_MODIFIED,STATUS_ID,LEVEL_ID; 
-
-NoConcatenate
-
-StatusLog:
-
-Load *,
-
-if(HRN_ID<>Peek(HRN_ID) and PA_PACKAGE_CODE<>Peek(PA_PACKAGE_CODE) and 
-(STATUS_ID=5 or STATUS_ID=2),
-'1',
-if(HRN_ID<>Peek(HRN_ID) and PA_PACKAGE_CODE=Peek(PA_PACKAGE_CODE) and 
-(STATUS_ID=5 or STATUS_ID=2),
-'1',
-if(HRN_ID=Peek(HRN_ID) and PA_PACKAGE_CODE<>Peek(PA_PACKAGE_CODE) and 
-(STATUS_ID=5 or STATUS_ID=2),
-'1',
-if(Peek(HRN_ID)=HRN_ID and Peek(PA_PACKAGE_CODE)=PA_PACKAGE_CODE and 
-Peek([Is Closed])='1','1',
-//if(STATUS_ID<>5 or STATUS_ID<>2,
-'0'
-)
-))) as [Is Closed],
-
-if(STATUS_ID=5 or STATUS_ID=2,'Closed','Open') as [Case Status],
-
-if(HRN_ID=Peek(HRN_ID) and PA_PACKAGE_CODE=Peek(PA_PACKAGE_CODE),
-peek(Present_Status),Status_New) as Present_Status
-
-
-//if(STATUS_ID=5 and LEVEL_ID=5,(max(num(All_MODIFIED))-min(num(All_MODIFIED)))) as Funnel_Date
-
-Resident Delay
-Order By HRN_ID,PA_PACKAGE_CODE,All_MODIFIED Desc;
-
-    
-    
- NoOfDays:
- 
- Load 
- HRN_ID,
- PA_PACKAGE_CODE,
- Sum([Days]) as [No of Days]
- 
- Resident Delay
- Group by HRN_ID,PA_PACKAGE_CODE;
-    Drop Table Delay;
-    Drop Table StatusLoad;
-    
-///$tab Zone Level Map
-ZoneLevelMap:
-LOAD
-    "Rajasthan Zones.Name" as Zone,
-    "Rajasthan Zones.Point",
-    "Rajasthan Zones.Area"
-FROM [lib://Data (vm-qsdev_qlikuser)/Rajasthan Zones.kml]
-(kml, Table is [GIS.DISTRICT/GIS.DISTRICT]);
