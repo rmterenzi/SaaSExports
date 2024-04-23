@@ -1,317 +1,424 @@
 ///$tab Main
+//Binary [e:\apps\financial analysis\financial analysisv8.qvw];
+//
 
-///$tab Auto-generated section
-Set dataManagerTables = '','Cars','Customers','Claims Staff','Office UK','Car Claims','UK Counties','uk-county-borders.kmz/Borders/United Kingdom/England/Shire Counties','uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/Greater Manchester','uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/Merseyside','uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/South Yorkshire','uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/Tyne and Wear','uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/West Midlands','uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/West Yorkshire','uk-county-borders.kmz/Borders/United Kingdom/England/London Boroughs','uk-county-borders.kmz/Borders/United Kingdom/England/City of London','uk-county-borders.kmz/Borders/United Kingdom/England/Unitary Authorites','uk-county-borders.kmz/Borders/United Kingdom/Scotland/Council Areas','uk-county-borders.kmz/Borders/United Kingdom/Wales/Unitary Authorities','uk-county-borders.kmz/Borders/United Kingdom/Northern Ireland/Districts','uk-county-borders.kmz/Borders/Crown Dependencies/Isle of Man','uk-county-borders.kmz/Borders/Crown Dependencies/Guernsey/Islands of Guernsey','uk-county-borders.kmz/Borders/Crown Dependencies/Jersey','Regions','Third Parties','Policies Cars','Suppliers','Channel','Brokers','BenchmarkDate';
-//This block renames script tables from non generated section which conflict with the names of managed tables
-
-For each name in $(dataManagerTables) 
-    Let index = 0;
-    Let currentName = name; 
-    Let tableNumber = TableNumber(name); 
-    Let matches = 0; 
-    Do while not IsNull(tableNumber) or (index > 0 and matches > 0)
-        index = index + 1; 
-        currentName = name & '-' & index; 
-        tableNumber = TableNumber(currentName) 
-        matches = Match('$(currentName)', $(dataManagerTables));
-    Loop 
-    If index > 0 then 
-            Rename Table '$(name)' to '$(currentName)'; 
-    EndIf; 
-Next; 
-Set dataManagerTables = ;
-
-
-Unqualify *;
-
-Let vDateDiff = Year(Today())-'2019';
-
-[Cars]:
-LOAD
-	[CarCounter],
-	[CarId],
-	[Vehicle Country of Make],
-	[Vehicle Make],
-	[Vehicle Model],
-	[Vehicle Type],
-	[Vehicle Rating Group],
-	[VRG(50)]
-    //[Vehicle Image]
-FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Cars.xlsx]
-(ooxml, embedded labels, table is Cars);
+//store * from AccMaster into AccMaster.qvd;
+//store * from FinalAccBalances into FinalAccBalances.qvd;
+//store * from FinalYTDMTD into FinalYTDMTD.qvd;
+//store * from AccountDetail into AccountDetail.qvd;
+//store * from QuickRatioYTD into QuickRatioYTD.qvd;
+//store * from QuickRatio into QuickRatio.qvd;
+//store * from CurrentRatioYTD into CurrentRatioYTD.qvd;
+//store * from ROAYTD into ROAYTD.qvd;
+//store * from NPARYTD into NPARYTD.qvd;
+//store * from DebtToEquityYTD into DebtToEquityYTD.qvd;
+//store * from STAYTD into STAYTD.qvd;
+//store * from ROEYTD into ROEYTD.qvd;
+//store * from FiveMjrAccGrp3 into FiveMjrAccGrp3.qvd;
+//store * from FourMjrAccGrp3 into FourMjrAccGrp3.qvd;
+//store * from MjrAccGrp3 into MjrAccGrp3.qvd;
+//store * from EBITDAYTD into EBITDAYTD.qvd;
+//store * from FinalAccTrialBalances into FinalAccTrialBalances.qvd;
+//store * from PLMatch into PLMatch.qvd;
+//store * from CFMatch into CFMatch.qvd;
+//store * from [MjrAccGrp3-1] into [MjrAccGrp3-1].qvd;
+//store * from [PLMatch-1] into [PLMatch-1].qvd;
+//store * from [FourMjrAccGrp3-1] into [FourMjrAccGrp3-1].qvd;
+//store * from [FiveMjrAccGrp3-1] into [FiveMjrAccGrp3-1].qvd;
+//store * from [QuickRatio] into [QuickRatio].qvd;
+//store * from [CFMatch-1] into [CFMatch-1].qvd;
+//store * from DebtToEquity into DebtToEquity.qvd;
+//store * from CurrentRatio into CurrentRatio.qvd;
+//store * from ROE into ROE.qvd;
+//store * from NPAR into NPAR.qvd;
+//store * from STA into STA.qvd;
+//store * from ROA into ROA.qvd;
+//store * from [RptCode2-1] into [RptCode2-1].qvd;
+//store * from INL10F into INL10F.qvd;
+//store * from AccountSubType into AccountSubType.qvd;
+//store * from EBITDA into EBITDA.qvd;
+//store * from RptCode1 into RptCode1.qvd;
+//store * from RptCode2 into RptCode2.qvd;
 
 
-[Customers]:
-LOAD
-	[CustomerCounter],
-	[Customer ID],
-	[Broker Id],
-	[Customer Name],
-	[Customer Gender],
-	Addyears(Date([Customer DOB]),($(vDateDiff))) AS [Customer DOB],
-	[Customer Tel Num],
-	[LocationID]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Customers.xlsx]
- (ooxml, embedded labels, table is Customers);
+//Load the binary above.
+//after the binary is loaded you can call the QV api and read the tables
+////this will not work on some files if some security switchs are set like the demo's we provide
+//
+//LET tblCnt = TblCnt();
+//LET tblToQVD = GetTableName(0);
+//
+//store * from [$(tblToQVD)] into $(tblToQVD).QVD;
+//
+//for i = 1 to $(tblCnt) - 1
+//	LET tblToQVD = GetTableName(i);
+//	store * from [$(tblToQVD)] into [data\$(tblToQVD).QVD];
+//next
+//
+//directory;
 
-[Claims Staff]:
-LOAD
-	[StaffCounter],
-	[Staff ID] AS [Claim Handler-Staff ID],
-	[Staff Name],
-	[Staff Gender],
-	Addyears(Date([Staff DOB]),($(vDateDiff))) AS [Staff DOB],
-    Addyears(Date([Staff Hire Date]),($(vDateDiff))) AS [Staff Hire Date],
-	[Staff Job Level],
-	[Staff Job Title],
-	[Staff Manager],
-	[OfficeId],
-	[Department],
-	[Team],
-	[Contract Type],
-	[Working Hours (per wk)],
-	[Working Days (per wk)],
-	[Holiday Allowance],
-	[Holiday Taken],
-	[Holiday Booked],
-	[2 Weeks Booked]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Insurance Staff.xlsx]
-(ooxml, embedded labels, table is [Claims Staff]);
+//load * from AccMaster.qvd;
+//Directory;
 
-[Office UK]:
-LOAD
-	[OfficeId],
-	[CompanyCountry],
-	[CompanyRegion],
-	[CompanyOffice]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Offices.xlsx]
-(ooxml, embedded labels, table is [Office UK]);
 
-[Car Claims]:
-LOAD
-	[ClaimCounter],
-	[Policy Id],
-	[Claim Id],
-	[Claim Handler] AS [Claim Handler-Staff ID],
-	[Supplier Id],
-	[Claim Status],
-	[Claim Reopen Count],
-	[Claim Type],
-	[Claim Sub-Type],
-	[Distance From PH Address],
-	[Police At Scene],
-	[TP Involved],
-	[Car Manufactured Yr],
-	[Total Claim Cost],
-	Addyears(Date([Claim Occurrence Date]),($(vDateDiff))) AS [Claim Occurrence Date],
-	Addyears(Date([Claim Notification Date]),($(vDateDiff))) AS [Claim Notification Date],
-	Addyears(Date([Claim Settled Date]),($(vDateDiff))) AS [Claim Settled Date]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Claims Cars.xlsx]
-(ooxml, embedded labels, table is [Car Claims]);
+//Time offsets Wade Manis
+let yearOffset = year(today())-2008;  //2003 is the max year here
+ 
 
-[uk-county-borders.kmz/Borders/United Kingdom/England/Shire Counties]:
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Shire Counties]);
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/Greater Manchester]);
+AccMaster:
+LOAD [Reporting Code 5],
+	[Reporting Code 4],
+	AccountMasterKey,
+	[Account ID],
+	[Account Description],
+	[Account Type],
+	[Account Sub Type],
+	[Account Number],
+	Subsidiary,
+	Company,
+	GMMCU,
+	GMPEC,
+	[Account Level],
+	[Reporting Code 1],
+	[Reporting Code 2],
+	[Reporting Code 3],
+	[Reporting Code 6],
+	[Reporting Code 7],
+	[Reporting Code 8],
+	[Reporting Code 9],
+	[Reporting Code 10],
+	[Reporting Code 11],
+	[Reporting Code 12],
+	[Reporting Code 13],
+	[Reporting Code 14],
+	[Reporting Code 15],
+	[Reporting Code 4 Num],
+	[Reporting Code 5 Num]
+FROM data\AccMaster.QVD (qvd);
+///$tab FinalAcctBalances
+FinalAccBalances:
+LOAD CompanyYearKey,
+	AccountMasterKey,
+	BalanceDetailKey,
+	AggKey,
+	TrialBalanceKey,
+	Century,
+	GBCO,
+	[Fiscal Year]+$(yearOffset) as [Fiscal Year], //wms
+	[Ledger Type],
+	Month,
+	ceil(MonthNum/3) as Quarter, //WMS
+	MonthNum,
+	YearMonth as OriginalYearMonth,
+	//YearMonth,
+	date(monthend(makedate([Fiscal Year]+$(yearOffset),MonthNum,1)),'MMM-YY') as YearMonth,
+	//dual(Month&'-'& right(([Fiscal Year]+$(yearOffset)),2),makedate(Month&'-'& right(([Fiscal Year]+$(yearOffset)),2)))as YearMonth, //wms
+	[Fiscal Year]+$(yearOffset)&MonthNum as YearMonthNum, //wms
+	//YearMonthNum,
+	CurrentFiscalYear+$(yearOffset) as CurrentFiscalYear,
+	CurrentFiscalMonth,
+	CurrentFiscalYearMonth,
+	[Period Open/Closed],
+	Amount,
+	[Budget Amount]
+FROM data\FinalAccBalances.QVD (qvd);
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/Merseyside]);
+///$tab FinalYTDMTD
+FinalYTDMTD:
+Directory;
+LOAD AggKey,
+	[YTD Amount],
+	[LY YTD Amount],
+	[MTD Amount],
+	[LY MTD Amount],
+	[Previous Month MTD Amount],
+	[Previous Month LY MTD Amount],
+	[YTD Budget Amount],
+	[MTD Budget Amount],
+	[Previous Month MTD Budget Amount]
+FROM data\FinalYTDMTD.QVD (qvd);
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/South Yorkshire]);
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/Tyne and Wear]);
+//load * from .qvd;
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/West Midlands]);
+AccountDetail:
+LOAD BalanceDetailKey,
+	[Voucher Number],
+	[G/L Date] as originalGLDate, //wms
+	setDateYear(Date([G/L Date],'m/d/yyyy'), year([G/L Date])+$(yearOffset)) AS [G/L Date], //wms 
+	[Transaction Amount],
+	[Voucher Description],
+	[Voucher Remark],
+	SubLedger,
+	[SubLedger Type]
+FROM data\AccountDetail.QVD (qvd);
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Metropolitan Boroughs/West Yorkshire]);
 
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/London Boroughs]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/City of London]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/England/Unitary Authorites]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/Scotland/Council Areas]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/Wales/Unitary Authorities]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/United Kingdom/Northern Ireland/Districts]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/Crown Dependencies/Isle of Man]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/Crown Dependencies/Guernsey/Islands of Guernsey]);
-
-LOAD
-	[UK Counties Polygons.Name] AS [County-UK County Names],
-	[UK Counties Polygons.Area] AS [UK County Areas]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/UK Counties Polygons.kml]
-(kml, Table is [uk-county-borders.kmz/Borders/Crown Dependencies/Jersey]);
+QuickRatioYTD:
+LOAD Company,
+	[QRATIO - YTD Current Assets Amount],
+	[QRATIO - YTD Current Liabilities Amount],
+	[QRATIO - LY YTD Current Assets Amount],
+	[QRATIO - LY YTD Current Liabilities Amount],
+	[QRATIO - PM YTD Current Assets Amount],
+	[QRATIO - PM YTD Current Liabilities Amount]
+FROM data\QuickRatioYTD.QVD (qvd);
 
 
 
-[Regions]:
-LOAD
-	[LocationID],
-	[CountryCode],
-	[CountryName],
-	[County] AS [County-UK County Names],
-	[City],
-	[Outcode],
-	[Latitude],
-	[Longitude]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Location.xlsx]
-(ooxml, embedded labels, table is Regions);
-
-[Third Parties]:
-LOAD
-	[TPCounter],
-	[Claim Id],
-	[TP ID],
-	[TP Mobile Number],
-	[TP Age],
-	[TP Gender],
-	[TP Name],
-	[TP Email Address],
-	[TP Car Id],
-	[TP Post Code]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Third Parties.xlsx]
-(ooxml, embedded labels, table is Sheet1);
-
-[Policies Cars]:
-LOAD
-	[PolicyCounter],
-	[Customer ID],
-	[Policy Id],
-	[Product Id],
-	[Policy Staff Id],
-	[CarId],
-	[Cover Type],
-	[Policy Excess],
-	[Payment Freq],
-	[Annual Premium],
-	[Policy Start Date],
-	Date([Policy End Date] ) AS [Policy End Date]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Policies.xlsx]
-(ooxml, embedded labels, table is [Policies Cars]);
-
-[Suppliers]:
-LOAD
-	[SupplierCounter],
-	[Supplier Id],
-	[Supplier Name],
-	[Supplier Type],
-	[Supplier City],
-	[Supplier Hourly Rate],
-	[Supplier Satisfaction Rating],
-	[Supplier Complaints]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Suppliers.xlsx]
-(ooxml, embedded labels, table is Suppliers);
-
-[Channel]:
-LOAD
-	[ChannelID],
-	[Channel]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Channel.xlsx]
-(ooxml, embedded labels, table is Channel);
-
-[Brokers]:
-LOAD
-	[BrokerCounter],
-	[ChannelID],
-	[Broker Id],
-	[BrokerName]
- FROM [lib://OneDrive - skb@qlik.com/Data Files/Insurance Data/Channel.xlsx]
-(ooxml, embedded labels, table is Brokers);
+QuickRatio:
+LOAD CompanyYearKey,
+	[QRATIO - Current Assets Amount],
+	[QRATIO - Current Liabilities Amount]
+FROM data\QuickRatio.QVD (qvd);
 
 
-RENAME TABLE [uk-county-borders.kmz/Borders/United Kingdom/England/Shire Counties] to [UK Counties];
+
+CurrentRatioYTD:
+LOAD Company,
+	[CRATIO - YTD Current Assets Amount],
+	[CRATIO - YTD Current Liabilities Amount],
+	[CRATIO - LY YTD Current Assets Amount],
+	[CRATIO - LY YTD Current Liabilities Amount],
+	[CRATIO - PM YTD Current Assets Amount],
+	[CRATIO - PM YTD Current Liabilities Amount]
+FROM data\CurrentRatioYTD.QVD (qvd);
 
 
-[autoCalendar]: 
-  DECLARE FIELD DEFINITION Tagged ('$date')
-FIELDS
-  Dual(Year($1), YearStart($1)) AS [Year] Tagged ('$axis', '$year'),
-  Dual('Q'&Num(Ceil(Num(Month($1))/3)),Num(Ceil(NUM(Month($1))/3),00)) AS [Quarter] Tagged ('$quarter', '$cyclic'),
-  Dual(Year($1)&'-Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [YearQuarter] Tagged ('$yearquarter', '$qualified'),
-  Dual('Q'&Num(Ceil(Num(Month($1))/3)),QuarterStart($1)) AS [_YearQuarter] Tagged ('$yearquarter', '$hidden', '$simplified'),
-  Month($1) AS [Month] Tagged ('$month', '$cyclic'),
-  Dual(Year($1)&'-'&Month($1), monthstart($1)) AS [YearMonth] Tagged ('$axis', '$yearmonth', '$qualified'),
-  Dual(Month($1), monthstart($1)) AS [_YearMonth] Tagged ('$axis', '$yearmonth', '$simplified', '$hidden'),
-  Dual('W'&Num(Week($1),00), Num(Week($1),00)) AS [Week] Tagged ('$weeknumber', '$cyclic'),
-  Date(Floor($1)) AS [Date] Tagged ('$axis', '$date', '$qualified'),
-  Date(Floor($1), 'D') AS [_Date] Tagged ('$axis', '$date', '$hidden', '$simplified'),
-  If (DayNumberOfYear($1) <= DayNumberOfYear(Today()), 1, 0) AS [InYTD] ,
-  Year(Today())-Year($1) AS [YearsAgo] ,
-  If (DayNumberOfQuarter($1) <= DayNumberOfQuarter(Today()),1,0) AS [InQTD] ,
-  4*Year(Today())+Ceil(Month(Today())/3)-4*Year($1)-Ceil(Month($1)/3) AS [QuartersAgo] ,
-  Ceil(Month(Today())/3)-Ceil(Month($1)/3) AS [QuarterRelNo] ,
-  If(Day($1)<=Day(Today()),1,0) AS [InMTD] ,
-  12*Year(Today())+Month(Today())-12*Year($1)-Month($1) AS [MonthsAgo] ,
-  Month(Today())-Month($1) AS [MonthRelNo] ,
-  If(WeekDay($1)<=WeekDay(Today()),1,0) AS [InWTD] ,
-  (WeekStart(Today())-WeekStart($1))/7 AS [WeeksAgo] ,
-  Week(Today())-Week($1) AS [WeekRelNo] ;
-
-DERIVE FIELDS FROM FIELDS [Customer DOB], [Staff DOB], [Staff Hire Date], [Claim Occurrence Date], [Claim Notification Date], [Claim Settled Date], [Policy Start Date], [Policy End Date], [BenchmarkDate] USING [autoCalendar] ;
+ROAYTD:
+LOAD Company,
+	[ROA - YTD Net Income Amount],
+	[ROA - YTD Assets Amount],
+	[ROA - LY YTD Net Income Amount],
+	[ROA - LY YTD Assets Amount],
+	[ROA - PM YTD Net Income Amount],
+	[ROA - PM YTD Assets Amount]
+FROM data\ROAYTD.QVD (qvd);
 
 
+NPARYTD:
+LOAD Company,
+	[NPAR - YTD Notes Payable Amount],
+	[NPAR - YTD Accounts Receivables Amount],
+	[NPAR - LY YTD Notes Payable Amount],
+	[NPAR - LY YTD Accounts Receivables Amount],
+	[NPAR - PM YTD Notes Payable Amount],
+	[NPAR - PM YTD Accounts Receivables Amount]
+FROM data\NPARYTD.QVD (qvd);
+
+
+DebtToEquityYTD:
+LOAD Company,
+	[D/E - YTD Liabilities Amount],
+	[D/E - YTD Equity Amount],
+	[D/E - LY YTD Liabilities Amount],
+	[D/E - LY YTD Equity Amount],
+	[D/E - PM YTD Liabilities Amount],
+	[D/E - PM YTD Equity Amount]
+FROM data\DebtToEquityYTD.QVD (qvd);
+
+
+
+STAYTD:
+LOAD Company,
+	[STA - YTD Sales Amount],
+	[STA - YTD Assets Amount],
+	[STA - LY YTD Sales Amount],
+	[STA - LY YTD Assets Amount],
+	[STA - PM YTD Sales Amount],
+	[STA - PM YTD Assets Amount]
+FROM data\STAYTD.QVD (qvd);
+
+
+ROEYTD:
+LOAD Company,
+	[ROE - YTD Net Income Amount],
+	[ROE - YTD Equity Amount],
+	[ROE - LY YTD Net Income Amount],
+	[ROE - LY YTD Equity Amount],
+	[ROE - PM YTD Net Income Amount],
+	[ROE - PM YTD Equity Amount]
+FROM data\ROEYTD.QVD (qvd);
+
+
+
+
+FiveMjrAccGrp3:
+LOAD [5 Sub Major Account Number],
+	[5 Sub Major Account Description],
+	StartNo5,
+	EndNo5
+FROM data\FiveMjrAccGrp3.QVD (qvd);
+
+
+FourMjrAccGrp3:
+LOAD [Sub Major Account Number],
+	[Sub Major Account Description],
+	StartNo4,
+	EndNo4
+FROM data\FourMjrAccGrp3.QVD (qvd);
+
+
+MjrAccGrp3:
+LOAD [Major Account Number],
+	[Major Account Description],
+	StartNo,
+	EndNo
+FROM data\MjrAccGrp3.QVD (qvd);
+
+
+EBITDAYTD:
+LOAD Company,
+	[EBITDA - YTD Amount],
+	[EBITDA - LY YTD Amount],
+	[EBITDA - PM YTD Amount]
+FROM data\EBITDAYTD.QVD (qvd);
+
+
+
+FinalAccTrialBalances:
+LOAD TrialBalanceKey,
+	[Opening Balance Amount],
+	[Closing Balance Amount],
+	[Trial Balance Amount]
+FROM data\FinalAccTrialBalances.QVD (qvd);
+
+
+PLMatch:
+LOAD [P&L Level],
+	[P&L Heading],
+	PLStart,
+	PLEnd
+FROM data\PLMatch.QVD (qvd);
+
+
+CFMatch:
+LOAD [Cash Flow Level],
+	[Cash Flow Heading],
+	CFStart,
+	CFEnd
+FROM data\CFMatch.QVD (qvd);
+
+
+[MjrAccGrp3-1]:
+LOAD [Account Number],
+	StartNo,
+	EndNo
+FROM [data\MjrAccGrp3-1.QVD] (qvd);
+
+
+
+[PLMatch-1]:
+LOAD [Reporting Code 4 Num],
+	PLStart,
+	PLEnd
+FROM [data\PLMatch-1.QVD] (qvd);
+
+
+[FourMjrAccGrp3-1]:
+LOAD [Account Number],
+	StartNo4,
+	EndNo4
+FROM [data\FourMjrAccGrp3-1.QVD] (qvd);
+
+
+[FiveMjrAccGrp3-1]:
+LOAD [Account Number],
+	StartNo5,
+	EndNo5
+FROM [data\FiveMjrAccGrp3-1.QVD] (qvd);
+
+
+[QuickRatio]:
+LOAD CompanyYearKey,
+	[QRATIO - Current Assets Amount],
+	[QRATIO - Current Liabilities Amount]
+FROM data\QuickRatio.QVD (qvd);
+
+
+[CFMatch-1]:
+LOAD [Reporting Code 5 Num],
+	CFStart,
+	CFEnd
+FROM [data\CFMatch-1.QVD] (qvd);
+
+
+DebtToEquity:
+LOAD CompanyYearKey,
+	[D/E - Liabilities Amount],
+	[D/E - Equity Amount]
+FROM data\DebtToEquity.QVD (qvd);
+
+
+CurrentRatio:
+LOAD CompanyYearKey,
+	[CRATIO - Current Assets Amount],
+	[CRATIO - Current Liabilities Amount]
+FROM data\CurrentRatio.QVD (qvd);
+
+
+ROE:
+LOAD CompanyYearKey,
+	[ROE - Net Income Amount],
+	[ROE - Equity Amount]
+FROM data\ROE.QVD (qvd);
+
+
+NPAR:
+LOAD CompanyYearKey,
+	[NPAR - Notes Payable Amount],
+	[NPAR - Accounts Receviables Amount]
+FROM data\NPAR.QVD (qvd);
+
+
+STA:
+LOAD CompanyYearKey,
+	[STA - Sales Amount],
+	[STA - Assets Amount]
+FROM data\STA.QVD (qvd);
+
+
+ROA:
+LOAD CompanyYearKey,
+	[ROA - Net Income Amount],
+	[ROA - Assets Amount]
+FROM data\ROA.QVD (qvd);
+
+
+[RptCode2-1]:
+LOAD Name,
+	[Email Address]
+FROM [data\RptCode2-1.QVD] (qvd);
+
+
+INL10F:
+LOAD GMMCU,
+	[Business Unit]
+FROM data\INL10F.QVD (qvd);
+
+
+AccountSubType:
+LOAD [Account Sub Type],
+	[Account Sub Type Description]
+FROM data\AccountSubType.QVD (qvd);
+
+
+EBITDA:
+LOAD CompanyYearKey,
+	[EBITDA - Amount]
+FROM data\EBITDA.QVD (qvd);
+
+
+RptCode1:
+LOAD [Reporting Code 1 Description],
+	[Reporting Code 1]
+FROM data\RptCode1.QVD (qvd);
+
+
+RptCode2:
+Directory;
+LOAD [Reporting Code 2 Description],
+	[Reporting Code 2]
+FROM data\RptCode2.QVD (qvd);
 
