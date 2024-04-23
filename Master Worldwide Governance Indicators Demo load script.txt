@@ -1,9 +1,3 @@
-///$tab ***README***
-/* 
-Change the Folder Connection path of "Demo_Data" to where you have put the demo files
-
-Reload the application!
-*/
 ///$tab Main
 SET ThousandSep=',';
 SET DecimalSep='.';
@@ -16,932 +10,640 @@ SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
 SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
 SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
 
-Let vToday = Today();
 
-Trace $(vToday);
-
-
-Currencies:
-LOAD * INLINE [
-CountryCurrency,ExchangeRate
-USD,1
-Euro,0.92233
-Yuan,6.88326
-Yen,132.169
-GBP,0.81136
-Swiss Franc,0.91946
-];
-///$tab Accounts
-Accounts:
-LOAD distinct
-*
-// FROM [lib://Data/VizLib/FinanceReport/Accounts.qvd]
-// (qvd);
-FROM [lib://PoC:DataFiles/Accounts.qvd]
+///$tab Section 2
+LOAD
+    "No of Days",
+    HRN_ID,
+    PA_PACKAGE_CODE
+FROM [lib://Data/NoOfDays.qvd]
 (qvd);
 
-
-///$tab P&L Transactions
-Transactions:
 LOAD
-    %ClientProjectIDAutoNumber,
-    ProjectName,
-    if(isNull(Country),Pick(Floor(rand()*3)+1,'Sweden','Norway','Netherlands'),Country) as Country, //Improving the fake data quality...
-    Region,
-    %UserNameAutoNumber,
-    %CustomerAutoNumber,
-    CustomerName,
-    CustomerGroup,
-    %LeadProjectManagerAutoNumber,
-    LeadProjectManager,
-    Source,
-    Company,
-    CountryCode,
-    %TransactionKey,
-    %AccountNumber,
-    "UserID",
-  //  AddMonths(MakeDate(year("Date"), Month("Date"),1),20) as 
-    Date,
-    Currency,
-    Amount,
-    AmountLC,
-    AmountEUR,
-    HourlyPrice,
-    GLTransactionNumber,
-    GLTransactionDescription,
-    GLTransactionLink,
+    Benef_ADMISSION_TYPE,
+    IDENTITY_TYPE,
+    Benef_ID,
+    HRN_ID,
+    Benef_GENDER,
+    Benef_AGE,
+    Age_Band,
+    Benef_PATIENT_NAME,
+    'State' as Benef_STATE,
+    Benef_ADMISSION_DATE,
+    Benef_ADMISSION_DATE_YEAR,
+    Benef_ADMISSION_DATE_MONTH,
+    Benef_ADMISSION_DATE_DAY,
+    Benef_BENIFICIARY_ENROL_STATUS,
+    Benef_RELATIONSHIPWITHPATIENT,
+    Benef_HOSPITAL_ID,
+    Benef_IDENTITY_STATUS//,
+ //   Benef_District
+FROM [lib://Data/Benef.qvd]
+(qvd);
+
+LOAD
+    HRN_ID,
+    "No. of Packages"
+FROM [lib://Data/No.of T_ID.qvd]
+(qvd);
+
+LOAD
+    All_MODIFIED,
+    STATUS_ID,
+    LEVEL_ID,
+    StatusReason,
+    StatusRemark,
+    StatusReply,
+    MODIFIED_DATE,
+    CREATION_DATE,
+    PKG_STATE,
+    Status_New,
+    "TIME",
+    "Days",
     "Hours",
-    AmountUSD,
-    ForecastAmount,
-    ForecastAmountLC,
-    ForecastAmountEUR,
-    ForecastHourlyPrice,
-    BudgetAmount,
-    BudgetAmountLC,
-    BudgetAmountEUR,
-    BudgetHourlyPrice,
-    ForecastHours,
-    ForecastAmountUSD,
-    BudgetHours,
-    BudgetAmountUSD,
-    AvailableHours,
-    AvailableHoursBudget,
-    AvailableHoursTarget,
-    UserName,
-    EmployeeType,
-    RangeMin(Len(Amount),1) as actuals_flag
-// FROM [lib://Data/VizLib/FinanceReport/Transactions_NEW.qvd]
-// (qvd)
-FROM [lib://PoC:DataFiles/Transactions_NEW.qvd]
-(qvd)
-where Date <= '$(vToday)';
-;
-
-
-
-
-
-
-///$tab Balance Transactions
-Concatenate (Transactions)
-
-LOAD
-*
-// FROM [lib://Data/VizLib/FinanceReport/Transactions_Balance.qvd]
-// (qvd);
-FROM [lib://PoC:DataFiles/Transactions_Balance.qvd]
+    FLAG,
+    "Is Closed",
+    "Case Status",
+    Present_Status,
+    HRN_ID,
+    PA_PACKAGE_CODE
+FROM [lib://Data/StatusLog.qvd]
 (qvd);
-///$tab KPI Transactions
-MonthlyKPIs_tmp:
-CrossTable (Date,Value,4) 
+
 LOAD
-    'KPI' as Source,
-    *
-// FROM [lib://Data/VizLib/FinanceReport/KPI_ExampleData.xlsx]
-// (ooxml, embedded labels, table is [Monthly KPIs]);
-FROM [lib://PoC:DataFiles/KPI_ExampleData.xlsx]
-(ooxml, embedded labels, table is [Monthly KPIs]);
+    "End Date1"
+FROM [lib://Data/EndDate1.qvd]
+(qvd);
 
-
-Concatenate (Transactions)
-
-MonthlyKPIs:
 LOAD
-Source,
-Date(num#(Date)) as Date,
-"KPI Description",
-KPI_ID as %AccountNumber,
-Country,
-Value
-Resident MonthlyKPIs_tmp;
+    "End Date2"
+FROM [lib://Data/EndDate2.qvd]
+(qvd);
 
-Drop Table MonthlyKPIs_tmp;
-
-
-
-
-
-
-///$tab SUB Account Mapping
-/****************************************************************
-SUB clsp_FinanceReport
-This sub-routine will vastly simplify the use of the Finance Report extension. 
-The extension will work also with any other load script but please study the section in the readme-file for specifics on how to set up the data.
-*****************************************************************/
-
-SUB clsp_FinanceReport
-
-TRACE ****** clsp_FinanceReport ********;
-
-      //File path and File name. Defined in clsp_FinanceReport_Options
-      LET vL.FilePath=PEEK('clsp_FilePath');
-      LET vL.FileName=PEEK('clsp_FileName');
-
-DROP TABLE clsp_FinanceReport_Options;
-
-TRACE ******Variables for Export *******;
-//Variables for the export format. Used in the property panel as a default option. 
-//Typically the export format is the same as the table format but that can be changed in the Excel-settings
-//Cofigure this setting in 'Export Number Formats' in the extension. 
-//It is also possible to manually set another format in the extension setting if one instance of the extension should have a different format.
-
-  	  variablesForExport:
-      LOAD 
-          RowNumExportFormatCode
-      FROM [$(vL.FilePath)/$(vL.FileName)]
-      (ooxml, embedded labels, table is tNumFormat)
-      
-      ;
-      
-FOR vExportFormat = 1 to NoOfRows('variablesForExport')
-   
-   	  IF LEN($(vExportFormat))=1 THEN
-      LET vExportNumber= 0&$(vExportFormat);
-      ELSE
-      LET vExportNumber =$(vExportFormat);
-      END IF
-
-      LET vCLFRExportFormat$(vExportNumber) = PEEK('RowNumExportFormatCode',vExportFormat-1,'variablesForExport');
-
-
-NEXT vExportFormat
-
-
-DROP TABLE variablesForExport;
-
-TRACE ****** Read Excel Options *******;
-
-      //Options defined in excel file  
-	  clsp_FinanceOptions:  
-      LOAD DISTINCT
-          Sheet,
-          TransactionTable,
-          AccountField,
-          ExtraGroups,
-          ExtraMappingIntervals
-      FROM [$(vL.FilePath)/$(vL.FileName)]
-      (ooxml, embedded labels, header is 1 lines, table is Options)
-      where Len(trim(Sheet))>0
-      //AND Sheet='OH'
-      ; //Making sure no invalid rows are loaded
-
-
-
-//Starting the loop for each finance report
-
-FOR clsp_FinceReportRow = 0 TO NoOfRows('clsp_FinanceOptions')-1;
-
-let clsp_FinanceReportNoOfSetups=NoOfRows('clsp_FinanceOptions'); //Used only for the trace below
-let clsp_FinanceReportNowLoadingSetup=$(clsp_FinceReportRow)+1; //Used only for the trace below
-TRACE '****** Loading $(clsp_FinanceReportNowLoadingSetup) of $(clsp_FinanceReportNoOfSetups) Finance Report setups ******';
-
-//Varibles for the finance report
-LET vL.SheetName= PEEK('Sheet',$(clsp_FinceReportRow),'clsp_FinanceOptions');
-LET vL.TransactionTable= PEEK('TransactionTable',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Name of the transaction table
-LET vL.AccountField= PEEK('AccountField',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Field name for the account key
-LET vL.ExtraGroups= PEEK('ExtraGroups',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Extra groups name
-LET vL.ExtraMappingIntervals= PEEK('ExtraMappingIntervals',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Used e.g for cost center
-
-//If no Extra mapping field, set variable, used later 
-IF LEN('$(vL.ExtraMappingIntervals)')<1 THEN
-LET vL.ExtraMappingIntervals='NOEXTRAFIELD';
-END IF
-
-
-
-TRACE ****** Import Data from Excel *******;
-
-
-      clsp_importData_$(vL.SheetName):
-      LOAD 
-      	*,
-       DUAL([tmpReportRow], 
-       		//Building dual value for the report row (Details described on each row below.)
-       		([%ReportRowID]* 100000) + 							//Set report row number can be anything from 1 to infinity
-            ([RowNumExportFormatCode]*1000)+					//Set the export format from 1 to 99.
-            ([StyleNum] * 10)+									//Style is from 0 to 99
-            [preventExpand]) 					AS [reportRow]	//Should always be either 1 or 0 (1 prevents expand)
-      
-      ;
-      
-      LOAD
-        //Grain=====================================================================================
-        *,
-        [RowNumber]								AS [%ReportRowID],
-        //Dimension=================================================================================
-		IF([RowType]='EmptyRow',
-        	IF(ISNULL([ReportRow]),
-        	' ',
-            [ReportRow]),
-            [ReportRow])						AS [tmpReportRow],
-        IF([PreventExpand]=1,
-        	0,
-        	1)									AS [preventExpand],
-        IF([RowType]='EmptyRow',2,
-        	IF(ISNULL([Calculation]),
-            1,
-        Calculation))							AS [calculation],
-	  	1										AS [NOEXTRAFIELD]
-        //Measure===================================================================================
-      FROM [$(vL.FilePath)/$(vL.FileName)]
-      (ooxml, embedded labels, table is $(vL.SheetName))
-     where Len(trim(RowNumber))>0; //Rows without a row number are excluded to avoid loading incomplete rows
-     
-
-//Used later in the logic for subtotals etc.
-LET vL.MinRowNumber = PEEK('%ReportRowID',0);
-LET vL.MaxRowNumber = PEEK('%ReportRowID',-1);
-
-     
-DROP FIELD tmpReportRow, preventExpand,ReportRow,Calculation;
-DROP FIELDS $(vL.ExtraGroups);
-
-IF len(vL.ExtraGroups)>0 THEN
-
-TRACE ****** Extra Groups ******;
-
-//1. Get numeric value for each Report Row
-//The reportRow is the most granular level of the report
-      map_ReportRowNumericValue_$(vL.SheetName):
-      MAPPING 
-      LOAD 
-          TEXT(reportRow) 																			AS reportRow,
-          NUM(reportRow) 																			AS reportRowNumeric
-      RESIDENT clsp_importData_$(vL.SheetName)
-      ;
-
-//Looping through any extra groups (columns) specified in the Excel-file.
-FOR EACH vL.ExtraColumn in $(vL.ExtraGroups)
-
-//2. Get min row number for each extra grouping
-//NOTE! The extra colmns need to be an aggregatation of the rows!
-      map_MinRowGroupNumeric_$(vL.SheetName):
-      MAPPING 
-      LOAD 
-          TEXT($(vL.ExtraColumn)) 									 								AS $(vL.ExtraColumn),
-          MIN(APPLYMAP('map_ReportRowNumericValue_$(vL.SheetName)',TEXT(ReportRow))) 								AS MinRowGroupNumeric
-
-      FROM [$(vL.FilePath)/$(vL.FileName)]
-      (ooxml, embedded labels, table is $(vL.SheetName))
-      WHERE Len(Trim(RowNumber))>0
-      GROUP BY $(vL.ExtraColumn)
-      ;
-
-      
-//3. Add extra columns to the data model
-//NOTE! The extra colmns need to be an aggregatation of the rows!
-      LEFT JOIN(clsp_importData_$(vL.SheetName))
-      LOAD
-		  RowNumber,
-          DUAL(TEXT(ReportRow),APPLYMAP('map_ReportRowNumericValue_$(vL.SheetName)',TEXT(ReportRow))) 				AS reportRow,
-          DUAL(TEXT($(vL.ExtraColumn)),APPLYMAP('map_MinRowGroupNumeric_$(vL.SheetName)',TEXT($(vL.ExtraColumn))))  AS $(vL.ExtraColumn)
-      FROM [$(vL.FilePath)/$(vL.FileName)]
-      (ooxml, embedded labels, table is $(vL.SheetName))
-      WHERE Len(Trim(RowNumber))>0
-      ;
-
-NEXT vL.ExtraColumn
-
-ELSE
-TRACE ****** No Extra Groups Used ******;
-ENDIF
-
-TRACE ***** Regular Rows ******;
-
-      clsp_$(vL.SheetName):
-      LOAD
-         *,
-         IF(ISTEXT([accountFrom]),1,0) 			AS [isText],
-      ;
-      LOAD DISTINCT 
-        //Grain=====================================================================================
-        [%ReportRowID],
-        //Dimension=================================================================================
-        [%ReportRowID]							AS [rowNumber],
-        IF(INDEX([accounts],'-')>0,								//Identifying intervals
-            SUBFIELD([accounts],'-',1),							
-                [accounts])						AS [accountFrom],
-
-        IF(INDEX([accounts],'-')>0,
-             SUBFIELD([accounts],'-',2),
-                [accounts])						AS [accountTo],
-		ExtraIntervall			    			AS  ExtraIntervallMapping,
-       
-        //Measure===================================================================================
-        ;
-        LOAD 
-        [%ReportRowID]							AS [%ReportRowID],
-        
-        $(vL.ExtraMappingIntervals)				AS ExtraIntervall,
-        SUBFIELD([Accounts], ',') 				AS [accounts] //Creating one new row per account or account interval in the list
-       RESIDENT clsp_importData_$(vL.SheetName)
-       WHERE [RowType]='Regular'
-       ORDER BY [%ReportRowID]
-       ;
-
-       tmp_AccountsWithText:
-       LOAD
-       [%ReportRowID]		   			  AS [%ReportRowID],
-       [rowNumber]			   			  AS [rowNumber],
-       [accountFrom]           			  AS $(vL.AccountField),
-       ExtraIntervallMapping 			  AS ExtraIntervallMapping
-       RESIDENT clsp_$(vL.SheetName)
-       WHERE [isText]=1
-       ;
-       
-//Matching the account intervals
-//Only accounts that are also in the transaction table will be included so make sure the transaction table is complete
-//(i.e. the transaction table must include any budgets, forecasts etc before this script is run.)
-       INNER JOIN(clsp_$(vL.SheetName))
-       cl_IntervalTable:
-       INTERVALMATCH($(vL.AccountField))
-       LOAD
-       [accountFrom],
-       [accountTo]
-       RESIDENT clsp_$(vL.SheetName)
-       WHERE [isText]=0
-       ORDER BY [%ReportRowID]
-       ;
-
-//Adding non-numeric accounts (since they cannot be matched by the interval match)
-       CONCATENATE(clsp_$(vL.SheetName))
-       LOAD
-       [%ReportRowID],
-       [rowNumber],
-       $(vL.AccountField),
-       ExtraIntervallMapping
-       RESIDENT tmp_AccountsWithText
-       ;
-
-DROP TABLE tmp_AccountsWithText;
-
-DROP FIELDS [accountFrom], [accountTo], [isText];
-
-//This part is only run if we have an extra field for matching intervals
-//(i.e. if more than accounts are used for mapping report rows to the transactions)
-//The section will use the combination of account intervals and the extra intervals.
-IF '$(vL.ExtraMappingIntervals)'<>'NOEXTRAFIELD'  THEN
-
-TRACE ***** ExtraMappingIntervals ******;
-
-      clsp_$(vL.SheetName)_costcenters_interval:
-      LOAD
-         *,
-         IF(ISTEXT($(vL.ExtraMappingIntervals)From),1,0) 	AS [isText]
-      ;
-      LOAD DISTINCT 
-        //Grain=====================================================================================
-        //Dimension=================================================================================
-        IF(INDEX($(vL.ExtraMappingIntervals)Mapping,'-')>0,
-            SUBFIELD($(vL.ExtraMappingIntervals)Mapping,'-',1),
-                $(vL.ExtraMappingIntervals)Mapping)		AS $(vL.ExtraMappingIntervals)From,
-
-        IF(INDEX($(vL.ExtraMappingIntervals)Mapping,'-')>0,
-             SUBFIELD($(vL.ExtraMappingIntervals)Mapping,'-',2),
-                $(vL.ExtraMappingIntervals)Mapping)		AS $(vL.ExtraMappingIntervals)To,
-        $(vL.ExtraMappingIntervals)Mapping,
-        $(vL.AccountField),
-        [%ReportRowID],
-        //Measure===================================================================================
-        ;
-        LOAD
-        [%ReportRowID],
-        TRIM(SUBFIELD(ExtraIntervallMapping, ','))  AS $(vL.ExtraMappingIntervals)Mapping,
-        $(vL.AccountField)						  AS $(vL.AccountField)
-       RESIDENT clsp_$(vL.SheetName)
-       ;
-       
-DROP FIELD $(vL.ExtraMappingIntervals)Mapping FROM clsp_$(vL.SheetName);
-
-DROP FIELD $(vL.ExtraMappingIntervals) FROM clsp_importData_$(vL.SheetName) ;
-
-      clsp_$(vL.SheetName)_costcenters:
-      LOAD 
-         $(vL.AccountField)									AS Acc,
-         [%ReportRowID],
-         $(vL.ExtraMappingIntervals)From + ITERNO() - 1  	AS ExtraMapping
-         WHILE $(vL.ExtraMappingIntervals)From + ITERNO() - 1 <= $(vL.ExtraMappingIntervals)To;
-      LOAD
-          $(vL.ExtraMappingIntervals)From,
-          $(vL.ExtraMappingIntervals)To,
-          $(vL.AccountField),
-          [%ReportRowID]
-      RESIDENT clsp_$(vL.SheetName)_costcenters_interval
-      WHERE [isText]=0; //Get only the numeric intervals
-      ;
-      
-       CONCATENATE(clsp_$(vL.SheetName)_costcenters)
-       LOAD
-       [%ReportRowID]					AS [%ReportRowID],
-       $(vL.AccountField)				AS Acc,
-       $(vL.ExtraMappingIntervals)From	AS ExtraMapping
-       RESIDENT clsp_$(vL.SheetName)_costcenters_interval
-       WHERE [isText]=1; //Adding the text values
-       
-
-      
-DROP TABLE clsp_$(vL.SheetName)_costcenters_interval;
-
-//Get all unique values from the transaction table to make sure we only create values that exist i the transaction table
-       map_ExtraMappingExists:
-       MAPPING
-       LOAD DISTINCT
-       $(vL.ExtraMappingIntervals),
-       1
-       RESIDENT $(vL.TransactionTable)
-       ;
-       
-//Create extra rows for all possible combinations (where they exist in the transaction table)
-       LEFT JOIN(clsp_$(vL.SheetName))
-       LOAD DISTINCT
-       //JoinKey=================================================================================
-       [Acc]							AS $(vL.AccountField),
-       [%ReportRowID],
-       //Dimensions=============================================================================
-       [Acc]&'|'&[ExtraMapping] 		AS [tmp_FinanceReportID], //The account plus the extra mapping table
-       [ExtraMapping]					AS [ExtraMapping]
-       //Measures================================================================================
-       RESIDENT clsp_$(vL.SheetName)_costcenters
-       WHERE APPLYMAP('map_ExtraMappingExists',[ExtraMapping],0)=1
-       ;
-
-UNMAP map_ExtraMappingExists;
-      
-DROP TABLE clsp_$(vL.SheetName)_costcenters;
-
-RENAME TABLE clsp_$(vL.SheetName) TO tmp_clsp_$(vL.SheetName);
- 
-       NOCONCATENATE
-       clsp_$(vL.SheetName):
-       LOAD
-       *,
-       IF(ISNULL([tmp_FinanceReportID]),$(vL.AccountField), [tmp_FinanceReportID]) AS [%FinanceReportID]
-       RESIDENT tmp_clsp_$(vL.SheetName)
-       WHERE NOT ISNULL($(vL.AccountField));
-
-DROP FIELD ExtraMapping, [tmp_FinanceReportID];
-
-DROP TABLE tmp_clsp_$(vL.SheetName);
-
-
-
-       map_FinanceKey:
-	   MAPPING
-       LOAD
-       	[%FinanceReportID],
-        [%FinanceReportID]
-       RESIDENT clsp_$(vL.SheetName)
-       ;
-
-//Adding the new key to the transaction table with an applymap 
-//Using applymap instead of join to be able to set an alternative value
-TRACE ***** Add new key to transaction table *****;
-
-RENAME TABLE $(vL.TransactionTable) TO tmp_$(vL.TransactionTable);
-       NOCONCATENATE
-       $(vL.TransactionTable):
-       LOAD
-       *,
-       APPLYMAP('map_FinanceKey',$(vL.AccountField)&'|'&$(vL.ExtraMappingIntervals),$(vL.AccountField))	AS [%FinanceReportID]
-       RESIDENT tmp_$(vL.TransactionTable)
-       ;
-       
-UNMAP map_FinanceKey;
-
-DROP TABLE tmp_$(vL.TransactionTable);
-DROP FIELD '$(vL.AccountField)' FROM clsp_$(vL.SheetName);
-
-ELSE
-
-TRACE ***** Add new key to transaction table *****;
-
-RENAME TABLE $(vL.TransactionTable) TO tmp_$(vL.TransactionTable);
- 	
-       NOCONCATENATE
-       $(vL.TransactionTable):
-       LOAD
-       *,
-       $(vL.AccountField)	AS [%FinanceReportID]
-       RESIDENT tmp_$(vL.TransactionTable)
-       ;
-
-DROP TABLE tmp_$(vL.TransactionTable);
-
-TRACE ***** Add new key to report table *****;
-
-RENAME TABLE clsp_$(vL.SheetName) TO tmp_clsp_$(vL.SheetName);
-		
-        NOCONCATENATE
-        clsp_$(vL.SheetName):
-		LOAD
-        	*,
-            $(vL.AccountField) AS [%FinanceReportID]
-        RESIDENT tmp_clsp_$(vL.SheetName);
-        
-DROP TABLE tmp_clsp_$(vL.SheetName);
-DROP FIELD '$(vL.AccountField)' FROM clsp_$(vL.SheetName);
-
-END IF
-
-DROP FIELD [NOEXTRAFIELD];
-
-
-
-//Adding total rows to the report setup
-//this includes logic for running totals and empty rows
-//Empty rows are connected to all other rows and will always display (this can be changed by altering the logic below)
-TRACE ****** Total Rows ******;
-
-      clsp_TotalRows:
-      LOAD
-        //Grain=====================================================================================
-        [%ReportRowID]						AS [totalRowIntervalMatchKey],
-        //Dimension=================================================================================
-        RowType								AS [rowType],
-
-        IF([RowType] <> 'Regular', 
-        	PEEK([RegularMinRow]),
-            IF([RowType] <> PREVIOUS([RowType]), 
-            [%ReportRowID], 
-            PEEK([RegularMinRow]))) 		AS [RegularMinRow],
-        IF([RowType] = 'RunningTotal', -1, 
-        	IF([RowType] <> 'Regular', 
-            PEEK([tmp_RunningSubtotalMinRow]), 
-            	IF(PEEK([tmp_RunningSubtotalMinRow]) = -1 OR ROWNO() = 1, 
-                [%ReportRowID], PEEK([tmp_RunningSubtotalMinRow]))
-                )) 							AS [tmp_RunningSubtotalMinRow],
-       IF(LEFT([RowType],7) = 'Regular', 
-       	[%ReportRowID],
-
-        PEEK(RegularMaxRow)) 				AS [RegularMaxRow],
-        $(vL.MinRowNumber) 					AS [MinRowNumber],
-        $(vL.MaxRowNumber) 					AS [MaxRowNumber],
-        [RowFromOverride]					AS [RowFromOverride],
-        [RowToOverride]						AS [RowToOverride]
-        //Measure===================================================================================
-       RESIDENT clsp_importData_$(vL.SheetName)
-       ORDER BY [%ReportRowID]
-       ;
-       
-      LEFT JOIN (clsp_TotalRows)
-      LOAD DISTINCT
-        //Joinkey=====================================================================================
-        [totalRowIntervalMatchKey]            AS [totalRowIntervalMatchKey],   
-        //Dimensions==================================================================================
-        IF(ISNULL(PEEK([totalRowIntervalMatchKey])),
-            [RegularMinRow],
-            PEEK([totalRowIntervalMatchKey])) AS [MinRunningSubTotal]
-        //Measures====================================================================================
-      RESIDENT clsp_TotalRows
-      WHERE rowType='RunningSubTotal' OR rowType='RunningTotal'
-      ;
-      
-
-      LEFT JOIN (clsp_TotalRows)
-      LOAD DISTINCT
-        //Joinkey=====================================================================================
-        [totalRowIntervalMatchKey]          AS [totalRowIntervalMatchKey],    
-        //Dimensions==================================================================================
-      IF(NOT ISNULL([MinRunningSubTotal]),
-        IF([MinRunningSubTotal]>IF(ISNULL([tmp_RunningSubtotalMinRow]),0,[tmp_RunningSubtotalMinRow]),
-            [MinRunningSubTotal],
-            [tmp_RunningSubtotalMinRow]
-            ),[tmp_RunningSubtotalMinRow])  AS [RunningSubtotalMinRow]
-        //Measures====================================================================================
-      RESIDENT clsp_TotalRows
-      WHERE [rowType]='RunningSubTotal'
-      ;
-
-DROP FIELDS tmp_RunningSubtotalMinRow, MinRunningSubTotal;
-
-
-       clsp_TotalIntervals:
-       LOAD
-         //Grain=====================================================================================
-        [totalRowIntervalMatchKey],
-         //Dimension=================================================================================
-         IF(ISNULL([RowFromOverride]),
-           IF([rowType]='SubTotal',
-              [RegularMinRow],
-              IF([rowType]='RunningSubTotal',
-              [RunningSubtotalMinRow],
-             [MinRowNumber])),
-             [RowFromOverride])				AS [RowFrom],
-		
-		IF(ISNULL([RowToOverride]),
-       		IF([rowType]='EmptyRow',
-       		[MaxRowNumber],
-           [RegularMaxRow]),
-           [RowToOverride])                AS [RowTo]
-        //Measure===================================================================================
-      RESIDENT clsp_TotalRows
-      WHERE NOT MATCH([rowType], 'Regular')
-      ;
-           
-DROP TABLE clsp_TotalRows;
-
-	   clsp_TotalIntervalMatch:
-       NOCONCATENATE
-       INTERVALMATCH([%ReportRowID])
-       LOAD
-       [RowFrom],
-       [RowTo]
-       RESIDENT clsp_TotalIntervals;
-       
-	   LEFT JOIN(clsp_TotalIntervalMatch)
-       LOAD
-       *
-       RESIDENT clsp_TotalIntervals;
-
-DROP TABLE clsp_TotalIntervals;
-       
-       LEFT JOIN(clsp_TotalIntervalMatch)
-       LOAD
-       *
-       RESIDENT clsp_$(vL.SheetName);
-       
-
-       CONCATENATE(clsp_$(vL.SheetName))
-       LOAD DISTINCT
-       [totalRowIntervalMatchKey]	AS [%ReportRowID],
-       [rowNumber],
-       [%FinanceReportID]
-       RESIDENT clsp_TotalIntervalMatch
-       WHERE NOT ISNULL([%FinanceReportID])
-       ;
-   
-   
-DROP TABLE clsp_TotalIntervalMatch;
-
-//Adding all the data from the original Excel-template (such as RowNumFormat, RowGroup, ReportRow etc.
-	  JOIN(clsp_$(vL.SheetName))
-      LOAD
-      	*
-      RESIDENT clsp_importData_$(vL.SheetName);
-      
-
-DROP TABLE clsp_importData_$(vL.SheetName);
-
-TRACE ***** Rename Fields ******;
-//Renaming all the fields to include a prefix
-
-FOR i = 1 to NoOfFields('clsp_$(vL.SheetName)')
-
-Fields:
 LOAD
-  FieldName($(i),'clsp_$(vL.SheetName)') as FieldName
-AutoGenerate 1
-;
+    "Start Date1"
+FROM [lib://Data/StartDate1.qvd]
+(qvd);
 
-NEXT i
-
-//Adding the prefix to make sure the names are unique when using multiple reports
-//(If custom names are needed an alternative mapping table should be used here. Do not change in other places in the script!)
-map_RenameFields_$(vL.SheetName):
-MAPPING
-LOAD DISTINCT
-	FieldName,
-    '$(vL.SheetName)'&'_' &FieldName
-RESIDENT Fields;
-
-DROP TABLE Fields;
-RENAME FIELDS USING map_RenameFields_$(vL.SheetName);
-
-UNMAP map_RenameFields_$(vL.SheetName);
-
-NEXT clsp_FinceReportRow
-
-DROP TABLE clsp_FinanceOptions;
-
-END SUB
-
-
-
-
-
-///$tab CALL Account Mapping
-/************************************
-There is typically no need to change these settings.
-Change the data connection path to point to the files and make your settings in the first tab of the Excel-file.
-************************************/
-clsp_FinanceReport_Options:
 LOAD
-   'lib://PoC:DataFiles'				AS clsp_FilePath, 
-   'FinanceReport_Template_US.xlsx'		AS clsp_FileName
-AUTOGENERATE 1;
-        
-CALL clsp_FinanceReport;  
+    "Start Date2"
+FROM [lib://Data/StartDate2.qvd]
+(qvd);
+
+LOAD
+    PA_ID,
+    PA_PRN_ID,
+    PA_PATIENT_NAME,
+    PA_PACKAGE_NAME,
+    PA_PACKAGE_RATE,
+    Package_Band,
+    PA_PACKAGE_CATEGORY,
+    PA_CREATION_DATE,
+    PA_SECONDARY_PACKAGE_BALANCE,
+    PA_TERTIARY_PACKAGE_BALANCE,
+    PA_TOTAL_PACKAGE_BALANCE,
+    PA_STATUS,
+    HOSPITAL_ID,
+    REASON,
+    DATE_OF_ADMISSION,
+    DATE_OF_DISCHARGE,
+    ADMISSION_TIME,
+    DISCHARGE_TIME,
+    NO_OF_DAYS,
+    DISCHARGE_STATUS,
+    HRN_ID,
+    PA_PACKAGE_CODE
+FROM [lib://Data/PA.qvd]
+(qvd);
+
+LOAD
+    
+    If(Dist_DISTRICT_NAME='Ajmer','District1',
+If(Dist_DISTRICT_NAME='Alwar','District2',
+If(Dist_DISTRICT_NAME='Banswara','District3',
+If(Dist_DISTRICT_NAME='Baran','District4',
+If(Dist_DISTRICT_NAME='Barmer','District5',
+If(Dist_DISTRICT_NAME='Bharatpur','District6',
+If(Dist_DISTRICT_NAME='Bhilwara','District7',
+If(Dist_DISTRICT_NAME='Bikaner','District8',
+If(Dist_DISTRICT_NAME='Bundi','District9',
+If(Dist_DISTRICT_NAME='Chittaurgarh','District10',
+If(Dist_DISTRICT_NAME='Churu','District11',
+If(Dist_DISTRICT_NAME='Dausa','District12',
+If(Dist_DISTRICT_NAME='Dhaulpur','District13',
+If(Dist_DISTRICT_NAME='Dungarpur','District14',
+If(Dist_DISTRICT_NAME='Ganganagar','District15',
+If(Dist_DISTRICT_NAME='Hanumangarh','District16',
+If(Dist_DISTRICT_NAME='Jaipur','District17',
+If(Dist_DISTRICT_NAME='Jaisalmer','District18',
+If(Dist_DISTRICT_NAME='Jalor','District19',
+If(Dist_DISTRICT_NAME='Jhalawar','District20',
+If(Dist_DISTRICT_NAME='Jhunjhunun','District21',
+If(Dist_DISTRICT_NAME='Jodhpur','District22',
+If(Dist_DISTRICT_NAME='Karauli','District23',
+If(Dist_DISTRICT_NAME='Kota','District24',
+If(Dist_DISTRICT_NAME='Nagaur','District25',
+If(Dist_DISTRICT_NAME='Pali','District26',
+If(Dist_DISTRICT_NAME='Pratapgarh','District27',
+If(Dist_DISTRICT_NAME='Rajasamand','District28',
+If(Dist_DISTRICT_NAME='Sawai Madhopur','District29',
+If(Dist_DISTRICT_NAME='Siker','District30',
+If(Dist_DISTRICT_NAME='Sirohi','District31',
+If(Dist_DISTRICT_NAME='Tonk','District32',
+If(Dist_DISTRICT_NAME='Udaipur','District33'))))))))))))))))))))))))))))))))) as Dist_DISTRICT_NAME,
+    DISTRICT_CODE,
+    Empanel_HOSPITAL_NAME,
+    Right(Empanel_HOSPITAL_CODE,3) as Empanel_HOSPITAL_CODE,
+    Empanel_HOSPITAL_TYPE,
+    HOSPITAL_ID,
+    Empanel_LOCATION,
+    'State' as Empanel_STATE,
+    Empanel_HOSPITAL_CATEGORY,
+    Empanel_HOSPITAL_CLASSIFICATION,
+    LATITUDE,
+    LONGITUDE,
+    Hosp_GeoPoint,
+    Coordinates,
+    Hosp_Mapper_Hospitaltype,
+        If(Zone='Ajmer','Zone1',
+		If(Zone='Bharatpur','Zone2',
+			If(Zone='Bikaner','Zone3',
+				If(Zone='Jaipur','Zone4',
+					If(Zone='Jodhpur','Zone5',
+						If(Zone='Kota','Zone6',
+							If(Zone='Udaipur','Zone7'))))))) as Zone
+FROM [lib://Data/Hospital.qvd]
+(qvd);
+
+
+LOAD
+        If(Zone='Ajmer','Zone1',
+		If(Zone='Bharatpur','Zone2',
+			If(Zone='Bikaner','Zone3',
+				If(Zone='Jaipur','Zone4',
+					If(Zone='Jodhpur','Zone5',
+						If(Zone='Kota','Zone6',
+							If(Zone='Udaipur','Zone7'))))))) as Zone,
+    "Rajasthan Zones.Point",
+    "Rajasthan Zones.Area"
+FROM [lib://Data/ZoneLevelMap.qvd]
+(qvd);
+
+
+LOAD
+    If(Dist_DISTRICT_NAME='Ajmer','District1',
+If(Dist_DISTRICT_NAME='Alwar','District2',
+If(Dist_DISTRICT_NAME='Banswara','District3',
+If(Dist_DISTRICT_NAME='Baran','District4',
+If(Dist_DISTRICT_NAME='Barmer','District5',
+If(Dist_DISTRICT_NAME='Bharatpur','District6',
+If(Dist_DISTRICT_NAME='Bhilwara','District7',
+If(Dist_DISTRICT_NAME='Bikaner','District8',
+If(Dist_DISTRICT_NAME='Bundi','District9',
+If(Dist_DISTRICT_NAME='Chittaurgarh','District10',
+If(Dist_DISTRICT_NAME='Churu','District11',
+If(Dist_DISTRICT_NAME='Dausa','District12',
+If(Dist_DISTRICT_NAME='Dhaulpur','District13',
+If(Dist_DISTRICT_NAME='Dungarpur','District14',
+If(Dist_DISTRICT_NAME='Ganganagar','District15',
+If(Dist_DISTRICT_NAME='Hanumangarh','District16',
+If(Dist_DISTRICT_NAME='Jaipur','District17',
+If(Dist_DISTRICT_NAME='Jaisalmer','District18',
+If(Dist_DISTRICT_NAME='Jalor','District19',
+If(Dist_DISTRICT_NAME='Jhalawar','District20',
+If(Dist_DISTRICT_NAME='Jhunjhunun','District21',
+If(Dist_DISTRICT_NAME='Jodhpur','District22',
+If(Dist_DISTRICT_NAME='Karauli','District23',
+If(Dist_DISTRICT_NAME='Kota','District24',
+If(Dist_DISTRICT_NAME='Nagaur','District25',
+If(Dist_DISTRICT_NAME='Pali','District26',
+If(Dist_DISTRICT_NAME='Pratapgarh','District27',
+If(Dist_DISTRICT_NAME='Rajasamand','District28',
+If(Dist_DISTRICT_NAME='Sawai Madhopur','District29',
+If(Dist_DISTRICT_NAME='Siker','District30',
+If(Dist_DISTRICT_NAME='Sirohi','District31',
+If(Dist_DISTRICT_NAME='Tonk','District32',
+If(Dist_DISTRICT_NAME='Udaipur','District33'))))))))))))))))))))))))))))))))) as Dist_DISTRICT_NAME,
+//    DISTRICTY,
+    GeoPoint
+FROM [lib://Data/District.qvd]
+(qvd);
 
 
 
 
 
-///$tab Calendar
-Let vMsr = 'OPERATING REVENUE';
-Let vComparison = 'Budget|Sum({<PnL_reportRow = {"$' &'(vMsr)"}, $' &'(vSetCM)>}BudgetAmountEUR)';
-Let vDimPicker = 'Country';
 
 
 
-Let vBackFill = False();
 
-Inner Keep(Transactions)
-dates: load distinct Date Resident Transactions Where actuals_flag = 1 and Year(Date)*100+Num(Month(Date)) <> 202006;
-
-
-If $(vBackFill) Then 
-
-    min_max:
-    Load
-        Floor(min(Date)) as min_date,
-        Floor(max(Date)) as max_date
-    Resident
-        dates;
-
-    Let StartDate = peek('min_date',0,'min_max');
-    Let EndDate = peek('max_date',0,'min_max');
-
-
-    Drop Tables dates, min_max;
-	
-    dates:
-    Load
-        Date($(StartDate)+(Iterno()-1),'YYYYMMDD') as Date 	
-    Autogenerate
-        (1)
-    While 
-        Date($(StartDate)+(Iterno()-1)) <=Date($(EndDate));
-
-End If;
-
-
-calendar:
-Load
-	*,
-    Date(Date) as Date_tmp,
-    Num(Date) as date_num,
-	Year(Date) AS [Year],
-    Year(Date) as year_num,
-    Num(Month(Date)) as month_num,
-	dual('FY '&year(addmonths(Date,6)),year(addmonths(Date,6))) as FiscalYear,
-	Month(Date) AS [Month],
-	num(Month(Date)) AS [MonthNum],
-	num(Week(Date),00) as [Week],
-	Day(Date) AS [Day],
-    AutoNumber(Year("Date")*100+Num(Month(Date)),'month_year') as month_year_num,
-    Dual(Month(Date)&'-'&Year("Date"),Year("Date")*100+Num(Month(Date))) as [Month Year],
-	Year(Date)&num(Month(Date),00) as [Year Month],
-    DayNumberOfYear(Date) as [Day of Year],
-	Dual('Q'&Num(Ceil(Num(Month(Date))/3)),Num(Ceil(NUM(Month(Date))/3),00)) as [Quarter]
-Resident
-	dates
-Order by
-	Date asc;
-
-
-
-Rename field Date to %Date;
-Rename field Date_tmp to Date;
-
-Autonumber %Date;
+exit Script
 ///$tab Section
+// Section Access;
 
-///$tab UI/UX
-SET vSetType = 'Daily'; // Options should fall in line with below: Daily, WTD, MTD, QTD, YTD
-Set vSetIgnore = '';
+// Access:
+// LOAD
+//     Upper("Access") as [ACCESS],
+//     Upper("User ID") as [USERID],
+// //    Upper("Password") as [PASSWORD],
+//     Upper(Dist_DISTRICT_NAME) as DISTRICTY    
+// FROM [lib://Data (vm-qsdev_qlikuser)/USER ID PASSWORDS.xlsx]
+// (ooxml, embedded labels, table is Sheet1);
+
+// Section Application;
 
 
-for f = 0 to NoOfFields('calendar') - 1
+///$tab Connection
+// LIB CONNECT TO 'Oracle (vm-qsdev_qlikuser)';
 
-	Let vFieldName = FieldName($(f)+1,'calendar');
+// BENEFICIARY_PACKAGE_STATUS_LOG:
+// SQL SELECT *
+// FROM RSBY."BENEFICIARY_PACKAGE_STATUS_LOG";
+// Store BENEFICIARY_PACKAGE_STATUS_LOG into [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_PACKAGE_STATUS_LOG.qvd];
+// Drop Table BENEFICIARY_PACKAGE_STATUS_LOG;
+
+// BENEFICIARY_ENROLMENT:
+// SQL SELECT *
+// FROM RSBY."BENEFICIARY_ENROLMENT";
+// Store BENEFICIARY_ENROLMENT into [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_ENROLMENT.qvd];
+// Drop Table BENEFICIARY_ENROLMENT;
+
+// PATIENT_ADMISSION:
+// SQL SELECT *
+// FROM RSBY."PATIENT_ADMISSION";
+// Store PATIENT_ADMISSION into [lib://Data (vm-qsdev_qlikuser)/PATIENT_ADMISSION.qvd];
+// Drop Table PATIENT_ADMISSION;
+
+// HOSPITAL_EMPANELMENT:
+// SQL SELECT *
+// FROM RSBY."HOSPITAL_EMPANELMENT";
+// Store HOSPITAL_EMPANELMENT into [lib://Data (vm-qsdev_qlikuser)/HOSPITAL_EMPANELMENT.qvd];
+// Drop Table HOSPITAL_EMPANELMENT;
+
+// DISTRICT:
+// SQL SELECT *
+// FROM RSBY."DISTRICT";
+// Store DISTRICT into [lib://Data (vm-qsdev_qlikuser)/DISTRICT.qvd];
+// Drop Table DISTRICT;
+
+// PRE_AUTH_REQU_PKG_SELECTION:
+// SQL SELECT *
+// FROM RSBY."PRE_AUTH_REQU_PKG_SELECTION";
+// Store PRE_AUTH_REQU_PKG_SELECTION into [lib://Data (vm-qsdev_qlikuser)/PRE_AUTH_REQU_PKG_SELECTION.qvd];
+// Drop Table PRE_AUTH_REQU_PKG_SELECTION;
+
+// DISCONNECT;
+
+
+///$tab Script
+Benef:
+LOAD If(ADMISSION_TYPE = 1 ,'Normal', 
+	If(ADMISSION_TYPE = 2 ,'Emergency')) AS Benef_ADMISSION_TYPE, 
+	If(IDENTITY_TYPE = 1, 'Bhamashah Card',
+	If(IDENTITY_TYPE = 2, 'RSBY Card',
+		If(IDENTITY_TYPE = 3, 'Ration Card',
+			If(IDENTITY_TYPE = 4, 'Aadhar Card',
+				If(IDENTITY_TYPE = 5 OR IDENTITY_TYPE = 0, 'MOIC Card', IDENTITY_TYPE))))) AS IDENTITY_TYPE,
+     ID AS Benef_ID, 
+     HRN_ID as HRN_ID, 
+     GENDER AS Benef_GENDER, 
+     AGE AS Benef_AGE, 
+     If(AGE < 19, '0-18',
+     	If(AGE < 26, '19-25',
+     		If(AGE < 36, '26-35',
+     			If(AGE < 51, '36-50', '> 50')))) AS Age_Band,
+     PATIENT_NAME AS Benef_PATIENT_NAME,
+     STATE AS Benef_STATE,  
+     ADMISSION_DATE AS Benef_ADMISSION_DATE, 
+     Year(Date(ADMISSION_DATE,'MM/DD/YYYY hh:mm:ss tt')) AS Benef_ADMISSION_DATE_YEAR, 
+     Month(Date(ADMISSION_DATE,'MM/DD/YYYY hh:mm:ss tt')) AS Benef_ADMISSION_DATE_MONTH, 
+     Day(Date(ADMISSION_DATE,'MM/DD/YYYY hh:mm:ss tt')) AS Benef_ADMISSION_DATE_DAY, 
+     BENIFICIARY_ENROL_STATUS AS Benef_BENIFICIARY_ENROL_STATUS, 
+     RELATIONSHIPWITHPATIENT AS Benef_RELATIONSHIPWITHPATIENT, 
+     HOSPITAL_ID AS Benef_HOSPITAL_ID,  
+     If(IDENTITY_STATUS = 'Yes', 'NFSA',
+	If(IDENTITY_STATUS = 'No', 'MOIC',
+		If(IDENTITY_STATUS = 'N/A', 'NFSA', IDENTITY_STATUS))) AS Benef_IDENTITY_STATUS,
+     DISTRICT AS Benef_District
+FROM [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_ENROLMENT.qvd]
+(qvd);
+
+PA:
+LOAD ID AS PA_ID, 
+     HRN_ID, 
+     PRN_ID AS PA_PRN_ID, 
+     PATIENT_NAME AS PA_PATIENT_NAME,  
+     PACKAGE_CODE AS PA_PACKAGE_CODE, 
+     PACKAGE_NAME AS PA_PACKAGE_NAME, 
+     PACKAGE_RATE AS PA_PACKAGE_RATE,
+     If(PACKAGE_RATE < 1000, '0-1000',
+     	If(PACKAGE_RATE < 10000, '1000-10000',
+     		If(PACKAGE_RATE < 25000, '10000-25000',
+     			If(PACKAGE_RATE < 50000, '25000-50000',
+     				If(PACKAGE_RATE < 100000, '50000-100000', '> 100000'))))) AS Package_Band, 
+     PACKAGE_CATEGORY AS PA_PACKAGE_CATEGORY, 
+     MODIFICATION_DATE AS PA_CREATION_DATE, 
+     SECONDARY_PACKAGE_BALANCE AS PA_SECONDARY_PACKAGE_BALANCE, 
+     TERTIARY_PACKAGE_BALANCE AS PA_TERTIARY_PACKAGE_BALANCE, 
+     TOTAL_PACKAGE_BALANCE AS PA_TOTAL_PACKAGE_BALANCE, 
+     STATUS AS PA_STATUS,
+     HOSPITAL_ID,
+     If(REASON = 1, 'No-Selection',
+		If(REASON = 2, 'Rejection Due to Documents',
+			If(REASON = 3, 'Rejection Due to Fraud',
+				If(REASON = 4, 'Rejection Due to Wrong Package Selection',
+					If(REASON = 5, 'Query for More Ducments',
+						If(REASON = 6, 'Query for Diagonostic Reports')))))) AS REASON
+FROM [lib://Data (vm-qsdev_qlikuser)/PRE_AUTH_REQU_PKG_SELECTION.qvd]
+(qvd);
+
+LEFT JOIN (PA)
+
+Admission:
+LOAD HRN_ID, 
+	 DATE_OF_ADMISSION,
+	 DATE_OF_DISCHARGE,
+     ADMISSION_TIME, 
+     DISCHARGE_TIME, 
+     NO_OF_DAYS, 
+     DISCHARGE_STATUS
+     FROM [lib://Data (vm-qsdev_qlikuser)/PATIENT_ADMISSION.qvd]
+(qvd);
+
+/* Keeping PA table and Hosp table separate and associating instead of Left join*/
+//LEFT JOIN (PA)
+
+Hospital:
+//Hosp_Emp:
+LOAD Capitalize(HOSPITAL_NAME) AS Empanel_HOSPITAL_NAME, 
+     HOSPITAL_CODE AS Empanel_HOSPITAL_CODE, 
+     ID AS HOSPITAL_ID, 
+     If(HOSPITAL_TYPE = 1 , 'Private Hospital',
+		If(HOSPITAL_TYPE = 2 , 'Government Hospital', HOSPITAL_TYPE)) AS Empanel_HOSPITAL_TYPE, 
+     If(LOCATION = 0, 'No-Selection',
+	If(LOCATION = 1, 'Notified/Inaccessible Area',
+		If(LOCATION = 2, 'Rural',
+			If(LOCATION = 3, 'Urban', LOCATION)))) AS Empanel_LOCATION, 
+     STATE AS Empanel_STATE, 
+     DISTRICT AS DISTRICT_CODE,  
+     HOSPITAL_CATEGORY AS Empanel_HOSPITAL_CATEGORY,
+     If(HOSPITAL_CLASSIFICATION = 0 , 'No-Selection',
+		If(HOSPITAL_CLASSIFICATION = 1 , 'Category A',
+			If(HOSPITAL_CLASSIFICATION = 2 , 'Category B',
+				If(HOSPITAL_CLASSIFICATION = 3 , 'Category C', HOSPITAL_CLASSIFICATION)))) AS Empanel_HOSPITAL_CLASSIFICATION,
+	
+     LATITUDE,
+     LONGITUDE,
+     GeoMakePoint(LATITUDE,LONGITUDE) as Hosp_GeoPoint,
+     If(isnull(LATITUDE) OR isnull(LONGITUDE),'', LONGITUDE & ',' & LATITUDE) AS Coordinates
+     FROM [lib://Data (vm-qsdev_qlikuser)/HOSPITAL_EMPANELMENT.qvd]
+(qvd);
+
+LEFT JOIN (Hospital)
+HospitalTypeMapper:
+LOAD Capitalize(HOSPITAL_NAME) AS Empanel_HOSPITAL_NAME, 
+     HOSPITAL_CODE as Empanel_HOSPITAL_CODE, 
+     If([Hospital type] = 'DH', 'District Hospital',
+	  If([Hospital type] = 'SDH', 'Sub-District Hospital',
+		If([Hospital type] = 'SH', 'Satellite Hospital',
+			If([Hospital type] = 'MCH', 'Medical College Hospital', [Hospital type])))) AS Hosp_Mapper_Hospitaltype, 
+     Hospital_Main_Type AS Empanel_HOSPITAL_TYPE
+FROM [lib://Data (vm-qsdev_qlikuser)/List of Hospitals - For Dashboard.xlsx]
+(ooxml, embedded labels, table is [Govt + Pvt]);
+
+LEFT JOIN (Hospital)
+DistrictMapper:
+LOAD DISTRICT_CODE, 
+     DISTRICT_NAME AS Dist_DISTRICT_NAME
+FROM [lib://Data (vm-qsdev_qlikuser)/DISTRICT.qvd]
+(qvd);
+
+LEFT JOIN (Hospital)
+ZoneMapper:
+LOAD Zone, 
+     District as Dist_DISTRICT_NAME
+FROM [lib://Data (vm-qsdev_qlikuser)/Zone Mapper.xlsx]
+(ooxml, embedded labels, table is [Zone-Districts]);
+
+
+
+[No.of T_ID]:
+
+Load HRN_ID, 
+Count(PA_PACKAGE_CODE) as "No. of Packages"
+Resident PA
+group by HRN_ID;
+// Left Join
+// Load HRN_ID, 
+// Count(HRN_ID) as "No. of HRN_ID"
+// Resident Benef
+// group by HRN_ID;
+
+District:
+LOAD
+    City as Dist_DISTRICT_NAME,
+    upper(City) as DISTRICTY,
+    GeoMakePoint(Lat,Long) as GeoPoint
+FROM [lib://Data (vm-qsdev_qlikuser)/Rajasthan  District Lat Long.xlsx]
+(ooxml, embedded labels, table is Sheet1);
+
+StartDate1:
+Load
+	Date(Floor(PA_CREATION_DATE)) as [Start Date1]
+Resident PA;
+
+StartDate2:
+Load
+	Date(Floor(PA_CREATION_DATE)) as [Start Date2]
+Resident PA;
+
+EndDate1:
+Load
+	Date(Floor(PA_CREATION_DATE)) as [End Date1]
+Resident PA;
+
+EndDate2:
+Load
+	Date(Floor(PA_CREATION_DATE)) as [End Date2]
+Resident PA;
+
+StatusLoad:
+LOAD
+    HRN_ID,
+    PACKAGE_CODE as PA_PACKAGE_CODE,
+         If(REASON = 1, 'No-Selection',
+		If(REASON = 2, 'Rejection Due to Documents',
+			If(REASON = 3, 'Rejection Due to Fraud',
+				If(REASON = 4, 'Rejection Due to Wrong Package Selection',
+					If(REASON = 5, 'Query for More Documents',
+						If(REASON = 6, 'Query for Diagonostic Reports')))))) AS StatusReason,
+    REMARKS as StatusRemark,
+    MODIFIED_DATE,
+    CREATION_DATE,
+    if(ISNULL(MODIFIED_DATE),Date(CREATION_DATE),Date(MODIFIED_DATE)) as All_MODIFIED,
+    STATUS_ID,
+    LEVEL_ID,
+    PKG_STATE,
+// if(STATUS_ID=1 and LEVEL_ID=1,'preAuthApproved',
+// if(STATUS_ID=1 and LEVEL_ID=2, if(isnull(MODIFIED_DATE),'preAuthApprovalPending','queryreplytodecesion'),
+// if(STATUS_ID=1 and LEVEL_ID=3, if(isnull(MODIFIED_DATE),'fundEnhancementApprovalPending','queryFundreplybyhospital'),
+// if(STATUS_ID=1 and LEVEL_ID=4, if(isnull(MODIFIED_DATE),'claimapprovalpending','queryclaimreplybyhospital'),
+// if(STATUS_ID=1 and LEVEL_ID=6,'claimApprovalPendingAtAnalyser',
+// if(STATUS_ID=2 and LEVEL_ID=2,'preAuthPackageRejected',
+// if(STATUS_ID=2 and LEVEL_ID=3,'fundEnhancementPackageRejected',
+// if(STATUS_ID=2 and LEVEL_ID=4,'claimPackageRejected',
+// if(STATUS_ID=2 and LEVEL_ID=6,'claimRejectedByAnalyser',
+// if(STATUS_ID=3 and LEVEL_ID=2,'preAuthPackageQuery',
+// if(STATUS_ID=3 and LEVEL_ID=3,'fundEnhancementPackageQuery',
+// if(STATUS_ID=3 and LEVEL_ID=4,'claimPackageQuery',
+// if(STATUS_ID=4 and LEVEL_ID=4,'claimPackageApproved',
+// if(STATUS_ID=5 and LEVEL_ID=5,'claimPackageApprovedandPaid',
+// if(STATUS_ID=3 and LEVEL_ID=6,'claimQueryByAnalyser','NA')
+// )))))))))))))) as Status_New,
+
+REPLY as StatusReply,
     
-    If WildMatch('$(vFieldName)','*_num') = 0 Then
-    
-    	Let vSetIgnore = vSetIgnore & ',[$(vFieldName)]=';
-        
-    End If
-    
-next f;
+if(STATUS_ID=1 and LEVEL_ID=1, 'Hospital'
+,if(STATUS_ID=1 and LEVEL_ID=2,'Hospital'
+,if(STATUS_ID=1 and LEVEL_ID=3,'Hospital'
+,if(STATUS_ID=1 and LEVEL_ID=4,'Hospital'
+,if(STATUS_ID=1 and LEVEL_ID=6,'Hospital',
+if(STATUS_ID=3 and LEVEL_ID=4,'NIA',
+if(STATUS_ID=3 and LEVEL_ID=2,'Hospital',
+if(STATUS_ID=3 and LEVEL_ID=3,'Hospital',
+if(STATUS_ID=3 and LEVEL_ID=6,'NIA',
+if(STATUS_ID=2 and LEVEL_ID=4,'NIA',
+if(STATUS_ID=2 and LEVEL_ID=2,'NIA',
+if(STATUS_ID=2 and LEVEL_ID=3,'NIA',
+if(STATUS_ID=2 and LEVEL_ID=6,'NIA',
+if(STATUS_ID=4 and LEVEL_ID=4,'NIA',
+if(STATUS_ID=5 and LEVEL_ID=5,'NIA'
+//if(Peek(STATUS_ID)=1 and Peek(LEVEL_ID)=1,
+//if(STATUS_ID=1 and (LEVEL_ID=6 or LEVEL_ID=4 or LEVEL_ID=3),'NIA'),
 
-
-
-// Date Set Analysis Variables
-Let vSetDaily = 'date_num = {"$' & '(=Max(total date_num))"} $(vSetIgnore)';
-Let vSetWTD = 'date_num = {">=$' & '(=Num(WeekStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
-Let vSetMTD = 'date_num = {">=$' & '(=Num(MonthStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
-Let vSetQTD = 'date_num = {">=$' & '(=Num(QuarterStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
-Let vSetYTD = 'date_num = {">=$' & '(=Num(YearStart(Max(total date_num)))) <= $' & '(=Max(total date_num))"} $(vSetIgnore)';
-
-Let vSetDaily_PY = 'date_num = {"$' & '(=Num(AddYears(Max(total date_num)),-1))"} $(vSetIgnore)';
-Let vSetWTD_PY = 'date_num = {">=$' & '(=Num(AddYears(WeekStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
-Let vSetMTD_PY = 'date_num = {">=$' & '(=Num(AddYears(MonthStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
-Let vSetQTD_PY = 'date_num = {">=$' & '(=Num(AddYears(QuarterStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
-Let vSetYTD_PY = 'date_num = {">=$' & '(=Num(AddYears(YearStart(Max(total date_num)),-1))) <= $' & '(=Num(AddYears(Max(total date_num),-1)))"} $(vSetIgnore)';
-
-
-
-
-
-// Date Set Analysis Variables
-Let vSetCM = 'month_year_num = {"$' & '(=Max(total month_year_num))"} $(vSetIgnore)';
-Let vSetPM = 'month_year_num = {"$' & '(=Max(total month_year_num)-1)"} $(vSetIgnore)';
-Let vSetPY = 'month_year_num = {"$' & '(=Max(total month_year_num)-12)"} $(vSetIgnore)';
-
-
-
-
-%Dimension:
-Load * inline [
-Dimension, %DimensionField
-Country, Country
-Account, AccountNumberName
-Customer Group, CustomerGroup
-Customer Name, CustomerName
-];
-
-
-%Comparison:
+)))))))))))))))as [FLAG]
+ 
+   
+FROM [lib://Data (vm-qsdev_qlikuser)/BENEFICIARY_PACKAGE_STATUS_LOG.qvd](qvd);
+//Exit Script
+///$tab Delay
+Delay:
 Load 
-    Comparison,
-    Replace(%ComparisonMeasure,'???','$') as [%ComparisonMeasure] 
-Inline [
-Comparison|%ComparisonMeasure
-Prior Month|Sum({<PnL_reportRow = {"???(=Only(Topic))"}, ???(vSetPM)>}AmountEUR * ???(=Only(%TopicFlag)))
-Budget|Sum({<PnL_reportRow = {"???(=Only(Topic))"}, ???(vSetCM)>}BudgetAmountEUR * ???(=Only(%TopicFlag)))
-Prior Year|Sum({<PnL_reportRow = {"???(=Only(Topic))"}, ???(vSetPY)>}AmountEUR * ???(=Only(%TopicFlag)))
-](delimiter is '|');
+HRN_ID,
+PA_PACKAGE_CODE,
+All_MODIFIED,
+STATUS_ID,
+LEVEL_ID,
+//Status_New,
+StatusReason,
+StatusRemark,
+StatusReply,
+MODIFIED_DATE,
+CREATION_DATE,
+PKG_STATE,
+if(STATUS_ID=1 and LEVEL_ID=1,'preAuthApproved',
+if(STATUS_ID=1 and LEVEL_ID=2, if(isnull(MODIFIED_DATE),'preAuthApprovalPending','queryreplytodecesion'),
+if(STATUS_ID=1 and LEVEL_ID=3, if(isnull(MODIFIED_DATE),'fundEnhancementApprovalPending','queryFundreplybyhospital'),
+if(STATUS_ID=1 and LEVEL_ID=4, if(peek(LEVEL_ID)=1,'claimapprovalpending','claimapprovalpending'),
+if(STATUS_ID=1 and LEVEL_ID=6,'claimApprovalPendingAtAnalyser',
+if(STATUS_ID=2 and LEVEL_ID=2,'preAuthPackageRejected',
+if(STATUS_ID=2 and LEVEL_ID=3,'fundEnhancementPackageRejected',
+if(STATUS_ID=2 and LEVEL_ID=4,'claimPackageRejected',
+if(STATUS_ID=2 and LEVEL_ID=6,'claimRejectedByAnalyser',
+if(STATUS_ID=3 and LEVEL_ID=2,'preAuthPackageQuery',
+if(STATUS_ID=3 and LEVEL_ID=3,'fundEnhancementPackageQuery',
+if(STATUS_ID=3 and LEVEL_ID=4,'claimPackageQuery',
+if(STATUS_ID=4 and LEVEL_ID=4,'claimPackageApproved',
+if(STATUS_ID=5 and LEVEL_ID=5,'claimPackageApprovedandPaid',
+if(STATUS_ID=3 and LEVEL_ID=6,'claimQueryByAnalyser','NA')
+)))))))))))))) as Status_New,
+
+time(All_MODIFIED) as [TIME],
+if(Peek(HRN_ID)=HRN_ID and Peek(PA_PACKAGE_CODE)=PA_PACKAGE_CODE,
+	ceil(PEEK(All_MODIFIED)-All_MODIFIED),0)*-1 as [Days],        
+
+if(Peek(HRN_ID)=HRN_ID and Peek(PA_PACKAGE_CODE)=PA_PACKAGE_CODE,
+	((PEEK(All_MODIFIED)-All_MODIFIED)-ceil(PEEK(All_MODIFIED)-All_MODIFIED))*24,0)*-1 as [Hours],
+
+// if(Peek(STATUS_ID)=1,
+// if(STATUS_ID=1 and (LEVEL_ID=6 or LEVEL_ID=4 or LEVEL_ID=3),'NIA',[FLAG]
+// ),[FLAG]) as [FLAG];
+
+if(Peek(STATUS_ID)=1,
+if(STATUS_ID=1 and ((LEVEL_ID=3)or(peek(LEVEL_ID)<>1 and LEVEL_ID=4)),'NIA',[FLAG]
+),[FLAG]) as [FLAG];
+
+Load 
+HRN_ID,
+PA_PACKAGE_CODE,
+StatusReason,
+StatusRemark,
+MODIFIED_DATE,
+CREATION_DATE,
+Num(All_MODIFIED) as All_MODIFIED,
+PKG_STATE,
+STATUS_ID,
+LEVEL_ID,
+StatusReply,
+
+[FLAG]
+//[Case Status]
+
+Resident StatusLoad
+order by HRN_ID,PA_PACKAGE_CODE,All_MODIFIED,STATUS_ID,LEVEL_ID; 
+
+NoConcatenate
+
+StatusLog:
+
+Load *,
+
+if(HRN_ID<>Peek(HRN_ID) and PA_PACKAGE_CODE<>Peek(PA_PACKAGE_CODE) and 
+(STATUS_ID=5 or STATUS_ID=2),
+'1',
+if(HRN_ID<>Peek(HRN_ID) and PA_PACKAGE_CODE=Peek(PA_PACKAGE_CODE) and 
+(STATUS_ID=5 or STATUS_ID=2),
+'1',
+if(HRN_ID=Peek(HRN_ID) and PA_PACKAGE_CODE<>Peek(PA_PACKAGE_CODE) and 
+(STATUS_ID=5 or STATUS_ID=2),
+'1',
+if(Peek(HRN_ID)=HRN_ID and Peek(PA_PACKAGE_CODE)=PA_PACKAGE_CODE and 
+Peek([Is Closed])='1','1',
+//if(STATUS_ID<>5 or STATUS_ID<>2,
+'0'
+)
+))) as [Is Closed],
+
+if(STATUS_ID=5 or STATUS_ID=2,'Closed','Open') as [Case Status],
+
+if(HRN_ID=Peek(HRN_ID) and PA_PACKAGE_CODE=Peek(PA_PACKAGE_CODE),
+peek(Present_Status),Status_New) as Present_Status
 
 
+//if(STATUS_ID=5 and LEVEL_ID=5,(max(num(All_MODIFIED))-min(num(All_MODIFIED)))) as Funnel_Date
 
-expense_flag_map:
-Mapping Load * Inline [
-input	output
-Subcontractor Costs, External	-1
-Maintenance Cost	-1
-Other Cost	-1
-OPERATING COSTS	-1
-Salaries  & Vacation pay	-1
-Recruitment	-1
-STAFF COSTS	-1
-Communication	-1
-Other External services	-1
-Rent and other properties	-1
-Transportation and Freight	-1
-Other External costs	-1
-EXTERNAL COSTS	-1
-Group costs	-1
-TOTAL COSTS	-1
-](delimiter is '\t');
+Resident Delay
+Order By HRN_ID,PA_PACKAGE_CODE,All_MODIFIED Desc;
 
-
-%Topic:
-Load Distinct
-	PnL_reportRow as Topic,
-	ApplyMap('expense_flag_map',Text(PnL_reportRow),1) as %TopicFlag    	
-Resident
-	clsp_PnL
-Where
-	WildMatch(PnL_reportRow,'*%*') = 0
-//     AND Len(Trim(PnL_reportRow)) > 0
-Order by
-	PnL_RowNumber;
     
     
-%Period:
-Load * Inline [
-%Period
-Daily
-WTD
-MTD
-QTD
-YTD
-];
-
-%Trend:
-Load * Inline [
-Trend Type
-Actual
-Budget
-Actuals vs Budget
-];
-
+ NoOfDays:
+ 
+ Load 
+ HRN_ID,
+ PA_PACKAGE_CODE,
+ Sum([Days]) as [No of Days]
+ 
+ Resident Delay
+ Group by HRN_ID,PA_PACKAGE_CODE;
+    Drop Table Delay;
+    Drop Table StatusLoad;
+    
+///$tab Zone Level Map
+ZoneLevelMap:
+LOAD
+    "Rajasthan Zones.Name" as Zone,
+    "Rajasthan Zones.Point",
+    "Rajasthan Zones.Area"
+FROM [lib://Data (vm-qsdev_qlikuser)/Rajasthan Zones.kml]
+(kml, Table is [GIS.DISTRICT/GIS.DISTRICT]);
