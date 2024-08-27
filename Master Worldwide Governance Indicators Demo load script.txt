@@ -1,424 +1,1238 @@
 ///$tab Main
-//Binary [e:\apps\financial analysis\financial analysisv8.qvw];
-//
+SET ThousandSep=',';
+SET DecimalSep='.';
+SET MoneyThousandSep=',';
+SET MoneyDecimalSep='.';
+SET MoneyFormat='$ ###0.00;-$ ###0.00';
+SET TimeFormat='h:mm:ss TT';
+SET DateFormat='M/D/YYYY';
+SET TimestampFormat='M/D/YYYY h:mm:ss[.fff] TT';
+SET FirstWeekDay=6;
+SET BrokenWeeks=1;
+SET ReferenceDay=0;
+SET FirstMonthOfYear=1;
+SET CollationLocale='en-US';
+SET CreateSearchIndexOnReload=1;
+SET MonthNames='Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec';
+SET LongMonthNames='January;February;March;April;May;June;July;August;September;October;November;December';
+SET DayNames='Mon;Tue;Wed;Thu;Fri;Sat;Sun';
+SET LongDayNames='Monday;Tuesday;Wednesday;Thursday;Friday;Saturday;Sunday';
+SET NumericalAbbreviation='3:k;6:M;9:G;12:T;15:P;18:E;21:Z;24:Y;-3:m;-6:μ;-9:n;-12:p;-15:f;-18:a;-21:z;-24:y';
 
-//store * from AccMaster into AccMaster.qvd;
-//store * from FinalAccBalances into FinalAccBalances.qvd;
-//store * from FinalYTDMTD into FinalYTDMTD.qvd;
-//store * from AccountDetail into AccountDetail.qvd;
-//store * from QuickRatioYTD into QuickRatioYTD.qvd;
-//store * from QuickRatio into QuickRatio.qvd;
-//store * from CurrentRatioYTD into CurrentRatioYTD.qvd;
-//store * from ROAYTD into ROAYTD.qvd;
-//store * from NPARYTD into NPARYTD.qvd;
-//store * from DebtToEquityYTD into DebtToEquityYTD.qvd;
-//store * from STAYTD into STAYTD.qvd;
-//store * from ROEYTD into ROEYTD.qvd;
-//store * from FiveMjrAccGrp3 into FiveMjrAccGrp3.qvd;
-//store * from FourMjrAccGrp3 into FourMjrAccGrp3.qvd;
-//store * from MjrAccGrp3 into MjrAccGrp3.qvd;
-//store * from EBITDAYTD into EBITDAYTD.qvd;
-//store * from FinalAccTrialBalances into FinalAccTrialBalances.qvd;
-//store * from PLMatch into PLMatch.qvd;
-//store * from CFMatch into CFMatch.qvd;
-//store * from [MjrAccGrp3-1] into [MjrAccGrp3-1].qvd;
-//store * from [PLMatch-1] into [PLMatch-1].qvd;
-//store * from [FourMjrAccGrp3-1] into [FourMjrAccGrp3-1].qvd;
-//store * from [FiveMjrAccGrp3-1] into [FiveMjrAccGrp3-1].qvd;
-//store * from [QuickRatio] into [QuickRatio].qvd;
-//store * from [CFMatch-1] into [CFMatch-1].qvd;
-//store * from DebtToEquity into DebtToEquity.qvd;
-//store * from CurrentRatio into CurrentRatio.qvd;
-//store * from ROE into ROE.qvd;
-//store * from NPAR into NPAR.qvd;
-//store * from STA into STA.qvd;
-//store * from ROA into ROA.qvd;
-//store * from [RptCode2-1] into [RptCode2-1].qvd;
-//store * from INL10F into INL10F.qvd;
-//store * from AccountSubType into AccountSubType.qvd;
-//store * from EBITDA into EBITDA.qvd;
-//store * from RptCode1 into RptCode1.qvd;
-//store * from RptCode2 into RptCode2.qvd;
+LIB CONNECT TO 'Finance Accelerator:Databricks';
+
+//Data Source Databricks location
+Set vDataSource = '`hive_metastore`.`sap_sample_content`.';
+Set vQVDSource = 'lib://Finance Accelerator:DataFiles/';
+///$tab Fact
+//Fact table: Metrics pre-aggregated/calculated 
+FACT:
+LOAD accountid as ACCOUNT, 
+	//accounttypeid, 
+    CUSTOMERID as CUSTOMER,
+	//customertypeid as CUSTOMERTYPEID, 
+	productid as PRODUCT, 
+	//productcategoryid, 
+	profitcenterid as PC, 
+	version, 
+	date,
+    date(date,'MMM YYYY') as Period,
+	sum_value as Amount, 
+	last_month_date, 
+	last_month_sum_value, 
+	last_year_date, 
+	last_year_sum_value,
+    qtd as QTD,
+    ytd as YTD,
+    qtd_seq as QTD_SEQ,
+    qtd_py as QTD_PY,
+    avg_last_12_months as AVG, 
+	min_last_12_months as MIN, 
+	max_last_12_months as MAX, 
+	stddev_last_12_months as STDDEV,
+    ytd_seq as YTD_SEQ,
+    'FACT' as Source
+FROM [$(vQVDSource)FACT_FINANCE.qvd]
+(qvd);    
+    
+///$tab Hierarchy Loads
+//Pre-load each Dimension hierarchy table
+
+//Product Hier
+D_PRODUCT:
+NoConcatenate
+LOAD HIERARCHYID, 
+	DESCRIPTION, 
+	LEVEL
+FROM [$(vQVDSource)D_PRODUCT.qvd]
+(qvd);    
 
 
-//Load the binary above.
-//after the binary is loaded you can call the QV api and read the tables
-////this will not work on some files if some security switchs are set like the demo's we provide
-//
-//LET tblCnt = TblCnt();
-//LET tblToQVD = GetTableName(0);
-//
-//store * from [$(tblToQVD)] into $(tblToQVD).QVD;
-//
-//for i = 1 to $(tblCnt) - 1
-//	LET tblToQVD = GetTableName(i);
-//	store * from [$(tblToQVD)] into [data\$(tblToQVD).QVD];
-//next
-//
-//directory;
+//Customer Hier
+D_CUSTOMER:
+NoConcatenate
+LOAD HIERARCHYID, 
+	DESCRIPTION, 
+	LEVEL
+FROM [$(vQVDSource)D_CUSTOMER.qvd]
+(qvd);    
 
-//load * from AccMaster.qvd;
-//Directory;
+//Profit Center Hier
+D_PC:
+NoConcatenate
+LOAD HIERARCHYID, 
+	DESCRIPTION, 
+	LEVEL
+FROM [$(vQVDSource)D_PC.qvd]
+(qvd);    
+
+//Account Hier
+D_ACCOUNT:
+NoConcatenate
+LOAD HIERARCHYID, 
+	DESCRIPTION, 
+	LEVEL
+FROM [$(vQVDSource)D_ACCOUNT.qvd]
+(qvd);    
 
 
-//Time offsets Wade Manis
-let yearOffset = year(today())-2008;  //2003 is the max year here
+///$tab Customer Hier
+//CUSTOMER Hierarchy based on Description
+CUSTOMER:
+NoConcatenate
+HIERARCHY (CUSTOMER, CUSTOMER_PARENT, CUSTOMER_DESC_LVL_, ,,,,)
+LOAD
+    HIERARCHYID  AS CUSTOMER,
+    DESCRIPTION as CUSTOMER_DESC_LVL_,
+    LEVEL as CUSTOMER_PARENT
+Resident D_CUSTOMER;
+
+
+//Remove Parent, Rename Acct Description back to Original  (Lowest Level)
+RENAME FIELD CUSTOMER_DESC_LVL_ TO CUSTOMER_DESCRIPTION;
+DROP FIELD CUSTOMER_PARENT
+FROM CUSTOMER;
+
+
+//CUSTOMER Hierarchy based on ID
+CUSTOMER_LVL:
+NoConcatenate
+HIERARCHY (CUSTOMER, CUSTOMER_PARENT, CUSTOMER_LVL_, ,,,,)
+LOAD
+    DESCRIPTION,
+    HIERARCHYID  AS CUSTOMER,
+    HIERARCHYID  AS CUSTOMER_LVL_,
+    LEVEL as CUSTOMER_PARENT
+Resident D_CUSTOMER;
+
+
+//Only keep CUSTOMER & CUSTOMER_LVL_1,2,3... fields
+DROP FIELD CUSTOMER_LVL_, CUSTOMER_PARENT, DESCRIPTION
+FROM CUSTOMER_LVL;
+
+//join CUSTOMER ID Levels to CUSTOMER, then drop
+LEFT JOIN(CUSTOMER)
+LOAD * RESIDENT CUSTOMER_LVL; DROP TABLE CUSTOMER_LVL;
+
+
+// CUSTOMER Node , CUSTOMER hier based on Description + extra CUSTOMER hier descriptions?
+
+CUSTOMER_NODE:
+NoConcatenate
+HierarchyBelongsTo (CUSTOMER, CUSTOMER_PARENT, CUSTOMER_DESC_LVL_,CUSTOMER_ANCESTOR_ID, CUSTOMER_ANCESTOR, CUSTOMER_DIFF)
+LOAD
+    HIERARCHYID  AS CUSTOMER,
+    DESCRIPTION as CUSTOMER_DESC_LVL_,
+    LEVEL as CUSTOMER_PARENT
+Resident D_CUSTOMER;
+
+RENAME FIELD CUSTOMER_DESC_LVL_ TO CUSTOMER_NAME;
+
+drop table D_CUSTOMER;
+///$tab Account Hier
+//Account Hierarchy based on Description
+ACCOUNT:
+NoConcatenate
+HIERARCHY (ACCOUNT, ACCOUNT_PARENT, ACCOUNT_DESC_LVL_, ,,,,)
+LOAD
+    HIERARCHYID  AS ACCOUNT,
+    DESCRIPTION as ACCOUNT_DESC_LVL_,
+    LEVEL as ACCOUNT_PARENT
+Resident D_ACCOUNT;
+
+
+//Remove Parent, Rename Acct Description back to Original  (Lowest Level)
+RENAME FIELD ACCOUNT_DESC_LVL_ TO ACCOUNT_DESCRIPTION;
+DROP FIELD ACCOUNT_PARENT
+FROM ACCOUNT;
+
+
+//Account Hierarchy based on ID
+ACCOUNT_LVL:
+NoConcatenate
+HIERARCHY (ACCOUNT, ACCOUNT_PARENT, ACCOUNT_LVL_, ,,,,)
+LOAD
+    DESCRIPTION,
+    HIERARCHYID  AS ACCOUNT,
+    HIERARCHYID  AS ACCOUNT_LVL_,
+    LEVEL as ACCOUNT_PARENT
+Resident D_ACCOUNT;
+
+
+//Only keep ACCOUNT & ACCOUNT_LVL_1,2,3... fields
+DROP FIELD ACCOUNT_LVL_, ACCOUNT_PARENT, DESCRIPTION
+FROM ACCOUNT_LVL;
+
+//join Account ID Levels to Account, then drop
+LEFT JOIN(ACCOUNT)
+LOAD * RESIDENT ACCOUNT_LVL; DROP TABLE ACCOUNT_LVL;
+
+
+// Account Node , account hier based on Description + extra account hier descriptions?
+
+ACCOUNT_NODE:
+NoConcatenate
+HierarchyBelongsTo (ACCOUNT, ACCOUNT_PARENT, ACCOUNT_DESC_LVL_,ACCOUNT_ANCESTOR_ID, ACCOUNT_ANCESTOR, ACCOUNT_DIFF)
+LOAD
+    HIERARCHYID  AS ACCOUNT,
+    DESCRIPTION as ACCOUNT_DESC_LVL_,
+    LEVEL as ACCOUNT_PARENT
+Resident D_ACCOUNT;
+
+RENAME FIELD ACCOUNT_DESC_LVL_ TO ACCOUNT_NAME;
+
+drop table D_ACCOUNT;
+
+///$tab Product Hier
+//PRODUCT Hierarchy based on Description
+PRODUCT:
+NoConcatenate
+HIERARCHY (PRODUCT, PRODUCT_PARENT, PRODUCT_DESC_LVL_, ,,,,)
+LOAD
+    HIERARCHYID  AS PRODUCT,
+    DESCRIPTION as PRODUCT_DESC_LVL_,
+    LEVEL as PRODUCT_PARENT
+Resident D_PRODUCT;
+
+
+//Remove Parent, Rename Acct Description back to Original  (Lowest Level)
+RENAME FIELD PRODUCT_DESC_LVL_ TO PRODUCT_DESCRIPTION;
+DROP FIELD PRODUCT_PARENT
+FROM PRODUCT;
+
+
+//PRODUCT Hierarchy based on ID
+PRODUCT_LVL:
+NoConcatenate
+HIERARCHY (PRODUCT, PRODUCT_PARENT, PRODUCT_LVL_, ,,,,)
+LOAD
+    DESCRIPTION,
+    HIERARCHYID  AS PRODUCT,
+    HIERARCHYID  AS PRODUCT_LVL_,
+    LEVEL as PRODUCT_PARENT
+Resident D_PRODUCT;
+
+
+//Only keep PRODUCT & PRODUCT_LVL_1,2,3... fields
+DROP FIELD PRODUCT_LVL_, PRODUCT_PARENT, DESCRIPTION
+FROM PRODUCT_LVL;
+
+//join PRODUCT ID Levels to PRODUCT, then drop
+LEFT JOIN(PRODUCT)
+LOAD * RESIDENT PRODUCT_LVL; DROP TABLE PRODUCT_LVL;
+
+
+// PRODUCT Node , PRODUCT hier based on Description + extra PRODUCT hier descriptions?
+
+PRODUCT_NODE:
+NoConcatenate
+HierarchyBelongsTo (PRODUCT, PRODUCT_PARENT, PRODUCT_DESC_LVL_,PRODUCT_ANCESTOR_ID, PRODUCT_ANCESTOR, PRODUCT_DIFF)
+LOAD
+    HIERARCHYID  AS PRODUCT,
+    DESCRIPTION as PRODUCT_DESC_LVL_,
+    LEVEL as PRODUCT_PARENT
+Resident D_PRODUCT;
+
+RENAME FIELD PRODUCT_DESC_LVL_ TO PRODUCT_NAME;
+
+drop table D_PRODUCT;
+///$tab PC Hier
+//PC Hierarchy based on Description
+PC:
+NoConcatenate
+HIERARCHY (PC, PC_PARENT, PC_DESC_LVL_, ,,,,)
+LOAD
+    HIERARCHYID  AS PC,
+    DESCRIPTION as PC_DESC_LVL_,
+    LEVEL as PC_PARENT
+Resident D_PC;
+
+
+//Remove Parent, Rename Acct Description back to Original  (Lowest Level)
+RENAME FIELD PC_DESC_LVL_ TO PC_DESCRIPTION;
+DROP FIELD PC_PARENT
+FROM PC;
+
+
+//PC Hierarchy based on ID
+PC_LVL:
+NoConcatenate
+HIERARCHY (PC, PC_PARENT, PC_LVL_, ,,,,)
+LOAD
+    DESCRIPTION,
+    HIERARCHYID  AS PC,
+    HIERARCHYID  AS PC_LVL_,
+    LEVEL as PC_PARENT
+Resident D_PC;
+
+
+//Only keep PC & PC_LVL_1,2,3... fields
+DROP FIELD PC_LVL_, PC_PARENT, DESCRIPTION
+FROM PC_LVL;
+
+//join PC ID Levels to PC, then drop
+LEFT JOIN(PC)
+LOAD * RESIDENT PC_LVL; DROP TABLE PC_LVL;
+
+
+// PC Node , PC hier based on Description + extra PC hier descriptions?
+
+PC_NODE:
+NoConcatenate
+HierarchyBelongsTo (PC, PC_PARENT, PC_DESC_LVL_,PC_ANCESTOR_ID, PC_ANCESTOR, PC_DIFF)
+LOAD
+    HIERARCHYID  AS PC,
+    DESCRIPTION as PC_DESC_LVL_,
+    LEVEL as PC_PARENT
+Resident D_PC;
+
+RENAME FIELD PC_DESC_LVL_ TO PC_NAME;
+
+drop table D_PC;
+///$tab Dimensions
+//Customer ID Join
+Left Join(CUSTOMER_NODE)
+LOAD CUSTOMERID AS CUSTOMER,
+	CUSTOMERTYPEID;
+SELECT CUSTOMERID,
+	CUSTOMERTYPEID
+FROM $(vDataSource)`fi_customer`;
+
+//Accounts Type ID	
+LEFT JOIN(ACCOUNT_NODE)
+LOAD ACCOUNTID as ACCOUNT, 
+	ACCOUNTTYPEID;
+SELECT ACCOUNTID,
+	ACCOUNTTYPEID
+FROM $(vDataSource)`fi_glaccounts`;
+
+//%ForecastKey
+// ACCOUNT_TEMP:
+// LOAD 
+// 	ACCOUNTTYPEID&PC_DESC_LVL_3 as %ForecastKey,
+//     *
+// Resident ACCOUNT_NODE;
+
+// Drop table ACCOUNT_NODE;
+
+// Rename table ACCOUNT_TEMP to ACCOUNT_NODE;
+
+
+//Products Dim Join
+LEFT JOIN(PRODUCT_NODE)
+LOAD PRODUCTID AS PRODUCT, 
+	TYPECODE, 
+	PRODUCTCATEGORYID, 
+// 	LANGUAGE, 
+	SUPPLIER_PARTNERID, 
+	TAXTARIFFCODE, 
+	QUANTITYUNIT, 
+	WEIGHTMEASURE, 
+	WEIGHTUNIT, 
+	CURRENCY, 
+	PRICE, 
+	WIDTH, 
+	DEPTH, 
+	HEIGHT, 
+	DIMENSIONUNIT, 
+// 	CREATEDBY, 
+// 	CREATEDAT, 
+// 	CHANGEDBY, 
+// 	CHANGEDAT, 
+	PRODUCTPICURL;
+SELECT PRODUCTID,
+	TYPECODE,
+	PRODUCTCATEGORYID,
+	`LANGUAGE`,
+	`SUPPLIER_PARTNERID`,
+	TAXTARIFFCODE,
+	QUANTITYUNIT,
+	WEIGHTMEASURE,
+	WEIGHTUNIT,
+	CURRENCY,
+	PRICE,
+	WIDTH,
+	DEPTH,
+	HEIGHT,
+	DIMENSIONUNIT,
+	CREATEDBY,
+	CREATEDAT,
+	CHANGEDBY,
+	CHANGEDAT,
+	PRODUCTPICURL
+FROM $(vDataSource)`fi_products`;
+
+//join Product_CAT Texts to Prod, short desc add
+LEFT JOIN(PRODUCT_NODE)
+LOAD PRODCATEGORYID as PRODUCTCATEGORYID, 
+	//LANGUAGE, 
+	SHORT_DESCR as PRODCATEGORY;
+	//MEDIUM_DESCR, 
+	//LONG_DESCR;
+SELECT PRODCATEGORYID,
+	`LANGUAGE`,
+	`SHORT_DESCR`,
+	`MEDIUM_DESCR`,
+	`LONG_DESCR`
+FROM $(vDataSource)`fi_productcategorytexts`;
+
+//join PROD Short Text to Prod, short desc add
+
+LEFT JOIN(PRODUCT_NODE)
+LOAD PRODUCTID as PRODUCT, 
+	//LANGUAGE, 
+	SHORT_DESCR as PRODUCT_SHORT_DESCR;
+	//MEDIUM_DESCR, 
+	//LONG_DESCR;
+SELECT PRODUCTID,
+	`LANGUAGE`,
+	`SHORT_DESCR`,
+	`MEDIUM_DESCR`,
+	`LONG_DESCR`
+FROM $(vDataSource)`fi_producttexts`;
+
+
+
+//Profit Center Names Join, based on name Med Short
+LEFT JOIN(PC_NODE)
+LOAD PROFITCENTERID as PC, 
+	//LANGUAGE, 
+	SHORT_DESCR as PC_SHORT_DESCR, 
+	MEDIUM_DESCR as PC_MEDIUM_DESCR;
+	//LONG_DESCR;=
+SELECT PROFITCENTERID,
+	`LANGUAGE`,
+	`SHORT_DESCR`,
+	`MEDIUM_DESCR`,
+	`LONG_DESCR`
+FROM $(vDataSource)`fi_profitcentertexts`;
+
+
+
+///$tab Vizlib Template
+/****************************************************************
+SUB clsp_FinanceReport
+This sub-routine will vastly simplify the use of the Finance Report extension. 
+The extension will work also with any other load script but please study the section in the readme-file for specifics on how to set up the data.
+*****************************************************************/
+
+SUB clsp_FinanceReport
+
+TRACE ****** clsp_FinanceReport ********;
+
+      //File path and File name. Defined in clsp_FinanceReport_Options
+      LET vL.FilePath=PEEK('clsp_FilePath');
+      LET vL.FileName=PEEK('clsp_FileName');
+
+DROP TABLE clsp_FinanceReport_Options;
+
+TRACE ******Variables for Export *******;
+//Variables for the export format. Used in the property panel as a default option. 
+//Typically the export format is the same as the table format but that can be changed in the Excel-settings
+//Cofigure this setting in 'Export Number Formats' in the extension. 
+//It is also possible to manually set another format in the extension setting if one instance of the extension should have a different format.
+
+  	  variablesForExport:
+      LOAD 
+          RowNumExportFormatCode
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is tNumFormat)
+      
+      ;
+      
+FOR vExportFormat = 1 to NoOfRows('variablesForExport')
+   
+   	  IF LEN($(vExportFormat))=1 THEN
+      LET vExportNumber= 0&$(vExportFormat);
+      ELSE
+      LET vExportNumber =$(vExportFormat);
+      END IF
+
+      LET vCLFRExportFormat$(vExportNumber) = PEEK('RowNumExportFormatCode',vExportFormat-1,'variablesForExport');
+
+
+NEXT vExportFormat
+
+
+
+DROP TABLE variablesForExport;
+
+TRACE ****** Read Excel Options *******;
+
+      //Options defined in excel file  
+	  clsp_FinanceOptions:  
+      LOAD DISTINCT
+          Sheet,
+          TransactionTable,
+          AccountField,
+          ExtraGroups,
+          ExtraMappingIntervals
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, header is 1 lines, table is Options)
+      where Len(trim(Sheet))>0
+      //AND Sheet='OH'
+      ; //Making sure no invalid rows are loaded
+
+
+
+//Starting the loop for each finance report
+
+FOR clsp_FinceReportRow = 0 TO NoOfRows('clsp_FinanceOptions')-1;
+
+let clsp_FinanceReportNoOfSetups=NoOfRows('clsp_FinanceOptions'); //Used only for the trace below
+let clsp_FinanceReportNowLoadingSetup=$(clsp_FinceReportRow)+1; //Used only for the trace below
+TRACE '****** Loading $(clsp_FinanceReportNowLoadingSetup) of $(clsp_FinanceReportNoOfSetups) Finance Report setups ******';
+
+//Varibles for the finance report
+LET vL.SheetName= PEEK('Sheet',$(clsp_FinceReportRow),'clsp_FinanceOptions');
+LET vL.TransactionTable= PEEK('TransactionTable',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Name of the transaction table
+LET vL.AccountField= PEEK('AccountField',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Field name for the account key
+LET vL.ExtraGroups= PEEK('ExtraGroups',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Extra groups name
+LET vL.ExtraMappingIntervals= PEEK('ExtraMappingIntervals',$(clsp_FinceReportRow),'clsp_FinanceOptions'); //Used e.g for cost center
+
+//If no Extra mapping field, set variable, used later 
+IF LEN('$(vL.ExtraMappingIntervals)')<1 THEN
+LET vL.ExtraMappingIntervals='NOEXTRAFIELD';
+END IF
+
+
+
+TRACE ****** Import Data from Excel *******;
+
+
+      clsp_importData_$(vL.SheetName):
+      LOAD 
+      	*,
+       DUAL([tmpReportRow], 
+       		//Building dual value for the report row (Details described on each row below.)
+       		([%ReportRowID]* 100000) + 							//Set report row number can be anything from 1 to infinity
+            ([RowNumExportFormatCode]*1000)+					//Set the export format from 1 to 99.
+            ([StyleNum] * 10)+									//Style is from 0 to 99
+            [preventExpand]) 					AS [reportRow]	//Should always be either 1 or 0 (1 prevents expand)
+      
+      ;
+      
+      LOAD
+        //Grain=====================================================================================
+        *,
+        [RowNumber]								AS [%ReportRowID],
+        //Dimension=================================================================================
+		IF([RowType]='EmptyRow',
+        	IF(ISNULL([ReportRow]),
+        	' ',
+            [ReportRow]),
+            [ReportRow])						AS [tmpReportRow],
+        IF([PreventExpand]=1,
+        	0,
+        	1)									AS [preventExpand],
+        IF([RowType]='EmptyRow',2,
+        	IF(ISNULL([Calculation]),
+            1,
+        Calculation))							AS [calculation],
+	  	1										AS [NOEXTRAFIELD]
+        //Measure===================================================================================
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is $(vL.SheetName))
+     where Len(trim(RowNumber))>0; //Rows without a row number are excluded to avoid loading incomplete rows
+     
+
+//Used later in the logic for subtotals etc.
+LET vL.MinRowNumber = PEEK('%ReportRowID',0);
+LET vL.MaxRowNumber = PEEK('%ReportRowID',-1);
+
+     
+DROP FIELD tmpReportRow, preventExpand,ReportRow,Calculation;
+DROP FIELDS $(vL.ExtraGroups);
+
+IF len(vL.ExtraGroups)>0 THEN
+
+TRACE ****** Extra Groups ******;
+
+//1. Get numeric value for each Report Row
+//The reportRow is the most granular level of the report
+      map_ReportRowNumericValue_$(vL.SheetName):
+      MAPPING 
+      LOAD 
+          TEXT(reportRow) 																			AS reportRow,
+          NUM(reportRow) 																			AS reportRowNumeric
+      RESIDENT clsp_importData_$(vL.SheetName)
+      ;
+
+//Looping through any extra groups (columns) specified in the Excel-file.
+FOR EACH vL.ExtraColumn in $(vL.ExtraGroups)
+
+//2. Get min row number for each extra grouping
+//NOTE! The extra colmns need to be an aggregatation of the rows!
+      map_MinRowGroupNumeric_$(vL.SheetName):
+      MAPPING 
+      LOAD 
+          TEXT($(vL.ExtraColumn)) 									 								AS $(vL.ExtraColumn),
+          MIN(APPLYMAP('map_ReportRowNumericValue_$(vL.SheetName)',TEXT(ReportRow))) 								AS MinRowGroupNumeric
+
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is $(vL.SheetName))
+      WHERE Len(Trim(RowNumber))>0
+      GROUP BY $(vL.ExtraColumn)
+      ;
+
+      
+//3. Add extra columns to the data model
+//NOTE! The extra colmns need to be an aggregatation of the rows!
+      LEFT JOIN(clsp_importData_$(vL.SheetName))
+      LOAD
+		  RowNumber,
+          DUAL(TEXT(ReportRow),APPLYMAP('map_ReportRowNumericValue_$(vL.SheetName)',TEXT(ReportRow))) 				AS reportRow,
+          DUAL(TEXT($(vL.ExtraColumn)),APPLYMAP('map_MinRowGroupNumeric_$(vL.SheetName)',TEXT($(vL.ExtraColumn))))  AS $(vL.ExtraColumn)
+      FROM [$(vL.FilePath)/$(vL.FileName)]
+      (ooxml, embedded labels, table is $(vL.SheetName))
+      WHERE Len(Trim(RowNumber))>0
+      ;
+
+NEXT vL.ExtraColumn
+
+ELSE
+TRACE ****** No Extra Groups Used ******;
+ENDIF
+
+TRACE ***** Regular Rows ******;
+
+      clsp_$(vL.SheetName):
+      LOAD
+         *,
+         IF(ISTEXT([accountFrom]),1,0) 			AS [isText],
+      ;
+      LOAD DISTINCT 
+        //Grain=====================================================================================
+        [%ReportRowID],
+        //Dimension=================================================================================
+        [%ReportRowID]							AS [rowNumber],
+        IF(INDEX([accounts],'-')>0,								//Identifying intervals
+            SUBFIELD([accounts],'-',1),							
+                [accounts])						AS [accountFrom],
+
+        IF(INDEX([accounts],'-')>0,
+             SUBFIELD([accounts],'-',2),
+                [accounts])						AS [accountTo],
+		ExtraIntervall			    			AS  ExtraIntervallMapping,
+       
+        //Measure===================================================================================
+        ;
+        LOAD 
+        [%ReportRowID]							AS [%ReportRowID],
+        
+        $(vL.ExtraMappingIntervals)				AS ExtraIntervall,
+        SUBFIELD([Accounts], ',') 				AS [accounts] //Creating one new row per account or account interval in the list
+       RESIDENT clsp_importData_$(vL.SheetName)
+       WHERE [RowType]='Regular'
+       ORDER BY [%ReportRowID]
+       ;
+
+       tmp_AccountsWithText:
+       LOAD
+       [%ReportRowID]		   			  AS [%ReportRowID],
+       [rowNumber]			   			  AS [rowNumber],
+       [accountFrom]           			  AS $(vL.AccountField),
+       ExtraIntervallMapping 			  AS ExtraIntervallMapping
+       RESIDENT clsp_$(vL.SheetName)
+       WHERE [isText]=1
+       ;
+       
+//Matching the account intervals
+//Only accounts that are also in the transaction table will be included so make sure the transaction table is complete
+//(i.e. the transaction table must include any budgets, forecasts etc before this script is run.)
+       INNER JOIN(clsp_$(vL.SheetName))
+       cl_IntervalTable:
+       INTERVALMATCH($(vL.AccountField))
+       LOAD
+       [accountFrom],
+       [accountTo]
+       RESIDENT clsp_$(vL.SheetName)
+       WHERE [isText]=0
+       ORDER BY [%ReportRowID]
+       ;
+
+//Adding non-numeric accounts (since they cannot be matched by the interval match)
+       CONCATENATE(clsp_$(vL.SheetName))
+       LOAD
+       [%ReportRowID],
+       [rowNumber],
+       $(vL.AccountField),
+       ExtraIntervallMapping
+       RESIDENT tmp_AccountsWithText
+       ;
+
+DROP TABLE tmp_AccountsWithText;
+
+DROP FIELDS [accountFrom], [accountTo], [isText];
+
+//This part is only run if we have an extra field for matching intervals
+//(i.e. if more than accounts are used for mapping report rows to the transactions)
+//The section will use the combination of account intervals and the extra intervals.
+IF '$(vL.ExtraMappingIntervals)'<>'NOEXTRAFIELD'  THEN
+
+TRACE ***** ExtraMappingIntervals ******;
+
+      clsp_$(vL.SheetName)_costcenters_interval:
+      LOAD
+         *,
+         IF(ISTEXT($(vL.ExtraMappingIntervals)From),1,0) 	AS [isText]
+      ;
+      LOAD DISTINCT 
+        //Grain=====================================================================================
+        //Dimension=================================================================================
+        IF(INDEX($(vL.ExtraMappingIntervals)Mapping,'-')>0,
+            SUBFIELD($(vL.ExtraMappingIntervals)Mapping,'-',1),
+                $(vL.ExtraMappingIntervals)Mapping)		AS $(vL.ExtraMappingIntervals)From,
+
+        IF(INDEX($(vL.ExtraMappingIntervals)Mapping,'-')>0,
+             SUBFIELD($(vL.ExtraMappingIntervals)Mapping,'-',2),
+                $(vL.ExtraMappingIntervals)Mapping)		AS $(vL.ExtraMappingIntervals)To,
+        $(vL.ExtraMappingIntervals)Mapping,
+        $(vL.AccountField),
+        [%ReportRowID],
+        //Measure===================================================================================
+        ;
+        LOAD
+        [%ReportRowID],
+        TRIM(SUBFIELD(ExtraIntervallMapping, ','))  AS $(vL.ExtraMappingIntervals)Mapping,
+        $(vL.AccountField)						  AS $(vL.AccountField)
+       RESIDENT clsp_$(vL.SheetName)
+       ;
+       
+DROP FIELD $(vL.ExtraMappingIntervals)Mapping FROM clsp_$(vL.SheetName);
+
+DROP FIELD $(vL.ExtraMappingIntervals) FROM clsp_importData_$(vL.SheetName) ;
+
+      clsp_$(vL.SheetName)_costcenters:
+      LOAD 
+         $(vL.AccountField)									AS Acc,
+         [%ReportRowID],
+         $(vL.ExtraMappingIntervals)From + ITERNO() - 1  	AS ExtraMapping
+         WHILE $(vL.ExtraMappingIntervals)From + ITERNO() - 1 <= $(vL.ExtraMappingIntervals)To;
+      LOAD
+          $(vL.ExtraMappingIntervals)From,
+          $(vL.ExtraMappingIntervals)To,
+          $(vL.AccountField),
+          [%ReportRowID]
+      RESIDENT clsp_$(vL.SheetName)_costcenters_interval
+      WHERE [isText]=0; //Get only the numeric intervals
+      ;
+      
+       CONCATENATE(clsp_$(vL.SheetName)_costcenters)
+       LOAD
+       [%ReportRowID]					AS [%ReportRowID],
+       $(vL.AccountField)				AS Acc,
+       $(vL.ExtraMappingIntervals)From	AS ExtraMapping
+       RESIDENT clsp_$(vL.SheetName)_costcenters_interval
+       WHERE [isText]=1; //Adding the text values
+       
+
+      
+DROP TABLE clsp_$(vL.SheetName)_costcenters_interval;
+
+//Get all unique values from the transaction table to make sure we only create values that exist i the transaction table
+       map_ExtraMappingExists:
+       MAPPING
+       LOAD DISTINCT
+       $(vL.ExtraMappingIntervals),
+       1
+       RESIDENT $(vL.TransactionTable)
+       ;
+       
+//Create extra rows for all possible combinations (where they exist in the transaction table)
+       LEFT JOIN(clsp_$(vL.SheetName))
+       LOAD DISTINCT
+       //JoinKey=================================================================================
+       [Acc]							AS $(vL.AccountField),
+       [%ReportRowID],
+       //Dimensions=============================================================================
+       [Acc]&'|'&[ExtraMapping] 		AS [tmp_FinanceReportID], //The account plus the extra mapping table
+       [ExtraMapping]					AS [ExtraMapping]
+       //Measures================================================================================
+       RESIDENT clsp_$(vL.SheetName)_costcenters
+       WHERE APPLYMAP('map_ExtraMappingExists',[ExtraMapping],0)=1
+       ;
+
+UNMAP map_ExtraMappingExists;
+      
+DROP TABLE clsp_$(vL.SheetName)_costcenters;
+
+RENAME TABLE clsp_$(vL.SheetName) TO tmp_clsp_$(vL.SheetName);
  
-
-
-AccMaster:
-LOAD [Reporting Code 5],
-	[Reporting Code 4],
-	AccountMasterKey,
-	[Account ID],
-	[Account Description],
-	[Account Type],
-	[Account Sub Type],
-	[Account Number],
-	Subsidiary,
-	Company,
-	GMMCU,
-	GMPEC,
-	[Account Level],
-	[Reporting Code 1],
-	[Reporting Code 2],
-	[Reporting Code 3],
-	[Reporting Code 6],
-	[Reporting Code 7],
-	[Reporting Code 8],
-	[Reporting Code 9],
-	[Reporting Code 10],
-	[Reporting Code 11],
-	[Reporting Code 12],
-	[Reporting Code 13],
-	[Reporting Code 14],
-	[Reporting Code 15],
-	[Reporting Code 4 Num],
-	[Reporting Code 5 Num]
-FROM data\AccMaster.QVD (qvd);
-///$tab FinalAcctBalances
-FinalAccBalances:
-LOAD CompanyYearKey,
-	AccountMasterKey,
-	BalanceDetailKey,
-	AggKey,
-	TrialBalanceKey,
-	Century,
-	GBCO,
-	[Fiscal Year]+$(yearOffset) as [Fiscal Year], //wms
-	[Ledger Type],
-	Month,
-	ceil(MonthNum/3) as Quarter, //WMS
-	MonthNum,
-	YearMonth as OriginalYearMonth,
-	//YearMonth,
-	date(monthend(makedate([Fiscal Year]+$(yearOffset),MonthNum,1)),'MMM-YY') as YearMonth,
-	//dual(Month&'-'& right(([Fiscal Year]+$(yearOffset)),2),makedate(Month&'-'& right(([Fiscal Year]+$(yearOffset)),2)))as YearMonth, //wms
-	[Fiscal Year]+$(yearOffset)&MonthNum as YearMonthNum, //wms
-	//YearMonthNum,
-	CurrentFiscalYear+$(yearOffset) as CurrentFiscalYear,
-	CurrentFiscalMonth,
-	CurrentFiscalYearMonth,
-	[Period Open/Closed],
-	Amount,
-	[Budget Amount]
-FROM data\FinalAccBalances.QVD (qvd);
-
-///$tab FinalYTDMTD
-FinalYTDMTD:
-Directory;
-LOAD AggKey,
-	[YTD Amount],
-	[LY YTD Amount],
-	[MTD Amount],
-	[LY MTD Amount],
-	[Previous Month MTD Amount],
-	[Previous Month LY MTD Amount],
-	[YTD Budget Amount],
-	[MTD Budget Amount],
-	[Previous Month MTD Budget Amount]
-FROM data\FinalYTDMTD.QVD (qvd);
-
-
-//load * from .qvd;
-
-AccountDetail:
-LOAD BalanceDetailKey,
-	[Voucher Number],
-	[G/L Date] as originalGLDate, //wms
-	setDateYear(Date([G/L Date],'m/d/yyyy'), year([G/L Date])+$(yearOffset)) AS [G/L Date], //wms 
-	[Transaction Amount],
-	[Voucher Description],
-	[Voucher Remark],
-	SubLedger,
-	[SubLedger Type]
-FROM data\AccountDetail.QVD (qvd);
-
-
-QuickRatioYTD:
-LOAD Company,
-	[QRATIO - YTD Current Assets Amount],
-	[QRATIO - YTD Current Liabilities Amount],
-	[QRATIO - LY YTD Current Assets Amount],
-	[QRATIO - LY YTD Current Liabilities Amount],
-	[QRATIO - PM YTD Current Assets Amount],
-	[QRATIO - PM YTD Current Liabilities Amount]
-FROM data\QuickRatioYTD.QVD (qvd);
-
-
-
-QuickRatio:
-LOAD CompanyYearKey,
-	[QRATIO - Current Assets Amount],
-	[QRATIO - Current Liabilities Amount]
-FROM data\QuickRatio.QVD (qvd);
-
-
-
-CurrentRatioYTD:
-LOAD Company,
-	[CRATIO - YTD Current Assets Amount],
-	[CRATIO - YTD Current Liabilities Amount],
-	[CRATIO - LY YTD Current Assets Amount],
-	[CRATIO - LY YTD Current Liabilities Amount],
-	[CRATIO - PM YTD Current Assets Amount],
-	[CRATIO - PM YTD Current Liabilities Amount]
-FROM data\CurrentRatioYTD.QVD (qvd);
-
-
-ROAYTD:
-LOAD Company,
-	[ROA - YTD Net Income Amount],
-	[ROA - YTD Assets Amount],
-	[ROA - LY YTD Net Income Amount],
-	[ROA - LY YTD Assets Amount],
-	[ROA - PM YTD Net Income Amount],
-	[ROA - PM YTD Assets Amount]
-FROM data\ROAYTD.QVD (qvd);
-
-
-NPARYTD:
-LOAD Company,
-	[NPAR - YTD Notes Payable Amount],
-	[NPAR - YTD Accounts Receivables Amount],
-	[NPAR - LY YTD Notes Payable Amount],
-	[NPAR - LY YTD Accounts Receivables Amount],
-	[NPAR - PM YTD Notes Payable Amount],
-	[NPAR - PM YTD Accounts Receivables Amount]
-FROM data\NPARYTD.QVD (qvd);
-
-
-DebtToEquityYTD:
-LOAD Company,
-	[D/E - YTD Liabilities Amount],
-	[D/E - YTD Equity Amount],
-	[D/E - LY YTD Liabilities Amount],
-	[D/E - LY YTD Equity Amount],
-	[D/E - PM YTD Liabilities Amount],
-	[D/E - PM YTD Equity Amount]
-FROM data\DebtToEquityYTD.QVD (qvd);
-
-
-
-STAYTD:
-LOAD Company,
-	[STA - YTD Sales Amount],
-	[STA - YTD Assets Amount],
-	[STA - LY YTD Sales Amount],
-	[STA - LY YTD Assets Amount],
-	[STA - PM YTD Sales Amount],
-	[STA - PM YTD Assets Amount]
-FROM data\STAYTD.QVD (qvd);
-
-
-ROEYTD:
-LOAD Company,
-	[ROE - YTD Net Income Amount],
-	[ROE - YTD Equity Amount],
-	[ROE - LY YTD Net Income Amount],
-	[ROE - LY YTD Equity Amount],
-	[ROE - PM YTD Net Income Amount],
-	[ROE - PM YTD Equity Amount]
-FROM data\ROEYTD.QVD (qvd);
-
-
-
-
-FiveMjrAccGrp3:
-LOAD [5 Sub Major Account Number],
-	[5 Sub Major Account Description],
-	StartNo5,
-	EndNo5
-FROM data\FiveMjrAccGrp3.QVD (qvd);
-
-
-FourMjrAccGrp3:
-LOAD [Sub Major Account Number],
-	[Sub Major Account Description],
-	StartNo4,
-	EndNo4
-FROM data\FourMjrAccGrp3.QVD (qvd);
-
-
-MjrAccGrp3:
-LOAD [Major Account Number],
-	[Major Account Description],
-	StartNo,
-	EndNo
-FROM data\MjrAccGrp3.QVD (qvd);
-
-
-EBITDAYTD:
-LOAD Company,
-	[EBITDA - YTD Amount],
-	[EBITDA - LY YTD Amount],
-	[EBITDA - PM YTD Amount]
-FROM data\EBITDAYTD.QVD (qvd);
-
-
-
-FinalAccTrialBalances:
-LOAD TrialBalanceKey,
-	[Opening Balance Amount],
-	[Closing Balance Amount],
-	[Trial Balance Amount]
-FROM data\FinalAccTrialBalances.QVD (qvd);
-
-
-PLMatch:
-LOAD [P&L Level],
-	[P&L Heading],
-	PLStart,
-	PLEnd
-FROM data\PLMatch.QVD (qvd);
-
-
-CFMatch:
-LOAD [Cash Flow Level],
-	[Cash Flow Heading],
-	CFStart,
-	CFEnd
-FROM data\CFMatch.QVD (qvd);
-
-
-[MjrAccGrp3-1]:
-LOAD [Account Number],
-	StartNo,
-	EndNo
-FROM [data\MjrAccGrp3-1.QVD] (qvd);
-
-
-
-[PLMatch-1]:
-LOAD [Reporting Code 4 Num],
-	PLStart,
-	PLEnd
-FROM [data\PLMatch-1.QVD] (qvd);
-
-
-[FourMjrAccGrp3-1]:
-LOAD [Account Number],
-	StartNo4,
-	EndNo4
-FROM [data\FourMjrAccGrp3-1.QVD] (qvd);
-
-
-[FiveMjrAccGrp3-1]:
-LOAD [Account Number],
-	StartNo5,
-	EndNo5
-FROM [data\FiveMjrAccGrp3-1.QVD] (qvd);
-
-
-[QuickRatio]:
-LOAD CompanyYearKey,
-	[QRATIO - Current Assets Amount],
-	[QRATIO - Current Liabilities Amount]
-FROM data\QuickRatio.QVD (qvd);
-
-
-[CFMatch-1]:
-LOAD [Reporting Code 5 Num],
-	CFStart,
-	CFEnd
-FROM [data\CFMatch-1.QVD] (qvd);
-
-
-DebtToEquity:
-LOAD CompanyYearKey,
-	[D/E - Liabilities Amount],
-	[D/E - Equity Amount]
-FROM data\DebtToEquity.QVD (qvd);
-
-
-CurrentRatio:
-LOAD CompanyYearKey,
-	[CRATIO - Current Assets Amount],
-	[CRATIO - Current Liabilities Amount]
-FROM data\CurrentRatio.QVD (qvd);
-
-
-ROE:
-LOAD CompanyYearKey,
-	[ROE - Net Income Amount],
-	[ROE - Equity Amount]
-FROM data\ROE.QVD (qvd);
-
-
-NPAR:
-LOAD CompanyYearKey,
-	[NPAR - Notes Payable Amount],
-	[NPAR - Accounts Receviables Amount]
-FROM data\NPAR.QVD (qvd);
-
-
-STA:
-LOAD CompanyYearKey,
-	[STA - Sales Amount],
-	[STA - Assets Amount]
-FROM data\STA.QVD (qvd);
-
-
-ROA:
-LOAD CompanyYearKey,
-	[ROA - Net Income Amount],
-	[ROA - Assets Amount]
-FROM data\ROA.QVD (qvd);
-
-
-[RptCode2-1]:
-LOAD Name,
-	[Email Address]
-FROM [data\RptCode2-1.QVD] (qvd);
-
-
-INL10F:
-LOAD GMMCU,
-	[Business Unit]
-FROM data\INL10F.QVD (qvd);
-
-
-AccountSubType:
-LOAD [Account Sub Type],
-	[Account Sub Type Description]
-FROM data\AccountSubType.QVD (qvd);
-
-
-EBITDA:
-LOAD CompanyYearKey,
-	[EBITDA - Amount]
-FROM data\EBITDA.QVD (qvd);
-
-
-RptCode1:
-LOAD [Reporting Code 1 Description],
-	[Reporting Code 1]
-FROM data\RptCode1.QVD (qvd);
-
-
-RptCode2:
-Directory;
-LOAD [Reporting Code 2 Description],
-	[Reporting Code 2]
-FROM data\RptCode2.QVD (qvd);
-
+       NOCONCATENATE
+       clsp_$(vL.SheetName):
+       LOAD
+       *,
+       IF(ISNULL([tmp_FinanceReportID]),$(vL.AccountField), [tmp_FinanceReportID]) AS [%FinanceReportID]
+       RESIDENT tmp_clsp_$(vL.SheetName)
+       WHERE NOT ISNULL($(vL.AccountField));
+
+DROP FIELD ExtraMapping, [tmp_FinanceReportID];
+
+DROP TABLE tmp_clsp_$(vL.SheetName);
+
+
+
+       map_FinanceKey:
+	   MAPPING
+       LOAD
+       	[%FinanceReportID],
+        [%FinanceReportID]
+       RESIDENT clsp_$(vL.SheetName)
+       ;
+
+//Adding the new key to the transaction table with an applymap 
+//Using applymap instead of join to be able to set an alternative value
+TRACE ***** Add new key to transaction table *****;
+
+RENAME TABLE $(vL.TransactionTable) TO tmp_$(vL.TransactionTable);
+       NOCONCATENATE
+       $(vL.TransactionTable):
+       LOAD
+       *,
+       APPLYMAP('map_FinanceKey',$(vL.AccountField)&'|'&$(vL.ExtraMappingIntervals),$(vL.AccountField))	AS [%FinanceReportID]
+       RESIDENT tmp_$(vL.TransactionTable)
+       ;
+       
+UNMAP map_FinanceKey;
+
+DROP TABLE tmp_$(vL.TransactionTable);
+DROP FIELD '$(vL.AccountField)' FROM clsp_$(vL.SheetName);
+
+ELSE
+
+TRACE ***** Add new key to transaction table *****;
+
+RENAME TABLE $(vL.TransactionTable) TO tmp_$(vL.TransactionTable);
+ 	
+       NOCONCATENATE
+       $(vL.TransactionTable):
+       LOAD
+       *,
+       $(vL.AccountField)	AS [%FinanceReportID]
+       RESIDENT tmp_$(vL.TransactionTable)
+       ;
+
+DROP TABLE tmp_$(vL.TransactionTable);
+
+TRACE ***** Add new key to report table *****;
+
+RENAME TABLE clsp_$(vL.SheetName) TO tmp_clsp_$(vL.SheetName);
+		
+        NOCONCATENATE
+        clsp_$(vL.SheetName):
+		LOAD
+        	*,
+            $(vL.AccountField) AS [%FinanceReportID]
+        RESIDENT tmp_clsp_$(vL.SheetName);
+        
+DROP TABLE tmp_clsp_$(vL.SheetName);
+DROP FIELD '$(vL.AccountField)' FROM clsp_$(vL.SheetName);
+
+END IF
+
+DROP FIELD [NOEXTRAFIELD];
+
+
+
+//Adding total rows to the report setup
+//this includes logic for running totals and empty rows
+//Empty rows are connected to all other rows and will always display (this can be changed by altering the logic below)
+TRACE ****** Total Rows ******;
+
+      clsp_TotalRows:
+      LOAD
+        //Grain=====================================================================================
+        [%ReportRowID]						AS [totalRowIntervalMatchKey],
+        //Dimension=================================================================================
+        RowType								AS [rowType],
+
+        IF([RowType] <> 'Regular', 
+        	PEEK([RegularMinRow]),
+            IF([RowType] <> PREVIOUS([RowType]), 
+            [%ReportRowID], 
+            PEEK([RegularMinRow]))) 		AS [RegularMinRow],
+        IF([RowType] = 'RunningTotal', -1, 
+        	IF([RowType] <> 'Regular', 
+            PEEK([tmp_RunningSubtotalMinRow]), 
+            	IF(PEEK([tmp_RunningSubtotalMinRow]) = -1 OR ROWNO() = 1, 
+                [%ReportRowID], PEEK([tmp_RunningSubtotalMinRow]))
+                )) 							AS [tmp_RunningSubtotalMinRow],
+       IF(LEFT([RowType],7) = 'Regular', 
+       	[%ReportRowID],
+
+        PEEK(RegularMaxRow)) 				AS [RegularMaxRow],
+        $(vL.MinRowNumber) 					AS [MinRowNumber],
+        $(vL.MaxRowNumber) 					AS [MaxRowNumber],
+        [RowFromOverride]					AS [RowFromOverride],
+        [RowToOverride]						AS [RowToOverride]
+        //Measure===================================================================================
+       RESIDENT clsp_importData_$(vL.SheetName)
+       ORDER BY [%ReportRowID]
+       ;
+       
+      LEFT JOIN (clsp_TotalRows)
+      LOAD DISTINCT
+        //Joinkey=====================================================================================
+        [totalRowIntervalMatchKey]            AS [totalRowIntervalMatchKey],   
+        //Dimensions==================================================================================
+        IF(ISNULL(PEEK([totalRowIntervalMatchKey])),
+            [RegularMinRow],
+            PEEK([totalRowIntervalMatchKey])) AS [MinRunningSubTotal]
+        //Measures====================================================================================
+      RESIDENT clsp_TotalRows
+      WHERE rowType='RunningSubTotal' OR rowType='RunningTotal'
+      ;
+      
+
+      LEFT JOIN (clsp_TotalRows)
+      LOAD DISTINCT
+        //Joinkey=====================================================================================
+        [totalRowIntervalMatchKey]          AS [totalRowIntervalMatchKey],    
+        //Dimensions==================================================================================
+      IF(NOT ISNULL([MinRunningSubTotal]),
+        IF([MinRunningSubTotal]>IF(ISNULL([tmp_RunningSubtotalMinRow]),0,[tmp_RunningSubtotalMinRow]),
+            [MinRunningSubTotal],
+            [tmp_RunningSubtotalMinRow]
+            ),[tmp_RunningSubtotalMinRow])  AS [RunningSubtotalMinRow]
+        //Measures====================================================================================
+      RESIDENT clsp_TotalRows
+      WHERE [rowType]='RunningSubTotal'
+      ;
+
+DROP FIELDS tmp_RunningSubtotalMinRow, MinRunningSubTotal;
+
+
+       clsp_TotalIntervals:
+       LOAD
+         //Grain=====================================================================================
+        [totalRowIntervalMatchKey],
+         //Dimension=================================================================================
+         IF(ISNULL([RowFromOverride]),
+           IF([rowType]='SubTotal',
+              [RegularMinRow],
+              IF([rowType]='RunningSubTotal',
+              [RunningSubtotalMinRow],
+             [MinRowNumber])),
+             [RowFromOverride])				AS [RowFrom],
+		
+		IF(ISNULL([RowToOverride]),
+       		IF([rowType]='EmptyRow',
+       		[MaxRowNumber],
+           [RegularMaxRow]),
+           [RowToOverride])                AS [RowTo]
+        //Measure===================================================================================
+      RESIDENT clsp_TotalRows
+      WHERE NOT MATCH([rowType], 'Regular')
+      ;
+           
+DROP TABLE clsp_TotalRows;
+
+	   clsp_TotalIntervalMatch:
+       NOCONCATENATE
+       INTERVALMATCH([%ReportRowID])
+       LOAD
+       [RowFrom],
+       [RowTo]
+       RESIDENT clsp_TotalIntervals;
+       
+	   LEFT JOIN(clsp_TotalIntervalMatch)
+       LOAD
+       *
+       RESIDENT clsp_TotalIntervals;
+
+DROP TABLE clsp_TotalIntervals;
+       
+       LEFT JOIN(clsp_TotalIntervalMatch)
+       LOAD
+       *
+       RESIDENT clsp_$(vL.SheetName);
+       
+
+       CONCATENATE(clsp_$(vL.SheetName))
+       LOAD DISTINCT
+       [totalRowIntervalMatchKey]	AS [%ReportRowID],
+       [rowNumber],
+       [%FinanceReportID]
+       RESIDENT clsp_TotalIntervalMatch
+       WHERE NOT ISNULL([%FinanceReportID])
+       ;
+   
+   
+DROP TABLE clsp_TotalIntervalMatch;
+
+//Adding all the data from the original Excel-template (such as RowNumFormat, RowGroup, ReportRow etc.
+	  JOIN(clsp_$(vL.SheetName))
+      LOAD
+      	*
+      RESIDENT clsp_importData_$(vL.SheetName);
+      
+
+DROP TABLE clsp_importData_$(vL.SheetName);
+
+TRACE ***** Rename Fields ******;
+//Renaming all the fields to include a prefix
+
+FOR i = 1 to NoOfFields('clsp_$(vL.SheetName)')
+
+Fields:
+LOAD
+  FieldName($(i),'clsp_$(vL.SheetName)') as FieldName
+AutoGenerate 1
+;
+
+NEXT i
+
+//Adding the prefix to make sure the names are unique when using multiple reports
+//(If custom names are needed an alternative mapping table should be used here. Do not change in other places in the script!)
+map_RenameFields_$(vL.SheetName):
+MAPPING
+LOAD DISTINCT
+	FieldName,
+    '$(vL.SheetName)'&'_' &FieldName
+RESIDENT Fields;
+
+DROP TABLE Fields;
+RENAME FIELDS USING map_RenameFields_$(vL.SheetName);
+
+UNMAP map_RenameFields_$(vL.SheetName);
+
+NEXT clsp_FinceReportRow
+
+DROP TABLE clsp_FinanceOptions;
+
+END SUB
+
+
+
+/************************************
+There is typically no need to change these settings.
+Change the data connection path to point to the files and make your settings in the first tab of the Excel-file.
+************************************/
+clsp_FinanceReport_Options:
+LOAD
+//  'LIB://AttachedFiles'					AS clsp_FilePath, 
+'lib://Finance Accelerator:DataFiles'	AS clsp_FilePath,            //  Master File Location
+'Qlik_Vizlib_Offline.xlsx'		AS clsp_FileName                     //  Master File Name
+
+
+
+    
+AUTOGENERATE 1;
+        
+CALL clsp_FinanceReport;  
+
+
+
+///$tab Calendar
+Temp:
+LOAD
+Min(Period) as Mindate,
+Max(Period) as Maxdate
+Resident FACT;
+ 
+LET vmindate= Num(Peek('Mindate',0,'Temp'));
+LET vmaxdate= Num(Peek('Maxdate',0,'Temp'));
+
+DROP Table Temp;
+ 
+Calendar:
+LOAD
+$(vmindate) + IterNo() -1 as Num,
+Date($(vmindate) + IterNo() -1) as Date
+AutoGenerate 1
+While
+($(vmindate) + IterNo() -1)<= $(vmaxdate);
+ 
+Master_Cal:
+LOAD  Distinct
+Floor(Date) as Date,
+Month(Date) & ' ' & Year(Date) as Period,
+Year(Date) as Year,
+Month(Date) as Month,
+MonthName(Date) as MonthName,
+Day(Date) as Day,
+//YearToDate(Date) as YTD,
+Week(Date) as Week
+Resident Calendar;
+ 
+DROP Table Calendar;
+///$tab Filters UIUX
+AmountUnits:
+LOAD *
+INLINE
+[
+Units,AmountUnits
+Units,1
+Thousands,1000
+Millions,1000000
+Billions,1000000000
+];
+
+
+SEL_DIM:
+LOAD *
+INLINE
+[
+Dimension, Field, DimID
+Product, PRODUCT_NAME, 0
+Product Category, PRODCATEGORY, 1
+Profit Center, PC_MEDIUM_DESCR, 2
+Customer, CUSTOMER_NAME, 3
+];
+
+
+SEL_FLUX:
+LOAD *
+INLINE
+[
+Flux, FluxID, ACCOUNTTYPEID
+Any, 0
+Revenue (-), 1, INC
+Expense (+), 2, EXP
+];
+
+
+Scenario:
+LOAD *
+INLINE
+[
+Scenario, vsMetric
+PY, last_year_sum_value, 
+SEQ, last_month_sum_value
+Budget, last_month_sum_value
+];
+
+///$tab Gen AI
+AI:
+LOAD
+    AI_Output
+FROM [lib://Finance Accelerator:DataFiles/AI_FINANCE.qvd]
+(qvd);  
+
+LOAD
+    CUSTOMER
+FROM [lib://Finance Accelerator:DataFiles/Qlik Sense - Forecast.xlsx]
+(ooxml, embedded labels, table is Sheet1);
+
+
+Forecast:
+LOAD
+    //Account & "Profit Center" as %ForecastKey,
+    Account as AccountForecast,
+    "Profit Center" as PC_DESC_LVL_3,
+    "Average ABS Error",
+    "Average % Error"
+FROM [lib://Finance Accelerator:DataFiles/Qlik Sense - Forecast.xlsx]
+(ooxml, embedded labels, table is Sheet2);
+
+
+///$tab Exit
+exit script;
+///$tab Account Hierarchy
+//Account Hierarchy based on Description
+ACCOUNT:
+HIERARCHY (ACCOUNT, ACCOUNT_PARENT, ACCOUNT_DESC_LVL_, ,,,,)
+LOAD
+    HIERARCHYID  AS ACCOUNT,
+    DESCRIPTION as ACCOUNT_DESC_LVL_,
+    LEVEL as ACCOUNT_PARENT
+FROM [lib://Finance Accelerator:DataFiles/Finance Accelerator Wireframe.xlsx]
+(ooxml, embedded labels, header is 1 lines, table is PnL);
+
+//Remove Parent, Rename Acct Description back to Original  (Lowest Level)
+RENAME FIELD ACCOUNT_DESC_LVL_ TO ACCOUNT_DESCRIPTION;
+DROP FIELD ACCOUNT_PARENT
+FROM ACCOUNT;
+
+
+
+//Account Hierarchy based on ID
+ACCOUNTS_LVL:
+HIERARCHY (ACCOUNT, ACCOUNT_PARENT, ACCOUNT_LVL_, ,,,,)
+LOAD
+    DESCRIPTION,
+    HIERARCHYID  AS ACCOUNT,
+    HIERARCHYID  AS ACCOUNT_LVL_,
+    LEVEL as ACCOUNT_PARENT
+FROM [lib://Finance Accelerator:DataFiles/Finance Accelerator Wireframe.xlsx]
+(ooxml, embedded labels, header is 1 lines, table is PnL);
+
+//Only keep ACCOUNT & ACCOUNT_LVL_1,2,3... fields
+DROP FIELD ACCOUNT_LVL_, ACCOUNT_PARENT, DESCRIPTION
+FROM ACCOUNTS_LVL;
+
+//join Account ID Levels to Account
+LEFT JOIN(ACCOUNT)
+LOAD * RESIDENT ACCOUNTS_LVL; DROP TABLE ACCOUNTS_LVL;
+
+
+// Account Node , account hier based on Description + all Ancestors listed per Account
+ACCOUNT_NODE:
+HierarchyBelongsTo (ACCOUNT, ACCOUNT_PARENT, ACCOUNT_DESC_LVL_,ACCOUNT_ANCESTOR_ID, ACCOUNT_ANCESTOR, ACCOUNT_DIFF)
+LOAD
+    HIERARCHYID  AS ACCOUNT,
+    DESCRIPTION as ACCOUNT_DESC_LVL_,
+    LEVEL as ACCOUNT_PARENT
+FROM [lib://Finance Accelerator:DataFiles/Finance Accelerator Wireframe.xlsx]
+(ooxml, embedded labels, header is 1 lines, table is PnL);
+
+RENAME FIELD ACCOUNT_DESC_LVL_ TO ACCOUNT_NAME;
+
+
+
+///$tab Fact Test
+//average/statss data
+Concatenate(Fact)
+LOAD accountid, 
+	ACCOUNTTYPEID, 
+	CUSTOMERTYPEID, 
+	PRODUCTID, 
+	PRODUCTCATEGORYID, 
+	PROFITCENTERID, 
+	VERSION, 
+	true_date, 
+	sum_value, 
+	avg_last_12_months, 
+	min_last_12_months, 
+	max_last_12_months, 
+	stddev_last_12_months;
+
+//[fi_db_financialtransactions_aggr_w_stats]:
+SELECT accountid,
+	ACCOUNTTYPEID,
+	CUSTOMERTYPEID,
+	PRODUCTID,
+	PRODUCTCATEGORYID,
+	PROFITCENTERID,
+	VERSION,
+	`true_date`,
+	`sum_value`,
+	`avg_last_12_months`,
+	`min_last_12_months`,
+	`max_last_12_months`,
+	`stddev_last_12_months`
+FROM `hive_metastore`.`sap_sample_content`.`fi_db_financialtransactions_aggr_w_stats`;
+
+
+///$tab Section
